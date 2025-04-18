@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\CLIENT\chat.txt">
+    <Text Include="chat.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
