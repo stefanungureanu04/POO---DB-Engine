@@ -1,0 +1,41 @@
+# Ignore build results and temporary files
+*.obj
+*.exe
+*.log
+*.tlog
+*.pch
+*.pdb
+*.idb
+*.suo
+*.user
+*.VC.db
+*.ncb
+*.ipch
+*.aps
+*.opensdf
+*.cache
+*.ilk
+
+# Ignore the Visual Studio folder
+.vs/
+
+# Ignore build folders
+[Bb]uild/
+[Bb]in/
+[Dd]ebug*/
+[Rr]elease*/
+
+# Qt-specific build artifacts (if you're using Qt)
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+
+# CMake (if used)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Others
+*.vcxproj.user
+*.vcproj.*.use
