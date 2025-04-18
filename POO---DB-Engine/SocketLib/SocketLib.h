@@ -21,9 +21,11 @@ public:
 	const std::string& getMessage() const;
 	const int& getCode() const;
 	void print() const;
-	friend std::ostream& operator << (std::ostream& out, const SocketException& e);
-	friend std::ostream& operator << (std::ostream& out, const SocketException* e);
 };
+
+SOCKETLIB_API std::ostream& operator<<(std::ostream& out, const SocketException& e);
+SOCKETLIB_API std::ostream& operator<<(std::ostream& out, const SocketException* e);
+
 
 #include <WinSock2.h>
 
