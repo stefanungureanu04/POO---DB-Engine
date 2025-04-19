@@ -154,7 +154,7 @@
     <ClCompile Include="SocketLib.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Despre SocketsLib - DLL.txt" />
+    <Text Include="chat.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

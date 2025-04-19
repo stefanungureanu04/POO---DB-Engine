@@ -37,7 +37,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Despre SocketsLib - DLL.txt">
+    <Text Include="chat.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
