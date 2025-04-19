@@ -3,6 +3,7 @@
 
 int main()
 {
+	// lasat pentru verificare functionalitate DLL
 	SocketException exception("test", 100);
 
 	std::cout << exception;

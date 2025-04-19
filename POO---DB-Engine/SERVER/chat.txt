@@ -1,0 +1,6 @@
+Am adaugat interfata IException, am derivat clasa abstracta CException
+In clasele concrete care implementeaza exceptiile, pe langa constructor, mai trebuie doar specificat tipul (tip+"Exception")
+	- FileException
+	- UserException
+	- etc.
+SocketException este deja implementat in DLL. Interfata are metode de print si supraincarcare operatori de afisare
