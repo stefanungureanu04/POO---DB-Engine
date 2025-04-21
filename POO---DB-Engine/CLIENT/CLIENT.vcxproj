@@ -103,6 +103,7 @@
   <ItemGroup>
     <ClCompile Include="User.cpp" />
     <QtRcc Include="CLIENT.qrc" />
+    <QtUic Include="AuthentificationWindow.ui" />
     <QtUic Include="CLIENT.ui" />
     <QtMoc Include="CLIENT.h" />
     <ClCompile Include="CLIENT.cpp" />
