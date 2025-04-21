@@ -24,9 +24,15 @@
     <ClCompile Include="CException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UserCredentialsDatabase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="chat.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="user_credentials_db.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
@@ -35,6 +41,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserCredentialsDatabase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

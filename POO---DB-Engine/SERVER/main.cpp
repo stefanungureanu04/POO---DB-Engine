@@ -1,34 +1,19 @@
 #include <iostream>
 #include "SocketLib.h"
+#include "UserCredentialsDatabase.h"
 
 int main()
 {
 	// lasat pentru verificare functionalitate DLL
 	SocketException exception("test", 100);
 
-	std::cout << exception;
+	std::cout << exception << std::endl;
 
-	// testare socket
-    Socket serverSocket(Socket::Protocol::TCP);
-    serverSocket.bindAndListen(12345);
+	UserCredentialsDatabase& userCredentialsDatabase = UserCredentialsDatabase::getInstance();
 
-    std::cout << "Server listening on port 12345...\n";
+	userCredentialsDatabase.showDatabase();
 
-    while (true) {
-        Socket* client = serverSocket.acceptConnection();
-        std::cout << "Client connected.\n";
 
-        // Receive and display data
-        std::string message = client->receiveData(1024);
-        std::cout << "Received from client: " << message << "\n";
-
-        // Send a fixed reply
-        client->sendData("OK");
-
-        delete client;
-        std::cout << "Client disconnected.\n\n";
-    }
-
-	std::cout << "hello from server";
+	std::cout << "hello from server" << std::endl;
 	return 0;
 }

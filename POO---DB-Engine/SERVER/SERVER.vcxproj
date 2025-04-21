@@ -135,9 +135,11 @@
     <ClCompile Include="CException.cpp" />
     <ClCompile Include="IException.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="UserCredentialsDatabase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="chat.txt" />
+    <Text Include="user_credentials_db.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SocketLib\SocketLib.vcxproj">
@@ -147,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="CException.h" />
     <ClInclude Include="IException.h" />
+    <ClInclude Include="UserCredentialsDatabase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
