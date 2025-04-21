@@ -2,7 +2,7 @@
 #include "UserCredentialsDatabase.h"
 #include <string>
 
-class AuthentificationHandler {
+class AuthenticationHandler {
 public:
     std::string handle(const std::string& request);
 };

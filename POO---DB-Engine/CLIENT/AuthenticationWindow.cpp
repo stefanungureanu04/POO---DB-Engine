@@ -1,29 +1,28 @@
-﻿#include "AuthentificationWindow.h"
+﻿#include "AuthenticationWindow.h"
 #include "ui_AuthentificationWindow.h" 
 #include <QMessageBox>
 #include "SocketLib.h"
 #include "SignUpWindow.h"
 
 
-AuthentificationWindow::AuthentificationWindow(QWidget* parent)
+AuthenticationWindow::AuthenticationWindow(QWidget* parent)
     : QDialog(parent)
-    , ui(new Ui::AuthentificationWindow)
+    , ui(new Ui::AuthenticationWindow)
 {
     ui->setupUi(this);
 }
 
-AuthentificationWindow::~AuthentificationWindow()
+AuthenticationWindow::~AuthenticationWindow()
 {
     delete ui;
 }
 
-void AuthentificationWindow::on_signupButton_clicked()
+void AuthenticationWindow::on_signupButton_clicked()
 {
     SignUpWindow signUp(this);
     int result = signUp.exec();
 
     if (result == QDialog::Accepted) {
-        // Optional: refill the fields or show a success message
         QMessageBox::information(this, "Success", "You can now log in with your new credentials.");
         ui->usernameEdit->clear();
         ui->passwordEdit->clear();
@@ -31,7 +30,7 @@ void AuthentificationWindow::on_signupButton_clicked()
     }
 }
 
-void AuthentificationWindow::on_loginButton_clicked()
+void AuthenticationWindow::on_loginButton_clicked()
 {
     QString username = ui->usernameEdit->text();
     QString password = ui->passwordEdit->text();
@@ -56,11 +55,15 @@ void AuthentificationWindow::on_loginButton_clicked()
             QMessageBox::information(this, "Login Successful", "Welcome, " + username + "!");
             ui->usernameEdit->clear();
             ui->passwordEdit->clear();
-            // Optionally call main page or keep form open
+        }
+        else if (response == "WRONG_PASSWORD") {
+            QMessageBox::warning(this, "Login Failed", "Incorrect password. Please try again.");
+            ui->passwordEdit->clear();
+            this->show();
         }
         else {
             QMessageBox::warning(this, "Login Failed", "Account not found. Redirecting to sign up...");
-            on_signupButton_clicked();  // open sign-up dialog
+            on_signupButton_clicked();
         }
 
     }

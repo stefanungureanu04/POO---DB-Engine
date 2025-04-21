@@ -27,7 +27,10 @@
     <ClCompile Include="UserCredentialsDatabase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AuthentificationHandler.cpp">
+    <ClCompile Include="AuthenticationHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AuthenticationManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -49,7 +52,10 @@
     <ClInclude Include="UserCredentialsDatabase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AuthentificationHandler.h">
+    <ClInclude Include="AuthenticationHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AuthenticationManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

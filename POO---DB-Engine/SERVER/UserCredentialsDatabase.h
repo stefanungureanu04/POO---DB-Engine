@@ -19,6 +19,7 @@ public:
 	void addCredentials(const std::string& username, const std::string& password);
 	void removeCredentials(const std::string& username, const std::string& password);
 	const bool foundCredentials(const std::string& username, const std::string& password) const;
+	const bool foundUsername(const std::string& username) const;
 	void showDatabase() const;
 
 private:

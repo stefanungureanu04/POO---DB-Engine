@@ -1,6 +1,6 @@
-#include "AuthentificationHandler.h"
+#include "AuthenticationHandler.h"
 
-std::string AuthentificationHandler::handle(const std::string& request)
+std::string AuthenticationHandler::handle(const std::string& request)
 {
     if (request.rfind("LOGIN:", 0) == 0) {
         std::string data = request.substr(6);
@@ -10,9 +10,15 @@ std::string AuthentificationHandler::handle(const std::string& request)
         std::string username = data.substr(0, sep);
         std::string password = data.substr(sep + 1);
 
-        return UserCredentialsDatabase::getInstance().foundCredentials(username, password)
-            ? "LOGIN_SUCCESS"
-            : "LOGIN_FAIL";
+        if (UserCredentialsDatabase::getInstance().foundCredentials(username, password)) {
+            return "LOGIN_SUCCESS";
+        }
+        else if (UserCredentialsDatabase::getInstance().foundUsername(username)) {
+            return "WRONG_PASSWORD";
+        }
+        else {
+            return "LOGIN_FAIL";
+        }
     }
     else if (request.rfind("REGISTER:", 0) == 0) {
         std::string data = request.substr(9);
@@ -22,7 +28,7 @@ std::string AuthentificationHandler::handle(const std::string& request)
         std::string username = data.substr(0, sep);
         std::string password = data.substr(sep + 1);
 
-        if (UserCredentialsDatabase::getInstance().foundCredentials(username, password)) {
+        if (UserCredentialsDatabase::getInstance().foundUsername(username)) {
             return "USERNAME_TAKEN";
         }
 

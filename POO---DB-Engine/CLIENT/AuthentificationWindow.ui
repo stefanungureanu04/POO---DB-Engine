@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AuthentificationWindow</class>
- <widget class="QDialog" name="AuthentificationWindow">
+ <class>AuthenticationWindow</class>
+ <widget class="QDialog" name="AuthenticationWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -156,7 +156,7 @@
   <connection>
    <sender>signupButton</sender>
    <signal>clicked()</signal>
-   <receiver>AuthentificationWindow</receiver>
+   <receiver>AuthenticationWindow</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -172,7 +172,7 @@
   <connection>
    <sender>loginButton</sender>
    <signal>clicked()</signal>
-   <receiver>AuthentificationWindow</receiver>
+   <receiver>AuthenticationWindow</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

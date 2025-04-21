@@ -104,7 +104,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AuthentificationWindow.cpp" />
+    <ClCompile Include="AuthenticationWindow.cpp" />
     <ClCompile Include="SignUpWindow.cpp" />
     <ClCompile Include="User.cpp" />
     <QtRcc Include="CLIENT.qrc" />
@@ -124,7 +124,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="AuthentificationWindow.h" />
+    <QtMoc Include="AuthenticationWindow.h" />
     <QtMoc Include="SignUpWindow.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>

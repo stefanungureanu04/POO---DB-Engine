@@ -55,7 +55,7 @@ const int UserCredentialsDatabase::size() const
 
 void UserCredentialsDatabase::addCredentials(const std::string& username, const std::string& password)
 {
-	if (this->foundCredentials(username, password)) {
+	if (this->foundUsername(username)) {
 		return;
 	}
 
@@ -96,6 +96,21 @@ const bool UserCredentialsDatabase::foundCredentials(const std::string& username
 	for (const auto& pair : this->credentials) {
 		if (pair.first == username && pair.second == password)
 			return true;
+	}
+
+	return false;
+}
+
+const bool UserCredentialsDatabase::foundUsername(const std::string& username) const
+{
+	if (this->credentials.size() == 0) {
+		return false;
+	}
+
+	for (const auto& pair : this->credentials) {
+		if (pair.first == username) {
+			return true;
+		}
 	}
 
 	return false;

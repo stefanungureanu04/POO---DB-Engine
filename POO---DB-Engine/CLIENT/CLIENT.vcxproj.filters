@@ -43,7 +43,7 @@
     <ClCompile Include="User.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AuthentificationWindow.cpp">
+    <ClCompile Include="AuthenticationWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SignUpWindow.cpp">
@@ -61,7 +61,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="AuthentificationWindow.h">
+    <QtMoc Include="AuthenticationWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SignUpWindow.h">

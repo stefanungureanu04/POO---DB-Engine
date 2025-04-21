@@ -51,7 +51,7 @@ void SignUpWindow::on_registerButton_clicked()
 
         if (response == "REGISTER_SUCCESS") {
             QMessageBox::information(this, "Registration Complete", "Account created. Please log in.");
-            this->accept();  // close the sign-up dialog
+            this->accept(); 
         }
         else if (response == "USERNAME_TAKEN") {
             QMessageBox::warning(this, "Username Exists", "This username is already registered.");
