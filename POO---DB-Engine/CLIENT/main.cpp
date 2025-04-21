@@ -1,13 +1,15 @@
-#include "CLIENT.h"
+﻿#include "CLIENT.h"
 #include <QtWidgets/QApplication>
 #include <iostream>
 #include <QDebug>
+#include "AuthentificationWindow.h"
 
 int main(int argc, char *argv[])
 {
-    qDebug() << "Hello";
-    QApplication a(argc, argv);
-    CLIENT w;
-    w.show();
-    return a.exec();
+    QApplication app(argc, argv);
+
+    AuthentificationWindow authentificationWindow;
+    authentificationWindow.show();
+
+    return app.exec();
 }

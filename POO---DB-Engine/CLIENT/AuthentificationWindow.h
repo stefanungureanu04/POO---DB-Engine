@@ -16,8 +16,8 @@ public:
     ~AuthentificationWindow();
 
 private slots:
-    void on_okButton_clicked();
-    void on_cancelButton_clicked();
+    void on_signupButton_clicked();
+    void on_loginButton_clicked();
 
 private:
     Ui::AuthentificationWindow* ui;

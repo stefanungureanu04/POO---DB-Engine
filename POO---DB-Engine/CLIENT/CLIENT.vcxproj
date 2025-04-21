@@ -71,6 +71,9 @@
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir)SocketLib</AdditionalIncludeDirectories>
     </ClCompile>
+    <PreBuildEvent>
+      <Command>taskkill /F /IM CLIENT.exe &gt; NUL 2&gt;&amp;1 || exit 0</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -102,6 +105,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AuthentificationWindow.cpp" />
+    <ClCompile Include="SignUpWindow.cpp" />
     <ClCompile Include="User.cpp" />
     <QtRcc Include="CLIENT.qrc" />
     <QtUic Include="AuthentificationWindow.ui" />
@@ -109,6 +113,7 @@
     <QtMoc Include="CLIENT.h" />
     <ClCompile Include="CLIENT.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="SignUpWindow.ui" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="chat.txt" />
@@ -120,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AuthentificationWindow.h" />
+    <QtMoc Include="SignUpWindow.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
