@@ -1,0 +1,10 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In universul aplicatiei exista 3 tipuri de log:
+	- logul general al aplicatiei (AppLog)
+	- logul (istoricul) comenzilor unui user din IDE (CommandHistoryLog)
+	- logul sesiunii curente de lucru din IDE (SessionLog)
+
+Logul general al aplicatiei scrie intotdeauna in fisierul log.txt si incepe linia cu timestamp-ul curent.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

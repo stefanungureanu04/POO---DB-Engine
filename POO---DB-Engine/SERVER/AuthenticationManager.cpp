@@ -1,24 +1,28 @@
 #include "AuthenticationManager.h"
+#include "AppLog.h"
 #include <fstream>
 #include <iostream>
 
 AuthenticationManager::AuthenticationManager(int port) : serverSocket(Socket::Protocol::TCP)
 {
+    AppLog appLog;
 	serverSocket.bindAndListen(port);
-	std::cout << "[SERVER] Listening on port " << port << "...\n";
+	appLog.write("[SERVER] Listening on port " + std::to_string(port));
 }
 
 void AuthenticationManager::run()
 {
+    AppLog appLog;
+
     while (true) {
         Socket* client = serverSocket.acceptConnection();
-        std::cout << "[SERVER] Client connected.\n";
+        appLog.write("[SERVER] Client connected.");
 
         std::string request = client->receiveData(1024);
-        std::cout << "[SERVER] Received: " << request << "\n";
+        appLog.write("[SERVER] Received: " + request);
 
         std::string response = handler.handle(request);
-        std::cout << "[SERVER] Sending: " << response << "\n";
+        appLog.write("[SERVER] Sending: " + response);
 
         client->sendData(response);
         delete client;

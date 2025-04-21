@@ -112,11 +112,11 @@
     <QtUic Include="CLIENT.ui" />
     <QtMoc Include="CLIENT.h" />
     <ClCompile Include="CLIENT.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main_client.cpp" />
     <QtUic Include="SignUpWindow.ui" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="chat.txt" />
+    <Text Include="aboutQt.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SocketLib\SocketLib.vcxproj">

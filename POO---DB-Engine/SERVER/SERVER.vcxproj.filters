@@ -13,15 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Logging classes">
+      <UniqueIdentifier>{98d9ad93-0c2f-4be1-b48c-96fe3a76bc33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Logging classes">
+      <UniqueIdentifier>{946504eb-19ee-45f4-84d6-ac12031a7617}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Exceptions">
+      <UniqueIdentifier>{db0ca07f-fa7b-46e6-bf7b-39109e749612}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Exceptions">
+      <UniqueIdentifier>{5201726e-a1a2-46f8-b183-5550b64af681}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\readme">
+      <UniqueIdentifier>{6e153578-961a-47e0-aa9e-4a387146f05a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CException.cpp">
+    <ClCompile Include="main_server.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UserCredentialsDatabase.cpp">
@@ -33,22 +42,43 @@
     <ClCompile Include="AuthenticationManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLog.cpp">
+      <Filter>Source Files\Logging classes</Filter>
+    </ClCompile>
+    <ClCompile Include="AppLog.cpp">
+      <Filter>Source Files\Logging classes</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandHistoryLog.cpp">
+      <Filter>Source Files\Logging classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ILog.cpp">
+      <Filter>Source Files\Logging classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SessionLog.cpp">
+      <Filter>Source Files\Logging classes</Filter>
+    </ClCompile>
+    <ClCompile Include="IException.cpp">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="CException.cpp">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="chat.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
     <Text Include="user_credentials_db.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="log.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="aboutLogs.txt">
+      <Filter>Resource Files\readme</Filter>
+    </Text>
+    <Text Include="aboutExceptions.txt">
+      <Filter>Resource Files\readme</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="UserCredentialsDatabase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -57,6 +87,27 @@
     </ClInclude>
     <ClInclude Include="AuthenticationManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AppLog.h">
+      <Filter>Header Files\Logging classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CLog.h">
+      <Filter>Header Files\Logging classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ILog.h">
+      <Filter>Header Files\Logging classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SessionLog.h">
+      <Filter>Header Files\Logging classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandHistoryLog.h">
+      <Filter>Header Files\Logging classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CException.h">
+      <Filter>Header Files\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="IException.h">
+      <Filter>Header Files\Exceptions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

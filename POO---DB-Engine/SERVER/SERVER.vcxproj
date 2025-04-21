@@ -132,15 +132,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AppLog.cpp" />
     <ClCompile Include="AuthenticationHandler.cpp" />
     <ClCompile Include="AuthenticationManager.cpp" />
     <ClCompile Include="CException.cpp" />
+    <ClCompile Include="CLog.cpp" />
+    <ClCompile Include="CommandHistoryLog.cpp" />
     <ClCompile Include="IException.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ILog.cpp" />
+    <ClCompile Include="main_server.cpp" />
+    <ClCompile Include="SessionLog.cpp" />
     <ClCompile Include="UserCredentialsDatabase.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="chat.txt" />
+    <Text Include="aboutExceptions.txt" />
+    <Text Include="aboutLogs.txt" />
+    <Text Include="log.txt" />
     <Text Include="user_credentials_db.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -149,10 +156,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AppLog.h" />
     <ClInclude Include="AuthenticationHandler.h" />
     <ClInclude Include="AuthenticationManager.h" />
     <ClInclude Include="CException.h" />
+    <ClInclude Include="CLog.h" />
+    <ClInclude Include="CommandHistoryLog.h" />
     <ClInclude Include="IException.h" />
+    <ClInclude Include="ILog.h" />
+    <ClInclude Include="SessionLog.h" />
     <ClInclude Include="UserCredentialsDatabase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

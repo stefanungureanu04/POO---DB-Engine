@@ -1,0 +1,14 @@
+[2025-04-21 19:08:46]: test
+[2025-04-21 19:20:13]: [SERVER] Listening on port 12345
+[2025-04-21 19:20:59]: [SERVER] Client connected.
+[2025-04-21 19:20:59]: [SERVER] Received: LOGIN:stefan.ungureanu:test1234?
+[2025-04-21 19:20:59]: [SERVER] Sending: LOGIN_FAIL
+[2025-04-21 19:21:12]: [SERVER] Client connected.
+[2025-04-21 19:21:12]: [SERVER] Received: REGISTER:stefan.ungureanu:parola1234?
+[2025-04-21 19:21:12]: [SERVER] Sending: REGISTER_SUCCESS
+[2025-04-21 19:21:25]: [SERVER] Client connected.
+[2025-04-21 19:21:25]: [SERVER] Received: LOGIN:stefan.ungureanu:parola12345?
+[2025-04-21 19:21:25]: [SERVER] Sending: WRONG_PASSWORD
+[2025-04-21 19:21:36]: [SERVER] Client connected.
+[2025-04-21 19:21:36]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-04-21 19:21:36]: [SERVER] Sending: LOGIN_SUCCESS
