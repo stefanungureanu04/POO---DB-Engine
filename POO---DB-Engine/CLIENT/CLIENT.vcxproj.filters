@@ -43,9 +43,18 @@
     <ClCompile Include="SignUpWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AppController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvironmentWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AppController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -56,12 +65,18 @@
     <QtMoc Include="SignUpWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="EnvironmentWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AuthentificationWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="SignUpWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="EnvironmentWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
