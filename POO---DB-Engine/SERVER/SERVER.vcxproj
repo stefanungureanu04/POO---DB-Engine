@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AuthentificationHandler.cpp" />
     <ClCompile Include="CException.cpp" />
     <ClCompile Include="IException.cpp" />
     <ClCompile Include="main.cpp" />
@@ -147,6 +148,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AuthentificationHandler.h" />
     <ClInclude Include="CException.h" />
     <ClInclude Include="IException.h" />
     <ClInclude Include="UserCredentialsDatabase.h" />

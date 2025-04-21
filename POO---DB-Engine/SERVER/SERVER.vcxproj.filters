@@ -27,6 +27,9 @@
     <ClCompile Include="UserCredentialsDatabase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AuthentificationHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="chat.txt">
@@ -44,6 +47,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UserCredentialsDatabase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AuthentificationHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

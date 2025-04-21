@@ -40,16 +40,33 @@ void AuthentificationWindow::on_loginButton_clicked()
         QMessageBox::warning(this, "Input Error", "Please fill in both fields.");
         return;
     }
+ 
+    try {
+        Socket socket(Socket::Protocol::TCP);
+        if (!socket.connectToServer("127.0.0.1", 12345)) {
+            QMessageBox::critical(this, "Error", "Cannot connect to the server.");
+            return;
+        }
 
-    // Regardless of credentials — always show a result
-    QMessageBox::information(this, "Login Attempt",
-        "Login attempted with:\nUsername: " + username + "\nPassword: " + password);
+        std::string message = "LOGIN:" + username.toStdString() + ":" + password.toStdString();
+        socket.sendData(message);
+        std::string response = socket.receiveData(1024);
 
-    // Clear the form so user can try again
-    ui->usernameEdit->clear();
-    ui->passwordEdit->clear();
+        if (response == "LOGIN_SUCCESS") {
+            QMessageBox::information(this, "Login Successful", "Welcome, " + username + "!");
+            ui->usernameEdit->clear();
+            ui->passwordEdit->clear();
+            // Optionally call main page or keep form open
+        }
+        else {
+            QMessageBox::warning(this, "Login Failed", "Account not found. Redirecting to sign up...");
+            on_signupButton_clicked();  // open sign-up dialog
+        }
 
-    this->show();
+    }
+    catch (const std::exception& e) {
+        QMessageBox::critical(this, "Socket Error", e.what());
+    }
 }
 
 
