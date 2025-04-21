@@ -17,7 +17,7 @@ private:
 public:
 	SocketException(const std::string& message, const int& code);
     SocketException(const SocketException& other);
-    virtual ~SocketException();
+    ~SocketException();
 	const std::string& getMessage() const;
 	const int& getCode() const;
 	void print() const;
