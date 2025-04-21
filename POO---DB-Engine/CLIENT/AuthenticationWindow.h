@@ -15,6 +15,9 @@ public:
     explicit AuthenticationWindow(QWidget* parent = nullptr);
     ~AuthenticationWindow();
 
+signals:
+    void loginSuccess();
+
 private slots:
     void on_signupButton_clicked();
     void on_loginButton_clicked();

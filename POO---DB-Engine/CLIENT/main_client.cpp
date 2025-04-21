@@ -1,15 +1,13 @@
-﻿#include "CLIENT.h"
-#include <QtWidgets/QApplication>
-#include <iostream>
+﻿#include <QtWidgets/QApplication>
 #include <QDebug>
-#include "AuthenticationWindow.h"
+#include "AppController.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    AuthenticationWindow authenticationWindow;
-    authenticationWindow.show();
+    AppController controller;
+    controller.run();
 
     return app.exec();
 }

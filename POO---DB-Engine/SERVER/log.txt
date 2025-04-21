@@ -12,3 +12,27 @@
 [2025-04-21 19:21:36]: [SERVER] Client connected.
 [2025-04-21 19:21:36]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
 [2025-04-21 19:21:36]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-21 19:39:27]: [SERVER] Listening on port 12345
+[2025-04-21 19:39:55]: [SERVER] Client connected.
+[2025-04-21 19:39:55]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-04-21 19:39:55]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-21 20:26:05]: [SERVER] Listening on port 12345
+[2025-04-21 20:26:22]: [SERVER] Client connected.
+[2025-04-21 20:26:22]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-04-21 20:26:22]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-21 20:28:30]: [SERVER] Listening on port 12345
+[2025-04-21 20:28:48]: [SERVER] Client connected.
+[2025-04-21 20:28:48]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-04-21 20:28:48]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-21 20:29:34]: [SERVER] Client connected.
+[2025-04-21 20:29:34]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-04-21 20:29:34]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-21 20:36:09]: [SERVER] Client connected.
+[2025-04-21 20:36:09]: [SERVER] Received: LOGIN:stefan.ungureanu:pasola1234?
+[2025-04-21 20:36:09]: [SERVER] Sending: WRONG_PASSWORD
+[2025-04-21 20:36:17]: [SERVER] Client connected.
+[2025-04-21 20:36:17]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-04-21 20:36:17]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-21 20:38:03]: [SERVER] Client connected.
+[2025-04-21 20:38:03]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-04-21 20:38:03]: [SERVER] Sending: LOGIN_SUCCESS
