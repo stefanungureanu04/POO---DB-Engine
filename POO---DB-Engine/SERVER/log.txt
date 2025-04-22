@@ -106,3 +106,6 @@
 [2025-04-22 18:57:42]: [SERVER] Client connected.
 [2025-04-22 18:57:42]: [SERVER] Received: LOGIN:adi.tuta:adi12!
 [2025-04-22 18:57:42]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-22 19:44:03]: [SERVER] Client connected.
+[2025-04-22 19:44:03]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-22 19:44:03]: [SERVER] Sending: LOGIN_SUCCESS
