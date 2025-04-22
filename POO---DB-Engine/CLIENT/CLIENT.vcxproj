@@ -36,7 +36,7 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>Qt 6.8.3 MSVC 64-bit</QtInstall>
+    <QtInstall>6.9.0_msvc2022_64</QtInstall>
     <QtModules>designer;core;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
@@ -74,7 +74,7 @@
       <Command>taskkill /F /IM CLIENT.exe &gt; NUL 2&gt;&amp;1 || exit 0</Command>
     </PreBuildEvent>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)POO---DB-Engine\x64\$(Configuration)\</AdditionalLibraryDirectories>
       <AdditionalDependencies>SocketLib.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
