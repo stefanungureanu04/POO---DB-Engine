@@ -1,0 +1,6 @@
+In zona Envirnonment, in clasa EditorText, pentru a putea face command highlitghting,
+voi face subclasa QSyntaxHighlighter in C++, si i-o aplic lui QPlainTextEdit.
+	- se revine mai tarziu
+
+
+-am creat feedback window sub zona de lucru pentru a se afisa rezultatul comenzilor date

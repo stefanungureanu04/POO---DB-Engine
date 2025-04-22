@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="aboutQt.txt" />
+    <Text Include="CodeUpdates.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SocketLib\SocketLib.vcxproj">

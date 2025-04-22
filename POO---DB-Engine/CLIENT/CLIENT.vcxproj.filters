@@ -84,5 +84,8 @@
     <Text Include="aboutQt.txt">
       <Filter>Resource Files\readme</Filter>
     </Text>
+    <Text Include="CodeUpdates.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
