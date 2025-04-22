@@ -74,3 +74,7 @@
 [2025-04-22 00:28:30]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
 [2025-04-22 00:28:30]: [SERVER] Sending: LOGIN_SUCCESS
 [2025-04-22 09:09:36]: [SERVER] Listening on port 12345
+[2025-04-22 09:16:39]: [SERVER] Listening on port 12345
+[2025-04-22 09:17:23]: [SERVER] Client connected.
+[2025-04-22 09:17:23]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-04-22 09:17:23]: [SERVER] Sending: LOGIN_SUCCESS
