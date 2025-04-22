@@ -15,6 +15,9 @@ public:
 
 private:
     Ui::EnvironmentWindow* ui;
+
+private slots:
+    void on_optionsButton_clicked();
 };
 
 
