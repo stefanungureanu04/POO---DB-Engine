@@ -73,3 +73,11 @@
 [2025-04-22 00:28:30]: [SERVER] Client connected.
 [2025-04-22 00:28:30]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
 [2025-04-22 00:28:30]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-22 08:36:14]: [SERVER] Listening on port 12345
+[2025-04-22 08:36:37]: [SERVER] Client connected.
+[2025-04-22 08:36:37]: [SERVER] Received: REGISTER:adi.tuta:adi12!
+[2025-04-22 08:36:37]: [SERVER] Sending: REGISTER_SUCCESS
+[2025-04-22 08:38:05]: [SERVER] Listening on port 12345
+[2025-04-22 08:39:03]: [SERVER] Client connected.
+[2025-04-22 08:39:03]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-22 08:39:03]: [SERVER] Sending: LOGIN_SUCCESS
