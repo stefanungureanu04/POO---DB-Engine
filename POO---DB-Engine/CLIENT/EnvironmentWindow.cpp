@@ -57,7 +57,7 @@ void EnvironmentWindow::on_currentDatabaseButton_clicked()
     std::string request = "GET_DATABASES:" + username.toStdString();
     socket.sendData(request);
 
-    std::string response = socket.receiveData(1024);
+    std::string response = socket.receiveData(2048);
     QString qResponse = QString::fromStdString(response);
 
     //2. Parsăm răspunsul

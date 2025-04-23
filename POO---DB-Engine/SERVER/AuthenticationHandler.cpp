@@ -41,22 +41,26 @@ std::string AuthenticationHandler::handle(const std::string& request)
     //si sa-si aleaga de acolo in care sa lucreze)
     else if (request.rfind("GET_DATABASES:", 0) == 0) {
         std::string username = request.substr(14);
-        std::ifstream file(username + ".dbs");
+        std::string dbFilePath = "databases/" + username + ".dbs";
+        std::ifstream file(dbFilePath);
 
         if (!file.is_open()) {
-            return "DBLIST:"; // Nu are baze de date
+            return "DBLIST:";  // Nu există baze de date
         }
 
-        std::string line;
-        std::string result = "DBLIST:";
+        std::string dbName;
+        std::string response = "DBLIST:";
         bool first = true;
 
-        while (std::getline(file, line)) {
-            if (!first) result += ";";
-            result += line;
+        while (std::getline(file, dbName)) {
+            if (!first) {
+                response += ";";
+            }
+            response += dbName;
             first = false;
         }
-        return result;
+
+        return response;
     }
 
     return "UNKNOWN_COMMAND";

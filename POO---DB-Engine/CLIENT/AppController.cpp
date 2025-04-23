@@ -4,6 +4,7 @@
 
 void AppController::run()
 {
+
     AuthenticationWindow* authWindow = new AuthenticationWindow();
     QObject::connect(authWindow, &AuthenticationWindow::loginSuccess, [authWindow](const QString& username) {
         EnvironmentWindow* ide = new EnvironmentWindow(username);
