@@ -11,13 +11,19 @@ class EnvironmentWindow : public QMainWindow
 
 public:
     explicit EnvironmentWindow(QWidget* parent = nullptr);
+    explicit EnvironmentWindow(const QString& username, QWidget* parent = nullptr);
     ~EnvironmentWindow();
 
-private:
-    Ui::EnvironmentWindow* ui;
 
 private slots:
     void on_optionsButton_clicked();
+private slots:
+    void updateEditorFontSize(int size);
+
+private:
+    QString currentUsername;
+    Ui::EnvironmentWindow* ui;
+
 };
 
 
