@@ -1,4 +1,5 @@
 ﻿#include "AuthenticationHandler.h"
+#include "AppLog.h"
 
 std::string AuthenticationHandler::handle(const std::string& request)
 {
@@ -41,26 +42,33 @@ std::string AuthenticationHandler::handle(const std::string& request)
     //si sa-si aleaga de acolo in care sa lucreze)
     else if (request.rfind("GET_DATABASES:", 0) == 0) {
         std::string username = request.substr(14);
-        std::string dbFilePath = "databases/" + username + ".dbs";
+        std::string dbFilePath = "databases/" + username + ".txt";
         std::ifstream file(dbFilePath);
 
         if (!file.is_open()) {
-            return "DBLIST:";  // Nu există baze de date
+            AppLog log;
+            log.write("[SERVER] Could not open database list file: " + dbFilePath);
+            return "DBLIST:";  // trimite răspuns gol
         }
 
-        std::string dbName;
-        std::string response = "DBLIST:";
-        bool first = true;
 
-        while (std::getline(file, dbName)) {
-            if (!first) {
-                response += ";";
-            }
-            response += dbName;
-            first = false;
-        }
+        //if (!file.is_open()) {
+        //    return "DBLIST:";  // Nu există baze de date
+        //}
 
-        return response;
+        //std::string dbName;
+        //std::string response = "DBLIST:";
+        //bool first = true;
+
+        //while (std::getline(file, dbName)) {
+        //    if (!first) {
+        //        response += ";";
+        //    }
+        //    response += dbName;
+        //    first = false;
+        //}
+
+        //return response;
     }
 
     return "UNKNOWN_COMMAND";

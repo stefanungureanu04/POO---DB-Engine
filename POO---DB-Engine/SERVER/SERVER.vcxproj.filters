@@ -28,8 +28,8 @@
     <Filter Include="Resource Files\readme">
       <UniqueIdentifier>{6e153578-961a-47e0-aa9e-4a387146f05a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\databases">
-      <UniqueIdentifier>{fad704ad-e5ca-4f9f-b3f7-1a697bd37452}</UniqueIdentifier>
+    <Filter Include="databases">
+      <UniqueIdentifier>{24bd2f36-1394-4a69-b1b1-c93a949ef430}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -80,9 +80,6 @@
     <Text Include="aboutExceptions.txt">
       <Filter>Resource Files\readme</Filter>
     </Text>
-    <Text Include="stefan.ungureanu.dbs">
-      <Filter>Source Files\databases</Filter>
-    </Text>
     <Text Include="about_authentication_handler.txt">
       <Filter>Resource Files\readme</Filter>
     </Text>
@@ -128,8 +125,11 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="adi.tuta.dbs">
-      <Filter>Source Files\databases</Filter>
+    <None Include="adi.tuta.txt">
+      <Filter>databases</Filter>
+    </None>
+    <None Include="stefan.ungureanu.txt">
+      <Filter>databases</Filter>
     </None>
   </ItemGroup>
 </Project>

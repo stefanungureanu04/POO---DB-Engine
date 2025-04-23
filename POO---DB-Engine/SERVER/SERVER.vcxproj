@@ -160,7 +160,6 @@
     <Text Include="aboutLogs.txt" />
     <Text Include="about_authentication_handler.txt" />
     <Text Include="log.txt" />
-    <Text Include="stefan.ungureanu.dbs" />
     <Text Include="user_credentials_db.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -185,7 +184,8 @@
     <ResourceCompile Include="SERVER.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="adi.tuta.dbs" />
+    <None Include="adi.tuta.txt" />
+    <None Include="stefan.ungureanu.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

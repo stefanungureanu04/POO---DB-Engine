@@ -229,3 +229,145 @@
 [2025-04-23 18:39:04]: [SERVER] Client connected.
 [2025-04-23 18:39:04]: [SERVER] Received: GET_DATABASES:
 [2025-04-23 18:39:04]: [SERVER] Sending: DBLIST:
+[2025-04-23 18:50:30]: [SERVER] Client connected.
+[2025-04-23 18:50:30]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 18:50:30]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 18:50:39]: [SERVER] Client connected.
+[2025-04-23 18:50:39]: [SERVER] Received: GET_DATABASES:
+[2025-04-23 18:50:39]: [SERVER] Sending: DBLIST:
+[2025-04-23 18:57:29]: [SERVER] Client connected.
+[2025-04-23 18:57:29]: [SERVER] Received: GET_DATABASES:
+[2025-04-23 18:57:29]: [SERVER] Sending: DBLIST:
+[2025-04-23 19:17:46]: [SERVER] Listening on port 12345
+[2025-04-23 19:18:01]: [SERVER] Client connected.
+[2025-04-23 19:18:01]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 19:18:01]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 19:18:05]: [SERVER] Client connected.
+[2025-04-23 19:18:05]: [SERVER] Received: GET_DATABASES:
+[2025-04-23 19:18:05]: [SERVER] Sending: DBLIST:
+[2025-04-23 19:23:57]: [SERVER] Client connected.
+[2025-04-23 19:23:57]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 19:23:57]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 19:24:00]: [SERVER] Client connected.
+[2025-04-23 19:24:00]: [SERVER] Received: GET_DATABASES:
+[2025-04-23 19:24:00]: [SERVER] Sending: DBLIST:
+[2025-04-23 19:29:15]: [SERVER] Listening on port 12345
+[2025-04-23 19:29:48]: [SERVER] Client connected.
+[2025-04-23 19:29:48]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 19:29:48]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 19:29:51]: [SERVER] Client connected.
+[2025-04-23 19:29:51]: [SERVER] Received: GET_DATABASES:
+[2025-04-23 19:29:51]: [SERVER] Sending: DBLIST:
+[2025-04-23 19:52:53]: [SERVER] Client connected.
+[2025-04-23 19:52:53]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 19:52:53]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 19:52:56]: [SERVER] Client connected.
+[2025-04-23 19:52:56]: [SERVER] Received: GET_DATABASES:
+[2025-04-23 19:52:56]: [SERVER] Sending: DBLIST:
+[2025-04-23 20:09:33]: [SERVER] Client connected.
+[2025-04-23 20:09:33]: [SERVER] Received: GET_DATABASES:
+[2025-04-23 20:09:33]: [SERVER] Sending: DBLIST:
+[2025-04-23 20:12:53]: [SERVER] Client connected.
+[2025-04-23 20:12:53]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:12:53]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:12:56]: [SERVER] Client connected.
+[2025-04-23 20:12:56]: [SERVER] Received: GET_DATABASES:
+[2025-04-23 20:12:56]: [SERVER] Sending: DBLIST:
+[2025-04-23 20:13:07]: [SERVER] Client connected.
+[2025-04-23 20:13:07]: [SERVER] Received: GET_DATABASES:
+[2025-04-23 20:13:07]: [SERVER] Sending: DBLIST:
+[2025-04-23 20:13:13]: [SERVER] Client connected.
+[2025-04-23 20:13:13]: [SERVER] Received: GET_DATABASES:
+[2025-04-23 20:13:13]: [SERVER] Sending: DBLIST:
+[2025-04-23 20:19:36]: [SERVER] Client connected.
+[2025-04-23 20:19:36]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:19:36]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:22:13]: [SERVER] Client connected.
+[2025-04-23 20:22:13]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:22:13]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:22:45]: [SERVER] Client connected.
+[2025-04-23 20:22:45]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:22:45]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:23:32]: [SERVER] Client connected.
+[2025-04-23 20:23:32]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:23:32]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:26:09]: [SERVER] Client connected.
+[2025-04-23 20:26:09]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:26:09]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:34:32]: [SERVER] Client connected.
+[2025-04-23 20:34:32]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:34:32]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:34:45]: [SERVER] Client connected.
+[2025-04-23 20:34:45]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-04-23 20:34:45]: [SERVER] Sending: DBLIST:
+[2025-04-23 20:39:50]: [SERVER] Listening on port 12345
+[2025-04-23 20:40:14]: [SERVER] Client connected.
+[2025-04-23 20:40:14]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:40:14]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:40:20]: [SERVER] Client connected.
+[2025-04-23 20:40:20]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-04-23 20:40:20]: [SERVER] Opening file: databases/adi.tuta.dbs
+[2025-04-23 20:40:20]: [SERVER] Could not open database list file.
+[2025-04-23 20:40:20]: [SERVER] Sending: DBLIST:
+[2025-04-23 20:43:36]: [SERVER] Listening on port 12345
+[2025-04-23 20:43:55]: [SERVER] Client connected.
+[2025-04-23 20:43:55]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:43:55]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:43:58]: [SERVER] Client connected.
+[2025-04-23 20:43:58]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-04-23 20:43:58]: [SERVER] Opening file: databases/adi.tuta.dbs
+[2025-04-23 20:43:58]: [SERVER] Could not open database list file.
+[2025-04-23 20:43:58]: [SERVER] Sending: DBLIST:
+[2025-04-23 20:44:53]: [SERVER] Listening on port 12345
+[2025-04-23 20:45:09]: [SERVER] Client connected.
+[2025-04-23 20:45:09]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:45:09]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:45:12]: [SERVER] Client connected.
+[2025-04-23 20:45:12]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-04-23 20:45:12]: [SERVER] Opening file: databases/adi.tuta.txt
+[2025-04-23 20:45:12]: [SERVER] Could not open database list file.
+[2025-04-23 20:45:12]: [SERVER] Sending: DBLIST:
+[2025-04-23 20:50:30]: [SERVER] Listening on port 12345
+[2025-04-23 20:50:54]: [SERVER] Client connected.
+[2025-04-23 20:50:54]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:50:54]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:50:58]: [SERVER] Client connected.
+[2025-04-23 20:50:58]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-04-23 20:50:58]: [SERVER] Opening file: databases/adi.tuta.txt
+[2025-04-23 20:50:58]: [SERVER] Could not open database list file.
+[2025-04-23 20:50:58]: [SERVER] Sending: DBLIST:
+[2025-04-23 20:55:13]: [SERVER] Listening on port 12345
+[2025-04-23 20:55:52]: [SERVER] Client connected.
+[2025-04-23 20:55:52]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:55:52]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:56:15]: [SERVER] Client connected.
+[2025-04-23 20:56:15]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:56:15]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:56:19]: [SERVER] Client connected.
+[2025-04-23 20:56:19]: [SERVER] Received: GET_DATABASES:adi.tuta
+[DEBUG] Tried to open: databases/adi.tuta.txt
+[2025-04-23 20:56:19]: [SERVER] Sending: DBLIST:
+[2025-04-23 20:57:27]: [SERVER] Listening on port 12345
+[2025-04-23 20:57:41]: [SERVER] Client connected.
+[2025-04-23 20:57:41]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 20:57:41]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 20:57:44]: [SERVER] Client connected.
+[2025-04-23 20:57:44]: [SERVER] Received: GET_DATABASES:adi.tuta
+[DEBUG] Tried to open: databases\adi.tuta.txt
+[2025-04-23 20:57:44]: [SERVER] Sending: DBLIST:
+[2025-04-23 21:02:45]: [SERVER] Listening on port 12345
+[2025-04-23 21:03:00]: [SERVER] Client connected.
+[2025-04-23 21:03:00]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 21:03:00]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 21:03:03]: [SERVER] Client connected.
+[2025-04-23 21:03:03]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-04-23 21:03:03]: [SERVER] Could not open database list file: databases/adi.tuta.txt
+[2025-04-23 21:03:03]: [SERVER] Sending: DBLIST:
+[2025-04-23 21:05:03]: [SERVER] Listening on port 12345
+[2025-04-23 21:05:19]: [SERVER] Client connected.
+[2025-04-23 21:05:19]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 21:05:19]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 21:05:22]: [SERVER] Client connected.
+[2025-04-23 21:05:22]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-04-23 21:05:22]: [SERVER] Could not open database list file: databases/adi.tuta.txt
+[2025-04-23 21:05:22]: [SERVER] Sending: DBLIST:

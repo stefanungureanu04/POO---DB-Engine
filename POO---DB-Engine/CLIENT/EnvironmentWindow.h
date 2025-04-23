@@ -12,8 +12,9 @@ class EnvironmentWindow : public QMainWindow
 public:
     explicit EnvironmentWindow(QWidget* parent = nullptr);
     explicit EnvironmentWindow(const QString& username, QWidget* parent = nullptr);
+    void setCurrentUsername(const QString& username);
     ~EnvironmentWindow();
-
+   
 
 private slots:
     void on_optionsButton_clicked();

@@ -42,25 +42,28 @@ void EnvironmentWindow::updateEditorFontSize(int size) {
     ui->EditorText->setFont(font);
 }
 
+void EnvironmentWindow::setCurrentUsername(const QString& username) {
+    this->currentUsername = username;
+    }
+
 void EnvironmentWindow::on_currentDatabaseButton_clicked()
 {
     QStringList userDatabases;
 
-    //1. Creez socket și trimit cererea
+    QMessageBox::information(this, "DEBUG", "Current username: " + currentUsername);
+
     Socket socket(Socket::Protocol::TCP);
     if (!socket.connectToServer("127.0.0.1", 12345)) {
         QMessageBox::critical(this, "Error", "Could not connect to server.");
         return;
     }
 
-    QString username = this->currentUsername;  // Asigură-te că ai salvat username-ul după login
-    std::string request = "GET_DATABASES:" + username.toStdString();
+    std::string request = "GET_DATABASES:" + currentUsername.toStdString();
     socket.sendData(request);
 
     std::string response = socket.receiveData(2048);
     QString qResponse = QString::fromStdString(response);
 
-    //2. Parsăm răspunsul
     if (qResponse.startsWith("DBLIST:")) {
         QString dbList = qResponse.mid(7);
         if (!dbList.isEmpty()) {
@@ -68,7 +71,6 @@ void EnvironmentWindow::on_currentDatabaseButton_clicked()
         }
     }
 
-    //3. Deschide dialogul și setează lista
     DatabaseSelect dialog(this);
 
     if (userDatabases.isEmpty()) {
@@ -78,7 +80,6 @@ void EnvironmentWindow::on_currentDatabaseButton_clicked()
     else {
         dialog.getNoDatabaseLabel()->setVisible(false);
         dialog.getDatabaseListWidget()->setVisible(true);
-
         for (const QString& db : userDatabases) {
             dialog.getDatabaseListWidget()->addItem(db);
         }
