@@ -52,6 +52,9 @@
     <ClCompile Include="OptionsDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DatabaseSelect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -74,6 +77,9 @@
     <QtMoc Include="OptionsDialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="DatabaseSelect.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AuthentificationWindow.ui">
@@ -86,6 +92,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="OptionsDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="DatabaseSelect.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

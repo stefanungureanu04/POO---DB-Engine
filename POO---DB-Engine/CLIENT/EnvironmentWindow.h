@@ -17,12 +17,14 @@ public:
 
 private slots:
     void on_optionsButton_clicked();
-private slots:
     void updateEditorFontSize(int size);
+    void on_currentDatabaseButton_clicked();
 
 private:
     QString currentUsername;
     Ui::EnvironmentWindow* ui;
+    QStringList userDatabases;              // definesc bazele de date ale utilizatorului
+
 
 };
 

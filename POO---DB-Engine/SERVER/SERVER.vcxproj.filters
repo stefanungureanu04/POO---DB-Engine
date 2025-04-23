@@ -28,6 +28,9 @@
     <Filter Include="Resource Files\readme">
       <UniqueIdentifier>{6e153578-961a-47e0-aa9e-4a387146f05a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\databases">
+      <UniqueIdentifier>{fad704ad-e5ca-4f9f-b3f7-1a697bd37452}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main_server.cpp">
@@ -77,6 +80,12 @@
     <Text Include="aboutExceptions.txt">
       <Filter>Resource Files\readme</Filter>
     </Text>
+    <Text Include="stefan.ungureanu.dbs">
+      <Filter>Source Files\databases</Filter>
+    </Text>
+    <Text Include="about_authentication_handler.txt">
+      <Filter>Resource Files\readme</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UserCredentialsDatabase.h">
@@ -109,5 +118,18 @@
     <ClInclude Include="IException.h">
       <Filter>Header Files\Exceptions</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SERVER.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="adi.tuta.dbs">
+      <Filter>Source Files\databases</Filter>
+    </None>
   </ItemGroup>
 </Project>

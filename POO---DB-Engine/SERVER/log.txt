@@ -176,3 +176,24 @@
 [2025-04-23 12:57:20]: [SERVER] Client connected.
 [2025-04-23 12:57:20]: [SERVER] Received: LOGIN:adi.tuta:adi12!
 [2025-04-23 12:57:20]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 13:30:11]: [SERVER] Listening on port 12345
+[2025-04-23 13:36:16]: [SERVER] Listening on port 12345
+[2025-04-23 13:36:37]: [SERVER] Client connected.
+[2025-04-23 13:36:37]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 13:36:37]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 17:03:12]: [SERVER] Client connected.
+[2025-04-23 17:03:12]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 17:03:12]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 17:08:48]: [SERVER] Client connected.
+[2025-04-23 17:08:48]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 17:08:48]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 17:13:56]: [SERVER] Client connected.
+[2025-04-23 17:13:56]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 17:13:56]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 17:33:43]: [SERVER] Listening on port 12345
+[2025-04-23 17:34:05]: [SERVER] Client connected.
+[2025-04-23 17:34:05]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-23 17:34:05]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-23 17:34:09]: [SERVER] Client connected.
+[2025-04-23 17:34:09]: [SERVER] Received: GET_DATABASES:
+[2025-04-23 17:34:09]: [SERVER] Sending: DBLIST:

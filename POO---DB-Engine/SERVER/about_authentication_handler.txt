@@ -1,0 +1,3 @@
+-modific ::handle pentru a procesa comanda GET_DATABASES care va returna din fisierul
+	utilizatorului curent bazele de date ale acestuia in urma apasarii butonului Current 
+	Database din CLIENT
