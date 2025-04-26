@@ -5,9 +5,7 @@
 #include "SignUpWindow.h"
 
 
-AuthenticationWindow::AuthenticationWindow(QWidget* parent)
-    : QDialog(parent)
-    , ui(new Ui::AuthenticationWindow)
+AuthenticationWindow::AuthenticationWindow(QWidget* parent) : QDialog(parent), ui(new Ui::AuthenticationWindow)
 {
     ui->setupUi(this);
 }

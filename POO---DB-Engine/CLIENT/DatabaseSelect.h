@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include <QDialog>
 #include <QStringList>
 #include <QLabel>

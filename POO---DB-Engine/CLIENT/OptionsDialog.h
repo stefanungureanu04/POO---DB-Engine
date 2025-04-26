@@ -14,10 +14,11 @@ public:
     explicit OptionsDialog(QWidget* parent = nullptr);
     ~OptionsDialog();
 
-private slots:
-    void on_slider_valueChanged(int value);
 signals:
     void textSizeChanged(int newSize);
+
+private slots:
+    void on_slider_valueChanged(int value);
 
 private:
     Ui::OptionsDialog* ui;

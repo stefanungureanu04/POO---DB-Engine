@@ -146,7 +146,7 @@
   <ItemGroup>
     <QtMoc Include="AuthenticationWindow.h" />
     <QtMoc Include="SignUpWindow.h" />
-    <ClInclude Include="AppController.h" />
+    <QtMoc Include="AppController.h" />
     <QtMoc Include="EnvironmentWindow.h" />
     <QtMoc Include="OptionsDialog.h" />
     <QtMoc Include="DatabaseSelect.h" />

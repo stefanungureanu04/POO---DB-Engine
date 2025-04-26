@@ -1,6 +1,11 @@
-In zona Envirnonment, in clasa EditorText, pentru a putea face command highlitghting,
+[TUTA]: In zona Envirnonment, in clasa EditorText, pentru a putea face command highlitghting,
 voi face subclasa QSyntaxHighlighter in C++, si i-o aplic lui QPlainTextEdit.
 	- se revine mai tarziu
 
-
 -am creat feedback window sub zona de lucru pentru a se afisa rezultatul comenzilor date
+
+[UNGUREANU]: Salut! Am modificat un pic asezarea codului in pagina, acolo unde era inghesuit. De asemenea,
+am modificat clasa AppController si am facut-o un pic mai modulara (are un pointer care tine fereastra curenta
+si astfel devine mai usor de gestionat activitatea fiecarei ferestre, in loc de tot codul mare din functia "run").
+Am modificat numele butoanelor din EnvironmentWindow (doar al celor care erau setate cu nume default) si am facut ca atunci
+cand apesi logout sa se revina la fereastra de autentificare.

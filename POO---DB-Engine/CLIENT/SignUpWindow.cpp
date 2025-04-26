@@ -4,9 +4,7 @@
 #include "User.h"
 #include <QMessageBox>
 
-SignUpWindow::SignUpWindow(QWidget* parent) :
-    QDialog(parent),
-    ui(new Ui::SignUpWindow)
+SignUpWindow::SignUpWindow(QWidget* parent) : QDialog(parent), ui(new Ui::SignUpWindow)
 {
     ui->setupUi(this);
 }
@@ -34,18 +32,21 @@ void SignUpWindow::on_registerButton_clicked()
     }
 
     if (!user.password_isValid()) {
-        QMessageBox::warning(this, "Invalid Password", "Password must contain at least one digit, one special character, no spaces, and not include the username.");
+        QMessageBox::warning(this, "Invalid Password", "Password must contain at least one digit, "
+        "one special character, no spaces, and not include the username.");
         return;
     }
 
     try {
         Socket socket(Socket::Protocol::TCP);
+
         if (!socket.connectToServer("127.0.0.1", 12345)) {
             QMessageBox::critical(this, "Error", "Cannot connect to the server.");
             return;
         }
 
         std::string message = "REGISTER:" + username.toStdString() + ":" + password.toStdString();
+        
         socket.sendData(message);
         std::string response = socket.receiveData(1024);
 

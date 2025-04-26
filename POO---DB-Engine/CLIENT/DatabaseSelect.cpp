@@ -1,9 +1,7 @@
 ﻿#include "DatabaseSelect.h"
 #include "ui_DatabaseSelect.h"
 
-DatabaseSelect::DatabaseSelect(QWidget* parent)
-    : QDialog(parent)
-    , ui(new Ui::DatabaseSelect)
+DatabaseSelect::DatabaseSelect(QWidget* parent) : QDialog(parent), ui(new Ui::DatabaseSelect)
 {
     ui->setupUi(this);
 }

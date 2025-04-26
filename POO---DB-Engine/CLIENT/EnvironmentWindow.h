@@ -14,12 +14,15 @@ public:
     explicit EnvironmentWindow(const QString& username, QWidget* parent = nullptr);
     void setCurrentUsername(const QString& username);
     ~EnvironmentWindow();
-   
+ 
+signals:
+    void logoutRequested();
 
 private slots:
     void on_optionsButton_clicked();
     void updateEditorFontSize(int size);
     void on_currentDatabaseButton_clicked();
+    void on_logoutButton_clicked();
 
 private:
     QString currentUsername;

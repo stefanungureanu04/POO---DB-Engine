@@ -60,9 +60,6 @@
     <ClInclude Include="User.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AppController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AuthenticationWindow.h">
@@ -78,6 +75,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="DatabaseSelect.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AppController.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -103,7 +103,7 @@
       <Filter>Resource Files\readme</Filter>
     </Text>
     <Text Include="CodeUpdates.txt">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files\readme</Filter>
     </Text>
   </ItemGroup>
 </Project>

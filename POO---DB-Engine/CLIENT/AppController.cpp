@@ -4,14 +4,44 @@
 
 void AppController::run()
 {
+    showAuthentication();
+}
 
-    AuthenticationWindow* authWindow = new AuthenticationWindow();
-    QObject::connect(authWindow, &AuthenticationWindow::loginSuccess, [authWindow](const QString& username) {
-        EnvironmentWindow* ide = new EnvironmentWindow();
-        ide->setCurrentUsername(username);  // <<<< AICI
-        ide->setAttribute(Qt::WA_DeleteOnClose);
-        ide->show();
-        authWindow->close();
+void AppController::showAuthentication()
+{
+    AuthenticationWindow* authenticationWindow = new AuthenticationWindow();
+
+    QObject::connect(authenticationWindow, &AuthenticationWindow::loginSuccess, this, [this, authenticationWindow](const QString& username) {
+            this->showEnvironment(username);
+            authenticationWindow->close();
         });
-    authWindow->show();
+
+    authenticationWindow->setAttribute(Qt::WA_DeleteOnClose);
+    authenticationWindow->show();
+
+    this->setCurrentWindow(authenticationWindow);
+}
+
+void AppController::showEnvironment(const QString& username)
+{
+    EnvironmentWindow* ide = new EnvironmentWindow(username);
+
+    QObject::connect(ide, &EnvironmentWindow::logoutRequested, this, [this, ide]() {
+            this->showAuthentication();
+            ide->close();
+        });
+
+    ide->setAttribute(Qt::WA_DeleteOnClose);
+    ide->show();
+
+   this -> setCurrentWindow(ide);
+}
+
+void AppController::setCurrentWindow(QWidget* window)
+{
+    if (this->currentWindow) {
+        this->currentWindow->deleteLater();
+    }
+
+    this->currentWindow = window;
 }

@@ -6,38 +6,29 @@
 #include "SocketLib.h"
 #include <QMessageBox>
 
-
-
-EnvironmentWindow::EnvironmentWindow(QWidget* parent)
-    : QMainWindow(parent), ui(new Ui::EnvironmentWindow)
+EnvironmentWindow::EnvironmentWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::EnvironmentWindow)
 {
-    ui->setupUi(this);          // trebuie sa fie prezent aici, altfel conexiunea nu are loc
-
-    // other initialization here
+    ui->setupUi(this);                                      // trebuie sa fie prezent aici, altfel conexiunea nu are loc, other initialization here
 }
 
-EnvironmentWindow::EnvironmentWindow(const QString& username, QWidget* parent)
-    : QMainWindow(parent)
-    , ui(new Ui::EnvironmentWindow)
+EnvironmentWindow::EnvironmentWindow(const QString& username, QWidget* parent) : QMainWindow(parent) , ui(new Ui::EnvironmentWindow)
 {
     ui->setupUi(this);
-    ui->labelUsername->setText("-> " + username + " <- MANAGER");   //apare utilizatorul curent in stanga cuvantului MANAGER
+    ui->labelUsername->setText(username + " - MANAGER");   //apare utilizatorul curent in stanga cuvantului MANAGER
 }
 
 void EnvironmentWindow::on_optionsButton_clicked()
 {
-
     OptionsDialog* dialog = new OptionsDialog(this);
 
-    connect(dialog, &OptionsDialog::textSizeChanged,
-        this, &EnvironmentWindow::updateEditorFontSize);
-
+    connect(dialog, &OptionsDialog::textSizeChanged, this, &EnvironmentWindow::updateEditorFontSize);
 
     dialog->exec();
 }
 
-void EnvironmentWindow::updateEditorFontSize(int size) {
-    QFont font = ui->EditorText->font();  // replace `EditorText` with your actual QPlainTextEdit name
+void EnvironmentWindow::updateEditorFontSize(int size) 
+{
+    QFont font = ui->EditorText->font();                    // replace `EditorText` with your actual QPlainTextEdit name
     font.setPointSize(size);
     ui->EditorText->setFont(font);
 }
@@ -45,7 +36,7 @@ void EnvironmentWindow::updateEditorFontSize(int size) {
 void EnvironmentWindow::setCurrentUsername(const QString& username) 
 {
     this->currentUsername = username;
-    ui->labelUsername->setText("-> " + username + " <- MANAGER");
+    ui->labelUsername->setText(username + " - MANAGER");
 }
 
 void EnvironmentWindow::on_currentDatabaseButton_clicked()
@@ -88,6 +79,11 @@ void EnvironmentWindow::on_currentDatabaseButton_clicked()
     }
 
     dialog.exec();
+}
+
+void EnvironmentWindow::on_logoutButton_clicked()
+{
+    emit logoutRequested();
 }
 
 

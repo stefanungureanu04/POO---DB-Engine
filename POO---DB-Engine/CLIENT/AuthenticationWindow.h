@@ -26,4 +26,4 @@ private:
     Ui::AuthenticationWindow* ui;
 };
 
-#endif // AUTHENTICATIONWINDOW_H
+#endif

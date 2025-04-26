@@ -57,28 +57,28 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="runButton">
          <property name="text">
           <string>▶️Run</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="importButton">
          <property name="text">
           <string>Import</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_5">
+        <widget class="QPushButton" name="logButton">
          <property name="text">
           <string>Log</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_6">
+        <widget class="QPushButton" name="downloadButton">
          <property name="text">
           <string>Download</string>
          </property>
@@ -156,7 +156,7 @@ QListWidget::item:selected {
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_7">
+        <widget class="QPushButton" name="logoutButton">
          <property name="text">
           <string>LOG OUT</string>
          </property>
