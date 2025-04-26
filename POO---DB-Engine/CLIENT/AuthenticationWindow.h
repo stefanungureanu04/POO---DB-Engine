@@ -16,7 +16,7 @@ public:
     ~AuthenticationWindow();
 
 signals:
-    void loginSuccess();
+    void loginSuccess(const QString& username);
 
 private slots:
     void on_signupButton_clicked();

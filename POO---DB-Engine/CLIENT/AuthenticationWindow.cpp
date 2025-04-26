@@ -56,7 +56,7 @@ void AuthenticationWindow::on_loginButton_clicked()
             ui->usernameEdit->clear();
             ui->passwordEdit->clear();
 
-            emit loginSuccess();
+            emit loginSuccess(username);
         }
         else if (response == "WRONG_PASSWORD") {
             QMessageBox::warning(this, "Login Failed", "Incorrect password. Please try again.");

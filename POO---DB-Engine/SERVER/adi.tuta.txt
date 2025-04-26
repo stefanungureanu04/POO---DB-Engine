@@ -1,0 +1,2 @@
+magazin_flori_qry.txt
+studenti_ATM_qry.txt

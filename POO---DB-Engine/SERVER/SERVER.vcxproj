@@ -158,6 +158,7 @@
   <ItemGroup>
     <Text Include="aboutExceptions.txt" />
     <Text Include="aboutLogs.txt" />
+    <Text Include="about_authentication_handler.txt" />
     <Text Include="log.txt" />
     <Text Include="user_credentials_db.txt" />
   </ItemGroup>
@@ -175,8 +176,16 @@
     <ClInclude Include="CommandHistoryLog.h" />
     <ClInclude Include="IException.h" />
     <ClInclude Include="ILog.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SessionLog.h" />
     <ClInclude Include="UserCredentialsDatabase.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SERVER.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="adi.tuta.txt" />
+    <None Include="stefan.ungureanu.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

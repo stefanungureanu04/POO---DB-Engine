@@ -121,13 +121,17 @@
   <ItemGroup>
     <ClCompile Include="AppController.cpp" />
     <ClCompile Include="AuthenticationWindow.cpp" />
+    <ClCompile Include="DatabaseSelect.cpp" />
     <ClCompile Include="EnvironmentWindow.cpp" />
+    <ClCompile Include="OptionsDialog.cpp" />
     <ClCompile Include="SignUpWindow.cpp" />
     <ClCompile Include="User.cpp" />
     <QtRcc Include="CLIENT.qrc" />
     <QtUic Include="AuthentificationWindow.ui" />
     <ClCompile Include="main_client.cpp" />
+    <QtUic Include="DatabaseSelect.ui" />
     <QtUic Include="EnvironmentWindow.ui" />
+    <QtUic Include="OptionsDialog.ui" />
     <QtUic Include="SignUpWindow.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +148,8 @@
     <QtMoc Include="SignUpWindow.h" />
     <ClInclude Include="AppController.h" />
     <QtMoc Include="EnvironmentWindow.h" />
+    <QtMoc Include="OptionsDialog.h" />
+    <QtMoc Include="DatabaseSelect.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
