@@ -85,7 +85,7 @@
     <rect>
      <x>170</x>
      <y>140</y>
-     <width>113</width>
+     <width>131</width>
      <height>21</height>
     </rect>
    </property>
@@ -95,7 +95,7 @@
     <rect>
      <x>170</x>
      <y>180</y>
-     <width>113</width>
+     <width>131</width>
      <height>21</height>
     </rect>
    </property>
@@ -157,6 +157,33 @@
    </property>
    <property name="pixmap">
     <pixmap>Images/AuthentificationWindowImage_size.jpg</pixmap>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="showPasswordCheckbox">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>180</y>
+     <width>91</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/CLIENT/Images/hide_password.jpg);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/CLIENT/Images/show_password.jpg);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

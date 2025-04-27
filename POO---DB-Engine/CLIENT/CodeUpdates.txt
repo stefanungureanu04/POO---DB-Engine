@@ -11,8 +11,9 @@ Am modificat numele butoanelor din EnvironmentWindow (doar al celor care erau se
 cand apesi logout sa se revina la fereastra de autentificare.
 			
 
-[UNGUREANU]: Am facut butonul de LOGIN default (merge apasat direct ENTER), am sters metoda "setUsername()" din EnvironmentWindow,
-nu mai avem nevoie de ea, este setata din constructor, am implementat persistenta check-urilor din OptionsDialog (acum raman
-activate si dupa inchidere, cu exceptia History Cleanup) si am facut syntax highlighting. De asemenea, am rezolvat niste bug-uri din
-etapa de autentificare. Pentru fiecare buton din IDE, momentan, la apasarea lor, va aparea o fereastra pop-up de test cu numele butonului 
-(asta doar momentan, in metodele respective se revine cu implementarea logicii aferente functionalitatii butonului).
+[UNGUREANU]: UPDATES 27.04
+	- Am sters metoda "setUsername()" din EnvironmentWindow,nu mai avem nevoie de ea, este setata din constructor 
+	- Am implementat persistenta check-urilor din OptionsDialog (acum raman activate si dupa inchidere, cu exceptia History Cleanup, unde nu e cazul) 
+	- Am facut syntax highlighting. De asemenea, am rezolvat niste bug-uri din etapa de autentificare (show/hide password, confimare parola, etc.)
+	- Pentru fiecare buton din IDE, momentan, la apasarea lor, va aparea o fereastra pop-up de test cu numele butonului (asta doar momentan, 
+	in metodele respective se revine cu implementarea logicii aferente functionalitatii butonului).

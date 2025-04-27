@@ -13,37 +13,12 @@
   <property name="windowTitle">
    <string>REGISTRATION</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>250</y>
-     <width>351</width>
-     <height>33</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout">
-    <property name="spacing">
-     <number>6</number>
-    </property>
-    <property name="margin" stdset="0">
-     <number>0</number>
-    </property>
-    <item>
-     <widget class="QPushButton" name="registerButton">
-      <property name="text">
-       <string>REGISTER</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>130</y>
-     <width>111</width>
+     <x>72</x>
+     <y>132</y>
+     <width>116</width>
      <height>16</height>
     </rect>
    </property>
@@ -54,9 +29,9 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>180</y>
-     <width>121</width>
+     <x>72</x>
+     <y>161</y>
+     <width>111</width>
      <height>16</height>
     </rect>
    </property>
@@ -69,7 +44,7 @@
     <rect>
      <x>190</x>
      <y>130</y>
-     <width>171</width>
+     <width>161</width>
      <height>21</height>
     </rect>
    </property>
@@ -78,8 +53,8 @@
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>180</y>
-     <width>171</width>
+     <y>160</y>
+     <width>161</width>
      <height>21</height>
     </rect>
    </property>
@@ -87,7 +62,7 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>140</x>
      <y>90</y>
      <width>121</width>
      <height>16</height>
@@ -107,7 +82,7 @@
     <rect>
      <x>150</x>
      <y>10</y>
-     <width>101</width>
+     <width>90</width>
      <height>71</height>
     </rect>
    </property>
@@ -119,6 +94,79 @@
    </property>
    <property name="pixmap">
     <pixmap>Images/profile_image_size.jpg</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>72</x>
+     <y>190</y>
+     <width>99</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Confirm password:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="confirmationPasswordEdit">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>190</y>
+     <width>161</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="showPasswordCheckBox">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>190</y>
+     <width>22</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/CLIENT/Images/hide_password.jpg);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/CLIENT/Images/show_password.jpg);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>220</y>
+     <width>93</width>
+     <height>42</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="registerButton">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>240</y>
+     <width>141</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>REGISTER</string>
    </property>
   </widget>
  </widget>

@@ -21,6 +21,7 @@ signals:
     void signupCompleted();
 
 private slots:
+    void onShowPasswordToggled(bool checked);
     void on_signupButton_clicked();
     void on_loginButton_clicked();
 

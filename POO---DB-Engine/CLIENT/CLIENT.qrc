@@ -1,4 +1,8 @@
 <RCC>
-    <qresource prefix="CLIENT">
+    <qresource prefix="/CLIENT">
+        <file>Images/AuthentificationWindowImage_size.jpg</file>
+        <file>Images/hide_password.jpg</file>
+        <file>Images/profile_image_size.jpg</file>
+        <file>Images/show_password.jpg</file>
     </qresource>
 </RCC>

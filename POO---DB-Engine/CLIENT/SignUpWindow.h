@@ -15,6 +15,7 @@ public:
     ~SignUpWindow();
 
 private slots:
+    void onShowPasswordToggled(bool checked);
     void on_registerButton_clicked();
 
 private:

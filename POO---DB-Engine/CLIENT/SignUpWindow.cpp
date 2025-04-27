@@ -3,10 +3,13 @@
 #include "SocketLib.h"
 #include "User.h"
 #include <QMessageBox>
+#include <qcheckbox.h>
 
 SignUpWindow::SignUpWindow(QWidget* parent) : QDialog(parent), ui(new Ui::SignUpWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->showPasswordCheckBox, &QCheckBox::toggled, this, &SignUpWindow::onShowPasswordToggled);
 }
 
 SignUpWindow::~SignUpWindow()
@@ -14,10 +17,28 @@ SignUpWindow::~SignUpWindow()
     delete ui;
 }
 
+void SignUpWindow::onShowPasswordToggled(bool checked)
+{
+    if (checked) {
+        ui->passwordEdit->setEchoMode(QLineEdit::Normal);
+        ui->confirmationPasswordEdit->setEchoMode(QLineEdit::Normal);
+    }
+    else {
+        ui->passwordEdit->setEchoMode(QLineEdit::Password);
+        ui->confirmationPasswordEdit->setEchoMode(QLineEdit::Password);
+    }
+}
+
 void SignUpWindow::on_registerButton_clicked()
 {
     QString username = ui->usernameEdit->text();
     QString password = ui->passwordEdit->text();
+    QString confirmationPassword = ui->confirmationPasswordEdit->text();
+
+    if (password != confirmationPassword) {
+        QMessageBox::warning(this, "Error", "Passwords do not match!");
+        return;
+    }
 
     if (username.isEmpty() || password.isEmpty()) {
         QMessageBox::warning(this, "Input Error", "Please fill in both fields.");

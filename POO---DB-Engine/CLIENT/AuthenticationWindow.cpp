@@ -1,6 +1,7 @@
 ﻿#include "AuthenticationWindow.h"
 #include "ui_AuthentificationWindow.h" 
 #include <QMessageBox>
+#include <qcheckbox.h>
 #include "SocketLib.h"
 #include "SignUpWindow.h"
 
@@ -8,11 +9,23 @@
 AuthenticationWindow::AuthenticationWindow(QWidget* parent) : QDialog(parent), ui(new Ui::AuthenticationWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->showPasswordCheckbox, &QCheckBox::toggled, this, &AuthenticationWindow::onShowPasswordToggled);
 }
 
 AuthenticationWindow::~AuthenticationWindow()
 {
     delete ui;
+}
+
+void AuthenticationWindow::onShowPasswordToggled(bool checked)
+{
+    if (checked) {
+        ui->passwordEdit->setEchoMode(QLineEdit::Normal);
+    }
+    else {
+        ui->passwordEdit->setEchoMode(QLineEdit::Password);
+    }
 }
 
 void AuthenticationWindow::on_signupButton_clicked()
