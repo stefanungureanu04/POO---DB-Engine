@@ -9,3 +9,8 @@ am modificat clasa AppController si am facut-o un pic mai modulara (are un point
 si astfel devine mai usor de gestionat activitatea fiecarei ferestre, in loc de tot codul mare din functia "run").
 Am modificat numele butoanelor din EnvironmentWindow (doar al celor care erau setate cu nume default) si am facut ca atunci
 cand apesi logout sa se revina la fereastra de autentificare.
+			
+
+[UNGUREANU]: Am facut butonul de LOGIN default (merge apasat direct ENTER), am sters metoda "setUsername()" din EnvironmentWindow,
+nu mai avem nevoie de ea, este setata din constructor, am implementat persistenta check-urilor din OptionsDialog (acum raman
+activate si dupa inchidere) si am facut syntax highlighting.

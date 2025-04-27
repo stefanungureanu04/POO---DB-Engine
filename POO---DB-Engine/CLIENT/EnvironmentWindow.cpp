@@ -8,36 +8,79 @@
 
 EnvironmentWindow::EnvironmentWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::EnvironmentWindow)
 {
-    ui->setupUi(this);                                      // trebuie sa fie prezent aici, altfel conexiunea nu are loc, other initialization here
+    ui->setupUi(this);                                     
 }
 
 EnvironmentWindow::EnvironmentWindow(const QString& username, QWidget* parent) : QMainWindow(parent) , ui(new Ui::EnvironmentWindow)
 {
     ui->setupUi(this);
-    ui->labelUsername->setText(username + " - MANAGER");   //apare utilizatorul curent in stanga cuvantului MANAGER
+    ui->labelUsername->setText(username + " - MANAGER");  
 }
+
+void EnvironmentWindow::updateEditorFontSize(int size)
+{
+    this->fontSize = size; 
+
+    QFont font = ui->EditorText->font();
+    font.setPointSize(size);
+    ui->EditorText->setFont(font);
+}
+
+void EnvironmentWindow::toggleSyntaxHighlighter(bool enabled)
+{
+    syntaxHighlightingEnabled = enabled;
+
+    if (enabled) {
+        if (!highlighter) {
+            highlighter = new SyntaxHighlighter(ui->EditorText->document());
+        }
+        highlighter->rehighlight();
+    }
+    else {
+        if (highlighter) {
+            delete highlighter;
+            highlighter = nullptr;
+        }
+
+        QTextCursor cursor(ui->EditorText->document());
+        cursor.select(QTextCursor::Document);
+
+        QTextCharFormat format;
+        format.setForeground(Qt::black);
+        cursor.mergeCharFormat(format);
+    }
+}
+
+void EnvironmentWindow::toggleExecutionTime(bool enabled)
+{
+    executionTimeEnabled = enabled;
+    // You can handle what to do when execution time is toggled
+}
+
+void EnvironmentWindow::toggleHistoryCleanup(bool enabled)
+{
+    historyCleanupEnabled = enabled;
+    // You can handle what to do when history cleanup is toggled
+}
+
 
 void EnvironmentWindow::on_optionsButton_clicked()
 {
     OptionsDialog* dialog = new OptionsDialog(this);
 
     connect(dialog, &OptionsDialog::textSizeChanged, this, &EnvironmentWindow::updateEditorFontSize);
+    connect(dialog, &OptionsDialog::syntaxHighlightingToggled, this, &EnvironmentWindow::toggleSyntaxHighlighter);
+    connect(dialog, &OptionsDialog::executionTimeToggled, this, &EnvironmentWindow::toggleExecutionTime);
+    connect(dialog, &OptionsDialog::historyCleanupToggled, this, &EnvironmentWindow::toggleHistoryCleanup);
+
+    dialog->setSyntaxHighlightingEnabled(syntaxHighlightingEnabled);
+    dialog->setExecutionTimeEnabled(executionTimeEnabled);
+    dialog->setHistoryCleanupEnabled(historyCleanupEnabled);
+    dialog->setFontSize(fontSize);
 
     dialog->exec();
 }
 
-void EnvironmentWindow::updateEditorFontSize(int size) 
-{
-    QFont font = ui->EditorText->font();                    // replace `EditorText` with your actual QPlainTextEdit name
-    font.setPointSize(size);
-    ui->EditorText->setFont(font);
-}
-
-void EnvironmentWindow::setCurrentUsername(const QString& username) 
-{
-    this->currentUsername = username;
-    ui->labelUsername->setText(username + " - MANAGER");
-}
 
 void EnvironmentWindow::on_currentDatabaseButton_clicked()
 {

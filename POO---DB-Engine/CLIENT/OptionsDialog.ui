@@ -69,7 +69,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QCheckBox" name="checkBox">
+     <widget class="QCheckBox" name="executionTimeCheckBox">
       <property name="text">
        <string>CheckBox</string>
       </property>
@@ -83,7 +83,7 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QCheckBox" name="checkBox_2">
+     <widget class="QCheckBox" name="syntaxHighlightingCheckBox">
       <property name="text">
        <string>CheckBox</string>
       </property>
@@ -97,7 +97,7 @@
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QCheckBox" name="checkBox_3">
+     <widget class="QCheckBox" name="historyCleanupCheckBox">
       <property name="text">
        <string>CheckBox</string>
       </property>
@@ -111,7 +111,7 @@
      </widget>
     </item>
     <item row="4" column="1">
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="deleteCurrentDatabaseButton">
       <property name="text">
        <string>Delete</string>
       </property>

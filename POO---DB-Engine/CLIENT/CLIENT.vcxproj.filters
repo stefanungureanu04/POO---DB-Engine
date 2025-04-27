@@ -55,6 +55,9 @@
     <ClCompile Include="DatabaseSelect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SyntaxHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="AppController.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SyntaxHighlighter.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
