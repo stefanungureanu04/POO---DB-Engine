@@ -34,6 +34,9 @@
       <property name="text">
        <string>SIGN UP</string>
       </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
      </widget>
     </item>
     <item>
@@ -41,8 +44,11 @@
       <property name="text">
        <string>LOG IN</string>
       </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
       <property name="default">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
     </item>

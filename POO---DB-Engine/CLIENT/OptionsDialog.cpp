@@ -1,5 +1,6 @@
 #include "OptionsDialog.h"
 #include "ui_OptionsDialog.h"
+#include <qmessagebox.h>
 
 OptionsDialog::OptionsDialog(QWidget* parent) : QDialog(parent), ui(new Ui::OptionsDialog)
 {
@@ -20,7 +21,7 @@ void OptionsDialog::setFontSize(int size)
 {
     this->fontSize = size;
 
-    if (ui!=nullptr) {
+    if (ui != nullptr) {
         ui->slider->setValue(size);
     }
 }
@@ -37,17 +38,16 @@ void OptionsDialog::setExecutionTimeEnabled(bool enabled)
 void OptionsDialog::setSyntaxHighlightingEnabled(bool enabled)
 {
     this->syntaxHighlighting = enabled;
+
     if (ui != nullptr) {
         ui->syntaxHighlightingCheckBox->setChecked(enabled);
     }
 }
 
-void OptionsDialog::setHistoryCleanupEnabled(bool enabled)
+void OptionsDialog::uncheckHistoryCleanup()
 {
-    this->historyCleanup = enabled;
-    
     if (ui != nullptr) {
-        ui->historyCleanupCheckBox->setChecked(enabled);
+        ui->historyCleanupCheckBox->setChecked(false);
     }
 }
 
@@ -75,6 +75,16 @@ void OptionsDialog::on_historyCleanupCheckBox_stateChanged(int state)
     emit historyCleanupToggled(state == Qt::Checked);
 }
 
+void OptionsDialog::on_deleteCurrentDatabaseButton_clicked()
+{
+    QMessageBox::StandardButton reply;
+
+    reply = QMessageBox::question(this, "CONFIRM", "Are you sure you want to delete the current database?", QMessageBox::Yes | QMessageBox::No);
+    
+    if (reply == QMessageBox::Yes) {
+        emit deleteCurrentDatabaseRequested();
+    }
+}
 
 OptionsDialog::~OptionsDialog()
 {

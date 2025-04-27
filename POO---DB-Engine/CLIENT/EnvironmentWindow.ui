@@ -45,7 +45,7 @@
        <item>
         <widget class="QPushButton" name="currentDatabaseButton">
          <property name="text">
-          <string>CurrentDatabase</string>
+          <string>Current Database</string>
          </property>
         </widget>
        </item>
@@ -59,7 +59,7 @@
        <item>
         <widget class="QPushButton" name="runButton">
          <property name="text">
-          <string>▶️Run</string>
+          <string>▶️ Run</string>
          </property>
         </widget>
        </item>

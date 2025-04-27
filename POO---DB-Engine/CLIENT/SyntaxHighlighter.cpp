@@ -12,7 +12,7 @@ QStringList SyntaxHighlighter::keywords = {
             "or", "order", "outer", "primary", "procedure",
             "right", "rownum", "select", "set", "table",
             "top", "trigger", "union", "unique", "update",
-            "values", "view", "where", "with"
+            "use", "values", "view", "where", "with"
 };
 
 SyntaxHighlighter::SyntaxHighlighter(QTextDocument * parent) : QSyntaxHighlighter(parent)

@@ -22,9 +22,7 @@ void AuthenticationWindow::on_signupButton_clicked()
 
     if (result == QDialog::Accepted) {
         QMessageBox::information(this, "Success", "You can now log in with your new credentials.");
-        ui->usernameEdit->clear();
-        ui->passwordEdit->clear();
-        this->show();
+        emit signupCompleted();
     }
 }
 
@@ -40,6 +38,7 @@ void AuthenticationWindow::on_loginButton_clicked()
  
     try {
         Socket socket(Socket::Protocol::TCP);
+
         if (!socket.connectToServer("127.0.0.1", 12345)) {
             QMessageBox::critical(this, "Error", "Cannot connect to the server.");
             return;
@@ -49,17 +48,14 @@ void AuthenticationWindow::on_loginButton_clicked()
         socket.sendData(message);
         std::string response = socket.receiveData(1024);
 
-        if (response == "LOGIN_SUCCESS") {
+        if (response == "LOGIN_SUCCESS") {         
             QMessageBox::information(this, "Login Successful", "Welcome, " + username + "!");
-            ui->usernameEdit->clear();
-            ui->passwordEdit->clear();
-
             emit loginSuccess(username);
         }
+
         else if (response == "WRONG_PASSWORD") {
-            QMessageBox::warning(this, "Login Failed", "Incorrect password. Please try again.");
-            ui->passwordEdit->clear();
-            this->show();
+            QMessageBox::warning(this, "Login Failed", "Incorrect password. Please try again.");   
+            emit loginFailed();
         }
         else {
             QMessageBox::warning(this, "Login Failed", "Account not found. Redirecting to sign up...");

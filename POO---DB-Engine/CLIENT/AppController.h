@@ -7,11 +7,11 @@ class AppController : public QObject {
     Q_OBJECT
 
 private:
-    QWidget* currentWindow;
+    AuthenticationWindow* authenticationWindow = nullptr;
+    EnvironmentWindow* environmentWindow = nullptr;
 
 public:
     void run();
-    void setCurrentWindow(QWidget* window);
     void showAuthentication();
     void showEnvironment(const QString& username);
 };

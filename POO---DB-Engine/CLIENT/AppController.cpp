@@ -9,39 +9,79 @@ void AppController::run()
 
 void AppController::showAuthentication()
 {
-    AuthenticationWindow* authenticationWindow = new AuthenticationWindow();
+    if (authenticationWindow != nullptr) {
+        authenticationWindow->close();
+        authenticationWindow->deleteLater();
+        authenticationWindow = nullptr;
+    }
 
-    QObject::connect(authenticationWindow, &AuthenticationWindow::loginSuccess, this, [this, authenticationWindow](const QString& username) {
-            this->showEnvironment(username);
-            authenticationWindow->close();
-        });
+     authenticationWindow = new AuthenticationWindow(nullptr);
+     
+     QObject::connect(authenticationWindow, &AuthenticationWindow::loginSuccess, this, [this](const QString& username) {
+         
+         this->showEnvironment(username);
 
-    authenticationWindow->setAttribute(Qt::WA_DeleteOnClose);
-    authenticationWindow->show();
+         if (authenticationWindow != nullptr) {
+             authenticationWindow->accept();
+             authenticationWindow->deleteLater();
+             authenticationWindow = nullptr;
+         }
+      });
 
-    this->setCurrentWindow(authenticationWindow);
+     QObject::connect(authenticationWindow, &AuthenticationWindow::loginFailed, this, [this]() {
+
+         if (authenticationWindow != nullptr) {
+             authenticationWindow->close();
+             authenticationWindow->deleteLater();
+             authenticationWindow = nullptr;
+         }
+
+         this->showAuthentication();
+      });
+
+     QObject::connect(authenticationWindow, &AuthenticationWindow::signupCompleted, this, [this]() {
+
+         if (authenticationWindow != nullptr) {
+             authenticationWindow->close();
+             authenticationWindow->deleteLater();
+             authenticationWindow = nullptr;
+         }
+
+        this->showAuthentication(); 
+    });
+
+     authenticationWindow->setAttribute(Qt::WA_DeleteOnClose);
+     authenticationWindow->show();
 }
 
 void AppController::showEnvironment(const QString& username)
 {
-    EnvironmentWindow* ide = new EnvironmentWindow(username);
-
-    QObject::connect(ide, &EnvironmentWindow::logoutRequested, this, [this, ide]() {
-            this->showAuthentication();
-            ide->close();
-        });
-
-    ide->setAttribute(Qt::WA_DeleteOnClose);
-    ide->show();
-
-   this -> setCurrentWindow(ide);
-}
-
-void AppController::setCurrentWindow(QWidget* window)
-{
-    if (this->currentWindow) {
-        this->currentWindow->deleteLater();
+    if (environmentWindow!=nullptr) {
+        environmentWindow->close();
+        environmentWindow->deleteLater();
+        environmentWindow = nullptr;
     }
 
-    this->currentWindow = window;
+    environmentWindow = new EnvironmentWindow(username);
+
+    QObject::connect(environmentWindow, &EnvironmentWindow::logoutRequested, this, [this]() {
+
+        this->showAuthentication();
+        environmentWindow->close();
+
+        if (environmentWindow != nullptr) {
+            environmentWindow->close();
+            environmentWindow->deleteLater();
+            environmentWindow = nullptr;
+        }
+     });
+
+    environmentWindow->setAttribute(Qt::WA_DeleteOnClose);
+    environmentWindow->show();
+
+    if (authenticationWindow != nullptr) {
+        authenticationWindow->close();
+        authenticationWindow->deleteLater();
+        authenticationWindow = nullptr;
+    }
 }

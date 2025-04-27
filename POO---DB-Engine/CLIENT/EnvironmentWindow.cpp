@@ -11,10 +11,12 @@ EnvironmentWindow::EnvironmentWindow(QWidget* parent) : QMainWindow(parent), ui(
     ui->setupUi(this);                                     
 }
 
-EnvironmentWindow::EnvironmentWindow(const QString& username, QWidget* parent) : QMainWindow(parent) , ui(new Ui::EnvironmentWindow)
+EnvironmentWindow::EnvironmentWindow(const QString& username, QWidget* parent) : QMainWindow(parent), ui(new Ui::EnvironmentWindow)
 {
+    this->currentUsername = username;
+
     ui->setupUi(this);
-    ui->labelUsername->setText(username + " - MANAGER");  
+    ui->labelUsername->setText(username + " - MANAGER");
 }
 
 void EnvironmentWindow::updateEditorFontSize(int size)
@@ -34,6 +36,7 @@ void EnvironmentWindow::toggleSyntaxHighlighter(bool enabled)
         if (!highlighter) {
             highlighter = new SyntaxHighlighter(ui->EditorText->document());
         }
+
         highlighter->rehighlight();
     }
     else {
@@ -59,10 +62,50 @@ void EnvironmentWindow::toggleExecutionTime(bool enabled)
 
 void EnvironmentWindow::toggleHistoryCleanup(bool enabled)
 {
-    historyCleanupEnabled = enabled;
-    // You can handle what to do when history cleanup is toggled
+    // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
+    if (enabled) {
+        // Only when the box is checked
+        QMessageBox::information(this, "HISTORY CLEANUP", "HISTORY CLEANUP");
+
+        // Uncheck the checkbox manually
+
+        // We need a pointer to the OptionsDialog that emitted the signal.
+        OptionsDialog* dialog = qobject_cast<OptionsDialog*>(sender());
+        if (dialog) {
+            dialog->uncheckHistoryCleanup();
+        }
+    }
 }
 
+void EnvironmentWindow::deleteCurrentDatabase()
+{
+    // You can handle what to do when the button is pressed
+    QMessageBox::information(this, "DELETE CURRENT DATABASE", "DELETE CURRENT DATABASE");
+}
+
+void EnvironmentWindow::on_runButton_clicked()
+{
+    // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
+    QMessageBox::information(this, "RUN", "RUN");
+}
+
+void EnvironmentWindow::on_importButton_clicked()
+{
+    // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
+    QMessageBox::information(this, "IMPORT", "IMPORT");
+}
+
+void EnvironmentWindow::on_logButton_clicked()
+{
+    // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
+    QMessageBox::information(this, "LOG", "LOG");
+}
+
+void EnvironmentWindow::on_downloadButton_clicked()
+{
+    // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
+    QMessageBox::information(this, "DELETE CURRENT DATABASE", "DELETE CURRENT DATABASE");
+}
 
 void EnvironmentWindow::on_optionsButton_clicked()
 {
@@ -72,15 +115,14 @@ void EnvironmentWindow::on_optionsButton_clicked()
     connect(dialog, &OptionsDialog::syntaxHighlightingToggled, this, &EnvironmentWindow::toggleSyntaxHighlighter);
     connect(dialog, &OptionsDialog::executionTimeToggled, this, &EnvironmentWindow::toggleExecutionTime);
     connect(dialog, &OptionsDialog::historyCleanupToggled, this, &EnvironmentWindow::toggleHistoryCleanup);
+    connect(dialog, &OptionsDialog::deleteCurrentDatabaseRequested, this, &EnvironmentWindow::deleteCurrentDatabase);
 
     dialog->setSyntaxHighlightingEnabled(syntaxHighlightingEnabled);
     dialog->setExecutionTimeEnabled(executionTimeEnabled);
-    dialog->setHistoryCleanupEnabled(historyCleanupEnabled);
     dialog->setFontSize(fontSize);
 
     dialog->exec();
 }
-
 
 void EnvironmentWindow::on_currentDatabaseButton_clicked()
 {
@@ -128,7 +170,6 @@ void EnvironmentWindow::on_logoutButton_clicked()
 {
     emit logoutRequested();
 }
-
 
 EnvironmentWindow::~EnvironmentWindow()
 {

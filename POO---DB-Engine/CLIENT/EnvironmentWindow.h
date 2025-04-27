@@ -25,6 +25,12 @@ private slots:
     void toggleSyntaxHighlighter(bool enabled);
     void toggleExecutionTime(bool enabled);
     void toggleHistoryCleanup(bool enabled);
+    void deleteCurrentDatabase();
+
+    void on_runButton_clicked();
+    void on_importButton_clicked();
+    void on_logButton_clicked();
+    void on_downloadButton_clicked();
 
     void on_optionsButton_clicked();
     void on_currentDatabaseButton_clicked();
@@ -38,11 +44,9 @@ private:
     SyntaxHighlighter* highlighter = nullptr;
 
     // Settings storage:
+    int fontSize = 12;
     bool syntaxHighlightingEnabled = false;
     bool executionTimeEnabled = false;
-    bool historyCleanupEnabled = false;
-    int fontSize = 12;
-
 };
 
 

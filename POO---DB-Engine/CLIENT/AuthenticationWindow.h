@@ -17,6 +17,8 @@ public:
 
 signals:
     void loginSuccess(const QString& username);
+    void loginFailed();
+    void signupCompleted();
 
 private slots:
     void on_signupButton_clicked();
@@ -24,6 +26,7 @@ private slots:
 
 private:
     Ui::AuthenticationWindow* ui;
+    bool loginSucced = false;
 };
 
 #endif
