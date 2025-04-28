@@ -1145,3 +1145,6 @@
 [2025-04-28 11:07:32]: [SERVER] Client connected.
 [2025-04-28 11:07:32]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
 [2025-04-28 11:07:32]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-28 11:10:42]: [SERVER] Client connected.
+[2025-04-28 11:10:42]: [SERVER] Received: LOGIN:adi.tuta:dsadasdas
+[2025-04-28 11:10:42]: [SERVER] Sending: WRONG_PASSWORD
