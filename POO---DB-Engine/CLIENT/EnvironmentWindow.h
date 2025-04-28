@@ -36,7 +36,8 @@ private slots:
     void on_currentDatabaseButton_clicked();
     void on_logoutButton_clicked();
 
-    void onDatabaseChosen(const QString& dbName);
+    void onDatabaseChosen(const QString& databaseName);
+	void updateUsernameLabel();
 
 private:
     QString currentUsername;

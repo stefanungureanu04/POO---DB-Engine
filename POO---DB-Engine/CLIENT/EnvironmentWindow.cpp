@@ -16,14 +16,23 @@ EnvironmentWindow::EnvironmentWindow(const QString& username, QWidget* parent) :
     this->currentUsername = username;
 
     ui->setupUi(this);
-    ui->labelUsername->setText(username + " - MANAGER");
+    updateUsernameLabel();
 }
 
-void EnvironmentWindow::onDatabaseChosen(const QString& dbName)
+void EnvironmentWindow::onDatabaseChosen(const QString& databaseName)
 {
-    selectedDatabase = dbName;  // salvez baza selectată
+    QMessageBox::information(this, "DEBUG", "Selected database: " + databaseName); // TEST!
+	// Emit the signal to update the selected database
+    selectedDatabase = databaseName;
+    updateUsernameLabel();
+}
 
-    QString newLabelText = currentUsername + " - MANAGER\n" + selectedDatabase;
+void EnvironmentWindow::updateUsernameLabel()
+{
+    QString newLabelText = currentUsername + " - MANAGER";
+    if (!selectedDatabase.isEmpty()) {
+        newLabelText += "\n" + selectedDatabase;
+    }
     ui->labelUsername->setText(newLabelText);
 }
 
@@ -157,21 +166,26 @@ void EnvironmentWindow::on_currentDatabaseButton_clicked()
         }
     }
 
-    DatabaseSelect dialog(this);
+   
+    DatabaseSelect* dialog = new DatabaseSelect(this);
 
     if (userDatabases.isEmpty()) {
-        dialog.getNoDatabaseLabel()->setVisible(true);
-        dialog.getDatabaseListWidget()->setVisible(false);
+        dialog->getNoDatabaseLabel()->setVisible(true);
+        dialog->getDatabaseListWidget()->setVisible(false);
     }
     else {
-        dialog.getNoDatabaseLabel()->setVisible(false);
-        dialog.getDatabaseListWidget()->setVisible(true);
+        dialog->getNoDatabaseLabel()->setVisible(false);
+        dialog->getDatabaseListWidget()->setVisible(true);
         for (const QString& db : userDatabases) {
-            dialog.getDatabaseListWidget()->addItem(db);
+            dialog->getDatabaseListWidget()->addItem(db);
         }
     }
-    dialog.exec();
-    connect(dialog, &DatabaseSelect::databaseSelected, this, &EnvironmentWindow::onDatabaseChosen);
+
+    QObject::connect(dialog, SIGNAL(databaseSelected(QString)), this, SLOT(onDatabaseChosen(QString)));
+
+   
+    dialog->exec();
+   
 
    
 }
