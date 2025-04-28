@@ -1132,3 +1132,10 @@
 [2025-04-28 10:56:18]: [SERVER] Received: GET_DATABASES:adi.tuta
 [2025-04-28 10:56:18]: [SERVER] Could not open database list file: databases/adi.tuta.txt
 [2025-04-28 10:56:18]: [SERVER] Sending: DBLIST:
+[2025-04-28 11:01:05]: [SERVER] Client connected.
+[2025-04-28 11:01:05]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-28 11:01:05]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-28 11:01:11]: [SERVER] Client connected.
+[2025-04-28 11:01:11]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-04-28 11:01:11]: [SERVER] Could not open database list file: databases/adi.tuta.txt
+[2025-04-28 11:01:11]: [SERVER] Sending: DBLIST:
