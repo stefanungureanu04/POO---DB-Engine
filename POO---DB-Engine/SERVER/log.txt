@@ -1234,3 +1234,49 @@
 [2025-04-29 00:35:10]: [SERVER] Client connected.
 [2025-04-29 00:35:10]: [SERVER] Received: GET_DATABASES:adi.tuta
 [2025-04-29 00:35:10]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM
+[2025-04-29 00:47:39]: [SERVER] Client connected.
+[2025-04-29 00:47:39]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-29 00:47:39]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-29 00:47:44]: [SERVER] Client connected.
+[2025-04-29 00:47:44]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-04-29 00:47:44]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM
+[2025-04-29 00:48:50]: [SERVER] Client connected.
+[2025-04-29 00:48:50]: [SERVER] Received: EXECUTE_CODE:adi.tuta:magazin_flori:from magazin_flori
+select NumeFloare, PretFloare, NrBucati
+order by PretFloare
+[2025-04-29 00:48:50]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-04-29 00:57:56]: [SERVER] Listening on port 12345
+[2025-04-29 00:58:12]: [SERVER] Client connected.
+[2025-04-29 00:58:12]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-29 00:58:12]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-29 00:58:40]: [SERVER] Client connected.
+[2025-04-29 00:58:40]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-04-29 00:58:40]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM
+[2025-04-29 00:59:01]: [SERVER] Client connected.
+[2025-04-29 00:59:01]: [SERVER] Received: EXECUTE_CODE:adi.tuta:magazin_flori:from magazin_flori
+select pret_flori 
+[2025-04-29 00:59:01]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-04-29 00:59:13]: [SERVER] Client connected.
+[2025-04-29 00:59:13]: [SERVER] Received: EXECUTE_CODE:adi.tuta:magazin_flori:from magazin_flori
+select pret_flori 
+[2025-04-29 00:59:13]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-04-29 01:00:04]: [SERVER] Client connected.
+[2025-04-29 01:00:04]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-29 01:00:04]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-29 01:00:09]: [SERVER] Client connected.
+[2025-04-29 01:00:09]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-04-29 01:00:09]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM
+[2025-04-29 01:00:22]: [SERVER] Client connected.
+[2025-04-29 01:00:22]: [SERVER] Received: EXECUTE_CODE:adi.tuta:magazin_flori:from magazin_flori
+select pret
+[2025-04-29 01:00:22]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-04-29 01:01:36]: [SERVER] Client connected.
+[2025-04-29 01:01:36]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-04-29 01:01:36]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-29 01:01:45]: [SERVER] Client connected.
+[2025-04-29 01:01:45]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-04-29 01:01:45]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM
+[2025-04-29 01:02:07]: [SERVER] Client connected.
+[2025-04-29 01:02:07]: [SERVER] Received: EXECUTE_CODE:adi.tuta:magazin_flori:select pret
+from magazin_flori
+[2025-04-29 01:02:07]: [SERVER] Sending: SELECT_SUCCESS

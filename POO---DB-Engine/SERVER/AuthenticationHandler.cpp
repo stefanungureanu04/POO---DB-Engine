@@ -2,6 +2,7 @@
 #include "AppLog.h"
 #include <filesystem>
 #include<iostream>
+#include "CommandManager.h"
 
 std::string AuthenticationHandler::handle(const std::string& request)
 {
@@ -74,5 +75,12 @@ std::string AuthenticationHandler::handle(const std::string& request)
         return response;
     }
 
+
+    //acum serverul primeste comenzi de tip EXECUTE_CODE
+    else  if (request.rfind("EXECUTE_CODE:", 0) == 0) {
+        CommandManager cmdManager(request);
+        std::string response = cmdManager.processCommand();
+        return response;
+    }
     return "UNKNOWN_COMMAND";
 }

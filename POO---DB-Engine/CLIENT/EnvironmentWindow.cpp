@@ -100,11 +100,13 @@ void EnvironmentWindow::deleteCurrentDatabase()
     QMessageBox::information(this, "DELETE CURRENT DATABASE", "DELETE CURRENT DATABASE");
 }
 
-void EnvironmentWindow::on_runButton_clicked()
-{
-    // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
-    QMessageBox::information(this, "RUN", "RUN");
-}
+
+//functia asta a fost facuta, dar orientativ
+//void EnvironmentWindow::on_runButton_clicked()
+//{
+//    // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
+//    QMessageBox::information(this, "RUN", "RUN");
+//}
 
 void EnvironmentWindow::on_importButton_clicked()
 {
@@ -190,45 +192,41 @@ void EnvironmentWindow::on_currentDatabaseButton_clicked()
    
 }
 
-
-
-
-
 void EnvironmentWindow::on_logoutButton_clicked()
 {
     emit logoutRequested();
 }
 
 
-////---> apasarea butonului run si rularea codului curent scris in editorul text
-//void EnvironmentWindow::on_runButton_clicked()
-//{
-//    QString userCode = ui->EditorText->toPlainText();
-//
-//    if (userCode.isEmpty()) {
-//        QMessageBox::warning(this, "Empty Code", "Please write something to run.");
-//        return;
-//    }
-//
-//    try {
-//        Socket socket(Socket::Protocol::TCP);
-//        if (!socket.connectToServer("127.0.0.1", 12345)) {
-//            QMessageBox::critical(this, "Error", "Cannot connect to server.");
-//            return;
-//        }
-//
-//        // Serializez: comanda + utilizator + baza de date + cod   -> selectedDatabase este baza de date selectata din meniul de selectie al bazei de date
-//       // std::string request = "EXECUTE_CODE:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString() + ":" + userCode.toStdString();
-//        
-//       // socket.sendData(request);
-//
-//        std::string response = socket.receiveData(4096); // răspunsul de la server
-//        QMessageBox::information(this, "Server Response", QString::fromStdString(response));
-//    }
-//    catch (const std::exception& e) {
-//        QMessageBox::critical(this, "Error", e.what());
-//    }
-//}
+//---> apasarea butonului run si rularea codului curent scris in editorul text
+void EnvironmentWindow::on_runButton_clicked()
+{
+    QString userCode = ui->EditorText->toPlainText();
+
+    if (userCode.isEmpty()) {
+        QMessageBox::warning(this, "Empty Code", "Please write something to run.");
+        return;
+    }
+
+    try {
+        Socket socket(Socket::Protocol::TCP);
+        if (!socket.connectToServer("127.0.0.1", 12345)) {
+            QMessageBox::critical(this, "Error", "Cannot connect to server.");
+            return;
+        }
+
+        // Serializez: comanda + utilizator + baza de date + cod   -> selectedDatabase este baza de date selectata din meniul de selectie al bazei de date
+        std::string request = "EXECUTE_CODE:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString() + ":" + userCode.toStdString();
+
+        socket.sendData(request);  // trimit cererea la server
+
+        std::string response = socket.receiveData(4096); // răspunsul de la server
+        QMessageBox::information(this, "Server Response", QString::fromStdString(response));
+    }
+    catch (const std::exception& e) {
+        QMessageBox::critical(this, "Socket Error", e.what());
+    }
+}
 
 
 
