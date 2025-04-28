@@ -1114,3 +1114,4 @@
 [2025-04-28 01:03:39]: [SERVER] Client connected.
 [2025-04-28 01:03:39]: [SERVER] Received: LOGIN:stefana.ungureanu:e342423
 [2025-04-28 01:03:39]: [SERVER] Sending: LOGIN_FAIL
+[2025-04-28 10:41:43]: [SERVER] Listening on port 12345

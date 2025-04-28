@@ -17,3 +17,6 @@ cand apesi logout sa se revina la fereastra de autentificare.
 	- Am facut syntax highlighting. De asemenea, am rezolvat niste bug-uri din etapa de autentificare (show/hide password, confimare parola, etc.)
 	- Pentru fiecare buton din IDE, momentan, la apasarea lor, va aparea o fereastra pop-up de test cu numele butonului (asta doar momentan, 
 	in metodele respective se revine cu implementarea logicii aferente functionalitatii butonului).
+
+
+[TUTA]: test

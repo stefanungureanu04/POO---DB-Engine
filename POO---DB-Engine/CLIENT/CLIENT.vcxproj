@@ -65,13 +65,15 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <PostBuildEvent>
-      <Command>xcopy /Y /D "$(SolutionDir)x64\Debug\SocketLib.dll" "$(OutDir)"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir)SocketLib</AdditionalIncludeDirectories>
     </ClCompile>
     <PreBuildEvent>
-      <Command>taskkill /F /IM CLIENT.exe &gt; NUL 2&gt;&amp;1 || exit 0</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)POO---DB-Engine\x64\$(Configuration)\</AdditionalLibraryDirectories>
