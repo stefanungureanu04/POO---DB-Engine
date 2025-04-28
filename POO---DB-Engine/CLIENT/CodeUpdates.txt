@@ -20,3 +20,6 @@ cand apesi logout sa se revina la fereastra de autentificare.
 
 
 [TUTA]: test
+
+[UNGUREANU]: Am schimbat numele BD din fisierele cu numele userului (le-am facut fara extensia "_qry.txt"), aia este specifica pentru query
+			 Baza de date are un nume normal, oarecare

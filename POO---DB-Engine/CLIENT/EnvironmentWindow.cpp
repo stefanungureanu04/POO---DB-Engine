@@ -104,7 +104,7 @@ void EnvironmentWindow::on_logButton_clicked()
 void EnvironmentWindow::on_downloadButton_clicked()
 {
     // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
-    QMessageBox::information(this, "DELETE CURRENT DATABASE", "DELETE CURRENT DATABASE");
+    QMessageBox::information(this, "DOWNLOAD", "DOWNLOAD");
 }
 
 void EnvironmentWindow::on_optionsButton_clicked()
