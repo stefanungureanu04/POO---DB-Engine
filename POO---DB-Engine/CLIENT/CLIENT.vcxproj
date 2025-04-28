@@ -128,6 +128,7 @@
     <ClCompile Include="OptionsDialog.cpp" />
     <ClCompile Include="SignUpWindow.cpp" />
     <ClCompile Include="SyntaxHighlighter.cpp" />
+    <ClCompile Include="Test.cpp" />
     <ClCompile Include="User.cpp" />
     <QtRcc Include="CLIENT.qrc" />
     <QtUic Include="AuthentificationWindow.ui" />
@@ -154,6 +155,7 @@
     <QtMoc Include="OptionsDialog.h" />
     <QtMoc Include="DatabaseSelect.h" />
     <QtMoc Include="SyntaxHighlighter.h" />
+    <ClInclude Include="Test.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
