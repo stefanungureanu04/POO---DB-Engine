@@ -16,5 +16,7 @@ protected:
 private:
     static QStringList keywords;
     QTextCharFormat keywordFormat;
+
+    //comentariu acum
 };
 
