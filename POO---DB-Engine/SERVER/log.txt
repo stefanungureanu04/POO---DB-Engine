@@ -1132,3 +1132,4 @@
 [2025-04-28 10:56:18]: [SERVER] Received: GET_DATABASES:adi.tuta
 [2025-04-28 10:56:18]: [SERVER] Could not open database list file: databases/adi.tuta.txt
 [2025-04-28 10:56:18]: [SERVER] Sending: DBLIST:
+[2025-04-28 11:00:44]: [SERVER] Listening on port 12345
