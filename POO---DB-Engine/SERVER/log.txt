@@ -1121,3 +1121,6 @@
 [2025-04-28 10:10:07]: [SERVER] Client connected.
 [2025-04-28 10:10:07]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
 [2025-04-28 10:10:07]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-04-28 10:18:52]: [SERVER] Client connected.
+[2025-04-28 10:18:52]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-04-28 10:18:52]: [SERVER] Sending: LOGIN_SUCCESS
