@@ -36,9 +36,11 @@ private slots:
     void on_currentDatabaseButton_clicked();
     void on_logoutButton_clicked();
 
+    void onDatabaseChosen(const QString& dbName);
 
 private:
     QString currentUsername;
+    QString selectedDatabase;           //numele baze de date curente (obtinuta prin dublu ckick pe lista de baze de date afisata in meniul CurrentDatabase)
     Ui::EnvironmentWindow* ui;
     QStringList userDatabases;                                      // definesc bazele de date ale utilizatorului
     SyntaxHighlighter* highlighter = nullptr;

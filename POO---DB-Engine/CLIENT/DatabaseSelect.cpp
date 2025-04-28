@@ -4,6 +4,7 @@
 DatabaseSelect::DatabaseSelect(QWidget* parent) : QDialog(parent), ui(new Ui::DatabaseSelect)
 {
     ui->setupUi(this);
+    connect(ui->databaseListWidget, &QListWidget::itemDoubleClicked, this, &DatabaseSelect::onDatabaseItemDoubleClicked);
 }
 
 DatabaseSelect::~DatabaseSelect()
@@ -33,5 +34,15 @@ void DatabaseSelect::setDatabaseList(const QStringList& databases)
         ui->noDatabaseLabel->setVisible(false);
         ui->databaseListWidget->setVisible(true);
         ui->databaseListWidget->addItems(databases);
+    }
+}
+
+
+void DatabaseSelect::onDatabaseItemDoubleClicked(QListWidgetItem* item)
+{
+    if (item) {
+        QString selectedDatabase = item->text();
+        emit databaseSelected(selectedDatabase);
+        accept();  // închide automat dialogul după selectare
     }
 }

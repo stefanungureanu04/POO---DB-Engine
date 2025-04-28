@@ -19,6 +19,14 @@ EnvironmentWindow::EnvironmentWindow(const QString& username, QWidget* parent) :
     ui->labelUsername->setText(username + " - MANAGER");
 }
 
+void EnvironmentWindow::onDatabaseChosen(const QString& dbName)
+{
+    selectedDatabase = dbName;  // salvez baza selectată
+
+    QString newLabelText = currentUsername + " - MANAGER\n" + selectedDatabase;
+    ui->labelUsername->setText(newLabelText);
+}
+
 void EnvironmentWindow::updateEditorFontSize(int size)
 {
     this->fontSize = size; 
@@ -162,14 +170,55 @@ void EnvironmentWindow::on_currentDatabaseButton_clicked()
             dialog.getDatabaseListWidget()->addItem(db);
         }
     }
-
     dialog.exec();
+    connect(dialog, &DatabaseSelect::databaseSelected, this, &EnvironmentWindow::onDatabaseChosen);
+
+   
 }
+
+
+
+
 
 void EnvironmentWindow::on_logoutButton_clicked()
 {
     emit logoutRequested();
 }
+
+
+////---> apasarea butonului run si rularea codului curent scris in editorul text
+//void EnvironmentWindow::on_runButton_clicked()
+//{
+//    QString userCode = ui->EditorText->toPlainText();
+//
+//    if (userCode.isEmpty()) {
+//        QMessageBox::warning(this, "Empty Code", "Please write something to run.");
+//        return;
+//    }
+//
+//    try {
+//        Socket socket(Socket::Protocol::TCP);
+//        if (!socket.connectToServer("127.0.0.1", 12345)) {
+//            QMessageBox::critical(this, "Error", "Cannot connect to server.");
+//            return;
+//        }
+//
+//        // Serializez: comanda + utilizator + baza de date + cod   -> selectedDatabase este baza de date selectata din meniul de selectie al bazei de date
+//       // std::string request = "EXECUTE_CODE:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString() + ":" + userCode.toStdString();
+//        
+//       // socket.sendData(request);
+//
+//        std::string response = socket.receiveData(4096); // răspunsul de la server
+//        QMessageBox::information(this, "Server Response", QString::fromStdString(response));
+//    }
+//    catch (const std::exception& e) {
+//        QMessageBox::critical(this, "Error", e.what());
+//    }
+//}
+
+
+
+
 
 EnvironmentWindow::~EnvironmentWindow()
 {

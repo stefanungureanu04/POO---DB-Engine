@@ -20,6 +20,14 @@ public:
     QLabel* getNoDatabaseLabel();
     QListWidget* getDatabaseListWidget();
 
+signals:
+    void databaseSelected(const QString& databaseName);
+
+private slots:
+    void onDatabaseItemDoubleClicked(QListWidgetItem* item);
+
 private:
     Ui::DatabaseSelect* ui;
+
+
 };
