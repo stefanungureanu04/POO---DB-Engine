@@ -1,4 +1,4 @@
- #include "AuthenticationManager.h"
+#include "AuthenticationManager.h"
 #include "AppLog.h"
 #include <fstream>
 #include <iostream>
