@@ -1639,3 +1639,16 @@ test karenina
 [2025-05-01 19:18:57]: [SERVER] Client connected.
 [2025-05-01 19:18:57]: [SERVER] Received: GET_DATABASES:maria.popescu
 [2025-05-01 19:18:57]: [SERVER] Sending: DBLIST:test
+[2025-05-01 19:23:53]: [SERVER] Listening on port 12345
+[2025-05-01 19:24:09]: [SERVER] Client connected.
+[2025-05-01 19:24:09]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-01 19:24:09]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 19:24:14]: [SERVER] Client connected.
+[2025-05-01 19:24:14]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-01 19:24:14]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM
+[2025-05-01 19:24:27]: [SERVER] Client connected.
+[2025-05-01 19:24:27]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 19:24:27]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 19:24:30]: [SERVER] Client connected.
+[2025-05-01 19:24:30]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-01 19:24:30]: [SERVER] Sending: DBLIST:db
