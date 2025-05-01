@@ -30,3 +30,4 @@ cand apesi logout sa se revina la fereastra de autentificare.
 			 cu numele fiecarui utilizator, cautarea este in regula, singura chestie e ca am schimbat versiunea - C++17, dar am modificat in setarile
 			 proiectului, deci ar trebui sa fie ok).
 
+[UNGUREANU]: Adaugare functionalitate Delete Current Database.
