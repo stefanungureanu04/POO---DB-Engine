@@ -1805,3 +1805,30 @@ test karenina
 [2025-05-02 02:19:26]: [SERVER] Client connected.
 [2025-05-02 02:19:26]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
 [2025-05-02 02:19:26]: [SERVER] Sending: DBLIST:db
+[2025-05-02 02:44:35]: [SERVER] Listening on port 12345
+[2025-05-02 02:45:13]: [SERVER] Client connected.
+[2025-05-02 02:45:13]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 02:45:13]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 02:45:18]: [SERVER] Client connected.
+[2025-05-02 02:45:18]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 02:45:18]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM
+[2025-05-02 02:45:26]: [SERVER] Client connected.
+[2025-05-02 02:45:26]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 02:45:26]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM
+[2025-05-02 02:45:38]: [SERVER] Client connected.
+[2025-05-02 02:45:38]: [SERVER] Received: CREATE_DATABASE:adi.tuta:sistem_transport_feroviar
+[2025-05-02 02:45:38]: [SERVER] Sending: CREATE_DB_SUCCESS
+[2025-05-02 02:45:39]: [SERVER] Client connected.
+[2025-05-02 02:45:39]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 02:45:39]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 02:46:05]: [SERVER] Client connected.
+[2025-05-02 02:46:05]: [SERVER] Received: EXECUTE_CODE:adi.tuta:sistem_transport_feroviar:select from tabel1
+order by pret
+[2025-05-02 02:46:05]: [SERVER] Sending: SELECT_SUCCESS
+[2025-05-02 02:46:22]: [SERVER] Client connected.
+[2025-05-02 02:46:22]: [SERVER] Received: SAVE_QUERY:adi.tuta:querry_transport:select from tabel1
+order by pret
+[2025-05-02 02:46:22]: [SERVER] Sending: SAVE_SUCCESS
+[2025-05-02 02:46:44]: [SERVER] Client connected.
+[2025-05-02 02:46:44]: [SERVER] Received: LIST_QUERIES:adi.tuta
+[2025-05-02 02:46:44]: [SERVER] Sending: QUERYLIST:querry_transport

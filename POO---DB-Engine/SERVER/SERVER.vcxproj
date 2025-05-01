@@ -151,15 +151,19 @@
     <ClCompile Include="AuthenticationManager.cpp" />
     <ClCompile Include="CException.cpp" />
     <ClCompile Include="CLog.cpp" />
+    <ClCompile Include="Column.cpp" />
     <ClCompile Include="CommandHistoryLog.cpp" />
     <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="CurrentDatabase.cpp" />
     <ClCompile Include="DatabaseSelectManager.cpp" />
     <ClCompile Include="IException.cpp" />
     <ClCompile Include="ILog.cpp" />
     <ClCompile Include="LogProviderManager.cpp" />
     <ClCompile Include="main_server.cpp" />
     <ClCompile Include="QueryManager.cpp" />
+    <ClCompile Include="Row.cpp" />
     <ClCompile Include="SessionLog.cpp" />
+    <ClCompile Include="Table.cpp" />
     <ClCompile Include="UserCredentialsDatabase.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -181,15 +185,19 @@
     <ClInclude Include="AuthenticationManager.h" />
     <ClInclude Include="CException.h" />
     <ClInclude Include="CLog.h" />
+    <ClInclude Include="Column.h" />
     <ClInclude Include="CommandHistoryLog.h" />
     <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="CurrentDatabase.h" />
     <ClInclude Include="DatabaseSelectManager.h" />
     <ClInclude Include="IException.h" />
     <ClInclude Include="ILog.h" />
     <ClInclude Include="LogProviderManager.h" />
     <ClInclude Include="QueryManager.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Row.h" />
     <ClInclude Include="SessionLog.h" />
+    <ClInclude Include="Table.h" />
     <ClInclude Include="UserCredentialsDatabase.h" />
   </ItemGroup>
   <ItemGroup>
