@@ -84,8 +84,34 @@ void EnvironmentWindow::toggleHistoryCleanup(bool enabled)
 
 void EnvironmentWindow::deleteCurrentDatabase()
 {
-    // You can handle what to do when the button is pressed
-    QMessageBox::information(this, "DELETE CURRENT DATABASE", "DELETE CURRENT DATABASE");
+    if (selectedDatabase.isEmpty()) {
+        QMessageBox::warning(this, "Delete", "No database selected.");
+        return;
+    }
+
+    try {
+        Socket socket(Socket::Protocol::TCP);
+        if (!socket.connectToServer("127.0.0.1", 12345)) {
+            QMessageBox::critical(this, "Connection Error", "Could not connect to server.");
+            return;
+        }
+
+        std::string request = "DELETE_DATABASE:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString();
+        socket.sendData(request);
+        std::string response = socket.receiveData(1024);
+
+        if (response == "DELETE_DB_SUCCESS") {
+            QMessageBox::information(this, "Success", "Database deleted successfully.");
+            selectedDatabase.clear();
+            updateUsernameLabel();
+        }
+        else {
+            QMessageBox::warning(this, "Error", QString::fromStdString(response));
+        }
+    }
+    catch (const std::exception& e) {
+        QMessageBox::critical(this, "Socket Error", e.what());
+    }
 }
 
 void EnvironmentWindow::on_importButton_clicked()

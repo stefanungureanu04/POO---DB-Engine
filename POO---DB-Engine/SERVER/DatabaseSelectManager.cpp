@@ -70,6 +70,36 @@ const std::string DatabaseSelectManager::processDatabaseRequest()
 
         return "CREATE_DB_SUCCESS";
     }
+    else if (request.rfind("DELETE_DATABASE:", 0) == 0) {
+        std::string data = request.substr(16); 
+        size_t sep = data.find(':');
+        if (sep == std::string::npos) return "INVALID_FORMAT";
+
+        std::string username = data.substr(0, sep);
+        std::string dbName = data.substr(sep + 1);
+
+        std::string dbFileName = "databases/" + username + "/" + dbName + ".txt";
+        if (std::remove(dbFileName.c_str()) != 0) {
+            return "DELETE_DB_FAIL";
+        }
+
+        // Remove dbName from username index file
+        std::string indexFile = "databases/" + username + ".txt";
+        std::ifstream infile(indexFile);
+        std::vector<std::string> lines;
+        std::string line;
+        while (std::getline(infile, line)) {
+            if (line != dbName) lines.push_back(line);
+        }
+        infile.close();
+
+        std::ofstream outfile(indexFile, std::ios::trunc);
+        for (const auto& l : lines) {
+            outfile << l << "\n";
+        }
+
+        return "DELETE_DB_SUCCESS";
+    }
 
     return "UNKNOWN_COMMAND";
 }
