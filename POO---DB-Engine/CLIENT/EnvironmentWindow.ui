@@ -130,6 +130,11 @@ QListWidget::item:selected {
          </property>
          <item>
           <property name="text">
+           <string>Query</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
            <string>Structure</string>
           </property>
          </item>

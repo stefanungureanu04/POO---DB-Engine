@@ -6,17 +6,13 @@
 #include "SocketLib.h"
 #include <QMessageBox>
 
-EnvironmentWindow::EnvironmentWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::EnvironmentWindow)
-{
-    ui->setupUi(this);                                     
-}
-
 EnvironmentWindow::EnvironmentWindow(const QString& username, QWidget* parent) : QMainWindow(parent), ui(new Ui::EnvironmentWindow)
 {
-    this->currentUsername = username;
-
     ui->setupUi(this);
+    currentUsername = username;
+    
     updateUsernameLabel();
+    setupPanelSwitching();
 }
 
 void EnvironmentWindow::onDatabaseChosen(const QString& databaseName)
@@ -29,16 +25,18 @@ void EnvironmentWindow::onDatabaseChosen(const QString& databaseName)
 
 void EnvironmentWindow::updateUsernameLabel()
 {
-    QString newLabelText = currentUsername + " - MANAGER";
+    QString usernameLabel = currentUsername + " - MANAGER";
+
     if (!selectedDatabase.isEmpty()) {
-        newLabelText += "\n" + selectedDatabase;
+        usernameLabel += "\n" + selectedDatabase;
     }
-    ui->labelUsername->setText(newLabelText);
+
+    ui->labelUsername->setText(usernameLabel);
 }
 
 void EnvironmentWindow::updateEditorFontSize(int size)
 {
-    this->fontSize = size; 
+    fontSize = size; 
 
     QFont font = ui->EditorText->font();
     font.setPointSize(size);
@@ -50,17 +48,10 @@ void EnvironmentWindow::toggleSyntaxHighlighter(bool enabled)
     syntaxHighlightingEnabled = enabled;
 
     if (enabled) {
-        if (!highlighter) {
-            highlighter = new SyntaxHighlighter(ui->EditorText->document());
-        }
-
-        highlighter->rehighlight();
+        enableSyntaxHighlighting();
     }
     else {
-        if (highlighter) {
-            delete highlighter;
-            highlighter = nullptr;
-        }
+        disableSyntaxHighlighting();
 
         QTextCursor cursor(ui->EditorText->document());
         cursor.select(QTextCursor::Document);
@@ -73,21 +64,17 @@ void EnvironmentWindow::toggleSyntaxHighlighter(bool enabled)
 
 void EnvironmentWindow::toggleExecutionTime(bool enabled)
 {
-    executionTimeEnabled = enabled;
     // You can handle what to do when execution time is toggled
+    executionTimeEnabled = enabled;
 }
 
 void EnvironmentWindow::toggleHistoryCleanup(bool enabled)
 {
-    // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
     if (enabled) {
-        // Only when the box is checked
+        commandHistoryBuffer.clear();
         QMessageBox::information(this, "HISTORY CLEANUP", "HISTORY CLEANUP");
-
-        // Uncheck the checkbox manually
-
-        // We need a pointer to the OptionsDialog that emitted the signal.
         OptionsDialog* dialog = qobject_cast<OptionsDialog*>(sender());
+
         if (dialog) {
             dialog->uncheckHistoryCleanup();
         }
@@ -100,14 +87,6 @@ void EnvironmentWindow::deleteCurrentDatabase()
     QMessageBox::information(this, "DELETE CURRENT DATABASE", "DELETE CURRENT DATABASE");
 }
 
-
-//functia asta a fost facuta, dar orientativ
-//void EnvironmentWindow::on_runButton_clicked()
-//{
-//    // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
-//    QMessageBox::information(this, "RUN", "RUN");
-//}
-
 void EnvironmentWindow::on_importButton_clicked()
 {
     // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
@@ -116,8 +95,50 @@ void EnvironmentWindow::on_importButton_clicked()
 
 void EnvironmentWindow::on_logButton_clicked()
 {
-    // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
-    QMessageBox::information(this, "LOG", "LOG");
+    if (logDisplayActive) {
+        ui->EditorText->setPlainText(logBackup);
+        ui->EditorText->setReadOnly(false);
+        enableSyntaxHighlighting();
+        logDisplayActive = false;
+        return;
+    }
+
+    try {
+        Socket socket(Socket::Protocol::TCP);
+        if (!socket.connectToServer("127.0.0.1", 12345)) {
+            QMessageBox::critical(this, "Connection Error", "Could not connect to server.");
+            return;
+        }
+
+        std::string request = "GET_LOGS:" + currentUsername.toStdString();
+        socket.sendData(request);
+
+        std::string response, chunk;
+        int count = 0;
+        do {
+            chunk = socket.receiveData(1024);
+            response += chunk;
+            count++;
+        } while (response.find("END_OF_LOGS") == std::string::npos && count < 100);
+
+        if (!response._Starts_with("LOGDATA:")) {
+            QMessageBox::warning(this, "Log Error", "Unexpected server response.");
+            return;
+        }
+
+        response = response.substr(0, response.find("END_OF_LOGS"));
+        QStringList logLines = QString::fromStdString(response).mid(8).split("|||");
+
+        logBackup = ui->EditorText->toPlainText();
+        disableSyntaxHighlighting();
+        ui->EditorText->setPlainText(logLines.join("\n"));
+        ui->EditorText->setReadOnly(true);
+        logDisplayActive = true;
+    }
+
+    catch (const std::exception& e) {
+        QMessageBox::critical(this, "Socket Error", e.what());
+    }
 }
 
 void EnvironmentWindow::on_downloadButton_clicked()
@@ -168,7 +189,6 @@ void EnvironmentWindow::on_currentDatabaseButton_clicked()
         }
     }
 
-   
     DatabaseSelect* dialog = new DatabaseSelect(this);
 
     if (userDatabases.isEmpty()) {
@@ -185,11 +205,7 @@ void EnvironmentWindow::on_currentDatabaseButton_clicked()
 
     QObject::connect(dialog, SIGNAL(databaseSelected(QString)), this, SLOT(onDatabaseChosen(QString)));
 
-   
     dialog->exec();
-   
-
-   
 }
 
 void EnvironmentWindow::on_logoutButton_clicked()
@@ -197,15 +213,26 @@ void EnvironmentWindow::on_logoutButton_clicked()
     emit logoutRequested();
 }
 
-
 //---> apasarea butonului run si rularea codului curent scris in editorul text
 void EnvironmentWindow::on_runButton_clicked()
-{
+{   
+    QString currentPanel = getCurrentPanel();
+
+    if (currentPanel != "Query") {
+        QMessageBox::warning(this, "Run Blocked", "Switch to 'Query Editor' to run queries.");
+        return;
+    }
+
     QString userCode = ui->EditorText->toPlainText();
 
     if (userCode.isEmpty()) {
         QMessageBox::warning(this, "Empty Code", "Please write something to run.");
         return;
+    }
+    else {
+        if (commandHistoryBuffer.isEmpty() || commandHistoryBuffer.last() != userCode) {
+            commandHistoryBuffer.append(userCode);
+        }
     }
 
     try {
@@ -228,12 +255,108 @@ void EnvironmentWindow::on_runButton_clicked()
     }
 }
 
-
-
-
-
 EnvironmentWindow::~EnvironmentWindow()
 {
     delete ui;
+}
+
+void EnvironmentWindow::enableSyntaxHighlighting()
+{
+    if (highlighter == nullptr) {
+        highlighter = new SyntaxHighlighter(ui->EditorText->document());
+        highlighter->rehighlight();
+    }
+}
+
+void EnvironmentWindow::disableSyntaxHighlighting()
+{
+    if (highlighter != nullptr) {
+        delete highlighter;
+        highlighter = nullptr;
+    }
+}
+
+void EnvironmentWindow::setupPanelSwitching()
+{
+    connect(ui->listWidget, &QListWidget::currentRowChanged, this, [this](int row) {
+     
+        QString selectedItem = getPanelAtRow(row);
+
+        if (selectedItem == "Query") {
+            switchToQuery();
+        }
+        else if (selectedItem == "Command History") {
+            switchToCommandHistory();
+        }
+        else {
+            switchToOtherPanel();
+        }
+     });
+
+    setDefaultWidgetRow("Query");
+}
+
+QString EnvironmentWindow::getCurrentPanel() const
+{
+    QListWidgetItem* currentItem = ui->listWidget->currentItem();
+    
+    if (currentItem) {
+        return currentItem->text();
+    }
+
+    return QString(); 
+}
+
+QString EnvironmentWindow::getPanelAtRow(int row) const
+{
+    if (row < 0 || row >= ui->listWidget->count()) {
+        return QString(); 
+    }
+
+    return ui->listWidget->item(row)->text();
+}
+
+void EnvironmentWindow::setDefaultWidgetRow(const std::string& name)
+{
+    for (int i = 0; i < ui->listWidget->count(); ++i) {
+        if (ui->listWidget->item(i)->text() == name) {
+            ui->listWidget->setCurrentRow(i);
+            break;
+        }
+    }
+}
+
+void EnvironmentWindow::switchToQuery()
+{
+    ui->EditorText->setPlainText(editorQueryContent);
+    ui->EditorText->setReadOnly(false);
+
+    if (syntaxHighlightingEnabled) {
+        enableSyntaxHighlighting();
+    }
+}
+
+void EnvironmentWindow::switchToCommandHistory()
+{
+    editorQueryContent = ui->EditorText->toPlainText();
+
+    QString combinedHistory = commandHistoryBuffer.join("\n\n");
+    ui->EditorText->setPlainText(combinedHistory);
+    ui->EditorText->setReadOnly(true);
+}
+
+void EnvironmentWindow::switchToOtherPanel()
+{
+    if (!ui->EditorText->isReadOnly()) {
+        editorQueryContent = ui->EditorText->toPlainText();
+    }
+
+    ui->EditorText->clear();
+    ui->EditorText->setReadOnly(true);
+
+    if (highlighter) {
+        delete highlighter;
+        highlighter = nullptr;
+    }
 }
 

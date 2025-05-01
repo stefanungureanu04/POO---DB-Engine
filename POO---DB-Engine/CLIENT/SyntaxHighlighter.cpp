@@ -33,4 +33,13 @@ void SyntaxHighlighter::highlightBlock(const QString& text)
             setFormat(match.capturedStart(), match.capturedLength(), keywordFormat);
         }
     }
+
+    QRegularExpression commentPattern("^\\s*//.*");
+    QRegularExpressionMatch match = commentPattern.match(text);
+    if (match.hasMatch()) {
+        QTextCharFormat commentFormat;
+        commentFormat.setForeground(Qt::darkGreen);
+        commentFormat.setFontWeight(QFont::Bold);
+        setFormat(match.capturedStart(), match.capturedLength(), commentFormat);
+    }
 }

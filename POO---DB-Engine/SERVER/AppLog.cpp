@@ -10,6 +10,10 @@ AppLog::AppLog()
 
 void AppLog::write(const std::string& message)
 {
+    if (message.length() > 100) {
+        return;
+    }
+
 	std::ofstream file(AppLog::filename, std::ios::app);
 
     if (!file.is_open()) return;

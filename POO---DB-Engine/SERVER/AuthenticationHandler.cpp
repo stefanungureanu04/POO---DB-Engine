@@ -1,8 +1,8 @@
 ﻿#include "AuthenticationHandler.h"
+#include "CommandManager.h"
 #include "AppLog.h"
 #include <filesystem>
-#include<iostream>
-#include "CommandManager.h"
+#include <iostream>
 
 std::string AuthenticationHandler::handle(const std::string& request)
 {
@@ -72,6 +72,34 @@ std::string AuthenticationHandler::handle(const std::string& request)
             first = false;
         }
 
+        return response;
+    }
+
+    else if (request.rfind("GET_LOGS:", 0) == 0) {
+        std::string username = request.substr(9);
+        std::ifstream file("log.txt");
+
+        if (!file.is_open()) {
+            return "LOGDATA:"; // no logs
+        }
+
+        std::vector<std::string> logs;
+        std::string line;
+        while (std::getline(file, line)) {
+            if (line.find(username) != std::string::npos) {
+                logs.push_back(line);
+            }
+        }
+
+        std::string response = "LOGDATA:";
+        for (size_t i = 0; i < logs.size(); ++i) {
+            response += logs[i];
+            if (i < logs.size() - 1) {
+                response += "|||";
+            }
+        }
+
+        response += "|||END_OF_LOGS";
         return response;
     }
 

@@ -4,7 +4,6 @@
 
 int main()
 {
-
     try {
         AuthenticationManager manager(12345);
         manager.run();
@@ -12,5 +11,6 @@ int main()
     catch (const SocketException& e) {
         std::cerr << "[SERVER] SocketException: " << e << "\n";
     }
+
 	return 0;
 }

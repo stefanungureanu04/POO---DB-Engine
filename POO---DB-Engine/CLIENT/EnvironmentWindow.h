@@ -13,7 +13,6 @@ class EnvironmentWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit EnvironmentWindow(QWidget* parent = nullptr);
     explicit EnvironmentWindow(const QString& username, QWidget* parent = nullptr);
     ~EnvironmentWindow();
  
@@ -40,11 +39,28 @@ private slots:
 	void updateUsernameLabel();
 
 private:
+    void enableSyntaxHighlighting();
+    void disableSyntaxHighlighting();
+    void setupPanelSwitching();
+    QString getCurrentPanel() const;
+    QString getPanelAtRow(int row) const;
+    void setDefaultWidgetRow(const std::string& name);
+    void switchToQuery();
+    void switchToCommandHistory();
+    void switchToOtherPanel();
+
+private:
     QString currentUsername;
-    QString selectedDatabase;           //numele baze de date curente (obtinuta prin dublu ckick pe lista de baze de date afisata in meniul CurrentDatabase)
+    QString selectedDatabase;                            //numele bazei de date curente 
     Ui::EnvironmentWindow* ui;
-    QStringList userDatabases;                                      // definesc bazele de date ale utilizatorului
+    QStringList userDatabases;                           // definesc bazele de date ale utilizatorului
+    QStringList commandHistoryBuffer;                    // stores past commands
+    QString editorBackup;                               // used when switching in/out of Command History
+    QString editorQueryContent;
     SyntaxHighlighter* highlighter = nullptr;
+
+    QString logBackup;                                  // stores the content of the query editor before showing the log, so you can restore it later.
+    bool logDisplayActive = false;                      // A flag to track whether logs are currently shown in the editor.
 
     // Settings storage:
     int fontSize = 12;
