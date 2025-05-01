@@ -39,10 +39,10 @@
     <ClCompile Include="UserCredentialsDatabase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AuthenticationHandler.cpp">
+    <ClCompile Include="AppHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AuthenticationManager.cpp">
+    <ClCompile Include="AppManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CLog.cpp">
@@ -69,6 +69,18 @@
     <ClCompile Include="CommandManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AuthenticationManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LogProviderManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QueryManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DatabaseSelectManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="user_credentials_db.txt">
@@ -91,10 +103,10 @@
     <ClInclude Include="UserCredentialsDatabase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AuthenticationHandler.h">
+    <ClInclude Include="AppHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AuthenticationManager.h">
+    <ClInclude Include="AppManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AppLog.h">
@@ -122,6 +134,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CommandManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AuthenticationManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LogProviderManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QueryManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DatabaseSelectManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

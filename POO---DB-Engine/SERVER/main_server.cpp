@@ -1,11 +1,11 @@
 #include <iostream>
 #include "SocketLib.h"
-#include "AuthenticationManager.h"
+#include "AppManager.h"
 
 int main()
 {
     try {
-        AuthenticationManager manager(12345);
+        AppManager manager(12345);
         manager.run();
     }
     catch (const SocketException& e) {

@@ -1365,3 +1365,91 @@ from magazin_flori
 [2025-05-01 04:40:52]: [SERVER] Client connected.
 [2025-05-01 04:40:52]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu::create
 [2025-05-01 04:40:52]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-01 12:40:24]: [SERVER] Listening on port 12345
+[2025-05-01 12:40:51]: [SERVER] Client connected.
+[2025-05-01 12:40:51]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 12:40:51]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 12:41:21]: [SERVER] Client connected.
+[2025-05-01 12:41:21]: [SERVER] Received: SAVE_QUERY:stefan.ungureanu:test:create something
+[2025-05-01 12:41:21]: [SERVER] Sending: SAVE_FAIL
+[2025-05-01 12:41:27]: [SERVER] Client connected.
+[2025-05-01 12:41:27]: [SERVER] Received: SAVE_QUERY:stefan.ungureanu:test_qry.txt:create something
+[2025-05-01 12:41:27]: [SERVER] Sending: SAVE_FAIL
+[2025-05-01 12:41:43]: [SERVER] Client connected.
+[2025-05-01 12:41:43]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 12:41:43]: [SERVER] Sending: QUERYLIST:
+[2025-05-01 12:47:04]: [SERVER] Client connected.
+[2025-05-01 12:47:04]: [SERVER] Received: LOGIN:stefan.ugureanu:parola1234?
+[2025-05-01 12:47:04]: [SERVER] Sending: LOGIN_FAIL
+[2025-05-01 12:47:20]: [SERVER] Client connected.
+[2025-05-01 12:47:20]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 12:47:20]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 12:47:30]: [SERVER] Client connected.
+[2025-05-01 12:47:30]: [SERVER] Received: SAVE_QUERY:stefan.ungureanu:test:create something
+[2025-05-01 12:47:30]: [SERVER] Sending: SAVE_FAIL
+[2025-05-01 12:47:36]: [SERVER] Client connected.
+[2025-05-01 12:47:36]: [SERVER] Received: SAVE_QUERY:stefan.ungureanu:test_qry.txt:create something
+[2025-05-01 12:47:36]: [SERVER] Sending: SAVE_FAIL
+[2025-05-01 12:47:40]: [SERVER] Client connected.
+[2025-05-01 12:47:40]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 12:47:40]: [SERVER] Sending: QUERYLIST:
+[2025-05-01 12:51:03]: [SERVER] Client connected.
+[2025-05-01 12:51:03]: [SERVER] Received: SAVE_QUERY:stefan.ungureanu:test_qry.txt:create something
+[2025-05-01 12:51:03]: [SERVER] Sending: SAVE_FAIL
+[2025-05-01 12:52:41]: [SERVER] Listening on port 12345
+[2025-05-01 12:52:59]: [SERVER] Client connected.
+[2025-05-01 12:52:59]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 12:52:59]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 12:53:11]: [SERVER] Client connected.
+[2025-05-01 12:53:11]: [SERVER] Received: SAVE_QUERY:stefan.ungureanu:test:create something
+[2025-05-01 12:53:11]: [SERVER] Sending: SAVE_SUCCESS
+[2025-05-01 12:53:13]: [SERVER] Client connected.
+[2025-05-01 12:53:13]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 12:53:13]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 13:14:16]: [SERVER] Listening on port 12345
+[2025-05-01 13:14:33]: [SERVER] Client connected.
+[2025-05-01 13:14:33]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 13:14:33]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 13:14:52]: [SERVER] Client connected.
+[2025-05-01 13:14:52]: [SERVER] Received: LOGIN:adi.tuta:adi123!
+[2025-05-01 13:14:52]: [SERVER] Sending: WRONG_PASSWORD
+[2025-05-01 13:15:01]: [SERVER] Client connected.
+[2025-05-01 13:15:01]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-01 13:15:01]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 13:15:19]: [SERVER] Client connected.
+[2025-05-01 13:15:19]: [SERVER] Received: REGISTER:ana.karenina:ana1234>
+[2025-05-01 13:15:19]: [SERVER] Sending: REGISTER_SUCCESS
+[2025-05-01 13:15:59]: [SERVER] Client connected.
+[2025-05-01 13:15:59]: [SERVER] Received: REGISTER:ana.ioana:maria321!
+[2025-05-01 13:15:59]: [SERVER] Sending: REGISTER_SUCCESS
+[2025-05-01 13:35:04]: [SERVER] Listening on port 12345
+[2025-05-01 13:35:22]: [SERVER] Client connected.
+[2025-05-01 13:35:22]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 13:35:22]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 13:35:27]: [SERVER] Client connected.
+[2025-05-01 13:35:27]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 13:35:27]: [SERVER] Sending: QUERYLIST:
+[2025-05-01 13:35:30]: [SERVER] Client connected.
+[2025-05-01 13:35:30]: [SERVER] Received: GET_LOGS:stefan.ungureanu
+[2025-05-01 13:35:31]: [SERVER] Client connected.
+[2025-05-01 13:35:31]: [SERVER] Received: GET_LOGS:stefan.ungureanu
+[2025-05-01 13:35:32]: [SERVER] Client connected.
+[2025-05-01 13:35:32]: [SERVER] Received: GET_LOGS:stefan.ungureanu
+[2025-05-01 13:35:34]: [SERVER] Client connected.
+[2025-05-01 13:35:34]: [SERVER] Received: GET_LOGS:stefan.ungureanu
+[2025-05-01 13:35:35]: [SERVER] Client connected.
+[2025-05-01 13:35:35]: [SERVER] Received: GET_LOGS:stefan.ungureanu
+[2025-05-01 13:35:36]: [SERVER] Client connected.
+[2025-05-01 13:35:36]: [SERVER] Received: GET_LOGS:stefan.ungureanu
+[2025-05-01 13:35:39]: [SERVER] Client connected.
+[2025-05-01 13:35:39]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-01 13:35:39]: [SERVER] Sending: DBLIST:
+[2025-05-01 13:35:49]: [SERVER] Client connected.
+[2025-05-01 13:35:49]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu::select
+[2025-05-01 13:35:49]: [SERVER] Sending: SELECT_SUCCESS
+[2025-05-01 13:36:08]: [SERVER] Client connected.
+[2025-05-01 13:36:08]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-01 13:36:08]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 13:36:11]: [SERVER] Client connected.
+[2025-05-01 13:36:11]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-01 13:36:11]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM

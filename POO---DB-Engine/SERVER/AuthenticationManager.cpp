@@ -1,30 +1,44 @@
 #include "AuthenticationManager.h"
-#include "AppLog.h"
-#include <fstream>
-#include <iostream>
+#include "UserCredentialsDatabase.h"
 
-AuthenticationManager::AuthenticationManager(int port) : serverSocket(Socket::Protocol::TCP)
+AuthenticationManager::AuthenticationManager(const std::string& request)
 {
-    AppLog appLog;
-	serverSocket.bindAndListen(port);
-	appLog.write("[SERVER] Listening on port " + std::to_string(port));
+	this->request = request;
 }
 
-void AuthenticationManager::run()
+const std::string AuthenticationManager::processAuthentication()
 {
-    AppLog appLog;
+    if (request.rfind("LOGIN:", 0) == 0) {
+        std::string data = request.substr(6);
+        size_t sep = data.find(':');
+        if (sep == std::string::npos) return "INVALID_FORMAT";
 
-    while (true) {
-        Socket* client = serverSocket.acceptConnection();
-        appLog.write("[SERVER] Client connected.");
+        std::string username = data.substr(0, sep);
+        std::string password = data.substr(sep + 1);
 
-        std::string request = client->receiveData(1024);
-        appLog.write("[SERVER] Received: " + request);
+        if (UserCredentialsDatabase::getInstance().foundCredentials(username, password)) {
+            return "LOGIN_SUCCESS";
+        }
+        else if (UserCredentialsDatabase::getInstance().foundUsername(username)) {
+            return "WRONG_PASSWORD";
+        }
+        else {
+            return "LOGIN_FAIL";
+        }
+    }
+    else if (request.rfind("REGISTER:", 0) == 0) {
+        std::string data = request.substr(9);
+        size_t sep = data.find(':');
+        if (sep == std::string::npos) return "INVALID_FORMAT";
 
-        std::string response = handler.handle(request);
-        appLog.write("[SERVER] Sending: " + response);
+        std::string username = data.substr(0, sep);
+        std::string password = data.substr(sep + 1);
 
-        client->sendData(response);
-        delete client;
+        if (UserCredentialsDatabase::getInstance().foundUsername(username)) {
+            return "USERNAME_TAKEN";
+        }
+
+        UserCredentialsDatabase::getInstance().addCredentials(username, password);
+        return "REGISTER_SUCCESS";
     }
 }

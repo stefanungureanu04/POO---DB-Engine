@@ -1,15 +1,12 @@
 #pragma once
-#include "SocketLib.h"
-#include "AuthenticationHandler.h"
+#include <string>
 
 class AuthenticationManager{
 private:
-    Socket serverSocket;
-    AuthenticationHandler handler;
+	std::string request;
 
 public:
-    AuthenticationManager(int port);
-    virtual ~AuthenticationManager() {};
-    void run();
+	AuthenticationManager(const std::string& request);
+	const std::string processAuthentication();
 };
 

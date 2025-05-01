@@ -5,6 +5,7 @@
 #include "DatabaseSelect.h"
 #include "SocketLib.h"
 #include <QMessageBox>
+#include <qinputdialog.h>
 
 EnvironmentWindow::EnvironmentWindow(const QString& username, QWidget* parent) : QMainWindow(parent), ui(new Ui::EnvironmentWindow)
 {
@@ -90,7 +91,59 @@ void EnvironmentWindow::deleteCurrentDatabase()
 void EnvironmentWindow::on_importButton_clicked()
 {
     // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
-    QMessageBox::information(this, "IMPORT", "IMPORT");
+    if (getCurrentPanel() != "Query") {
+        QMessageBox::warning(this, "Import", "You can only import queries inside the Query panel.");
+        return;
+    }
+
+    try {
+        Socket socket(Socket::Protocol::TCP);
+        if (!socket.connectToServer("127.0.0.1", 12345)) {
+            QMessageBox::critical(this, "Connection Error", "Could not connect to server.");
+            return;
+        }
+
+        std::string request = "LIST_QUERIES:" + currentUsername.toStdString();
+        socket.sendData(request);
+
+        std::string response = socket.receiveData(4096);
+
+        if (!response._Starts_with("QUERYLIST:")) {
+            QMessageBox::warning(this, "Import Error", "Unexpected server response.");
+            return;
+        }
+
+        QStringList queryNames = QString::fromStdString(response).mid(10).split("|||");
+
+        if (queryNames.isEmpty() || (queryNames.size() == 1 && queryNames[0].isEmpty())) {
+            QMessageBox::information(this, "Import", "No saved queries available.");
+            return;
+        }
+
+        bool ok;
+        QString selectedQuery = QInputDialog::getItem(this, "Select Query", "Choose a query:", queryNames, 0, false, &ok);
+
+        if (!ok || selectedQuery.isEmpty()) return;
+
+        // Request query content
+        std::string loadRequest = "LOAD_QUERY:" + currentUsername.toStdString() + ":" + selectedQuery.toStdString();
+        socket.sendData(loadRequest);
+
+        std::string loadResponse = socket.receiveData(8192);
+        if (!loadResponse._Starts_with("QUERYDATA:")) {
+            QMessageBox::warning(this, "Load Error", "Unexpected server response.");
+            return;
+        }
+
+        QString queryContent = QString::fromStdString(loadResponse).mid(10);
+        ui->EditorText->setPlainText(queryContent);
+
+        QMessageBox::information(this, "Import", "Query imported successfully.");
+
+    }
+    catch (const std::exception& e) {
+        QMessageBox::critical(this, "Socket Error", e.what());
+    }
 }
 
 void EnvironmentWindow::on_logButton_clicked()
@@ -144,7 +197,37 @@ void EnvironmentWindow::on_logButton_clicked()
 void EnvironmentWindow::on_downloadButton_clicked()
 {
     // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
-    QMessageBox::information(this, "DOWNLOAD", "DOWNLOAD");
+    if (getCurrentPanel() != "Query") {
+        QMessageBox::warning(this, "Download", "You can only save queries inside the Query panel.");
+        return;
+    }
+
+    bool ok;
+    QString queryName = QInputDialog::getText(this, "Save Query", "Enter query name:", QLineEdit::Normal, "", &ok);
+
+    if (!ok || queryName.isEmpty()) return;
+
+    try {
+        Socket socket(Socket::Protocol::TCP);
+        if (!socket.connectToServer("127.0.0.1", 12345)) {
+            QMessageBox::critical(this, "Connection Error", "Could not connect to server.");
+            return;
+        }
+
+        std::string request = "SAVE_QUERY:" + currentUsername.toStdString() + ":" + queryName.toStdString() + ":" + ui->EditorText->toPlainText().toStdString();
+        socket.sendData(request);
+
+        std::string response = socket.receiveData(1024);
+        if (response == "SAVE_SUCCESS") {
+            QMessageBox::information(this, "Download", "Query saved on server.");
+        }
+        else {
+            QMessageBox::warning(this, "Save Failed", QString::fromStdString(response));
+        }
+    }
+    catch (const std::exception& e) {
+        QMessageBox::critical(this, "Socket Error", e.what());
+    }
 }
 
 void EnvironmentWindow::on_optionsButton_clicked()

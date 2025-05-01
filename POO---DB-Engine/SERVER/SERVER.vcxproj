@@ -145,15 +145,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AppLog.cpp" />
-    <ClCompile Include="AuthenticationHandler.cpp" />
+    <ClCompile Include="AppHandler.cpp" />
+    <ClCompile Include="AppManager.cpp" />
     <ClCompile Include="AuthenticationManager.cpp" />
     <ClCompile Include="CException.cpp" />
     <ClCompile Include="CLog.cpp" />
     <ClCompile Include="CommandHistoryLog.cpp" />
     <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="DatabaseSelectManager.cpp" />
     <ClCompile Include="IException.cpp" />
     <ClCompile Include="ILog.cpp" />
+    <ClCompile Include="LogProviderManager.cpp" />
     <ClCompile Include="main_server.cpp" />
+    <ClCompile Include="QueryManager.cpp" />
     <ClCompile Include="SessionLog.cpp" />
     <ClCompile Include="UserCredentialsDatabase.cpp" />
   </ItemGroup>
@@ -171,14 +175,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppLog.h" />
-    <ClInclude Include="AuthenticationHandler.h" />
+    <ClInclude Include="AppHandler.h" />
+    <ClInclude Include="AppManager.h" />
     <ClInclude Include="AuthenticationManager.h" />
     <ClInclude Include="CException.h" />
     <ClInclude Include="CLog.h" />
     <ClInclude Include="CommandHistoryLog.h" />
     <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="DatabaseSelectManager.h" />
     <ClInclude Include="IException.h" />
     <ClInclude Include="ILog.h" />
+    <ClInclude Include="LogProviderManager.h" />
+    <ClInclude Include="QueryManager.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SessionLog.h" />
     <ClInclude Include="UserCredentialsDatabase.h" />
