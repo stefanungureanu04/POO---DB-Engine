@@ -1614,3 +1614,28 @@ test karenina
 
 test karenina
 [2025-05-01 15:42:08]: [SERVER] Listening on port 12345
+[2025-05-01 19:17:48]: [SERVER] Client connected.
+[2025-05-01 19:17:48]: [SERVER] Received: LOGIN:ana.karenina:ana123!
+[2025-05-01 19:17:48]: [SERVER] Sending: WRONG_PASSWORD
+[2025-05-01 19:18:23]: [SERVER] Client connected.
+[2025-05-01 19:18:23]: [SERVER] Received: LOGIN:maria.popescu:mara123!
+[2025-05-01 19:18:23]: [SERVER] Sending: LOGIN_FAIL
+[2025-05-01 19:18:34]: [SERVER] Client connected.
+[2025-05-01 19:18:34]: [SERVER] Received: REGISTER:maria.popescu:mara123!
+[2025-05-01 19:18:34]: [SERVER] Sending: REGISTER_SUCCESS
+[2025-05-01 19:18:44]: [SERVER] Client connected.
+[2025-05-01 19:18:44]: [SERVER] Received: LOGIN:maria.popescu:mara123!
+[2025-05-01 19:18:44]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 19:18:51]: [SERVER] Client connected.
+[2025-05-01 19:18:51]: [SERVER] Received: GET_DATABASES:maria.popescu
+[2025-05-01 19:18:51]: [SERVER] Could not open database list file: databases/maria.popescu.txt
+[2025-05-01 19:18:51]: [SERVER] Sending: DBLIST:
+[2025-05-01 19:18:53]: [SERVER] Client connected.
+[2025-05-01 19:18:53]: [SERVER] Received: CREATE_DATABASE:maria.popescu:test
+[2025-05-01 19:18:53]: [SERVER] Sending: CREATE_DB_SUCCESS
+[2025-05-01 19:18:54]: [SERVER] Client connected.
+[2025-05-01 19:18:54]: [SERVER] Received: GET_DATABASES:maria.popescu
+[2025-05-01 19:18:54]: [SERVER] Sending: DBLIST:test
+[2025-05-01 19:18:57]: [SERVER] Client connected.
+[2025-05-01 19:18:57]: [SERVER] Received: GET_DATABASES:maria.popescu
+[2025-05-01 19:18:57]: [SERVER] Sending: DBLIST:test
