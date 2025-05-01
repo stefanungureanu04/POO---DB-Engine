@@ -1,3 +1,0 @@
-test
-another_test
-yet_another_test
