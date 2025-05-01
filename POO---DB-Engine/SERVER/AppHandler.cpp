@@ -13,9 +13,9 @@ std::string AppHandler::handle(const std::string& request)
         std::string response = authenticationManager.processAuthentication();
         return response;
     }
-    else if (request.rfind("GET_DATABASES:", 0) == 0) {
+    else if (request.rfind("GET_DATABASES:", 0) == 0 || request.rfind("CREATE_DATABASE:", 0) == 0) {
         DatabaseSelectManager databaseSelectManager(request);
-        std::string response = databaseSelectManager.processDatabaseNameRequest();
+        std::string response = databaseSelectManager.processDatabaseRequest();
         return response;
     }
     else if (request.rfind("GET_LOGS:", 0) == 0) {

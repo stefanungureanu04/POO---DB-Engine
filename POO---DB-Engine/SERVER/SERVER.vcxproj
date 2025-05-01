@@ -195,10 +195,6 @@
   <ItemGroup>
     <ResourceCompile Include="SERVER.rc" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="adi.tuta.txt" />
-    <None Include="stefan.ungureanu.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

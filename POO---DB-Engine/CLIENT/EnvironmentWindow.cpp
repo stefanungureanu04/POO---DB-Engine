@@ -289,7 +289,7 @@ void EnvironmentWindow::on_currentDatabaseButton_clicked()
         }
     }
 
-    DatabaseSelect* dialog = new DatabaseSelect(this);
+    DatabaseSelect* dialog = new DatabaseSelect(currentUsername, this);
 
     if (userDatabases.isEmpty()) {
         dialog->getNoDatabaseLabel()->setVisible(true);

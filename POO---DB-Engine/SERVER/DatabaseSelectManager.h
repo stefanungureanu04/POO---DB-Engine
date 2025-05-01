@@ -7,6 +7,6 @@ private:
 
 public:
 	DatabaseSelectManager(const std::string& request);
-	const std::string processDatabaseNameRequest();
+	const std::string processDatabaseRequest();
 };
 

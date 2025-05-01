@@ -1,28 +1,25 @@
 #include "DatabaseSelectManager.h"
 #include "AppLog.h"
 #include <fstream>
+#include <filesystem>
 
 DatabaseSelectManager::DatabaseSelectManager(const std::string& request)
 {
 	this->request = request;
 }
 
-const std::string DatabaseSelectManager::processDatabaseNameRequest()
+const std::string DatabaseSelectManager::processDatabaseRequest()
 {
     if (request.rfind("GET_DATABASES:", 0) == 0) {
         std::string username = request.substr(14);
-        //std::string dbFilePath = "user_databases/" + username + ".txt";
-        std::string db_filename = username + ".txt";
-        std::ifstream file(db_filename);
 
+        std::string db_filename = "databases/" + username + ".txt";
+
+        std::ifstream file(db_filename);
         if (!file.is_open()) {
             AppLog log;
             log.write("[SERVER] Could not open database list file: " + db_filename);
-            return "DBLIST:";  // trimite rsspuns gol
-        }
-
-        if (!file.is_open()) {
-            return "DBLIST:";  // Nu exista baze de date
+            return "DBLIST:"; 
         }
 
         std::string dbName;
@@ -38,4 +35,41 @@ const std::string DatabaseSelectManager::processDatabaseNameRequest()
         }
         return response;
     }
+
+    else if (request.rfind("CREATE_DATABASE:", 0) == 0) {
+        std::string data = request.substr(16);
+        size_t sep = data.find(':');
+        if (sep == std::string::npos) return "INVALID_FORMAT";
+
+        std::string username = data.substr(0, sep);
+        std::string dbName = data.substr(sep + 1);
+
+        std::filesystem::create_directories("databases");
+
+        std::string userFolder = "databases/" + username;
+        std::filesystem::create_directories(userFolder);
+
+        std::string dbFileName = "databases/" + username + ".txt";
+
+        std::ifstream infile(dbFileName);
+        bool isEmpty = infile.peek() == std::ifstream::traits_type::eof();
+        infile.close();
+
+        std::ofstream file(dbFileName, std::ios::app);
+        if (!file.is_open()) return "CREATE_DB_FAIL";
+
+        if (!isEmpty) {
+            file << "\n";
+        }
+        file << dbName;
+
+        std::string dbFilePath = userFolder + "/" + dbName + ".txt";
+        std::ofstream dbFile(dbFilePath);
+        if (!dbFile.is_open()) return "CREATE_DB_FAIL";
+        dbFile.close();
+
+        return "CREATE_DB_SUCCESS";
+    }
+
+    return "UNKNOWN_COMMAND";
 }
