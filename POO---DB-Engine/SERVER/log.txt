@@ -1569,3 +1569,48 @@ test 12345
 [2025-05-01 14:35:25]: [SERVER] Client connected.
 [2025-05-01 14:35:25]: [SERVER] Received: LIST_QUERIES:adi.tuta
 [2025-05-01 14:35:25]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 15:35:18]: [SERVER] Listening on port 12345
+[2025-05-01 15:35:34]: [SERVER] Client connected.
+[2025-05-01 15:35:34]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 15:35:34]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 15:35:46]: [SERVER] Client connected.
+[2025-05-01 15:35:46]: [SERVER] Received: SAVE_QUERY:stefan.ungureanu:test:create something
+[2025-05-01 15:35:46]: [SERVER] Sending: SAVE_SUCCESS
+[2025-05-01 15:35:52]: [SERVER] Client connected.
+[2025-05-01 15:35:52]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 15:35:52]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 15:35:53]: [SERVER] Client connected.
+[2025-05-01 15:35:53]: [SERVER] Received: LOAD_QUERY:stefan.ungureanu:test
+[2025-05-01 15:35:53]: [SERVER] Sending: QUERYDATA:create something
+[2025-05-01 15:36:12]: [SERVER] Client connected.
+[2025-05-01 15:36:12]: [SERVER] Received: LOGIN:ana.karenina:ana123!
+[2025-05-01 15:36:12]: [SERVER] Sending: LOGIN_FAIL
+[2025-05-01 15:36:31]: [SERVER] Client connected.
+[2025-05-01 15:36:31]: [SERVER] Received: REGISTER:ana.karenina:anamaria213!
+[2025-05-01 15:36:31]: [SERVER] Sending: REGISTER_SUCCESS
+[2025-05-01 15:38:07]: [SERVER] Client connected.
+[2025-05-01 15:38:07]: [SERVER] Received: LOGIN:ana,karenina:anamaria213!
+[2025-05-01 15:38:07]: [SERVER] Sending: LOGIN_FAIL
+[2025-05-01 15:38:38]: [SERVER] Client connected.
+[2025-05-01 15:38:38]: [SERVER] Received: LOGIN:ana.karenina:anamria213!
+[2025-05-01 15:38:38]: [SERVER] Sending: WRONG_PASSWORD
+[2025-05-01 15:38:59]: [SERVER] Client connected.
+[2025-05-01 15:38:59]: [SERVER] Received: LOGIN:ana.karenina:anamaria213!
+[2025-05-01 15:38:59]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 15:39:10]: [SERVER] Client connected.
+[2025-05-01 15:39:10]: [SERVER] Received: SAVE_QUERY:ana.karenina:testak:test ana
+
+test karenina
+[2025-05-01 15:39:10]: [SERVER] Sending: SAVE_SUCCESS
+[2025-05-01 15:39:12]: [SERVER] Client connected.
+[2025-05-01 15:39:12]: [SERVER] Received: LIST_QUERIES:ana.karenina
+[2025-05-01 15:39:12]: [SERVER] Sending: QUERYLIST:testak
+[2025-05-01 15:39:18]: [SERVER] Client connected.
+[2025-05-01 15:39:18]: [SERVER] Received: LIST_QUERIES:ana.karenina
+[2025-05-01 15:39:18]: [SERVER] Sending: QUERYLIST:testak
+[2025-05-01 15:39:19]: [SERVER] Client connected.
+[2025-05-01 15:39:19]: [SERVER] Received: LOAD_QUERY:ana.karenina:testak
+[2025-05-01 15:39:19]: [SERVER] Sending: QUERYDATA:test ana
+
+test karenina
+[2025-05-01 15:42:08]: [SERVER] Listening on port 12345

@@ -22,7 +22,11 @@ cand apesi logout sa se revina la fereastra de autentificare.
 [TUTA]: test
 
 [UNGUREANU]: Am schimbat numele BD din fisierele cu numele userului (le-am facut fara extensia "_qry.txt"), aia este specifica pentru query
-			 Baza de date are un nume normal, oarecare
+			 Baza de date are un nume normal, oarecare. Am facut butoanele Command History si Log din IDE, am adaugat un nou rand in tabela 
+			 din dreapta: Query. doar in el se poate scrie cod, celelalte sunt de tipul view only (momentan). De asemenea, am mai modulat un
+			 pic codul din EnvironmentWindow. 
 
-[UNGUREANU]: Am facut butoanele Command History si Log din IDE, am adaugat un nou rand in tabela din dreapta: Query. doar in el se poate scrie cod,
-			celelalte sunt de tipul view only (momentan). De asemenea, am mai modulat un pic codul din EnvironmentWindow.
+[UNGUREANU]: Am facut functionalitatile de import/download (fisierele _qry sunt stocate intr-un folder "queries" care are cate un subdirector
+			 cu numele fiecarui utilizator, cautarea este in regula, singura chestie e ca am schimbat versiunea - C++17, dar am modificat in setarile
+			 proiectului, deci ar trebui sa fie ok).
+

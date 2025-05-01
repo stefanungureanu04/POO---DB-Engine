@@ -210,7 +210,6 @@ void EnvironmentWindow::on_logButton_clicked()
 
 void EnvironmentWindow::on_downloadButton_clicked()
 {
-    // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
     if (getCurrentPanel() != "Query") {
         QMessageBox::warning(this, "Download", "You can only save queries inside the Query panel.");
         return;
@@ -219,7 +218,9 @@ void EnvironmentWindow::on_downloadButton_clicked()
     bool ok;
     QString queryName = QInputDialog::getText(this, "Save Query", "Enter query name:", QLineEdit::Normal, "", &ok);
 
-    if (!ok || queryName.isEmpty()) return;
+    if (ok == false || queryName.isEmpty()) {
+        return;
+    }
 
     try {
         Socket socket(Socket::Protocol::TCP);
@@ -228,7 +229,8 @@ void EnvironmentWindow::on_downloadButton_clicked()
             return;
         }
 
-        std::string request = "SAVE_QUERY:" + currentUsername.toStdString() + ":" + queryName.toStdString() + ":" + ui->EditorText->toPlainText().toStdString();
+        std::string request = "SAVE_QUERY:" + currentUsername.toStdString() + ":" + queryName.toStdString() + ":";
+        request += ui->EditorText->toPlainText().toStdString();
         socket.sendData(request);
 
         std::string response = socket.receiveData(1024);
@@ -239,6 +241,7 @@ void EnvironmentWindow::on_downloadButton_clicked()
             QMessageBox::warning(this, "Save Failed", QString::fromStdString(response));
         }
     }
+
     catch (const std::exception& e) {
         QMessageBox::critical(this, "Socket Error", e.what());
     }

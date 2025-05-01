@@ -1,7 +1,9 @@
 #include "QueryManager.h"
-#include <iostream>
 #include <fstream>
 #include <sstream>
+#include <filesystem>
+
+namespace fs = std::filesystem;
 
 QueryManager::QueryManager(const std::string& request)
 {
@@ -11,7 +13,6 @@ QueryManager::QueryManager(const std::string& request)
 const std::string QueryManager::processQueryRequest()
 {
     if (request.rfind("SAVE_QUERY:", 0) == 0) {
-        
         std::string data = request.substr(11);
         size_t sep1 = data.find(':');
         size_t sep2 = data.find(':', sep1 + 1);
@@ -22,55 +23,39 @@ const std::string QueryManager::processQueryRequest()
         std::string queryName = data.substr(sep1 + 1, sep2 - sep1 - 1);
         std::string queryContent = data.substr(sep2 + 1);
 
-        std::string queryFilename = queryName + "_qry.txt";
-        std::string userQueriesFile = username + "_queries.txt";
+        std::string userFolder = "queries/" + username + "/";
+        std::filesystem::create_directories(userFolder);  
 
-        // Save query content
+        std::string queryFilename = userFolder + queryName + "_qry.txt";
+
         std::ofstream queryFile(queryFilename);
         if (!queryFile.is_open()) return "SAVE_FAIL";
         queryFile << queryContent;
         queryFile.close();
 
-        // Check if query name already exists in userQueriesFile
-        bool alreadyExists = false;
-        std::ifstream inFile(userQueriesFile);
-        std::string line;
-        while (std::getline(inFile, line)) {
-            if (line == queryName) {
-                alreadyExists = true;
-                break;
-            }
-        }
-        inFile.close();
-
-        // If not already listed, append query name to username_queries.txt
-        if (!alreadyExists) {
-            std::ofstream outFile(userQueriesFile, std::ios::app);
-            if (!outFile.is_open()) return "SAVE_FAIL";
-            outFile << queryName << "\n";
-            outFile.close();
-        }
-
         return "SAVE_SUCCESS";
     }
 
-
     else if (request.rfind("LIST_QUERIES:", 0) == 0) {
         std::string username = request.substr(13);
-        std::string userQueriesFile = username + "_queries.txt";
 
-        std::ifstream inFile(userQueriesFile);
-        if (!inFile.is_open()) return "QUERYLIST:"; // empty list if file missing
+        std::string userFolder = "queries/" + username + "/";
+        fs::create_directories(userFolder);  
 
         std::string response = "QUERYLIST:";
-        std::string queryName;
         bool first = true;
-        while (std::getline(inFile, queryName)) {
-            if (!first) response += "|||";
-            response += queryName;
-            first = false;
+
+        for (const auto& entry : fs::directory_iterator(userFolder)) {
+            if (entry.is_regular_file()) {
+                std::string filename = entry.path().filename().string();
+                if (filename.size() >= 8 && filename.substr(filename.size() - 8) == "_qry.txt") {
+                    std::string queryName = filename.substr(0, filename.size() - 8);  
+                    if (!first) response += "|||";
+                    response += queryName;
+                    first = false;
+                }
+            }
         }
-        inFile.close();
 
         return response;
     }
@@ -83,7 +68,10 @@ const std::string QueryManager::processQueryRequest()
         std::string username = data.substr(0, sep);
         std::string queryName = data.substr(sep + 1);
 
-        std::string queryFilename = queryName + "_qry.txt";
+        std::string userFolder = "queries/" + username + "/";
+        fs::create_directories(userFolder);
+
+        std::string queryFilename = userFolder + queryName + "_qry.txt";
 
         std::ifstream inFile(queryFilename);
         if (!inFile.is_open()) return "LOAD_FAIL";
@@ -93,4 +81,6 @@ const std::string QueryManager::processQueryRequest()
 
         return "QUERYDATA:" + oss.str();
     }
+
+    return "UNKNOWN_COMMAND";
 }

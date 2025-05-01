@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <filesystem>
 
 class QueryManager{
 private:
