@@ -26,13 +26,13 @@ private slots:
     void toggleHistoryCleanup(bool enabled);
     void deleteCurrentDatabase();
 
+    void on_currentDatabaseButton_clicked();
+    void on_optionsButton_clicked();
     void on_runButton_clicked();
     void on_importButton_clicked();
     void on_logButton_clicked();
     void on_downloadButton_clicked();
 
-    void on_optionsButton_clicked();
-    void on_currentDatabaseButton_clicked();
     void on_logoutButton_clicked();
 
     void onDatabaseChosen(const QString& databaseName);

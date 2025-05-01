@@ -26,6 +26,7 @@ const std::string AuthenticationManager::processAuthentication()
             return "LOGIN_FAIL";
         }
     }
+
     else if (request.rfind("REGISTER:", 0) == 0) {
         std::string data = request.substr(9);
         size_t sep = data.find(':');

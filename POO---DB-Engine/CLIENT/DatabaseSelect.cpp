@@ -60,9 +60,10 @@ void DatabaseSelect::on_createNewDatabaseButton_clicked()
     bool ok;
     QString newDbName = QInputDialog::getText(this, "Create New Database", "Enter database name:", QLineEdit::Normal, "", &ok);
 
-    if (!ok || newDbName.isEmpty()) {
+    if (ok == false || newDbName.isEmpty()) {
         return; 
     }
+
     try {
         Socket socket(Socket::Protocol::TCP);
         if (!socket.connectToServer("127.0.0.1", 12345)) {

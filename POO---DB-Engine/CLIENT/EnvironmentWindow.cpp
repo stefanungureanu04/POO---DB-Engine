@@ -16,28 +16,9 @@ EnvironmentWindow::EnvironmentWindow(const QString& username, QWidget* parent) :
     setupPanelSwitching();
 }
 
-void EnvironmentWindow::onDatabaseChosen(const QString& databaseName)
-{
-    QMessageBox::information(this, "DEBUG", "Selected database: " + databaseName); // TEST!
-	// Emit the signal to update the selected database
-    selectedDatabase = databaseName;
-    updateUsernameLabel();
-}
-
-void EnvironmentWindow::updateUsernameLabel()
-{
-    QString usernameLabel = currentUsername + " - MANAGER";
-
-    if (!selectedDatabase.isEmpty()) {
-        usernameLabel += "\n" + selectedDatabase;
-    }
-
-    ui->labelUsername->setText(usernameLabel);
-}
-
 void EnvironmentWindow::updateEditorFontSize(int size)
 {
-    fontSize = size; 
+    fontSize = size;
 
     QFont font = ui->EditorText->font();
     font.setPointSize(size);
@@ -73,7 +54,7 @@ void EnvironmentWindow::toggleHistoryCleanup(bool enabled)
 {
     if (enabled) {
         commandHistoryBuffer.clear();
-        QMessageBox::information(this, "HISTORY CLEANUP", "HISTORY CLEANUP");
+        QMessageBox::information(this, "HISTORY CLEANUP", "Cleaning up history...");
         OptionsDialog* dialog = qobject_cast<OptionsDialog*>(sender());
 
         if (dialog) {
@@ -114,6 +95,107 @@ void EnvironmentWindow::deleteCurrentDatabase()
     }
 }
 
+void EnvironmentWindow::on_currentDatabaseButton_clicked()
+{
+    QStringList userDatabases;
+
+    Socket socket(Socket::Protocol::TCP);
+    if (!socket.connectToServer("127.0.0.1", 12345)) {
+        QMessageBox::critical(this, "Error", "Could not connect to server.");
+        return;
+    }
+
+    std::string request = "GET_DATABASES:" + currentUsername.toStdString();
+    socket.sendData(request);
+
+    std::string response = socket.receiveData(2048);
+    QString qResponse = QString::fromStdString(response);
+
+    if (qResponse.startsWith("DBLIST:")) {
+        QString dbList = qResponse.mid(7);
+        if (!dbList.isEmpty()) {
+            userDatabases = dbList.split(';');
+        }
+    }
+
+    DatabaseSelect* dialog = new DatabaseSelect(currentUsername, this);
+
+    if (userDatabases.isEmpty()) {
+        dialog->getNoDatabaseLabel()->setVisible(true);
+        dialog->getDatabaseListWidget()->setVisible(false);
+    }
+    else {
+        dialog->getNoDatabaseLabel()->setVisible(false);
+        dialog->getDatabaseListWidget()->setVisible(true);
+        for (const QString& db : userDatabases) {
+            dialog->getDatabaseListWidget()->addItem(db);
+        }
+    }
+
+    QObject::connect(dialog, SIGNAL(databaseSelected(QString)), this, SLOT(onDatabaseChosen(QString)));
+
+    dialog->exec();
+}
+
+void EnvironmentWindow::on_optionsButton_clicked()
+{
+    OptionsDialog* dialog = new OptionsDialog(this);
+
+    connect(dialog, &OptionsDialog::textSizeChanged, this, &EnvironmentWindow::updateEditorFontSize);
+    connect(dialog, &OptionsDialog::syntaxHighlightingToggled, this, &EnvironmentWindow::toggleSyntaxHighlighter);
+    connect(dialog, &OptionsDialog::executionTimeToggled, this, &EnvironmentWindow::toggleExecutionTime);
+    connect(dialog, &OptionsDialog::historyCleanupToggled, this, &EnvironmentWindow::toggleHistoryCleanup);
+    connect(dialog, &OptionsDialog::deleteCurrentDatabaseRequested, this, &EnvironmentWindow::deleteCurrentDatabase);
+
+    dialog->setSyntaxHighlightingEnabled(syntaxHighlightingEnabled);
+    dialog->setExecutionTimeEnabled(executionTimeEnabled);
+    dialog->setFontSize(fontSize);
+
+    dialog->exec();
+}
+
+//---> apasarea butonului run si rularea codului curent scris in editorul text
+void EnvironmentWindow::on_runButton_clicked()
+{
+    QString currentPanel = getCurrentPanel();
+
+    if (currentPanel != "Query") {
+        QMessageBox::warning(this, "Run Blocked", "Switch to 'Query Editor' to run queries.");
+        return;
+    }
+
+    QString userCode = ui->EditorText->toPlainText();
+
+    if (userCode.isEmpty()) {
+        QMessageBox::warning(this, "Empty Code", "Please write something to run.");
+        return;
+    }
+    else {
+        if (commandHistoryBuffer.isEmpty() || commandHistoryBuffer.last() != userCode) {
+            commandHistoryBuffer.append(userCode);
+        }
+    }
+
+    try {
+        Socket socket(Socket::Protocol::TCP);
+        if (!socket.connectToServer("127.0.0.1", 12345)) {
+            QMessageBox::critical(this, "Error", "Cannot connect to server.");
+            return;
+        }
+
+        // Serializez: comanda + utilizator + baza de date + cod   -> selectedDatabase este baza de date selectata din meniul de selectie al bazei de date
+        std::string request = "EXECUTE_CODE:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString() + ":" + userCode.toStdString();
+
+        socket.sendData(request);  // trimit cererea la server
+
+        std::string response = socket.receiveData(4096); // răspunsul de la server
+        QMessageBox::information(this, "Server Response", QString::fromStdString(response));
+    }
+    catch (const std::exception& e) {
+        QMessageBox::critical(this, "Socket Error", e.what());
+    }
+}
+
 void EnvironmentWindow::on_importButton_clicked()
 {
     if (getCurrentPanel() != "Query") {
@@ -122,7 +204,7 @@ void EnvironmentWindow::on_importButton_clicked()
     }
 
     try {
-       
+
         Socket listSocket(Socket::Protocol::TCP);
         if (!listSocket.connectToServer("127.0.0.1", 12345)) {
             QMessageBox::critical(this, "Connection Error", "Could not connect to server.");
@@ -149,7 +231,7 @@ void EnvironmentWindow::on_importButton_clicked()
 
         bool ok;
         QString selectedQuery = QInputDialog::getItem(this, "IMPORT", "Choose a query:", queryNames, 0, false, &ok);
-        
+
         if (ok == false || selectedQuery.isEmpty()) {
             return;
         }
@@ -273,112 +355,28 @@ void EnvironmentWindow::on_downloadButton_clicked()
     }
 }
 
-void EnvironmentWindow::on_optionsButton_clicked()
-{
-    OptionsDialog* dialog = new OptionsDialog(this);
-
-    connect(dialog, &OptionsDialog::textSizeChanged, this, &EnvironmentWindow::updateEditorFontSize);
-    connect(dialog, &OptionsDialog::syntaxHighlightingToggled, this, &EnvironmentWindow::toggleSyntaxHighlighter);
-    connect(dialog, &OptionsDialog::executionTimeToggled, this, &EnvironmentWindow::toggleExecutionTime);
-    connect(dialog, &OptionsDialog::historyCleanupToggled, this, &EnvironmentWindow::toggleHistoryCleanup);
-    connect(dialog, &OptionsDialog::deleteCurrentDatabaseRequested, this, &EnvironmentWindow::deleteCurrentDatabase);
-
-    dialog->setSyntaxHighlightingEnabled(syntaxHighlightingEnabled);
-    dialog->setExecutionTimeEnabled(executionTimeEnabled);
-    dialog->setFontSize(fontSize);
-
-    dialog->exec();
-}
-
-void EnvironmentWindow::on_currentDatabaseButton_clicked()
-{
-    QStringList userDatabases;
-
-    QMessageBox::information(this, "DEBUG", "Current username: " + currentUsername);
-
-    Socket socket(Socket::Protocol::TCP);
-    if (!socket.connectToServer("127.0.0.1", 12345)) {
-        QMessageBox::critical(this, "Error", "Could not connect to server.");
-        return;
-    }
-
-    std::string request = "GET_DATABASES:" + currentUsername.toStdString();
-    socket.sendData(request);
-
-    std::string response = socket.receiveData(2048);
-    QString qResponse = QString::fromStdString(response);
-
-    if (qResponse.startsWith("DBLIST:")) {
-        QString dbList = qResponse.mid(7);
-        if (!dbList.isEmpty()) {
-            userDatabases = dbList.split(';');
-        }
-    }
-
-    DatabaseSelect* dialog = new DatabaseSelect(currentUsername, this);
-
-    if (userDatabases.isEmpty()) {
-        dialog->getNoDatabaseLabel()->setVisible(true);
-        dialog->getDatabaseListWidget()->setVisible(false);
-    }
-    else {
-        dialog->getNoDatabaseLabel()->setVisible(false);
-        dialog->getDatabaseListWidget()->setVisible(true);
-        for (const QString& db : userDatabases) {
-            dialog->getDatabaseListWidget()->addItem(db);
-        }
-    }
-
-    QObject::connect(dialog, SIGNAL(databaseSelected(QString)), this, SLOT(onDatabaseChosen(QString)));
-
-    dialog->exec();
-}
-
 void EnvironmentWindow::on_logoutButton_clicked()
 {
     emit logoutRequested();
 }
 
-//---> apasarea butonului run si rularea codului curent scris in editorul text
-void EnvironmentWindow::on_runButton_clicked()
-{   
-    QString currentPanel = getCurrentPanel();
+void EnvironmentWindow::onDatabaseChosen(const QString& databaseName)
+{
+    QMessageBox::information(this, "Database Select", "Selected database: " + databaseName); 
+    
+    selectedDatabase = databaseName;
+    updateUsernameLabel();
+}
 
-    if (currentPanel != "Query") {
-        QMessageBox::warning(this, "Run Blocked", "Switch to 'Query Editor' to run queries.");
-        return;
+void EnvironmentWindow::updateUsernameLabel()
+{
+    QString usernameLabel = currentUsername + " - MANAGER";
+
+    if (!selectedDatabase.isEmpty()) {
+        usernameLabel += "\n" + selectedDatabase;
     }
 
-    QString userCode = ui->EditorText->toPlainText();
-
-    if (userCode.isEmpty()) {
-        QMessageBox::warning(this, "Empty Code", "Please write something to run.");
-        return;
-    }
-    else {
-        if (commandHistoryBuffer.isEmpty() || commandHistoryBuffer.last() != userCode) {
-            commandHistoryBuffer.append(userCode);
-        }
-    }
-
-    try {
-        Socket socket(Socket::Protocol::TCP);
-        if (!socket.connectToServer("127.0.0.1", 12345)) {
-            QMessageBox::critical(this, "Error", "Cannot connect to server.");
-            return;
-        }
-
-        // Serializez: comanda + utilizator + baza de date + cod   -> selectedDatabase este baza de date selectata din meniul de selectie al bazei de date
-        std::string request = "EXECUTE_CODE:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString() + ":" + userCode.toStdString();
-
-        socket.sendData(request);  // trimit cererea la server
-
-        std::string response = socket.receiveData(4096); // răspunsul de la server
-        QMessageBox::information(this, "Server Response", QString::fromStdString(response));
-    }
-    catch (const std::exception& e) {
-        QMessageBox::critical(this, "Socket Error", e.what());
-    }
+    ui->labelUsername->setText(usernameLabel);
 }
 
 EnvironmentWindow::~EnvironmentWindow()

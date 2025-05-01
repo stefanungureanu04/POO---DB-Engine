@@ -2,11 +2,13 @@
 #include <sstream>
 #include <algorithm>
 
-CommandManager::CommandManager(const std::string& fullRequest) {
+CommandManager::CommandManager(const std::string& fullRequest) 
+{
     parseRequest(fullRequest);
 }
 
-void CommandManager::parseRequest(const std::string& fullRequest) {
+void CommandManager::parseRequest(const std::string& fullRequest) 
+{
     size_t pos1 = fullRequest.find(':');
     size_t pos2 = fullRequest.find(':', pos1 + 1);
     size_t pos3 = fullRequest.find(':', pos2 + 1);
@@ -21,7 +23,8 @@ void CommandManager::parseRequest(const std::string& fullRequest) {
 }
 
 //aici se proceseaza comanda primita de la client
-std::string CommandManager::processCommand() {
+std::string CommandManager::processCommand() 
+{
     std::string lowerCode = userCode;
     std::transform(lowerCode.begin(), lowerCode.end(), lowerCode.begin(), ::tolower);
 
@@ -39,21 +42,25 @@ std::string CommandManager::processCommand() {
     }
 }
 
-std::string CommandManager::handleCreateTable() {
+std::string CommandManager::handleCreateTable() 
+{
     // TODO: Creare tabel
     return "CREATE_TABLE_SUCCESS";
 }
 
-std::string CommandManager::handleInsert() {
+std::string CommandManager::handleInsert() 
+{
     // TODO: Inserare în tabel
     return "INSERT_SUCCESS";
 }
 
-std::string CommandManager::handleSelect() {
+std::string CommandManager::handleSelect() 
+{
     // TODO: Selectare date din tabel
     return "SELECT_SUCCESS";
 }
 
-std::string CommandManager::handleUnknown() {
+std::string CommandManager::handleUnknown() 
+{
     return "UNKNOWN_COMMAND";
 }

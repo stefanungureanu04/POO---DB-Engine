@@ -4,7 +4,6 @@
 class CommandManager {
 public:
     CommandManager(const std::string& fullRequest);
-
     std::string processCommand();
 
 private:

@@ -3,8 +3,6 @@
 #include <sstream>
 #include <filesystem>
 
-namespace fs = std::filesystem;
-
 QueryManager::QueryManager(const std::string& request)
 {
 	this->request = request;
@@ -40,12 +38,12 @@ const std::string QueryManager::processQueryRequest()
         std::string username = request.substr(13);
 
         std::string userFolder = "queries/" + username + "/";
-        fs::create_directories(userFolder);  
+        std::filesystem::create_directories(userFolder);  
 
         std::string response = "QUERYLIST:";
         bool first = true;
 
-        for (const auto& entry : fs::directory_iterator(userFolder)) {
+        for (const auto& entry : std::filesystem::directory_iterator(userFolder)) {
             if (entry.is_regular_file()) {
                 std::string filename = entry.path().filename().string();
                 if (filename.size() >= 8 && filename.substr(filename.size() - 8) == "_qry.txt") {
@@ -69,7 +67,7 @@ const std::string QueryManager::processQueryRequest()
         std::string queryName = data.substr(sep + 1);
 
         std::string userFolder = "queries/" + username + "/";
-        fs::create_directories(userFolder);
+        std::filesystem::create_directories(userFolder);
 
         std::string queryFilename = userFolder + queryName + "_qry.txt";
 
