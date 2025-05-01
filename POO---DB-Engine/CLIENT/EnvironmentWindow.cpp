@@ -90,57 +90,71 @@ void EnvironmentWindow::deleteCurrentDatabase()
 
 void EnvironmentWindow::on_importButton_clicked()
 {
-    // You can handle what to do when the button is pressed (for now, just a debug pop-up message)
     if (getCurrentPanel() != "Query") {
         QMessageBox::warning(this, "Import", "You can only import queries inside the Query panel.");
         return;
     }
 
     try {
-        Socket socket(Socket::Protocol::TCP);
-        if (!socket.connectToServer("127.0.0.1", 12345)) {
+       
+        Socket listSocket(Socket::Protocol::TCP);
+        if (!listSocket.connectToServer("127.0.0.1", 12345)) {
             QMessageBox::critical(this, "Connection Error", "Could not connect to server.");
             return;
         }
 
-        std::string request = "LIST_QUERIES:" + currentUsername.toStdString();
-        socket.sendData(request);
+        std::string listRequest = "LIST_QUERIES:" + currentUsername.toStdString();
+        listSocket.sendData(listRequest);
+        std::string listResponse = listSocket.receiveData(4096);
 
-        std::string response = socket.receiveData(4096);
+        QString qListResponse = QString::fromStdString(listResponse).trimmed();
 
-        if (!response._Starts_with("QUERYLIST:")) {
+        if (!qListResponse.startsWith("QUERYLIST:")) {
             QMessageBox::warning(this, "Import Error", "Unexpected server response.");
             return;
         }
 
-        QStringList queryNames = QString::fromStdString(response).mid(10).split("|||");
+        QStringList queryNames = qListResponse.mid(10).split("|||");
 
         if (queryNames.isEmpty() || (queryNames.size() == 1 && queryNames[0].isEmpty())) {
-            QMessageBox::information(this, "Import", "No saved queries available.");
+            QMessageBox::information(this, "IMPORT", "No saved queries available.");
             return;
         }
 
         bool ok;
-        QString selectedQuery = QInputDialog::getItem(this, "Select Query", "Choose a query:", queryNames, 0, false, &ok);
-
-        if (!ok || selectedQuery.isEmpty()) return;
-
-        // Request query content
-        std::string loadRequest = "LOAD_QUERY:" + currentUsername.toStdString() + ":" + selectedQuery.toStdString();
-        socket.sendData(loadRequest);
-
-        std::string loadResponse = socket.receiveData(8192);
-        if (!loadResponse._Starts_with("QUERYDATA:")) {
-            QMessageBox::warning(this, "Load Error", "Unexpected server response.");
+        QString selectedQuery = QInputDialog::getItem(this, "IMPORT", "Choose a query:", queryNames, 0, false, &ok);
+        
+        if (ok == false || selectedQuery.isEmpty()) {
             return;
         }
 
-        QString queryContent = QString::fromStdString(loadResponse).mid(10);
+        Socket loadSocket(Socket::Protocol::TCP);
+        if (!loadSocket.connectToServer("127.0.0.1", 12345)) {
+            QMessageBox::critical(this, "Connection Error", "Could not connect to server (LOAD_QUERY).");
+            return;
+        }
+
+        std::string loadRequest = "LOAD_QUERY:" + currentUsername.toStdString() + ":" + selectedQuery.toStdString();
+        loadSocket.sendData(loadRequest);
+        std::string loadResponse = loadSocket.receiveData(8192);
+
+        QString qLoadResponse = QString::fromStdString(loadResponse).trimmed();
+
+        if (qLoadResponse == "LOAD_FAIL") {
+            QMessageBox::warning(this, "Load Error", "Query file not found on server.");
+            return;
+        }
+        else if (!qLoadResponse.startsWith("QUERYDATA:")) {
+            QMessageBox::warning(this, "Load Error", "Unexpected server response (LOAD_QUERY).");
+            return;
+        }
+
+        QString queryContent = qLoadResponse.mid(10);
         ui->EditorText->setPlainText(queryContent);
 
-        QMessageBox::information(this, "Import", "Query imported successfully.");
-
+        QMessageBox::information(this, "IMPORT", "Query imported successfully.");
     }
+
     catch (const std::exception& e) {
         QMessageBox::critical(this, "Socket Error", e.what());
     }

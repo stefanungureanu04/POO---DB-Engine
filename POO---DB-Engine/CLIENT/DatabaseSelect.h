@@ -28,6 +28,4 @@ private slots:
 
 private:
     Ui::DatabaseSelect* ui;
-
-
 };

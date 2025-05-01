@@ -1463,3 +1463,109 @@ from magazin_flori
 [2025-05-01 13:44:26]: [SERVER] Client connected.
 [2025-05-01 13:44:26]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
 [2025-05-01 13:44:26]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 14:01:08]: [SERVER] Client connected.
+[2025-05-01 14:01:08]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 14:01:08]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 14:01:26]: [SERVER] Client connected.
+[2025-05-01 14:01:26]: [SERVER] Received: SAVE_QUERY:stefan.ungureanu:test:create something
+[2025-05-01 14:01:26]: [SERVER] Sending: SAVE_SUCCESS
+[2025-05-01 14:01:29]: [SERVER] Client connected.
+[2025-05-01 14:01:29]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 14:01:29]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 14:08:56]: [SERVER] Client connected.
+[2025-05-01 14:08:56]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 14:08:56]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 14:09:00]: [SERVER] Client connected.
+[2025-05-01 14:09:00]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 14:09:00]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 14:12:23]: [SERVER] Client connected.
+[2025-05-01 14:12:23]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 14:12:23]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 14:12:27]: [SERVER] Client connected.
+[2025-05-01 14:12:27]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 14:12:27]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 14:14:48]: [SERVER] Listening on port 12345
+[2025-05-01 14:15:05]: [SERVER] Client connected.
+[2025-05-01 14:15:05]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 14:15:05]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 14:15:09]: [SERVER] Client connected.
+[2025-05-01 14:15:09]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 14:15:09]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 14:16:23]: [SERVER] Listening on port 12345
+[2025-05-01 14:16:40]: [SERVER] Client connected.
+[2025-05-01 14:16:40]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 14:16:40]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 14:16:43]: [SERVER] Client connected.
+[2025-05-01 14:16:43]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 14:16:43]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 14:17:23]: [SERVER] Client connected.
+[2025-05-01 14:17:23]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 14:17:23]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 14:17:26]: [SERVER] Client connected.
+[2025-05-01 14:17:26]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 14:17:26]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 14:17:45]: [SERVER] Listening on port 12345
+[2025-05-01 14:18:03]: [SERVER] Client connected.
+[2025-05-01 14:18:03]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 14:18:03]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 14:18:06]: [SERVER] Client connected.
+[2025-05-01 14:18:06]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 14:18:06]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 14:22:15]: [SERVER] Client connected.
+[2025-05-01 14:22:15]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 14:22:15]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 14:22:18]: [SERVER] Client connected.
+[2025-05-01 14:22:18]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 14:22:18]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 14:22:19]: [SERVER] Client connected.
+[2025-05-01 14:22:19]: [SERVER] Received: LOAD_QUERY:stefan.ungureanu:test
+[2025-05-01 14:22:19]: [SERVER] Sending: QUERYDATA:create something
+[2025-05-01 14:22:51]: [SERVER] Client connected.
+[2025-05-01 14:22:51]: [SERVER] Received: SAVE_QUERY:stefan.ungureanu:another_test:test 1234
+
+test 12345
+[2025-05-01 14:22:51]: [SERVER] Sending: SAVE_SUCCESS
+[2025-05-01 14:22:53]: [SERVER] Client connected.
+[2025-05-01 14:22:53]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 14:22:53]: [SERVER] Sending: QUERYLIST:test|||another_test
+[2025-05-01 14:22:56]: [SERVER] Client connected.
+[2025-05-01 14:22:56]: [SERVER] Received: LOAD_QUERY:stefan.ungureanu:another_test
+[2025-05-01 14:22:56]: [SERVER] Sending: QUERYDATA:test 1234
+
+test 12345
+[2025-05-01 14:23:15]: [SERVER] Client connected.
+[2025-05-01 14:23:15]: [SERVER] Received: SAVE_QUERY:stefan.ungureanu:yet_another_test:test 1234
+
+test 12345
+
+test 432432
+[2025-05-01 14:23:15]: [SERVER] Sending: SAVE_SUCCESS
+[2025-05-01 14:23:17]: [SERVER] Client connected.
+[2025-05-01 14:23:17]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 14:23:17]: [SERVER] Sending: QUERYLIST:test|||another_test|||yet_another_test
+[2025-05-01 14:23:19]: [SERVER] Client connected.
+[2025-05-01 14:23:19]: [SERVER] Received: LOAD_QUERY:stefan.ungureanu:another_test
+[2025-05-01 14:23:19]: [SERVER] Sending: QUERYDATA:test 1234
+
+test 12345
+[2025-05-01 14:34:55]: [SERVER] Client connected.
+[2025-05-01 14:34:55]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-01 14:34:55]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 14:34:57]: [SERVER] Client connected.
+[2025-05-01 14:34:57]: [SERVER] Received: LIST_QUERIES:adi.tuta
+[2025-05-01 14:34:57]: [SERVER] Sending: QUERYLIST:
+[2025-05-01 14:35:06]: [SERVER] Client connected.
+[2025-05-01 14:35:06]: [SERVER] Received: SAVE_QUERY:adi.tuta:test:testare
+[2025-05-01 14:35:06]: [SERVER] Sending: SAVE_SUCCESS
+[2025-05-01 14:35:08]: [SERVER] Client connected.
+[2025-05-01 14:35:08]: [SERVER] Received: LIST_QUERIES:adi.tuta
+[2025-05-01 14:35:08]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 14:35:12]: [SERVER] Client connected.
+[2025-05-01 14:35:12]: [SERVER] Received: LOAD_QUERY:adi.tuta:test
+[2025-05-01 14:35:12]: [SERVER] Sending: QUERYDATA:testare
+[2025-05-01 14:35:16]: [SERVER] Client connected.
+[2025-05-01 14:35:16]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-01 14:35:16]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM
+[2025-05-01 14:35:25]: [SERVER] Client connected.
+[2025-05-01 14:35:25]: [SERVER] Received: LIST_QUERIES:adi.tuta
+[2025-05-01 14:35:25]: [SERVER] Sending: QUERYLIST:test

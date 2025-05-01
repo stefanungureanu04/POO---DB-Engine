@@ -43,6 +43,6 @@ void DatabaseSelect::onDatabaseItemDoubleClicked(QListWidgetItem* item)
     if (item) {
         QString selectedDatabase = item->text();
         emit databaseSelected(selectedDatabase);
-        accept();  // închide automat dialogul după selectare
+        accept();  
     }
 }

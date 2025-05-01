@@ -1,4 +1,5 @@
 #include "QueryManager.h"
+#include <iostream>
 #include <fstream>
 #include <sstream>
 
@@ -89,6 +90,7 @@ const std::string QueryManager::processQueryRequest()
 
         std::ostringstream oss;
         oss << inFile.rdbuf();
+
         return "QUERYDATA:" + oss.str();
     }
 }
