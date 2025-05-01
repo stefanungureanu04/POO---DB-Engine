@@ -1453,3 +1453,13 @@ from magazin_flori
 [2025-05-01 13:36:11]: [SERVER] Client connected.
 [2025-05-01 13:36:11]: [SERVER] Received: GET_DATABASES:adi.tuta
 [2025-05-01 13:36:11]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM
+[2025-05-01 13:43:59]: [SERVER] Listening on port 12345
+[2025-05-01 13:44:18]: [SERVER] Client connected.
+[2025-05-01 13:44:18]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-01 13:44:18]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-01 13:44:23]: [SERVER] Client connected.
+[2025-05-01 13:44:23]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 13:44:23]: [SERVER] Sending: QUERYLIST:test
+[2025-05-01 13:44:26]: [SERVER] Client connected.
+[2025-05-01 13:44:26]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-01 13:44:26]: [SERVER] Sending: QUERYLIST:test
