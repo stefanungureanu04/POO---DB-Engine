@@ -366,6 +366,17 @@ void EnvironmentWindow::onDatabaseChosen(const QString& databaseName)
     
     selectedDatabase = databaseName;
     updateUsernameLabel();
+
+	//aici furnizez instructiunea de incarcare a bazei de date pe server
+    Socket socket(Socket::Protocol::TCP);
+    if (socket.connectToServer("127.0.0.1", 12345)) {
+        std::string request = "LOAD_DATABASE:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString();
+        socket.sendData(request);
+        std::string response = socket.receiveData(1024);
+        if (response != "LOAD_DB_SUCCESS") {
+            QMessageBox::warning(this, "Error", "Could not load database on server.");
+        }
+    }
 }
 
 void EnvironmentWindow::updateUsernameLabel()

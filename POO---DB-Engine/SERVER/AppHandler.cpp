@@ -5,6 +5,7 @@
 #include "QueryManager.h"
 #include "CommandManager.h"
 #include "AppLog.h"
+#include"DatabaseLoaderManager.h"
 
 std::string AppHandler::handle(const std::string& request)
 {
@@ -32,6 +33,10 @@ std::string AppHandler::handle(const std::string& request)
         CommandManager commandManager(request);
         std::string response = commandManager.processCommand();
         return response;
+    }
+    else if (beginsWith(request, "LOAD_DATABASE:")) {
+        DatabaseLoaderManager loader(request);
+        return loader.process();
     }
 
     return "UNKNOWN_COMMAND";

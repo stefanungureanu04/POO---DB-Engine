@@ -155,6 +155,7 @@
     <ClCompile Include="CommandHistoryLog.cpp" />
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="CurrentDatabase.cpp" />
+    <ClCompile Include="DatabaseLoaderManager.cpp" />
     <ClCompile Include="DatabaseSelectManager.cpp" />
     <ClCompile Include="IException.cpp" />
     <ClCompile Include="ILog.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="CommandHistoryLog.h" />
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="CurrentDatabase.h" />
+    <ClInclude Include="DatabaseLoaderManager.h" />
     <ClInclude Include="DatabaseSelectManager.h" />
     <ClInclude Include="IException.h" />
     <ClInclude Include="ILog.h" />
