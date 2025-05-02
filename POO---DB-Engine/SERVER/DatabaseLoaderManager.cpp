@@ -1,6 +1,5 @@
 ﻿#include "DatabaseLoaderManager.h"
-#include "CurrentDatabase.h"
-#include "CurrentDatabaseManager.h"
+
 #include <filesystem>
 #include <sstream>
 
