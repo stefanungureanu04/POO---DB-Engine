@@ -87,16 +87,10 @@
     <ClCompile Include="Column.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CurrentDatabase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DatabaseLoaderManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TableListManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CurrentDatabaseManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Database.cpp">
@@ -181,16 +175,10 @@
     <ClInclude Include="Column.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CurrentDatabase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DatabaseLoaderManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TableListManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CurrentDatabaseManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Database.h">
