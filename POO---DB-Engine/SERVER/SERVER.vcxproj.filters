@@ -93,6 +93,12 @@
     <ClCompile Include="DatabaseLoaderManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TableListManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CurrentDatabaseManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="user_credentials_db.txt">
@@ -173,6 +179,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DatabaseLoaderManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TableListManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CurrentDatabaseManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

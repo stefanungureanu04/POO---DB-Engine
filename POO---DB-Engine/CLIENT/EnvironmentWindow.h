@@ -20,23 +20,32 @@ signals:
     void logoutRequested();
 
 private slots:
+	//sloturi in feresatra de optiuni
     void updateEditorFontSize(int size);
     void toggleSyntaxHighlighter(bool enabled);
     void toggleExecutionTime(bool enabled);
     void toggleHistoryCleanup(bool enabled);
     void deleteCurrentDatabase();
 
+	//sloturi in bara de comenzi de sus
     void on_currentDatabaseButton_clicked();
     void on_optionsButton_clicked();
     void on_runButton_clicked();
     void on_importButton_clicked();
     void on_logButton_clicked();
     void on_downloadButton_clicked();
+	//void on_tabesButton_clicked();
 
+	//slot pentru logout - sub lista de optiuni din manager (panou stanga)
     void on_logoutButton_clicked();
 
     void onDatabaseChosen(const QString& databaseName);
 	void updateUsernameLabel();
+
+	//lista de optiuni din manager (stanga)
+	//void openStructureViewer();         //pentru a vizualiza structura unei baze de date
+	//void openTablesViewer();            //pentru a vizualiza tabelele unei baze de date
+    void displayTables();
 
 private:
     void enableSyntaxHighlighting();

@@ -44,6 +44,14 @@ public:
         table.loadFromFile(fileName);
         tables[tableName] = table;
     }
+    
+    std::vector<std::string> getTableNames() const {
+        std::vector<std::string> names;
+        for (const auto& pair : tables) {
+            names.push_back(pair.first);
+        }
+        return names;
+    }
 
 private:
     std::string dbName;

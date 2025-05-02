@@ -1842,3 +1842,136 @@ order by pret
 [2025-05-02 03:26:30]: [SERVER] Client connected.
 [2025-05-02 03:26:30]: [SERVER] Received: LOAD_DATABASE:adi.tuta:sistem_transport_feroviar
 [2025-05-02 03:26:30]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 03:39:53]: [SERVER] Listening on port 12345
+[2025-05-02 03:40:30]: [SERVER] Client connected.
+[2025-05-02 03:40:30]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 03:40:30]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 03:40:33]: [SERVER] Client connected.
+[2025-05-02 03:40:33]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 03:40:33]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 03:40:36]: [SERVER] Client connected.
+[2025-05-02 03:40:36]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
+[2025-05-02 03:40:36]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 03:41:32]: [SERVER] Client connected.
+[2025-05-02 03:41:32]: [SERVER] Received: EXECUTE_CODE:adi.tuta:magazin_flori:select nume, pret
+from produse
+[2025-05-02 03:41:32]: [SERVER] Sending: SELECT_SUCCESS
+[2025-05-02 03:50:54]: [SERVER] Client connected.
+[2025-05-02 03:50:54]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 03:50:54]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 03:50:59]: [SERVER] Client connected.
+[2025-05-02 03:50:59]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 03:50:59]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 03:51:02]: [SERVER] Client connected.
+[2025-05-02 03:51:02]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
+[2025-05-02 03:51:02]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 15:01:03]: [SERVER] Client connected.
+[2025-05-02 15:01:03]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 15:01:03]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 15:01:07]: [SERVER] Client connected.
+[2025-05-02 15:01:07]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 15:01:07]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 15:01:09]: [SERVER] Client connected.
+[2025-05-02 15:01:09]: [SERVER] Received: LOAD_DATABASE:adi.tuta:sistem_transport_feroviar
+[2025-05-02 15:01:09]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 15:01:10]: [SERVER] Client connected.
+[2025-05-02 15:01:10]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 15:01:10]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 15:01:13]: [SERVER] Client connected.
+[2025-05-02 15:01:13]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
+[2025-05-02 15:01:13]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 15:01:50]: [SERVER] Client connected.
+[2025-05-02 15:01:50]: [SERVER] Received: EXECUTE_CODE:adi.tuta:magazin_flori:select pret
+from flori
+order by pret desc
+[2025-05-02 15:01:50]: [SERVER] Sending: SELECT_SUCCESS
+[2025-05-02 15:41:26]: [SERVER] Listening on port 12345
+[2025-05-02 15:45:55]: [SERVER] Client connected.
+[2025-05-02 15:45:55]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 15:45:55]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 15:45:59]: [SERVER] Client connected.
+[2025-05-02 15:45:59]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 15:45:59]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 15:46:01]: [SERVER] Client connected.
+[2025-05-02 15:46:01]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
+[2025-05-02 15:46:01]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 15:46:02]: [SERVER] Client connected.
+[2025-05-02 15:46:02]: [SERVER] Received: LIST_ALL_TABLES:adi.tuta:magazin_flori
+[2025-05-02 15:46:02]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-02 15:46:09]: [SERVER] Client connected.
+[2025-05-02 15:46:09]: [SERVER] Received: LIST_ALL_TABLES:adi.tuta:magazin_flori
+[2025-05-02 15:46:09]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-02 15:46:19]: [SERVER] Client connected.
+[2025-05-02 15:46:19]: [SERVER] Received: LIST_ALL_TABLES:adi.tuta:magazin_flori
+[2025-05-02 15:46:19]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-02 15:50:14]: [SERVER] Listening on port 12345
+[2025-05-02 15:50:48]: [SERVER] Client connected.
+[2025-05-02 15:50:48]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 15:50:48]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 15:50:51]: [SERVER] Client connected.
+[2025-05-02 15:50:51]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 15:50:51]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 15:50:54]: [SERVER] Client connected.
+[2025-05-02 15:50:54]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
+[2025-05-02 15:50:54]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 15:50:55]: [SERVER] Client connected.
+[2025-05-02 15:50:55]: [SERVER] Received: GET_TABLES:adi.tuta:magazin_flori
+[2025-05-02 15:50:55]: [SERVER] Sending: TABLEDUMP:
+[2025-05-02 16:14:30]: [SERVER] Listening on port 12345
+[2025-05-02 16:15:51]: [SERVER] Client connected.
+[2025-05-02 16:15:51]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 16:15:51]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 16:15:54]: [SERVER] Client connected.
+[2025-05-02 16:15:54]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 16:15:54]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 16:15:57]: [SERVER] Client connected.
+[2025-05-02 16:15:57]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
+[2025-05-02 16:15:57]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 16:15:58]: [SERVER] Client connected.
+[2025-05-02 16:15:58]: [SERVER] Received: GET_TABLES:adi.tuta:magazin_flori
+[2025-05-02 16:15:58]: [SERVER] Sending: TABLEDUMP:
+[2025-05-02 16:26:40]: [SERVER] Listening on port 12345
+[2025-05-02 16:27:16]: [SERVER] Client connected.
+[2025-05-02 16:27:16]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 16:27:16]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 16:27:19]: [SERVER] Client connected.
+[2025-05-02 16:27:19]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 16:27:19]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 16:27:22]: [SERVER] Client connected.
+[2025-05-02 16:27:22]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
+[2025-05-02 16:27:22]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 16:27:22]: [SERVER] Client connected.
+[2025-05-02 16:27:22]: [SERVER] Received: GET_TABLES:adi.tuta:magazin_flori
+[2025-05-02 16:27:22]: [SERVER] Sending: TABLEDUMP:
+[2025-05-02 16:29:31]: [SERVER] Listening on port 12345
+[2025-05-02 16:29:45]: [SERVER] Client connected.
+[2025-05-02 16:29:45]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 16:29:45]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 16:29:49]: [SERVER] Client connected.
+[2025-05-02 16:29:49]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 16:29:49]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 16:29:51]: [SERVER] Client connected.
+[2025-05-02 16:29:51]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
+[2025-05-02 16:29:51]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 16:29:52]: [SERVER] Client connected.
+[2025-05-02 16:29:52]: [SERVER] Received: GET_TABLES:adi.tuta:magazin_flori
+[2025-05-02 16:29:52]: [SERVER] Sending: TABLEDUMP:
+[2025-05-02 16:29:58]: [SERVER] Client connected.
+[2025-05-02 16:29:58]: [SERVER] Received: GET_TABLES:adi.tuta:magazin_flori
+[2025-05-02 16:29:58]: [SERVER] Sending: TABLEDUMP:
+[2025-05-02 16:41:54]: [SERVER] Listening on port 12345
+[2025-05-02 16:42:14]: [SERVER] Client connected.
+[2025-05-02 16:42:14]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 16:42:14]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 16:42:17]: [SERVER] Client connected.
+[2025-05-02 16:42:17]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 16:42:17]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 16:42:20]: [SERVER] Client connected.
+[2025-05-02 16:42:20]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
+[2025-05-02 16:42:20]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 16:42:21]: [SERVER] Client connected.
+[2025-05-02 16:42:21]: [SERVER] Received: GET_TABLES:adi.tuta:magazin_flori
+[2025-05-02 16:42:21]: [SERVER] Sending: TABLEDUMP:
+[2025-05-02 16:42:26]: [SERVER] Client connected.
+[2025-05-02 16:42:26]: [SERVER] Received: GET_TABLES:adi.tuta:magazin_flori
+[2025-05-02 16:42:26]: [SERVER] Sending: TABLEDUMP:

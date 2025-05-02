@@ -355,6 +355,18 @@ void EnvironmentWindow::on_downloadButton_clicked()
     }
 }
 
+//acesta este butonul pentru a deschide fereastra de vizualizare a tabelelor
+//void EnvironmentWindow::on_tabesButton_clicked()
+//{
+//    if (selectedDatabase.isEmpty()) {
+//        QMessageBox::warning(this, "No DB", "Select a database first.");
+//        return;
+//    }
+//
+//    TablesViewerWindow* viewer = new TablesViewerWindow(currentUsername, selectedDatabase, this);
+//    viewer->exec();
+//}
+
 void EnvironmentWindow::on_logoutButton_clicked()
 {
     emit logoutRequested();
@@ -378,6 +390,8 @@ void EnvironmentWindow::onDatabaseChosen(const QString& databaseName)
         }
     }
 }
+
+
 
 void EnvironmentWindow::updateUsernameLabel()
 {
@@ -423,12 +437,48 @@ void EnvironmentWindow::setupPanelSwitching()
         else if (selectedItem == "Command History") {
             switchToCommandHistory();
         }
+
+		//afisarea tuturor tabelelor bazei de date selectate
+        else  if (selectedItem == "Tables") {
+            displayTables();  // definim mai jos
+        }
         else {
             switchToOtherPanel();
         }
      });
 
     setDefaultWidgetRow("Query");
+}
+
+void EnvironmentWindow::displayTables() {
+    if (selectedDatabase.isEmpty()) {
+        QMessageBox::warning(this, "No Database", "Please select a database first.");
+        return;
+    }
+
+    try {
+        Socket socket(Socket::Protocol::TCP);
+        if (!socket.connectToServer("127.0.0.1", 12345)) {
+            QMessageBox::critical(this, "Connection Error", "Could not connect to server.");
+            return;
+        }
+
+        std::string request = "GET_TABLES:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString();
+        socket.sendData(request);
+
+        std::string response = socket.receiveData(8192);
+
+        if (response.rfind("TABLEDUMP:",0)==0) {
+            QString tableDump = QString::fromStdString(response.substr(11));  // remove "TABLEDUMP:"
+            ui->EditorText->setPlainText(tableDump);
+        }
+        else {
+            QMessageBox::warning(this, "Error", "Unexpected server response.");
+        }
+    }
+    catch (const std::exception& e) {
+        QMessageBox::critical(this, "Error", e.what());
+    }
 }
 
 QString EnvironmentWindow::getCurrentPanel() const

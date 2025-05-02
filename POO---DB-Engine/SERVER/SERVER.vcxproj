@@ -155,6 +155,7 @@
     <ClCompile Include="CommandHistoryLog.cpp" />
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="CurrentDatabase.cpp" />
+    <ClCompile Include="CurrentDatabaseManager.cpp" />
     <ClCompile Include="DatabaseLoaderManager.cpp" />
     <ClCompile Include="DatabaseSelectManager.cpp" />
     <ClCompile Include="IException.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="Row.cpp" />
     <ClCompile Include="SessionLog.cpp" />
     <ClCompile Include="Table.cpp" />
+    <ClCompile Include="TableListManager.cpp" />
     <ClCompile Include="UserCredentialsDatabase.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +192,7 @@
     <ClInclude Include="CommandHistoryLog.h" />
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="CurrentDatabase.h" />
+    <ClInclude Include="CurrentDatabaseManager.h" />
     <ClInclude Include="DatabaseLoaderManager.h" />
     <ClInclude Include="DatabaseSelectManager.h" />
     <ClInclude Include="IException.h" />
@@ -200,6 +203,7 @@
     <ClInclude Include="Row.h" />
     <ClInclude Include="SessionLog.h" />
     <ClInclude Include="Table.h" />
+    <ClInclude Include="TableListManager.h" />
     <ClInclude Include="UserCredentialsDatabase.h" />
   </ItemGroup>
   <ItemGroup>

@@ -52,13 +52,21 @@ public:
 
     void loadFromFile(const std::string& path) {
         std::ifstream file(path);
-        if (!file.is_open()) return;
+        if (!file.is_open()) {
+            std::cerr << "Cannot open file: " << path << "\n";
+            return;
+        }
 
         columns.clear();
         rows.clear();
+
         std::string line;
         bool readingData = false;
+        int lineNumber = 0;
+
         while (std::getline(file, line)) {
+            ++lineNumber;
+
             if (line == "#DATA") {
                 readingData = true;
                 continue;
@@ -66,16 +74,36 @@ public:
 
             std::stringstream ss(line);
             std::string part;
+
             if (!readingData) {
                 std::vector<std::string> parts;
                 while (std::getline(ss, part, '|')) parts.push_back(part);
-                Column col(parts[0], static_cast<Column::Type>(std::stoi(parts[1])), parts[2] == "1", parts[3] == "1", parts[4]);
+
+                if (parts.size() < 5) {
+                    std::cerr << "Invalid column definition at line " << lineNumber << ": " << line << "\n";
+                    continue;
+                }
+
+                Column col(
+                    parts[0],
+                    static_cast<Column::Type>(std::stoi(parts[1])),
+                    parts[2] == "1",
+                    parts[3] == "1",
+                    parts[4]
+                );
+
                 columns.push_back(col);
             }
             else {
                 Row row;
                 std::vector<std::string> values;
                 while (std::getline(ss, part, '|')) values.push_back(part);
+
+                if (values.size() != columns.size()) {
+                    std::cerr << "Row column mismatch at line " << lineNumber << ": " << line << "\n";
+                    continue;
+                }
+
                 row.setValues(values);
                 rows.push_back(row);
             }

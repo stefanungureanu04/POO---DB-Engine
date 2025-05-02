@@ -1,12 +1,12 @@
-﻿#pragma once
+#pragma once
 #include <string>
 
-class DatabaseLoaderManager {
+class TableListManager {
 private:
     std::string username;
     std::string dbName;
 
 public:
-    DatabaseLoaderManager(const std::string& request);
+    TableListManager(const std::string& request);
     std::string process();
 };

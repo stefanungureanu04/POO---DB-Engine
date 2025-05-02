@@ -6,6 +6,7 @@
 #include "CommandManager.h"
 #include "AppLog.h"
 #include"DatabaseLoaderManager.h"
+#include"TableListManager.h"
 
 std::string AppHandler::handle(const std::string& request)
 {
@@ -37,6 +38,10 @@ std::string AppHandler::handle(const std::string& request)
     else if (beginsWith(request, "LOAD_DATABASE:")) {
         DatabaseLoaderManager loader(request);
         return loader.process();
+    }
+    else if (request.rfind("GET_TABLES:", 0) == 0) {
+        TableListManager manager(request);
+        return manager.process();
     }
 
     return "UNKNOWN_COMMAND";
