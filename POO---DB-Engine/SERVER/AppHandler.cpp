@@ -7,6 +7,7 @@
 #include "AppLog.h"
 #include"DatabaseLoaderManager.h"
 #include"TableListManager.h"
+#include"RelationManager.h"
 
 std::string AppHandler::handle(const std::string& request)
 {
@@ -43,6 +44,10 @@ std::string AppHandler::handle(const std::string& request)
     }
     else if (request.rfind("GET_TABLES:", 0) == 0) {
         TableListManager manager(request, workingDatabase);
+        return manager.process();
+    }
+    else if (request.rfind("SHOW_RELATIONS:", 0) == 0) {
+        RelationManager manager(request);
         return manager.process();
     }
 

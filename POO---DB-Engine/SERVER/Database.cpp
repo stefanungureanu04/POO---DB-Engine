@@ -68,6 +68,23 @@ void Database::showRelations()
     }
 }
 
+std::string Database::getRelationsAsString() const
+{
+    std::ostringstream output;
+    for (const auto& tablePair : tables) {
+        const std::string& tableName = tablePair.first;
+        const Table& table = tablePair.second;
+
+        for (const Column& col : table.getColumns()) {
+            if (col.isFK()) {
+                output << tableName << " -> " << col.getFKTable()
+                    << " (" << col.getName() << " -> " << col.getFKColumn() << ")\n";
+            }
+        }
+    }
+    return output.str();
+}
+
 bool Database::loadFromFile(const std::string& filename) {
 
     std::ifstream file(filename);

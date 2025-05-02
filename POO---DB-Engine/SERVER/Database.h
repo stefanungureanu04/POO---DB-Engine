@@ -22,7 +22,7 @@ public:
     void deleteRow(const std::string& tableName, const std::string& pkValue);
 
     void showRelations();
-
+    std::string getRelationsAsString() const;
 
     bool loadFromFile(const std::string& filename);
     void saveToFile(const std::string& filename) const;

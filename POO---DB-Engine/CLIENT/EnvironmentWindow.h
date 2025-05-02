@@ -46,6 +46,7 @@ private slots:
 	//void openStructureViewer();         //pentru a vizualiza structura unei baze de date
 	//void openTablesViewer();            //pentru a vizualiza tabelele unei baze de date
     void displayTables();
+    void displayRelations();
 
 private:
     void enableSyntaxHighlighting();
