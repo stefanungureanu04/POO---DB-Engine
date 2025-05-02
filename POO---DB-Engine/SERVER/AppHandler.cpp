@@ -37,10 +37,12 @@ std::string AppHandler::handle(const std::string& request)
     }
     else if (beginsWith(request, "LOAD_DATABASE:")) {
         DatabaseLoaderManager loader(request);
-        return loader.process();
+        std::string response = loader.process();
+        workingDatabase = loader.getDatabase();
+        return response;
     }
     else if (request.rfind("GET_TABLES:", 0) == 0) {
-        TableListManager manager(request);
+        TableListManager manager(request, workingDatabase);
         return manager.process();
     }
 

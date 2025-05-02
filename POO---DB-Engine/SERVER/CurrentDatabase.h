@@ -39,14 +39,14 @@ public:
     void saveAllTables() const {
         for (const auto& pair : tables) {
             std::string fileName = pair.first + "_" + dbName + "_" + owner + ".tbl";
-            pair.second.saveToFile(fileName);
+           // pair.second.saveToFile(fileName);
         }
     }
 
     void loadTable(const std::string& tableName) {
         std::string fileName = tableName + "_" + dbName + "_" + owner + ".tbl";
         Table table(tableName);
-        table.loadFromFile(fileName);
+        //table.loadFromFile(fileName);
         tables[tableName] = table;
     }
     

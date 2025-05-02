@@ -1,7 +1,11 @@
 #pragma once
+#include "Database.h"
 #include <string>
 
 class AppHandler {
+private:
+    Database *workingDatabase = nullptr;
+
 public:
     std::string handle(const std::string& request);
 

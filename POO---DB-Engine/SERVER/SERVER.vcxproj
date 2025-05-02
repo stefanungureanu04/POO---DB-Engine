@@ -156,6 +156,7 @@
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="CurrentDatabase.cpp" />
     <ClCompile Include="CurrentDatabaseManager.cpp" />
+    <ClCompile Include="Database.cpp" />
     <ClCompile Include="DatabaseLoaderManager.cpp" />
     <ClCompile Include="DatabaseSelectManager.cpp" />
     <ClCompile Include="IException.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="CurrentDatabase.h" />
     <ClInclude Include="CurrentDatabaseManager.h" />
+    <ClInclude Include="Database.h" />
     <ClInclude Include="DatabaseLoaderManager.h" />
     <ClInclude Include="DatabaseSelectManager.h" />
     <ClInclude Include="IException.h" />
