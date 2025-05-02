@@ -438,7 +438,8 @@ void EnvironmentWindow::setupPanelSwitching()
 
 		//afisarea tuturor tabelelor bazei de date selectate
         else  if (selectedItem == "Tables") {
-            displayTables();  // definim mai jos
+            switchToOtherPanel();
+            displayTables(); 
         }
         else {
             switchToOtherPanel();

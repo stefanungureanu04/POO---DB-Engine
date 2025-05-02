@@ -19,27 +19,30 @@ std::string TableListManager::process() {
 
         output.clear();
 
-        // Iterăm prin tabelele existente în memorie
-        for (const auto& tableName : db->getTableNames()) {
-            
-            Table* t = db->getTable(tableName);
+        //// Iterăm prin tabelele existente în memorie
+        //for (const auto& tableName : db->getTableNames()) {
 
-           output += "Table: " + tableName + "\n";
+        //    output += tableName + '\n';
 
-            for (const Column& col : t->getColumns()) {
-                output += col.getName() + " \t";
-            }
-            output += "\n";
+        //        Table* t = db->getTable(tableName);
 
-            for (const Row& row : t->getRows()) {
-                for (const auto& val : row.getValues()) {
-                    output += val + "\t";
-                }
-                output += "\n";
-            }
+        //       output += "Table: " + tableName + "\n";
 
-            output += "\n";
-        }
+        //        for (const Column& col : t->getColumns()) {
+        //            output += col.getName() + " \t";
+        //        }
+        //        output += "\n";
+
+        //        for (const Row& row : t->getRows()) {
+        //            for (const auto& val : row.getValues()) {
+        //                output += val + "\t";
+        //            }
+        //            output += "\n";
+        //        }
+
+        //        output += "\n";
+        //    }
+        
 
         if (output.empty()) {
             return "TABLEDUMP:EMPTY";

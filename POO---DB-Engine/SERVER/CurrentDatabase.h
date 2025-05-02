@@ -6,6 +6,7 @@
 #include <sstream>
 #include <iostream>
 #include <algorithm>
+#include <filesystem>
 #include "Table.h"
 
 class CurrentDatabase
@@ -51,8 +52,24 @@ public:
     
     std::vector<std::string> getTableNames() const {
         std::vector<std::string> names;
-        for (const auto& pair : tables) {
-            names.push_back(pair.first);
+
+        // Build the correct folder path
+        std::string folderPath = "databases/" + owner + "/" + dbName + "/";
+
+        try {
+            for (const auto& entry : std::filesystem::directory_iterator(folderPath)) {
+                if (entry.is_regular_file()) {
+                    std::string filename = entry.path().filename().string();
+                    if (filename.size() >= 4 && filename.substr(filename.size() - 4) == ".tbl") {
+                        std::string tableName = filename.substr(0, filename.size() - 4); // remove ".tbl"
+                        names.push_back(tableName);
+                    }
+                }
+            }
+        }
+        catch (const std::filesystem::filesystem_error& e) {
+            std::cerr << "[getTableNames] Filesystem error: " << e.what() << std::endl;
+            // Optionally handle/log or return empty
         }
 
         return names;
