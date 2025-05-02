@@ -40,6 +40,9 @@ public:
 
     void loadTable(const std::string& tableName) {
         std::string fileName = tableName + "_" + dbName + "_" + owner + ".tbl";
+
+        std::cout << "Loading table from file: " << fileName << std::endl;  // DEBUG
+
         Table table(tableName);
         table.loadFromFile(fileName);
         tables[tableName] = table;

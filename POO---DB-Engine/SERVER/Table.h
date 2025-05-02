@@ -57,6 +57,8 @@ public:
             return;
         }
 
+        std::cout << "Reading table file: " << path << std::endl;
+
         columns.clear();
         rows.clear();
 
