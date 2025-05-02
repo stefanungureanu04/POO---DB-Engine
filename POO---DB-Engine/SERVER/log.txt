@@ -1975,3 +1975,16 @@ order by pret desc
 [2025-05-02 16:42:26]: [SERVER] Client connected.
 [2025-05-02 16:42:26]: [SERVER] Received: GET_TABLES:adi.tuta:magazin_flori
 [2025-05-02 16:42:26]: [SERVER] Sending: TABLEDUMP:
+[2025-05-02 16:51:32]: [SERVER] Listening on port 12345
+[2025-05-02 17:13:22]: [SERVER] Client connected.
+[2025-05-02 17:13:22]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 17:13:22]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 17:13:26]: [SERVER] Client connected.
+[2025-05-02 17:13:26]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 17:13:26]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 17:13:28]: [SERVER] Client connected.
+[2025-05-02 17:13:28]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
+[2025-05-02 17:13:28]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 17:13:29]: [SERVER] Client connected.
+[2025-05-02 17:13:29]: [SERVER] Received: GET_TABLES:adi.tuta:magazin_flori
+[2025-05-02 17:13:29]: [SERVER] Sending: TABLEDUMP:EMPTY

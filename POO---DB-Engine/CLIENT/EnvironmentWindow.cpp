@@ -467,10 +467,11 @@ void EnvironmentWindow::displayTables() {
         socket.sendData(request);
 
         std::string response = socket.receiveData(8192);
-
-        if (response.rfind("TABLEDUMP:",0)==0) {
-            QString tableDump = QString::fromStdString(response.substr(11));  // remove "TABLEDUMP:"
-            ui->EditorText->setPlainText(tableDump);
+        const std::string prefix = "TABLEDUMP:";
+        if (response.rfind(prefix, 0) == 0) { // începe cu "TABLEDUMP:"
+            std::string payload = response.substr(prefix.length());
+            QString qPayload = QString::fromStdString(payload);
+            ui->EditorText->setPlainText(qPayload);
         }
         else {
             QMessageBox::warning(this, "Error", "Unexpected server response.");

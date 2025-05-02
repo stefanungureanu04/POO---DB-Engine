@@ -39,7 +39,11 @@ std::string TableListManager::process() {
             output << "\n";
         }
 
-        return "TABLEDUMP:" + output.str();
+        std::string result = output.str();
+        if (result.empty()) {
+            return "TABLEDUMP:EMPTY";
+        }
+        return "TABLEDUMP:" + result;
     }
     catch (...) {
         return "TABLEDUMP:FAILED";
