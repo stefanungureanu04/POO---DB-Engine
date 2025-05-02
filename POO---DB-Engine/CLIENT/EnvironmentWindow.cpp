@@ -391,8 +391,6 @@ void EnvironmentWindow::onDatabaseChosen(const QString& databaseName)
     }
 }
 
-
-
 void EnvironmentWindow::updateUsernameLabel()
 {
     QString usernameLabel = currentUsername + " - MANAGER";
@@ -451,6 +449,7 @@ void EnvironmentWindow::setupPanelSwitching()
 }
 
 void EnvironmentWindow::displayTables() {
+    
     if (selectedDatabase.isEmpty()) {
         QMessageBox::warning(this, "No Database", "Please select a database first.");
         return;
@@ -468,6 +467,7 @@ void EnvironmentWindow::displayTables() {
 
         std::string response = socket.receiveData(8192);
         const std::string prefix = "TABLEDUMP:";
+
         if (response.rfind(prefix, 0) == 0) { // începe cu "TABLEDUMP:"
             std::string payload = response.substr(prefix.length());
             QString qPayload = QString::fromStdString(payload);

@@ -15,35 +15,36 @@ std::string TableListManager::process() {
         CurrentDatabase* db = CurrentDatabaseManager::get();
         if (!db) return "TABLEDUMP:FAILED";
 
-        std::ostringstream output;
+        std::string output{};
+
+        output.clear();
 
         // Iterăm prin tabelele existente în memorie
         for (const auto& tableName : db->getTableNames()) {
+            
             Table* t = db->getTable(tableName);
-            if (!t) continue;
 
-            output << "Table: " << tableName << "\n";
+           output += "Table: " + tableName + "\n";
 
             for (const Column& col : t->getColumns()) {
-                output << col.getName() << "\t";
+                output += col.getName() + " \t";
             }
-            output << "\n";
+            output += "\n";
 
             for (const Row& row : t->getRows()) {
                 for (const auto& val : row.getValues()) {
-                    output << val << "\t";
+                    output += val + "\t";
                 }
-                output << "\n";
+                output += "\n";
             }
 
-            output << "\n";
+            output += "\n";
         }
 
-        std::string result = output.str();
-        if (result.empty()) {
+        if (output.empty()) {
             return "TABLEDUMP:EMPTY";
         }
-        return "TABLEDUMP:" + result;
+        return "TABLEDUMP:" + output;
     }
     catch (...) {
         return "TABLEDUMP:FAILED";

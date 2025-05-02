@@ -14,6 +14,10 @@ public:
     CurrentDatabase(const std::string& name, const std::string& owner)
         : dbName(name), owner(owner) {}
 
+    std::string getName() {
+        return dbName;
+    }
+
     void addTable(const Table& table) {
         tables[table.getName()] = table;
     }
@@ -50,6 +54,7 @@ public:
         for (const auto& pair : tables) {
             names.push_back(pair.first);
         }
+
         return names;
     }
 
