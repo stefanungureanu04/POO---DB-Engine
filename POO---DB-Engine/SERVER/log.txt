@@ -2041,3 +2041,15 @@ order by pret desc
 [2025-05-02 17:44:21]: [SERVER] Client connected.
 [2025-05-02 17:44:21]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
 [2025-05-02 17:44:21]: [SERVER] Sending: LOAD_DB_FAIL
+[2025-05-02 18:07:48]: [SERVER] Client connected.
+[2025-05-02 18:07:48]: [SERVER] Received: GET_TABLES:adi.tuta:magazin_flori
+[2025-05-02 18:07:48]: [SERVER] Sending: TABLEDUMP:FAILED
+[2025-05-02 18:08:04]: [SERVER] Client connected.
+[2025-05-02 18:08:04]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 18:08:04]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 18:08:10]: [SERVER] Client connected.
+[2025-05-02 18:08:10]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 18:08:10]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 18:08:12]: [SERVER] Client connected.
+[2025-05-02 18:08:12]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
+[2025-05-02 18:08:12]: [SERVER] Sending: LOAD_DB_FAIL
