@@ -1832,3 +1832,13 @@ order by pret
 [2025-05-02 02:46:44]: [SERVER] Client connected.
 [2025-05-02 02:46:44]: [SERVER] Received: LIST_QUERIES:adi.tuta
 [2025-05-02 02:46:44]: [SERVER] Sending: QUERYLIST:querry_transport
+[2025-05-02 03:17:40]: [SERVER] Listening on port 12345
+[2025-05-02 03:26:24]: [SERVER] Client connected.
+[2025-05-02 03:26:24]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-02 03:26:24]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 03:26:27]: [SERVER] Client connected.
+[2025-05-02 03:26:27]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-02 03:26:27]: [SERVER] Sending: DBLIST:magazin_flori;studenti_ATM;sistem_transport_feroviar
+[2025-05-02 03:26:30]: [SERVER] Client connected.
+[2025-05-02 03:26:30]: [SERVER] Received: LOAD_DATABASE:adi.tuta:sistem_transport_feroviar
+[2025-05-02 03:26:30]: [SERVER] Sending: LOAD_DB_SUCCESS

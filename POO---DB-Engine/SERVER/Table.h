@@ -11,6 +11,7 @@
 class Table
 {
 public:
+    Table() {};
     Table(const std::string& name) : name(name) {}
 
     void addColumn(const Column& column) {
