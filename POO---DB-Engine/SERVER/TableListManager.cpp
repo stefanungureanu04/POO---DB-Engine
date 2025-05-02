@@ -1,5 +1,5 @@
 ﻿#include "TableListManager.h"
-#include "CurrentDatabaseManager.h"
+
 #include <sstream>
 
 TableListManager::TableListManager(const std::string& request, Database* database)
