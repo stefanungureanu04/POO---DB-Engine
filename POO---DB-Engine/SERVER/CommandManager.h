@@ -2,6 +2,8 @@
 #include <string>
 
 class CommandManager {
+private:
+
 public:
     CommandManager(const std::string& fullRequest);
     std::string processCommand();

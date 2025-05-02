@@ -2560,3 +2560,60 @@ vanzari
 [2025-05-02 22:36:14]: [SERVER] Sending: TABLEDUMP:produse
 vanzari
 
+[2025-05-02 22:38:00]: [SERVER] Listening on port 12345
+[2025-05-02 22:38:15]: [SERVER] Client connected.
+[2025-05-02 22:38:15]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-02 22:38:15]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 22:38:19]: [SERVER] Client connected.
+[2025-05-02 22:38:19]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 22:38:19]: [SERVER] Sending: DBLIST:db;backup
+[2025-05-02 22:38:21]: [SERVER] Client connected.
+[2025-05-02 22:38:21]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:db
+[2025-05-02 22:38:21]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 22:38:22]: [SERVER] Client connected.
+[2025-05-02 22:38:22]: [SERVER] Received: GET_TABLES:stefan.ungureanu:db
+[2025-05-02 22:38:22]: [SERVER] Sending: TABLEDUMP:produse
+vanzari
+
+[2025-05-02 22:38:24]: [SERVER] Client connected.
+[2025-05-02 22:38:24]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 22:38:24]: [SERVER] Sending: DBLIST:db;backup
+[2025-05-02 22:38:26]: [SERVER] Client connected.
+[2025-05-02 22:38:26]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:backup
+[2025-05-02 22:38:26]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 22:38:27]: [SERVER] Client connected.
+[2025-05-02 22:38:27]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:backup
+[2025-05-02 22:38:27]: [SERVER] Sending: RELATIONS:vanzari -> produse (id_produs -> id)
+
+[2025-05-02 22:38:27]: [SERVER] Client connected.
+[2025-05-02 22:38:27]: [SERVER] Received: GET_TABLES:stefan.ungureanu:backup
+[2025-05-02 22:38:27]: [SERVER] Sending: TABLEDUMP:produse
+vanzari
+products
+
+[2025-05-02 22:38:28]: [SERVER] Client connected.
+[2025-05-02 22:38:28]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:backup
+[2025-05-02 22:38:28]: [SERVER] Sending: RELATIONS:vanzari -> produse (id_produs -> id)
+
+[2025-05-02 22:38:29]: [SERVER] Client connected.
+[2025-05-02 22:38:29]: [SERVER] Received: GET_TABLES:stefan.ungureanu:backup
+[2025-05-02 22:38:29]: [SERVER] Sending: TABLEDUMP:produse
+vanzari
+products
+
+[2025-05-02 22:38:30]: [SERVER] Client connected.
+[2025-05-02 22:38:30]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 22:38:30]: [SERVER] Sending: DBLIST:db;backup
+[2025-05-02 22:38:32]: [SERVER] Client connected.
+[2025-05-02 22:38:32]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:db
+[2025-05-02 22:38:32]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 22:38:35]: [SERVER] Client connected.
+[2025-05-02 22:38:35]: [SERVER] Received: GET_TABLES:stefan.ungureanu:db
+[2025-05-02 22:38:35]: [SERVER] Sending: TABLEDUMP:produse
+vanzari
+
+[2025-05-02 22:38:36]: [SERVER] Client connected.
+[2025-05-02 22:38:36]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 22:38:36]: [SERVER] Sending: DBLIST:db;backup
+[2025-05-02 23:05:40]: [SERVER] Listening on port 12345
+[2025-05-02 23:05:48]: [SERVER] Listening on port 12345

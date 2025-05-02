@@ -5,9 +5,9 @@
 #include "QueryManager.h"
 #include "CommandManager.h"
 #include "AppLog.h"
-#include"DatabaseLoaderManager.h"
-#include"TableListManager.h"
-#include"RelationManager.h"
+#include "DatabaseLoaderManager.h"
+#include "TableListManager.h"
+#include "RelationManager.h"
 
 std::string AppHandler::handle(const std::string& request)
 {
@@ -47,7 +47,7 @@ std::string AppHandler::handle(const std::string& request)
         return manager.process();
     }
     else if (request.rfind("SHOW_RELATIONS:", 0) == 0) {
-        RelationManager manager(request);
+        RelationManager manager(request, workingDatabase);
         return manager.process();
     }
 
