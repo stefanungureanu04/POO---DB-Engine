@@ -163,7 +163,6 @@
     <ClCompile Include="main_server.cpp" />
     <ClCompile Include="QueryManager.cpp" />
     <ClCompile Include="RelationManager.cpp" />
-    <ClCompile Include="Row.cpp" />
     <ClCompile Include="SessionLog.cpp" />
     <ClCompile Include="Table.cpp" />
     <ClCompile Include="TableListManager.cpp" />
@@ -200,7 +199,6 @@
     <ClInclude Include="QueryManager.h" />
     <ClInclude Include="RelationManager.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Row.h" />
     <ClInclude Include="SessionLog.h" />
     <ClInclude Include="Table.h" />
     <ClInclude Include="TableListManager.h" />
