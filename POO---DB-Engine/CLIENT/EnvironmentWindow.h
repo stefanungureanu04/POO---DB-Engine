@@ -34,7 +34,6 @@ private slots:
     void on_importButton_clicked();
     void on_logButton_clicked();
     void on_downloadButton_clicked();
-	//void on_tabesButton_clicked();
 
 	//slot pentru logout - sub lista de optiuni din manager (panou stanga)
     void on_logoutButton_clicked();
@@ -42,9 +41,6 @@ private slots:
     void onDatabaseChosen(const QString& databaseName);
 	void updateUsernameLabel();
 
-	//lista de optiuni din manager (stanga)
-	//void openStructureViewer();         //pentru a vizualiza structura unei baze de date
-	//void openTablesViewer();            //pentru a vizualiza tabelele unei baze de date
     void displayTables();
     void displayRelations();
 
@@ -65,7 +61,7 @@ private:
     Ui::EnvironmentWindow* ui;
     QStringList userDatabases;                           // definesc bazele de date ale utilizatorului
     QStringList commandHistoryBuffer;                    // stores past commands
-    QString editorBackup;                               // used when switching in/out of Command History
+    QString editorBackup;                                // used when switching in/out of Command History
     QString editorQueryContent;
     SyntaxHighlighter* highlighter = nullptr;
 

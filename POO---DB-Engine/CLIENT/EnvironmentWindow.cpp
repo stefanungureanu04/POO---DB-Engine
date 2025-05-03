@@ -156,7 +156,6 @@ void EnvironmentWindow::on_optionsButton_clicked()
     dialog->exec();
 }
 
-//---> apasarea butonului run si rularea codului curent scris in editorul text
 void EnvironmentWindow::on_runButton_clicked()
 {
     QString currentPanel = getCurrentPanel();
@@ -207,12 +206,12 @@ void EnvironmentWindow::on_runButton_clicked()
         QElapsedTimer timer;
         timer.start();
 
-        // Serializez: comanda + utilizator + baza de date + cod   -> selectedDatabase este baza de date selectata din meniul de selectie al bazei de date
-        std::string request = "EXECUTE_CODE:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString() + ":" + cleanedCode.toStdString();
+        // Serializez: comanda + utilizator + baza de date + cod
+        std::string request = "EXECUTE_CODE:" + currentUsername.toStdString() + ":";
+        request += selectedDatabase.toStdString() + ":" + cleanedCode.toStdString();
 
         socket.sendData(request);  // trimit cererea la server
-
-        std::string response = socket.receiveData(4096); // răspunsul de la server
+        std::string response = socket.receiveData(4096);
 
         qint64 elapsedMs = timer.elapsed();
 
@@ -392,18 +391,6 @@ void EnvironmentWindow::on_downloadButton_clicked()
         QMessageBox::critical(this, "Socket Error", e.what());
     }
 }
-
-//acesta este butonul pentru a deschide fereastra de vizualizare a tabelelor
-//void EnvironmentWindow::on_tabesButton_clicked()
-//{
-//    if (selectedDatabase.isEmpty()) {
-//        QMessageBox::warning(this, "No DB", "Select a database first.");
-//        return;
-//    }
-//
-//    TablesViewerWindow* viewer = new TablesViewerWindow(currentUsername, selectedDatabase, this);
-//    viewer->exec();
-//}
 
 void EnvironmentWindow::on_logoutButton_clicked()
 {

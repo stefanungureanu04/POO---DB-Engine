@@ -7,7 +7,7 @@ In folderul databases/stefan.ungureanu gasesti baza de date CompanyDB.
 
 Urmatoarele comenzi rulate din query functioneaza:
 
-	create clienti (id number PK, nume string, email string);
+	create table clienti (id number PK, nume string, email string);
 	drop table clienti;
 	insert into angajati values (8, 'Paul', 1, 4800);
 	delete from angajati where salariu < 4000;
@@ -28,6 +28,8 @@ Poti scrie o comanda pe mai multe linii
 	select *
 	from angajati;
 
+Singura chestie care nu merge este selectul dupa o coloane pentru care se foloseste alias (dar nu conteaza asa mult, nici nu mai ne batem capul aici).
+Exista doar doua tipuri de date: "number" pentru valori numerice si "string" pentru siruri de caractere (se pun intre ' ' , nu " " asa).
 Am adaugat suport pentru comentarii (liniile care incep cu // nu se executa, de asemenea, sunt evidentiate);
 Am modificat ce se afiseaza in Tables (tabele + coloane + tipuri de date). Nu trebuie adaugat tot continutul
 pentru ca se poate face select bine.

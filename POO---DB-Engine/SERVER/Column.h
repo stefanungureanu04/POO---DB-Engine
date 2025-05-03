@@ -17,21 +17,14 @@ private:
     std::string foreignColumn;
 
 public:
-    Column(const std::string& name, const std::string& type)
-        : name(name), type(type) {
-    }
+    Column(const std::string& name, const std::string& type);
 
-    void setPrimaryKey() { isPrimaryKey = true; }
-    void setForeignKey(const std::string& foreignTable, const std::string& foreignColumn) {
-        isForeignKey = true;
-        this->foreignTable = foreignTable;
-        this->foreignColumn = foreignColumn;
-    }
-
-    std::string getName() const { return name; }
-    std::string getType() const { return type; }
-    bool isPK() const { return isPrimaryKey; }
-    bool isFK() const { return isForeignKey; }
-    std::string getFKTable() const { return foreignTable; }
-    std::string getFKColumn() const { return foreignColumn; }
+    void setPrimaryKey();
+    void setForeignKey(const std::string& foreignTable, const std::string& foreignColumn);
+    std::string getName() const;
+    std::string getType() const;
+    bool isPK() const;
+    bool isFK() const;
+    std::string getFKTable() const;
+    std::string getFKColumn() const;
 };

@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+using namespace std;
+
 class CommandManager {
 private:
     Database* workingDatabase;
@@ -26,5 +28,10 @@ private:
     std::string handleSelect();
     std::string handleDelete();
     std::string handleUnknown();
-    std::string formatSelectResult(const std::vector<std::string>& headers, const std::vector<std::vector<std::string>>& rows);
+
+    bool parseSelectQuery(const string& query, string& columnsPart, string& tableName, string& whereClause, string& orderByColumn);
+    bool getSelectedColumns(const vector<Column>& tableCols, const string& columnsPart, vector<int>& colIndexes,vector<string>& selectedColNames);
+    bool filterRows(const Table* table, const vector<int>& colIndexes, const vector<Column>& tableCols, const string& whereClause, vector<vector<string>>& selectedRows);
+    bool sortRows(vector<vector<string>>& selectedRows, const vector<string>& selectedColNames, const vector<Column>& tableCols, string orderByColumn);
+    std::string formatSelectResult(const vector<string>& headers, const vector<vector<string>>& rows);
 };

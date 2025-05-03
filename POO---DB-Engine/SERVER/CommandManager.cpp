@@ -40,7 +40,6 @@ void CommandManager::trim(std::string& s)
     s.erase(s.find_last_not_of(" \t\n\r") + 1);
 }
 
-//aici se proceseaza comanda primita de la client
 std::string CommandManager::processCommand() 
 {
     std::istringstream iss(userCode);
@@ -83,6 +82,7 @@ std::string CommandManager::processCommand()
         if (!combinedResponse.empty()) {
             combinedResponse += "\n";  // separate responses
         }
+
         combinedResponse += response;
     }
 
@@ -222,245 +222,29 @@ std::string CommandManager::handleDropTable()
 
 std::string CommandManager::handleSelect() 
 {
-    size_t fromPos = userCode.find("from");
-    if (fromPos == std::string::npos) {
-        return "SELECT_FAIL: missing FROM";
-    }
+    std::string columnsPart, tableName, whereClause, orderByColumn;
 
-    std::string columnsPart = userCode.substr(7, fromPos - 7); // skip "SELECT "
-    std::string afterFrom = userCode.substr(fromPos + 4);      // skip "from"
+    if (!parseSelectQuery(userCode, columnsPart, tableName, whereClause, orderByColumn))
+        return "SELECT_FAIL: invalid syntax";
 
-    trim(columnsPart);
-    trim(afterFrom);
-
-    // 2. Parse WHERE and ORDER BY
-    size_t wherePos = afterFrom.find("where");
-    size_t orderByPos = afterFrom.find("order by");
-
-    std::string tableName;
-    std::string whereClause;
-    std::string orderByColumn;
-
-    if (wherePos != std::string::npos && orderByPos != std::string::npos && orderByPos > wherePos) {
-        tableName = afterFrom.substr(0, wherePos);
-        whereClause = afterFrom.substr(wherePos + 5, orderByPos - (wherePos + 5));
-        orderByColumn = afterFrom.substr(orderByPos + 8);
-    }
-    else if (wherePos != std::string::npos) {
-        tableName = afterFrom.substr(0, wherePos);
-        whereClause = afterFrom.substr(wherePos + 5);
-    }
-    else if (orderByPos != std::string::npos) {
-        tableName = afterFrom.substr(0, orderByPos);
-        orderByColumn = afterFrom.substr(orderByPos + 8);
-    }
-    else {
-        tableName = afterFrom;
-    }
-
-    trim(tableName);
-    trim(whereClause);
-    trim(orderByColumn);
-
-    // 3. Get table
     Table* table = workingDatabase->getTable(tableName);
-    if (!table) {
+    if (!table)
         return "SELECT_FAIL: table not found";
-    }
 
     const auto& tableCols = table->getColumns();
-
-    // 4. Determine selected columns
     std::vector<int> colIndexes;
     std::vector<std::string> selectedColNames;
 
-    if (columnsPart == "*") {
-        for (size_t i = 0; i < tableCols.size(); ++i) {
-            colIndexes.push_back(static_cast<int>(i));
-            selectedColNames.push_back(tableCols[i].getName());
-        }
-    }
-    else {
-        std::istringstream iss(columnsPart);
-        std::string colExpr;
-        while (std::getline(iss, colExpr, ',')) {
-            trim(colExpr);
+    if (!getSelectedColumns(tableCols, columnsPart, colIndexes, selectedColNames))
+        return "SELECT_FAIL: unknown column";
 
-            std::string baseColName = colExpr;
-            std::string alias = "";
-
-            size_t asPos = colExpr.find(" as ");
-            if (asPos != std::string::npos) {
-                baseColName = colExpr.substr(0, asPos);
-                alias = colExpr.substr(asPos + 4);
-                trim(baseColName);
-                trim(alias);
-            }
-
-            bool found = false;
-            for (size_t i = 0; i < tableCols.size(); ++i) {
-                if (tableCols[i].getName() == baseColName) {
-                    colIndexes.push_back(static_cast<int>(i));
-                    if (!alias.empty()) {
-                        selectedColNames.push_back(alias);
-                    }
-                    else {
-                        selectedColNames.push_back(baseColName);
-                    }
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                return "SELECT_FAIL: column " + baseColName + " not found";
-            }
-        }
-    }
-
-    // 5. Parse WHERE condition
-    std::string whereCol, whereOp, whereValue;
-    if (!whereClause.empty()) {
-        std::string ops[] = { ">=", "<=", "!=", "=", "<", ">" };
-        size_t opPos = std::string::npos;
-
-        for (const std::string& op : ops) {
-            opPos = whereClause.find(op);
-            if (opPos != std::string::npos) {
-                whereOp = op;
-                break;
-            }
-        }
-
-        if (whereOp.empty()) {
-            return "SELECT_FAIL: invalid WHERE operator";
-        }
-
-        whereCol = whereClause.substr(0, opPos);
-        whereValue = whereClause.substr(opPos + whereOp.length());
-
-        trim(whereCol);
-        trim(whereValue);
-    }
-
-    // 6. Gather rows
     std::vector<std::vector<std::string>> selectedRows;
+    if (!filterRows(table, colIndexes, tableCols, whereClause, selectedRows))
+        return "SELECT_FAIL: error in WHERE clause";
 
-    for (const auto& row : table->getRows()) {
-        bool include = true;
+    if (!sortRows(selectedRows, selectedColNames, tableCols, orderByColumn))
+        return "SELECT_FAIL: error in ORDER BY";
 
-        if (!whereClause.empty()) {
-            int whereIdx = -1;
-            for (size_t i = 0; i < tableCols.size(); ++i) {
-                if (tableCols[i].getName() == whereCol) {
-                    whereIdx = static_cast<int>(i);
-                    break;
-                }
-            }
-            if (whereIdx == -1) {
-                return "SELECT_FAIL: column " + whereCol + " not found";
-            }
-
-            const std::string& cell = row[whereIdx];
-            const std::string& colType = tableCols[whereIdx].getType();
-
-            if (colType == "number") {
-                double cellVal = 0, condVal = 0;
-                std::istringstream(cell) >> cellVal;
-                std::istringstream(whereValue) >> condVal;
-
-                if (whereOp == "=") include = (cellVal == condVal);
-                else if (whereOp == "<") include = (cellVal < condVal);
-                else if (whereOp == "<=") include = (cellVal <= condVal);
-                else if (whereOp == ">") include = (cellVal > condVal);
-                else if (whereOp == ">=") include = (cellVal >= condVal);
-                else if (whereOp == "!=") include = (cellVal != condVal);
-            }
-            else if (colType == "string") {
-                if (whereOp == "=") include = (cell == whereValue);
-                else if (whereOp == "!=") include = (cell != whereValue);
-                else return "SELECT_FAIL: unsupported operator for string: " + whereOp;
-            }
-        }
-
-        if (include) {
-            std::vector<std::string> selectedRow;
-            for (int colIdx : colIndexes) {
-                selectedRow.push_back(row[colIdx]);
-            }
-            selectedRows.push_back(selectedRow);
-        }
-    }
-
-    // 7. ORDER BY
-    if (!orderByColumn.empty()) {
-
-        bool descending = false;
-        if (orderByColumn.size() >= 4 && orderByColumn.substr(orderByColumn.size() - 4) == "desc") {
-            descending = true;
-            orderByColumn = orderByColumn.substr(0, orderByColumn.size() - 4);
-            trim(orderByColumn);
-        }
-
-        int orderIdx = -1;
-        for (size_t i = 0; i < selectedColNames.size(); ++i) {
-            if (selectedColNames[i] == orderByColumn) {
-                orderIdx = static_cast<int>(i);
-                break;
-            }
-        }
-        if (orderIdx == -1) return "SELECT_FAIL: ORDER BY column " + orderByColumn + " not found";
-
-        int tableOrderIdx = -1;
-        for (size_t i = 0; i < tableCols.size(); ++i) {
-            if (tableCols[i].getName() == orderByColumn) {
-                tableOrderIdx = static_cast<int>(i);
-                break;
-            }
-        }
-        if (tableOrderIdx == -1) {
-            return "SELECT_FAIL: ORDER BY column " + orderByColumn + " not found in table";
-        }
-
-
-        std::string orderByType = tableCols[tableOrderIdx].getType();
-
-        if (orderByType == "number") {
-            if (descending) {
-                std::sort(selectedRows.begin(), selectedRows.end(),
-                    [orderIdx](const std::vector<std::string>& a, const std::vector<std::string>& b) {
-                        double aVal = 0, bVal = 0;
-                        std::istringstream(a[orderIdx]) >> aVal;
-                        std::istringstream(b[orderIdx]) >> bVal;
-                        return aVal > bVal;
-                    });
-            }
-            else {
-                std::sort(selectedRows.begin(), selectedRows.end(),
-                    [orderIdx](const std::vector<std::string>& a, const std::vector<std::string>& b) {
-                        double aVal = 0, bVal = 0;
-                        std::istringstream(a[orderIdx]) >> aVal;
-                        std::istringstream(b[orderIdx]) >> bVal;
-                        return aVal < bVal;
-                    });
-            }
-        }
-        else { // string column
-            if (descending) {
-                std::sort(selectedRows.begin(), selectedRows.end(),
-                    [orderIdx](const std::vector<std::string>& a, const std::vector<std::string>& b) {
-                        return a[orderIdx] > b[orderIdx];
-                    });
-            }
-            else {
-                std::sort(selectedRows.begin(), selectedRows.end(),
-                    [orderIdx](const std::vector<std::string>& a, const std::vector<std::string>& b) {
-                        return a[orderIdx] < b[orderIdx];
-                    });
-            }
-        }
-    }
-
-    // 8. Format
     return formatSelectResult(selectedColNames, selectedRows);
 }
 
@@ -518,6 +302,227 @@ std::string CommandManager::handleDelete()
 std::string CommandManager::handleUnknown() 
 {
     return "UNKNOWN_COMMAND";
+}
+
+bool CommandManager::parseSelectQuery(const std::string& query, std::string& columnsPart, std::string& tableName, std::string& whereClause, std::string& orderByColumn)
+{
+    size_t fromPos = query.find("from");
+    if (fromPos == std::string::npos) return false;
+
+    columnsPart = query.substr(7, fromPos - 7); // after SELECT
+    std::string afterFrom = query.substr(fromPos + 4);
+
+    trim(columnsPart);
+    trim(afterFrom);
+
+    size_t wherePos = afterFrom.find("where");
+    size_t orderByPos = afterFrom.find("order by");
+
+    if (wherePos != std::string::npos && orderByPos != std::string::npos && orderByPos > wherePos) {
+        tableName = afterFrom.substr(0, wherePos);
+        whereClause = afterFrom.substr(wherePos + 5, orderByPos - (wherePos + 5));
+        orderByColumn = afterFrom.substr(orderByPos + 8);
+    }
+    else if (wherePos != std::string::npos) {
+        tableName = afterFrom.substr(0, wherePos);
+        whereClause = afterFrom.substr(wherePos + 5);
+    }
+    else if (orderByPos != std::string::npos) {
+        tableName = afterFrom.substr(0, orderByPos);
+        orderByColumn = afterFrom.substr(orderByPos + 8);
+    }
+    else {
+        tableName = afterFrom;
+    }
+
+    trim(tableName);
+    trim(whereClause);
+    trim(orderByColumn);
+
+    return true;
+}
+
+bool CommandManager::getSelectedColumns(const std::vector<Column>& tableCols, const std::string& columnsPart, std::vector<int>& colIndexes, std::vector<std::string>& selectedColNames)
+{
+    if (columnsPart == "*") {
+        for (size_t i = 0; i < tableCols.size(); ++i) {
+            colIndexes.push_back(static_cast<int>(i));
+            selectedColNames.push_back(tableCols[i].getName());
+        }
+        return true;
+    }
+
+    std::istringstream iss(columnsPart);
+    std::string colExpr;
+    while (std::getline(iss, colExpr, ',')) {
+        trim(colExpr);
+
+        std::string baseColName = colExpr;
+        std::string alias = "";
+
+        size_t asPos = colExpr.find(" as ");
+        if (asPos != std::string::npos) {
+            baseColName = colExpr.substr(0, asPos);
+            alias = colExpr.substr(asPos + 4);
+            trim(baseColName);
+            trim(alias);
+        }
+
+        bool found = false;
+        for (size_t i = 0; i < tableCols.size(); ++i) {
+            if (tableCols[i].getName() == baseColName) {
+                colIndexes.push_back(static_cast<int>(i));
+                selectedColNames.push_back(!alias.empty() ? alias : baseColName);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool CommandManager::filterRows(const Table* table, const std::vector<int>& colIndexes, const std::vector<Column>& tableCols, const std::string& whereClause, std::vector<std::vector<std::string>>& selectedRows)
+{
+    std::string whereCol, whereOp, whereValue;
+
+    if (!whereClause.empty()) {
+        std::string ops[] = { ">=", "<=", "!=", "=", "<", ">" };
+        size_t opPos = std::string::npos;
+
+        for (const std::string& op : ops) {
+            opPos = whereClause.find(op);
+            if (opPos != std::string::npos) {
+                whereOp = op;
+                break;
+            }
+        }
+
+        if (whereOp.empty()) return false;
+
+        whereCol = whereClause.substr(0, opPos);
+        whereValue = whereClause.substr(opPos + whereOp.length());
+        trim(whereCol);
+        trim(whereValue);
+    }
+
+    for (const auto& row : table->getRows()) {
+        bool include = true;
+
+        if (!whereClause.empty()) {
+            int whereIdx = -1;
+            for (size_t i = 0; i < tableCols.size(); ++i) {
+                if (tableCols[i].getName() == whereCol) {
+                    whereIdx = static_cast<int>(i);
+                    break;
+                }
+            }
+            if (whereIdx == -1) return false;
+
+            const std::string& cell = row[whereIdx];
+            const std::string& colType = tableCols[whereIdx].getType();
+
+            if (colType == "number") {
+                double cellVal = 0, condVal = 0;
+                std::istringstream(cell) >> cellVal;
+                std::istringstream(whereValue) >> condVal;
+
+                if (whereOp == "=") include = (cellVal == condVal);
+                else if (whereOp == "<") include = (cellVal < condVal);
+                else if (whereOp == "<=") include = (cellVal <= condVal);
+                else if (whereOp == ">") include = (cellVal > condVal);
+                else if (whereOp == ">=") include = (cellVal >= condVal);
+                else if (whereOp == "!=") include = (cellVal != condVal);
+            }
+            else if (colType == "string") {
+                if (whereOp == "=") include = (cell == whereValue);
+                else if (whereOp == "!=") include = (cell != whereValue);
+                else return false;
+            }
+        }
+
+        if (include) {
+            std::vector<std::string> selectedRow;
+            for (int colIdx : colIndexes) {
+                selectedRow.push_back(row[colIdx]);
+            }
+            selectedRows.push_back(selectedRow);
+        }
+    }
+
+    return true;
+}
+
+bool CommandManager::sortRows(std::vector<std::vector<std::string>>& selectedRows, const std::vector<std::string>& selectedColNames, const std::vector<Column>& tableCols, std::string orderByColumn)
+{
+    if (orderByColumn.empty()) return true;
+
+    bool descending = false;
+    if (orderByColumn.size() >= 4 && orderByColumn.substr(orderByColumn.size() - 4) == "desc") {
+        descending = true;
+        orderByColumn = orderByColumn.substr(0, orderByColumn.size() - 4);
+        trim(orderByColumn);
+    }
+
+    int orderIdx = -1;
+    for (size_t i = 0; i < selectedColNames.size(); ++i) {
+        if (selectedColNames[i] == orderByColumn) {
+            orderIdx = static_cast<int>(i);
+            break;
+        }
+    }
+    if (orderIdx == -1) return false;
+
+    int tableOrderIdx = -1;
+    for (size_t i = 0; i < tableCols.size(); ++i) {
+        if (tableCols[i].getName() == orderByColumn) {
+            tableOrderIdx = static_cast<int>(i);
+            break;
+        }
+    }
+    if (tableOrderIdx == -1) return false;
+
+    std::string orderByType = tableCols[tableOrderIdx].getType();
+
+    if (orderByType == "number") {
+        if (descending) {
+            std::sort(selectedRows.begin(), selectedRows.end(),
+                [orderIdx](const std::vector<std::string>& a, const std::vector<std::string>& b) {
+                    double aVal = 0, bVal = 0;
+                    std::istringstream(a[orderIdx]) >> aVal;
+                    std::istringstream(b[orderIdx]) >> bVal;
+                    return aVal > bVal;
+                });
+        }
+        else {
+            std::sort(selectedRows.begin(), selectedRows.end(),
+                [orderIdx](const std::vector<std::string>& a, const std::vector<std::string>& b) {
+                    double aVal = 0, bVal = 0;
+                    std::istringstream(a[orderIdx]) >> aVal;
+                    std::istringstream(b[orderIdx]) >> bVal;
+                    return aVal < bVal;
+                });
+        }
+    }
+    else { // string
+        if (descending) {
+            std::sort(selectedRows.begin(), selectedRows.end(),
+                [orderIdx](const std::vector<std::string>& a, const std::vector<std::string>& b) {
+                    return a[orderIdx] > b[orderIdx];
+                });
+        }
+        else {
+            std::sort(selectedRows.begin(), selectedRows.end(),
+                [orderIdx](const std::vector<std::string>& a, const std::vector<std::string>& b) {
+                    return a[orderIdx] < b[orderIdx];
+                });
+        }
+    }
+
+    return true;
 }
 
 std::string CommandManager::formatSelectResult(const std::vector<std::string>& headers, const std::vector<std::vector<std::string>>& rows)
