@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <iomanip>
 
-CommandManager::CommandManager(const std::string& fullRequest, Database* database) 
+CommandManager::CommandManager(const std::string& fullRequest, Database* database)
 {
     workingDatabase = database;
 
