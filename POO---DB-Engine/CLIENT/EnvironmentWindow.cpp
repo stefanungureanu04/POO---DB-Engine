@@ -6,6 +6,8 @@
 #include "SocketLib.h"
 #include <QMessageBox>
 #include <qinputdialog.h>
+#include <QElapsedTimer>
+
 
 EnvironmentWindow::EnvironmentWindow(const QString& username, QWidget* parent) : QMainWindow(parent), ui(new Ui::EnvironmentWindow)
 {
@@ -164,16 +166,35 @@ void EnvironmentWindow::on_runButton_clicked()
         return;
     }
 
+    if (selectedDatabase.isEmpty()) {
+        QMessageBox::warning(this, "Run Blocked", "Select a database.");
+        return;
+    }
+
     QString userCode = ui->EditorText->toPlainText();
 
     if (userCode.isEmpty()) {
         QMessageBox::warning(this, "Empty Code", "Please write something to run.");
         return;
     }
-    else {
-        if (commandHistoryBuffer.isEmpty() || commandHistoryBuffer.last() != userCode) {
-            commandHistoryBuffer.append(userCode);
+
+    QString cleanedCode;
+    QStringList lines = userCode.split("\n");
+
+    for (const QString& line : lines) {
+        QString trimmed = line.trimmed();
+        if (!trimmed.startsWith("//")) {
+            cleanedCode += line + "\n";
         }
+    }
+
+    if (cleanedCode.trimmed().isEmpty()) {
+        QMessageBox::warning(this, "Empty Code", "No valid command (all lines are comments).");
+        return;
+    }
+
+    if (commandHistoryBuffer.isEmpty() || commandHistoryBuffer.last() != userCode) {
+            commandHistoryBuffer.append(userCode);
     }
 
     try {
@@ -183,13 +204,30 @@ void EnvironmentWindow::on_runButton_clicked()
             return;
         }
 
+        QElapsedTimer timer;
+        timer.start();
+
         // Serializez: comanda + utilizator + baza de date + cod   -> selectedDatabase este baza de date selectata din meniul de selectie al bazei de date
-        std::string request = "EXECUTE_CODE:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString() + ":" + userCode.toStdString();
+        std::string request = "EXECUTE_CODE:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString() + ":" + cleanedCode.toStdString();
 
         socket.sendData(request);  // trimit cererea la server
 
         std::string response = socket.receiveData(4096); // răspunsul de la server
-        QMessageBox::information(this, "Server Response", QString::fromStdString(response));
+
+        qint64 elapsedMs = timer.elapsed();
+
+        QMessageBox::information(this, "RESULT", "Executed");
+
+        QString header = "[RESULTS_INFO]\n";
+        if (executionTimeEnabled) {
+            header = QString("[RESULTS_INFO] (Execution time: %1 ms):").arg(elapsedMs);
+            header += "\n";
+        }
+
+        ui->FeedbackWindow->clear();
+        ui->FeedbackWindow->append(header);
+        ui->FeedbackWindow->append(QString::fromStdString(response));
+
     }
     catch (const std::exception& e) {
         QMessageBox::critical(this, "Socket Error", e.what());

@@ -8,6 +8,7 @@ class Database {
 private:
     std::string name; // numele bazei de date (fără extensie .txt)
     std::unordered_map<std::string, Table> tables;
+    std::string filepath;
 
 public:
     Database(const std::string& dbName);
@@ -20,10 +21,12 @@ public:
     std::vector<std::string> getTableNames() const;
     void insertRow(const std::string& tableName, const std::vector<std::string>& row);
     void deleteRow(const std::string& tableName, const std::string& pkValue);
+    int deleteRowsFromTable(const std::string& tableName, const std::string& colName, const std::string& opFound, const std::string& value);
 
+    std::string getSchemaInfo() const;
     void showRelations();
     std::string getRelationsAsString() const;
 
     bool loadFromFile(const std::string& filename);
-    void saveToFile(const std::string& filename) const;
+    void saveToFile();
 };

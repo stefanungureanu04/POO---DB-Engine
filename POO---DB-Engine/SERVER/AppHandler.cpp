@@ -32,7 +32,7 @@ std::string AppHandler::handle(const std::string& request)
         return response;
     }
     else if (beginsWith(request,"EXECUTE_CODE:")) {
-        CommandManager commandManager(request);
+        CommandManager commandManager(request,workingDatabase);
         std::string response = commandManager.processCommand();
         return response;
     }

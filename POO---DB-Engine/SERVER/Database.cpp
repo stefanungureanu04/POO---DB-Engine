@@ -1,4 +1,4 @@
-#include "Database.h"
+﻿#include "Database.h"
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
@@ -53,6 +53,34 @@ void Database::deleteRow(const std::string& tableName, const std::string& pkValu
     t->deleteRowByPK(pkValue);
 }
 
+int Database::deleteRowsFromTable(const std::string& tableName, const std::string& colName, const std::string& opFound, const std::string& value)
+{
+    Table* table = getTable(tableName);
+    if (!table) {
+        throw std::runtime_error("Table not found: " + tableName);
+    }
+    return table->deleteRowsWhere(colName,opFound,value);
+}
+
+std::string Database::getSchemaInfo() const
+{
+    std::ostringstream oss;
+
+    for (const auto& pair : tables) {
+        const Table& table = pair.second;
+        oss << "TABLE: " << table.getName() << "\n";
+        for (const Column& col : table.getColumns()) {
+            oss << "  - " << col.getName() << ": " << col.getType();
+            if (col.isPK()) oss << " (primary key)";
+            if (col.isFK()) oss << " (foreign key references " << col.getFKTable() << "." << col.getFKColumn() << ")";
+            oss << "\n";
+        }
+        oss << "\n";
+    }
+
+    return oss.str();
+}
+
 void Database::showRelations()
 {
     for (const auto& tablePair : tables) {
@@ -61,8 +89,8 @@ void Database::showRelations()
 
         for (const Column& col : table.getColumns()) {
             if (col.isFK()) {
-                std::cout << tableName << " -> " << col.getFKTable()
-                    << " (" << col.getName() << " -> " << col.getFKColumn() << ")\n";
+                std::cout << tableName << "---> " << col.getFKTable()
+                    << " (" << col.getName() << " ---> " << col.getFKColumn() << ")\n";
             }
         }
     }
@@ -86,6 +114,8 @@ std::string Database::getRelationsAsString() const
 }
 
 bool Database::loadFromFile(const std::string& filename) {
+
+    filepath = filename;
 
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -119,6 +149,7 @@ bool Database::loadFromFile(const std::string& filename) {
             std::istringstream iss(line);
             std::string colName, colType, flag, fkTable, fkColumn;
             iss >> colName >> colType;
+
             Column column(colName, colType);
 
             if (iss >> flag) {
@@ -133,6 +164,12 @@ bool Database::loadFromFile(const std::string& filename) {
             currentTable.addColumn(column);
         }
         else if (readingRows) {
+
+            if (line.empty() || std::all_of(line.begin(), line.end(), isspace)) {
+                // skip blank lines
+                continue;
+            }
+
             std::vector<std::string> values;
             std::stringstream ss(line);
             std::string token;
@@ -150,16 +187,18 @@ bool Database::loadFromFile(const std::string& filename) {
     return 1;
 }
 
-void Database::saveToFile(const std::string& filename) const {
-    std::ofstream file(filename);
+void Database::saveToFile()  {
+    std::ofstream file(filepath);
     if (!file.is_open()) {
-        throw std::runtime_error("Cannot open file for writing: " + filename);
+        throw std::runtime_error("Cannot open file for writing: " + filepath);
     }
 
-    for (const auto& pair : tables) {
+    for (const auto& pair : tables) {  //  auto& → const auto& (safe read)
         const Table& table = pair.second;
+
         file << "TABEL " << table.getName() << "\n";
         file << "#COLUMNS\n";
+
         for (const Column& col : table.getColumns()) {
             file << col.getName() << " " << col.getType();
             if (col.isPK()) {
@@ -170,8 +209,12 @@ void Database::saveToFile(const std::string& filename) const {
             }
             file << "\n";
         }
+
         file << "#ROWS\n";
-        for (const std::vector<std::string>& row : table.getRows()) {
+        for (const std::vector<std::string>& row : table.getRows()) {  //  const getRows() used
+           
+            if (row.empty()) continue;
+
             for (size_t i = 0; i < row.size(); ++i) {
                 file << row[i];
                 if (i < row.size() - 1) {
@@ -180,7 +223,8 @@ void Database::saveToFile(const std::string& filename) const {
             }
             file << "\n";
         }
-        file << "\n";
+
+        file << "\n";  // optional spacing between tables
     }
 }
 

@@ -7,10 +7,10 @@ QStringList SyntaxHighlighter::keywords = {
             "delete", "desc", "distinct", "drop", "exec",
             "exists", "foreign", "from", "full",
             "group", "having", "in", "index", "inner",
-            "insert", "into", "is", "join", "left",
-            "like", "limit", "not", "null", "on",
-            "or", "order", "outer", "primary", "procedure",
-            "right", "rownum", "select", "set", "table",
+            "insert", "into", "is", "join", "key", "left",
+            "like", "limit", "not", "null","number", "on",
+            "or", "order", "outer", "primary", "procedure","references",
+            "right", "rownum", "select", "set","string", "table",
             "top", "trigger", "union", "unique", "update",
             "use", "values", "view", "where", "with"
 };

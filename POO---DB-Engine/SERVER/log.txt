@@ -2617,3 +2617,1384 @@ vanzari
 [2025-05-02 22:38:36]: [SERVER] Sending: DBLIST:db;backup
 [2025-05-02 23:05:40]: [SERVER] Listening on port 12345
 [2025-05-02 23:05:48]: [SERVER] Listening on port 12345
+[2025-05-02 23:12:17]: [SERVER] Listening on port 12345
+[2025-05-02 23:12:44]: [SERVER] Client connected.
+[2025-05-02 23:12:44]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-02 23:12:44]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 23:12:57]: [SERVER] Client connected.
+[2025-05-02 23:12:57]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:12:57]: [SERVER] Sending: DBLIST:db;backup
+[2025-05-02 23:13:00]: [SERVER] Client connected.
+[2025-05-02 23:13:00]: [SERVER] Received: CREATE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:13:00]: [SERVER] Sending: CREATE_DB_SUCCESS
+[2025-05-02 23:13:01]: [SERVER] Client connected.
+[2025-05-02 23:13:01]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:13:01]: [SERVER] Sending: DBLIST:db;backup;dummy
+[2025-05-02 23:13:03]: [SERVER] Client connected.
+[2025-05-02 23:13:03]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:13:03]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:13:16]: [SERVER] Client connected.
+[2025-05-02 23:13:16]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-02 23:13:20]: [SERVER] Client connected.
+[2025-05-02 23:13:20]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-02 23:13:20]: [SERVER] Sending: TABLEDUMP:TE TABLE produse
+
+[2025-05-02 23:13:41]: [SERVER] Client connected.
+[2025-05-02 23:13:41]: [SERVER] Sending: INSERT_FAIL: syntax error
+
+[2025-05-02 23:13:57]: [SERVER] Client connected.
+[2025-05-02 23:13:57]: [SERVER] Sending: INSERT_FAIL: syntax error
+
+[2025-05-02 23:23:28]: [SERVER] Client connected.
+[2025-05-02 23:23:28]: [SERVER] Received: LOGIN:steafan.ungureanu:parola1234?
+[2025-05-02 23:23:28]: [SERVER] Sending: LOGIN_FAIL
+[2025-05-02 23:23:42]: [SERVER] Client connected.
+[2025-05-02 23:23:42]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-02 23:23:42]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 23:23:45]: [SERVER] Client connected.
+[2025-05-02 23:23:45]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:23:45]: [SERVER] Sending: DBLIST:db;backup;dummy
+[2025-05-02 23:23:48]: [SERVER] Client connected.
+[2025-05-02 23:23:48]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:23:48]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:23:50]: [SERVER] Client connected.
+[2025-05-02 23:23:50]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-02 23:26:49]: [SERVER] Client connected.
+[2025-05-02 23:26:49]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:26:49]: [SERVER] Sending: DBLIST:db;backup;dummy
+[2025-05-02 23:26:54]: [SERVER] Client connected.
+[2025-05-02 23:26:54]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:26:54]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:26:56]: [SERVER] Client connected.
+[2025-05-02 23:26:56]: [SERVER] Received: DELETE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:26:56]: [SERVER] Sending: DELETE_DB_SUCCESS
+[2025-05-02 23:27:07]: [SERVER] Client connected.
+[2025-05-02 23:27:07]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:27:07]: [SERVER] Sending: DBLIST:db;backup
+[2025-05-02 23:27:10]: [SERVER] Client connected.
+[2025-05-02 23:27:10]: [SERVER] Received: CREATE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:27:10]: [SERVER] Sending: CREATE_DB_SUCCESS
+[2025-05-02 23:27:11]: [SERVER] Client connected.
+[2025-05-02 23:27:11]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:27:11]: [SERVER] Sending: DBLIST:db;backup;;dummy
+[2025-05-02 23:27:18]: [SERVER] Client connected.
+[2025-05-02 23:27:18]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:27:18]: [SERVER] Sending: DBLIST:db;backup;;dummy
+[2025-05-02 23:27:20]: [SERVER] Client connected.
+[2025-05-02 23:27:20]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:
+[2025-05-02 23:27:20]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:27:26]: [SERVER] Client connected.
+[2025-05-02 23:27:26]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:27:26]: [SERVER] Sending: DBLIST:db;backup;;dummy
+[2025-05-02 23:27:28]: [SERVER] Client connected.
+[2025-05-02 23:27:28]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:
+[2025-05-02 23:27:28]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:27:59]: [SERVER] Client connected.
+[2025-05-02 23:27:59]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-02 23:27:59]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 23:28:02]: [SERVER] Client connected.
+[2025-05-02 23:28:02]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:28:02]: [SERVER] Sending: DBLIST:db;backup;;dummy
+[2025-05-02 23:28:08]: [SERVER] Client connected.
+[2025-05-02 23:28:08]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:28:08]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:28:15]: [SERVER] Client connected.
+[2025-05-02 23:28:15]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-02 23:29:44]: [SERVER] Client connected.
+[2025-05-02 23:29:44]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:29:44]: [SERVER] Sending: DBLIST:db;backup;;dummy
+[2025-05-02 23:29:48]: [SERVER] Client connected.
+[2025-05-02 23:29:48]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:29:48]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:29:50]: [SERVER] Client connected.
+[2025-05-02 23:29:50]: [SERVER] Received: DELETE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:29:50]: [SERVER] Sending: DELETE_DB_FAIL
+[2025-05-02 23:29:53]: [SERVER] Client connected.
+[2025-05-02 23:29:53]: [SERVER] Received: DELETE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:29:53]: [SERVER] Sending: DELETE_DB_FAIL
+[2025-05-02 23:30:10]: [SERVER] Listening on port 12345
+[2025-05-02 23:30:24]: [SERVER] Client connected.
+[2025-05-02 23:30:24]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-02 23:30:24]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 23:30:27]: [SERVER] Client connected.
+[2025-05-02 23:30:27]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:30:27]: [SERVER] Sending: DBLIST:db;backup;;dummy
+[2025-05-02 23:30:33]: [SERVER] Client connected.
+[2025-05-02 23:30:33]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:30:33]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:30:39]: [SERVER] Client connected.
+[2025-05-02 23:30:39]: [SERVER] Received: DELETE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:30:39]: [SERVER] Sending: DELETE_DB_FAIL
+[2025-05-02 23:31:58]: [SERVER] Client connected.
+[2025-05-02 23:31:58]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-02 23:31:58]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 23:32:02]: [SERVER] Client connected.
+[2025-05-02 23:32:02]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:32:02]: [SERVER] Sending: DBLIST:db;backup
+[2025-05-02 23:32:06]: [SERVER] Client connected.
+[2025-05-02 23:32:06]: [SERVER] Received: CREATE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:32:06]: [SERVER] Sending: CREATE_DB_SUCCESS
+[2025-05-02 23:32:07]: [SERVER] Client connected.
+[2025-05-02 23:32:07]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:32:07]: [SERVER] Sending: DBLIST:db;backup;dummy
+[2025-05-02 23:32:25]: [SERVER] Client connected.
+[2025-05-02 23:32:25]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-02 23:32:31]: [SERVER] Client connected.
+[2025-05-02 23:32:31]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:32:31]: [SERVER] Sending: DBLIST:db;backup;dummy
+[2025-05-02 23:32:34]: [SERVER] Client connected.
+[2025-05-02 23:32:34]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:32:34]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:32:36]: [SERVER] Client connected.
+[2025-05-02 23:32:36]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-02 23:32:36]: [SERVER] Sending: TABLEDUMP:EMPTY
+[2025-05-02 23:32:43]: [SERVER] Client connected.
+[2025-05-02 23:32:43]: [SERVER] Sending: UNKNOWN_COMMAND
+
+[2025-05-02 23:32:49]: [SERVER] Client connected.
+[2025-05-02 23:32:49]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-02 23:32:51]: [SERVER] Client connected.
+[2025-05-02 23:32:51]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-02 23:32:51]: [SERVER] Sending: TABLEDUMP:produse
+
+[2025-05-02 23:32:53]: [SERVER] Client connected.
+[2025-05-02 23:32:53]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:32:53]: [SERVER] Sending: DBLIST:db;backup;dummy
+[2025-05-02 23:33:26]: [SERVER] Client connected.
+[2025-05-02 23:33:26]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:33:26]: [SERVER] Sending: DBLIST:db;backup;dummy
+[2025-05-02 23:33:28]: [SERVER] Client connected.
+[2025-05-02 23:33:28]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:33:28]: [SERVER] Sending: DBLIST:db;backup;dummy
+[2025-05-02 23:33:30]: [SERVER] Client connected.
+[2025-05-02 23:33:30]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:33:30]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:33:33]: [SERVER] Client connected.
+[2025-05-02 23:33:33]: [SERVER] Received: DELETE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:33:33]: [SERVER] Sending: DELETE_DB_SUCCESS
+[2025-05-02 23:33:36]: [SERVER] Client connected.
+[2025-05-02 23:33:36]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:33:36]: [SERVER] Sending: DBLIST:db;backup
+[2025-05-02 23:33:46]: [SERVER] Client connected.
+[2025-05-02 23:33:46]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-02 23:33:46]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 23:33:48]: [SERVER] Client connected.
+[2025-05-02 23:33:48]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:33:48]: [SERVER] Sending: DBLIST:db;backup
+[2025-05-02 23:34:07]: [SERVER] Client connected.
+[2025-05-02 23:34:07]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:34:07]: [SERVER] Sending: DBLIST:db;backup
+[2025-05-02 23:34:10]: [SERVER] Client connected.
+[2025-05-02 23:34:10]: [SERVER] Received: CREATE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:34:10]: [SERVER] Sending: CREATE_DB_SUCCESS
+[2025-05-02 23:34:11]: [SERVER] Client connected.
+[2025-05-02 23:34:11]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:34:11]: [SERVER] Sending: DBLIST:db;backup;;dummy
+[2025-05-02 23:37:31]: [SERVER] Client connected.
+[2025-05-02 23:37:31]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:37:31]: [SERVER] Sending: DBLIST:db;backup;;dummy
+[2025-05-02 23:37:33]: [SERVER] Client connected.
+[2025-05-02 23:37:33]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:37:33]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:37:36]: [SERVER] Client connected.
+[2025-05-02 23:37:36]: [SERVER] Received: DELETE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:37:36]: [SERVER] Sending: DELETE_DB_SUCCESS
+[2025-05-02 23:37:38]: [SERVER] Client connected.
+[2025-05-02 23:37:38]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:37:38]: [SERVER] Sending: DBLIST:db;backup;
+[2025-05-02 23:37:41]: [SERVER] Client connected.
+[2025-05-02 23:37:41]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:
+[2025-05-02 23:37:41]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:38:24]: [SERVER] Listening on port 12345
+[2025-05-02 23:38:37]: [SERVER] Client connected.
+[2025-05-02 23:38:37]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1324?
+[2025-05-02 23:38:37]: [SERVER] Sending: WRONG_PASSWORD
+[2025-05-02 23:38:46]: [SERVER] Client connected.
+[2025-05-02 23:38:46]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-02 23:38:46]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 23:38:49]: [SERVER] Client connected.
+[2025-05-02 23:38:49]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:38:49]: [SERVER] Sending: DBLIST:db;backup;
+[2025-05-02 23:38:52]: [SERVER] Client connected.
+[2025-05-02 23:38:52]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:
+[2025-05-02 23:38:52]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:42:52]: [SERVER] Listening on port 12345
+[2025-05-02 23:43:07]: [SERVER] Client connected.
+[2025-05-02 23:43:07]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-02 23:43:07]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 23:43:10]: [SERVER] Client connected.
+[2025-05-02 23:43:10]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:43:10]: [SERVER] Sending: DBLIST:backup;db
+[2025-05-02 23:43:16]: [SERVER] Client connected.
+[2025-05-02 23:43:16]: [SERVER] Received: CREATE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:43:16]: [SERVER] Sending: CREATE_DB_SUCCESS
+[2025-05-02 23:43:16]: [SERVER] Client connected.
+[2025-05-02 23:43:16]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:43:16]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-02 23:43:32]: [SERVER] Client connected.
+[2025-05-02 23:43:32]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:43:32]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-02 23:43:33]: [SERVER] Client connected.
+[2025-05-02 23:43:33]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:43:33]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:43:37]: [SERVER] Client connected.
+[2025-05-02 23:43:37]: [SERVER] Received: DELETE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:43:37]: [SERVER] Sending: DELETE_DB_SUCCESS
+[2025-05-02 23:43:39]: [SERVER] Client connected.
+[2025-05-02 23:43:39]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:43:39]: [SERVER] Sending: DBLIST:backup;db
+[2025-05-02 23:43:49]: [SERVER] Client connected.
+[2025-05-02 23:43:49]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:43:49]: [SERVER] Sending: DBLIST:backup;db
+[2025-05-02 23:43:53]: [SERVER] Client connected.
+[2025-05-02 23:43:53]: [SERVER] Received: CREATE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:43:53]: [SERVER] Sending: CREATE_DB_SUCCESS
+[2025-05-02 23:43:53]: [SERVER] Client connected.
+[2025-05-02 23:43:53]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:43:53]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-02 23:43:56]: [SERVER] Client connected.
+[2025-05-02 23:43:56]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:43:56]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:43:57]: [SERVER] Client connected.
+[2025-05-02 23:43:57]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-02 23:43:57]: [SERVER] Sending: TABLEDUMP:EMPTY
+[2025-05-02 23:44:56]: [SERVER] Client connected.
+[2025-05-02 23:44:56]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-02 23:45:22]: [SERVER] Client connected.
+[2025-05-02 23:45:22]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-02 23:45:24]: [SERVER] Client connected.
+[2025-05-02 23:45:24]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-02 23:45:24]: [SERVER] Sending: TABLEDUMP:produse
+vanzari
+
+[2025-05-02 23:45:25]: [SERVER] Client connected.
+[2025-05-02 23:45:25]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:dummy
+[2025-05-02 23:45:25]: [SERVER] Sending: RELATIONS:NONE
+[2025-05-02 23:46:09]: [SERVER] Client connected.
+[2025-05-02 23:46:09]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-02 23:49:54]: [SERVER] Listening on port 12345
+[2025-05-02 23:50:08]: [SERVER] Client connected.
+[2025-05-02 23:50:08]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-02 23:50:08]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 23:50:11]: [SERVER] Client connected.
+[2025-05-02 23:50:11]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:50:11]: [SERVER] Sending: DBLIST:backup;db;dummy;dummy
+[2025-05-02 23:50:15]: [SERVER] Client connected.
+[2025-05-02 23:50:15]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:50:15]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:50:20]: [SERVER] Client connected.
+[2025-05-02 23:50:20]: [SERVER] Received: DELETE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:50:20]: [SERVER] Sending: DELETE_DB_SUCCESS
+[2025-05-02 23:50:22]: [SERVER] Client connected.
+[2025-05-02 23:50:22]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:50:22]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-02 23:50:26]: [SERVER] Client connected.
+[2025-05-02 23:50:26]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:50:26]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:50:28]: [SERVER] Client connected.
+[2025-05-02 23:50:28]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-02 23:50:28]: [SERVER] Sending: TABLEDUMP:EMPTY
+[2025-05-02 23:50:40]: [SERVER] Client connected.
+[2025-05-02 23:50:40]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:50:40]: [SERVER] Sending: DBLIST:backup;db
+[2025-05-02 23:50:45]: [SERVER] Client connected.
+[2025-05-02 23:50:45]: [SERVER] Received: CREATE_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:50:45]: [SERVER] Sending: CREATE_DB_SUCCESS
+[2025-05-02 23:50:46]: [SERVER] Client connected.
+[2025-05-02 23:50:46]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:50:46]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-02 23:50:48]: [SERVER] Client connected.
+[2025-05-02 23:50:48]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:50:48]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:51:46]: [SERVER] Client connected.
+[2025-05-02 23:51:46]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+INSERT_SUCCESS
+INSERT_SUCCESS
+
+[2025-05-02 23:52:12]: [SERVER] Client connected.
+[2025-05-02 23:52:53]: [SERVER] Client connected.
+[2025-05-02 23:52:53]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+INSERT_SUCCESS
+INSERT_SUCCESS
+
+[2025-05-02 23:53:16]: [SERVER] Client connected.
+[2025-05-02 23:53:16]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-02 23:53:39]: [SERVER] Client connected.
+[2025-05-02 23:53:39]: [SERVER] Sending: CREATE_TABLE_FAIL: table already exists
+CREATE_TABLE_SUCCESS
+
+[2025-05-02 23:54:14]: [SERVER] Client connected.
+[2025-05-02 23:54:14]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-02 23:54:33]: [SERVER] Listening on port 12345
+[2025-05-02 23:54:49]: [SERVER] Client connected.
+[2025-05-02 23:54:49]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-02 23:54:49]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-02 23:54:52]: [SERVER] Client connected.
+[2025-05-02 23:54:52]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-02 23:54:52]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-02 23:54:55]: [SERVER] Client connected.
+[2025-05-02 23:54:55]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-02 23:54:55]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-02 23:54:56]: [SERVER] Client connected.
+[2025-05-02 23:54:56]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-02 23:54:56]: [SERVER] Sending: TABLEDUMP:produse
+vanzari
+clienti
+
+[2025-05-02 23:54:57]: [SERVER] Client connected.
+[2025-05-02 23:54:57]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:dummy
+[2025-05-02 23:54:57]: [SERVER] Sending: RELATIONS:NONE
+[2025-05-02 23:55:12]: [SERVER] Client connected.
+[2025-05-02 23:55:12]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-02 23:55:35]: [SERVER] Client connected.
+[2025-05-02 23:55:35]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:drop table teste;
+drop table clienti;
+[2025-05-02 23:55:35]: [SERVER] Sending: DROP_TABLE_SUCCESS
+DROP_TABLE_SUCCESS
+
+[2025-05-03 00:00:48]: [SERVER] Listening on port 12345
+[2025-05-03 00:01:02]: [SERVER] Client connected.
+[2025-05-03 00:01:02]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:01:02]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:01:26]: [SERVER] Client connected.
+[2025-05-03 00:01:26]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu::create table test (id int PK)
+[2025-05-03 00:01:59]: [SERVER] Listening on port 12345
+[2025-05-03 00:02:16]: [SERVER] Client connected.
+[2025-05-03 00:02:16]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:02:16]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:02:28]: [SERVER] Client connected.
+[2025-05-03 00:02:28]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu::create table test(id int PK);
+[2025-05-03 00:03:07]: [SERVER] Listening on port 12345
+[2025-05-03 00:03:24]: [SERVER] Client connected.
+[2025-05-03 00:03:24]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:03:24]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:03:27]: [SERVER] Client connected.
+[2025-05-03 00:03:27]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:03:27]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:03:30]: [SERVER] Client connected.
+[2025-05-03 00:03:30]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:03:30]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:03:42]: [SERVER] Client connected.
+[2025-05-03 00:03:42]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:create table test (id int PK);
+[2025-05-03 00:03:42]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-03 00:04:08]: [SERVER] Client connected.
+[2025-05-03 00:04:08]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:create table test (id int PK)
+[2025-05-03 00:04:08]: [SERVER] Sending: CREATE_TABLE_FAIL: table already exists
+
+[2025-05-03 00:04:12]: [SERVER] Client connected.
+[2025-05-03 00:04:12]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:create table test (id int PK
+[2025-05-03 00:04:12]: [SERVER] Sending: CREATE_TABLE_FAIL: syntax error
+
+[2025-05-03 00:04:20]: [SERVER] Client connected.
+[2025-05-03 00:04:20]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:wronf
+[2025-05-03 00:04:20]: [SERVER] Sending: UNKNOWN_COMMAND
+
+[2025-05-03 00:05:13]: [SERVER] Listening on port 12345
+[2025-05-03 00:05:54]: [SERVER] Client connected.
+[2025-05-03 00:05:54]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:05:54]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:06:07]: [SERVER] Client connected.
+[2025-05-03 00:06:07]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:06:07]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:06:09]: [SERVER] Client connected.
+[2025-05-03 00:06:09]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:06:09]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:06:13]: [SERVER] Client connected.
+[2025-05-03 00:06:13]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:create table test
+[2025-05-03 00:06:13]: [SERVER] Sending: CREATE_TABLE_FAIL: syntax error
+
+[2025-05-03 00:17:38]: [SERVER] Listening on port 12345
+[2025-05-03 00:17:54]: [SERVER] Client connected.
+[2025-05-03 00:17:54]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:17:54]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:18:09]: [SERVER] Client connected.
+[2025-05-03 00:18:09]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:18:09]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:18:11]: [SERVER] Client connected.
+[2025-05-03 00:18:11]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:18:11]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:18:46]: [SERVER] Client connected.
+[2025-05-03 00:18:46]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from produse where pret=4.2;
+[2025-05-03 00:19:29]: [SERVER] Listening on port 12345
+[2025-05-03 00:19:44]: [SERVER] Client connected.
+[2025-05-03 00:19:44]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:19:44]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:19:48]: [SERVER] Client connected.
+[2025-05-03 00:19:48]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:19:48]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:19:50]: [SERVER] Client connected.
+[2025-05-03 00:19:50]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:19:50]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:20:06]: [SERVER] Client connected.
+[2025-05-03 00:20:06]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:drop table test;
+[2025-05-03 00:20:06]: [SERVER] Sending: DROP_TABLE_SUCCESS
+
+[2025-05-03 00:20:08]: [SERVER] Client connected.
+[2025-05-03 00:20:08]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-03 00:20:08]: [SERVER] Sending: TABLEDUMP:produse
+vanzari
+
+[2025-05-03 00:20:10]: [SERVER] Client connected.
+[2025-05-03 00:20:10]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:drop table test;
+[2025-05-03 00:20:10]: [SERVER] Sending: DROP_TABLE_FAIL: table not found
+
+[2025-05-03 00:20:29]: [SERVER] Client connected.
+[2025-05-03 00:20:29]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from produse where id=2;
+[2025-05-03 00:24:59]: [SERVER] Listening on port 12345
+[2025-05-03 00:25:15]: [SERVER] Client connected.
+[2025-05-03 00:25:15]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:25:15]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:25:30]: [SERVER] Client connected.
+[2025-05-03 00:25:30]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:25:30]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:25:32]: [SERVER] Client connected.
+[2025-05-03 00:25:32]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:db
+[2025-05-03 00:25:32]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:25:33]: [SERVER] Client connected.
+[2025-05-03 00:25:33]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:25:33]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:25:36]: [SERVER] Client connected.
+[2025-05-03 00:25:36]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:25:36]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:25:48]: [SERVER] Client connected.
+[2025-05-03 00:25:48]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from produse where id=1;
+[2025-05-03 00:27:44]: [SERVER] Listening on port 12345
+[2025-05-03 00:27:58]: [SERVER] Client connected.
+[2025-05-03 00:27:58]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:27:58]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:28:02]: [SERVER] Client connected.
+[2025-05-03 00:28:02]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:28:02]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:28:04]: [SERVER] Client connected.
+[2025-05-03 00:28:04]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:28:04]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:28:16]: [SERVER] Client connected.
+[2025-05-03 00:28:16]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from produse where id=1;
+[2025-05-03 00:30:46]: [SERVER] Listening on port 12345
+[2025-05-03 00:31:02]: [SERVER] Client connected.
+[2025-05-03 00:31:02]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:31:02]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:31:06]: [SERVER] Client connected.
+[2025-05-03 00:31:06]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:31:06]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:31:07]: [SERVER] Client connected.
+[2025-05-03 00:31:07]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:31:07]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:31:21]: [SERVER] Client connected.
+[2025-05-03 00:31:21]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from produse where id=1;
+[2025-05-03 00:31:44]: [SERVER] Listening on port 12345
+[2025-05-03 00:32:08]: [SERVER] Client connected.
+[2025-05-03 00:32:08]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:32:08]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:32:11]: [SERVER] Client connected.
+[2025-05-03 00:32:11]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:32:11]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:32:13]: [SERVER] Client connected.
+[2025-05-03 00:32:13]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:32:13]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:32:13]: [SERVER] Client connected.
+[2025-05-03 00:32:13]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-03 00:32:13]: [SERVER] Sending: TABLEDUMP:produse
+vanzari
+
+[2025-05-03 00:32:36]: [SERVER] Client connected.
+[2025-05-03 00:32:36]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:insert into produse values(3,'ananas',100);
+[2025-05-03 00:32:36]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-03 00:32:37]: [SERVER] Client connected.
+[2025-05-03 00:32:37]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-03 00:32:37]: [SERVER] Sending: TABLEDUMP:produse
+vanzari
+
+[2025-05-03 00:33:11]: [SERVER] Client connected.
+[2025-05-03 00:33:11]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:33:11]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:33:39]: [SERVER] Client connected.
+[2025-05-03 00:33:39]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:33:39]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:33:42]: [SERVER] Client connected.
+[2025-05-03 00:33:42]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:33:42]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:33:43]: [SERVER] Client connected.
+[2025-05-03 00:33:43]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:insert into produse values (1,'ana',100);
+[2025-05-03 00:33:43]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-03 00:33:51]: [SERVER] Client connected.
+[2025-05-03 00:33:51]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:insert into produse values (1,'ana',100);
+[2025-05-03 00:33:51]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-03 00:34:19]: [SERVER] Client connected.
+[2025-05-03 00:34:19]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:insert into produse values (1,'ana',100);
+[2025-05-03 00:34:19]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-03 00:34:53]: [SERVER] Listening on port 12345
+[2025-05-03 00:35:07]: [SERVER] Client connected.
+[2025-05-03 00:35:07]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:35:07]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:35:10]: [SERVER] Client connected.
+[2025-05-03 00:35:10]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:35:10]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:35:12]: [SERVER] Client connected.
+[2025-05-03 00:35:12]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:35:12]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:35:13]: [SERVER] Client connected.
+[2025-05-03 00:35:13]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-03 00:35:13]: [SERVER] Sending: TABLEDUMP:produse
+vanzari
+
+[2025-05-03 00:35:26]: [SERVER] Client connected.
+[2025-05-03 00:35:26]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:insert into produse values (1,'maria,100);
+[2025-05-03 00:35:26]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-03 00:36:16]: [SERVER] Listening on port 12345
+[2025-05-03 00:36:29]: [SERVER] Client connected.
+[2025-05-03 00:36:29]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:36:29]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:36:36]: [SERVER] Client connected.
+[2025-05-03 00:36:36]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:36:36]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:36:40]: [SERVER] Client connected.
+[2025-05-03 00:36:40]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:36:40]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:36:58]: [SERVER] Client connected.
+[2025-05-03 00:36:58]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-03 00:37:32]: [SERVER] Client connected.
+[2025-05-03 00:37:32]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-03 00:37:55]: [SERVER] Client connected.
+[2025-05-03 00:37:55]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:insert into produse values (3,'ana',100);
+[2025-05-03 00:37:55]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-03 00:42:55]: [SERVER] Listening on port 12345
+[2025-05-03 00:43:09]: [SERVER] Client connected.
+[2025-05-03 00:43:09]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:43:09]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:43:17]: [SERVER] Client connected.
+[2025-05-03 00:43:17]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:43:17]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:43:19]: [SERVER] Client connected.
+[2025-05-03 00:43:19]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:43:19]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:43:51]: [SERVER] Client connected.
+[2025-05-03 00:43:51]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from produse where pret=100;
+[2025-05-03 00:43:51]: [SERVER] Sending: DELETE_FAIL: invalid vector subscript
+[2025-05-03 00:44:18]: [SERVER] Client connected.
+[2025-05-03 00:44:18]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from produse where pret=100;
+[2025-05-03 00:44:18]: [SERVER] Sending: DELETE_FAIL: invalid vector subscript
+[2025-05-03 00:45:19]: [SERVER] Client connected.
+[2025-05-03 00:45:19]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from produse where pret=4.2;
+[2025-05-03 00:45:19]: [SERVER] Sending: DELETE_FAIL: invalid vector subscript
+[2025-05-03 00:46:15]: [SERVER] Listening on port 12345
+[2025-05-03 00:46:30]: [SERVER] Client connected.
+[2025-05-03 00:46:30]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:46:30]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:46:32]: [SERVER] Client connected.
+[2025-05-03 00:46:33]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:46:33]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:46:34]: [SERVER] Client connected.
+[2025-05-03 00:46:34]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:46:34]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:46:47]: [SERVER] Client connected.
+[2025-05-03 00:46:47]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from produse where pret=4.2;
+[2025-05-03 00:46:47]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 00:46:55]: [SERVER] Client connected.
+[2025-05-03 00:46:55]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from produse where pret=100;
+[2025-05-03 00:46:55]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 00:47:22]: [SERVER] Client connected.
+[2025-05-03 00:47:22]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:insert into angajati values (2,'adi',5000);
+[2025-05-03 00:47:22]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-03 00:47:52]: [SERVER] Client connected.
+[2025-05-03 00:47:52]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:insert into angajati values (3,'togan',7000);
+[2025-05-03 00:47:52]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-03 00:48:06]: [SERVER] Client connected.
+[2025-05-03 00:48:06]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:insert into angajati values (3,'bica',7000);
+[2025-05-03 00:48:06]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-03 00:48:18]: [SERVER] Client connected.
+[2025-05-03 00:48:18]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where name='togan';
+[2025-05-03 00:48:18]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 00:53:11]: [SERVER] Listening on port 12345
+[2025-05-03 00:53:28]: [SERVER] Client connected.
+[2025-05-03 00:53:28]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:53:28]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:53:36]: [SERVER] Client connected.
+[2025-05-03 00:53:36]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:53:36]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:53:38]: [SERVER] Client connected.
+[2025-05-03 00:53:38]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:db
+[2025-05-03 00:53:38]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:56:54]: [SERVER] Client connected.
+[2025-05-03 00:56:54]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:56:54]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:56:59]: [SERVER] Client connected.
+[2025-05-03 00:56:59]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:56:59]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:57:01]: [SERVER] Client connected.
+[2025-05-03 00:57:01]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:db
+[2025-05-03 00:57:01]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:57:06]: [SERVER] Client connected.
+[2025-05-03 00:57:06]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:db:create table test
+[2025-05-03 00:57:06]: [SERVER] Sending: CREATE_TABLE_FAIL: syntax error
+
+[2025-05-03 00:58:05]: [SERVER] Client connected.
+[2025-05-03 00:58:05]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:58:05]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:58:30]: [SERVER] Client connected.
+[2025-05-03 00:58:30]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:58:30]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:58:33]: [SERVER] Client connected.
+[2025-05-03 00:58:33]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:58:33]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:58:33]: [SERVER] Client connected.
+[2025-05-03 00:58:33]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:create table test (id int PK);
+[2025-05-03 00:58:33]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-03 00:58:38]: [SERVER] Client connected.
+[2025-05-03 00:58:38]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:create table test (id int PK);
+[2025-05-03 00:58:38]: [SERVER] Sending: CREATE_TABLE_FAIL: table already exists
+
+[2025-05-03 00:59:08]: [SERVER] Client connected.
+[2025-05-03 00:59:08]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 00:59:08]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 00:59:24]: [SERVER] Client connected.
+[2025-05-03 00:59:24]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 00:59:24]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 00:59:26]: [SERVER] Client connected.
+[2025-05-03 00:59:26]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 00:59:26]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 00:59:27]: [SERVER] Client connected.
+[2025-05-03 00:59:27]: [SERVER] Sending: CREATE_TABLE_FAIL: table already exists
+DROP_TABLE_SUCCESS
+
+[2025-05-03 01:00:47]: [SERVER] Client connected.
+[2025-05-03 01:00:47]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 01:00:47]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 01:01:25]: [SERVER] Client connected.
+[2025-05-03 01:01:25]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 01:01:25]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 01:01:27]: [SERVER] Client connected.
+[2025-05-03 01:01:27]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 01:01:27]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 01:01:28]: [SERVER] Client connected.
+[2025-05-03 01:01:28]: [SERVER] Sending: INSERT_SUCCESS
+INSERT_SUCCESS
+
+[2025-05-03 01:01:56]: [SERVER] Client connected.
+[2025-05-03 01:01:56]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where salariu=3000;
+[2025-05-03 01:01:56]: [SERVER] Sending: DELETE_SUCCESS: 2 rows deleted
+[2025-05-03 01:06:31]: [SERVER] Listening on port 12345
+[2025-05-03 01:06:48]: [SERVER] Client connected.
+[2025-05-03 01:06:48]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 01:06:48]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 01:06:52]: [SERVER] Client connected.
+[2025-05-03 01:06:52]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 01:06:52]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 01:06:56]: [SERVER] Client connected.
+[2025-05-03 01:06:56]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 01:06:56]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 01:07:52]: [SERVER] Client connected.
+[2025-05-03 01:07:52]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 01:08:24]: [SERVER] Client connected.
+[2025-05-03 01:08:24]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 01:08:58]: [SERVER] Client connected.
+[2025-05-03 01:08:58]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where salariu=2000;
+[2025-05-03 01:08:58]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 01:09:07]: [SERVER] Client connected.
+[2025-05-03 01:09:07]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where salariu=2000;
+[2025-05-03 01:09:07]: [SERVER] Sending: DELETE_SUCCESS: no rows deleted
+[2025-05-03 01:10:24]: [SERVER] Client connected.
+[2025-05-03 01:10:24]: [SERVER] Sending: DELETE_SUCCESS: no rows deleted
+[2025-05-03 01:10:33]: [SERVER] Client connected.
+[2025-05-03 01:10:33]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 01:10:53]: [SERVER] Client connected.
+[2025-05-03 01:10:53]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where salariu=2000;
+[2025-05-03 01:10:53]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 01:11:29]: [SERVER] Client connected.
+[2025-05-03 01:11:29]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 01:11:47]: [SERVER] Client connected.
+[2025-05-03 01:11:47]: [SERVER] Sending: DELETE_SUCCESS: no rows deleted
+[2025-05-03 01:11:54]: [SERVER] Client connected.
+[2025-05-03 01:11:54]: [SERVER] Sending: DELETE_SUCCESS: no rows deleted
+[2025-05-03 01:12:03]: [SERVER] Client connected.
+[2025-05-03 01:12:03]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where name='bica';
+[2025-05-03 01:12:03]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 01:17:00]: [SERVER] Listening on port 12345
+[2025-05-03 01:18:01]: [SERVER] Client connected.
+[2025-05-03 01:18:01]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 01:18:01]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 01:18:05]: [SERVER] Client connected.
+[2025-05-03 01:18:05]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 01:18:05]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 01:18:07]: [SERVER] Client connected.
+[2025-05-03 01:18:07]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 01:18:07]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 01:18:26]: [SERVER] Client connected.
+[2025-05-03 01:18:26]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:create table test
+drop table test
+
+[2025-05-03 01:18:26]: [SERVER] Sending: CREATE_TABLE_FAIL: syntax error
+
+[2025-05-03 01:18:40]: [SERVER] Client connected.
+[2025-05-03 01:18:40]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+
+[2025-05-03 01:19:16]: [SERVER] Client connected.
+[2025-05-03 01:19:16]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:drop table test
+
+[2025-05-03 01:19:16]: [SERVER] Sending: DROP_TABLE_SUCCESS
+
+[2025-05-03 01:19:36]: [SERVER] Client connected.
+[2025-05-03 01:19:36]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:create table test
+drop table test
+
+[2025-05-03 01:19:36]: [SERVER] Sending: CREATE_TABLE_FAIL: syntax error
+
+[2025-05-03 01:19:44]: [SERVER] Client connected.
+[2025-05-03 01:19:44]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+DROP_TABLE_SUCCESS
+
+[2025-05-03 01:21:12]: [SERVER] Client connected.
+[2025-05-03 01:21:12]: [SERVER] Sending: DELETE_SUCCESS: 3 rows deleted
+[2025-05-03 01:21:57]: [SERVER] Client connected.
+[2025-05-03 01:21:57]: [SERVER] Sending: DELETE_SUCCESS: 2 rows deleted
+[2025-05-03 01:22:11]: [SERVER] Client connected.
+[2025-05-03 01:22:11]: [SERVER] Sending: DELETE_SUCCESS: 2 rows deleted
+[2025-05-03 01:22:27]: [SERVER] Client connected.
+[2025-05-03 01:22:27]: [SERVER] Sending: DELETE_SUCCESS: 3 rows deleted
+[2025-05-03 01:22:35]: [SERVER] Client connected.
+[2025-05-03 01:22:35]: [SERVER] Sending: DELETE_SUCCESS: no rows deleted
+[2025-05-03 01:22:44]: [SERVER] Client connected.
+[2025-05-03 01:22:44]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where id=4;
+
+[2025-05-03 01:22:44]: [SERVER] Sending: DELETE_SUCCESS: 3 rows deleted
+[2025-05-03 01:23:09]: [SERVER] Client connected.
+[2025-05-03 01:23:09]: [SERVER] Sending: INSERT_SUCCESS
+
+[2025-05-03 01:26:16]: [SERVER] Listening on port 12345
+[2025-05-03 01:26:31]: [SERVER] Client connected.
+[2025-05-03 01:26:31]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 01:26:31]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 01:26:34]: [SERVER] Client connected.
+[2025-05-03 01:26:34]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 01:26:34]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 01:26:36]: [SERVER] Client connected.
+[2025-05-03 01:26:36]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 01:26:36]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 01:28:36]: [SERVER] Client connected.
+[2025-05-03 01:30:52]: [SERVER] Client connected.
+[2025-05-03 01:30:52]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 01:30:52]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 01:30:55]: [SERVER] Client connected.
+[2025-05-03 01:30:55]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 01:30:55]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 01:30:57]: [SERVER] Client connected.
+[2025-05-03 01:30:57]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 01:30:57]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 01:31:48]: [SERVER] Client connected.
+[2025-05-03 01:31:48]: [SERVER] Sending: SAVE_SUCCESS
+[2025-05-03 01:31:51]: [SERVER] Client connected.
+[2025-05-03 01:31:51]: [SERVER] Received: LIST_QUERIES:stefan.ungureanu
+[2025-05-03 01:31:51]: [SERVER] Sending: QUERYLIST:test
+[2025-05-03 01:31:54]: [SERVER] Client connected.
+[2025-05-03 01:31:54]: [SERVER] Received: LOAD_QUERY:stefan.ungureanu:test
+[2025-05-03 01:31:56]: [SERVER] Client connected.
+[2025-05-03 01:31:56]: [SERVER] Sending: INSERT_SUCCESS
+INSERT_SUCCESS
+INSERT_SUCCESS
+[2025-05-03 01:32:44]: [SERVER] Client connected.
+[2025-05-03 01:32:44]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 01:39:15]: [SERVER] Listening on port 12345
+[2025-05-03 01:39:29]: [SERVER] Client connected.
+[2025-05-03 01:39:29]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 01:39:29]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 01:39:32]: [SERVER] Client connected.
+[2025-05-03 01:39:32]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 01:39:32]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 01:39:34]: [SERVER] Client connected.
+[2025-05-03 01:39:34]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 01:39:34]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 01:40:47]: [SERVER] Client connected.
+[2025-05-03 01:40:47]: [SERVER] Sending: INSERT_SUCCESS
+INSERT_SUCCESS
+INSERT_SUCCESS
+[2025-05-03 01:41:27]: [SERVER] Client connected.
+[2025-05-03 01:41:27]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where salariu < 5000;
+
+[2025-05-03 01:41:27]: [SERVER] Sending: DELETE_FAIL: Operator '<' not supported for string columns.
+[2025-05-03 01:42:03]: [SERVER] Client connected.
+[2025-05-03 01:42:03]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where id>=4;
+
+[2025-05-03 01:42:03]: [SERVER] Sending: DELETE_FAIL: Operator '>=' not supported for string columns.
+[2025-05-03 01:42:47]: [SERVER] Client connected.
+[2025-05-03 01:42:47]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where id=4;
+
+[2025-05-03 01:42:47]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 01:42:53]: [SERVER] Client connected.
+[2025-05-03 01:42:53]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where id>2;
+
+[2025-05-03 01:42:53]: [SERVER] Sending: DELETE_FAIL: Operator '>' not supported for string columns.
+[2025-05-03 01:44:57]: [SERVER] Client connected.
+[2025-05-03 01:44:57]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where salariu<5000;
+
+[2025-05-03 01:44:57]: [SERVER] Sending: DELETE_FAIL: Operator '<' not supported for string columns.
+[2025-05-03 01:45:01]: [SERVER] Client connected.
+[2025-05-03 01:45:01]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where salariu<5000;
+
+[2025-05-03 01:45:01]: [SERVER] Sending: DELETE_FAIL: Operator '<' not supported for string columns.
+[2025-05-03 01:45:03]: [SERVER] Client connected.
+[2025-05-03 01:45:03]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where salariu<5000;
+
+[2025-05-03 01:45:03]: [SERVER] Sending: DELETE_FAIL: Operator '<' not supported for string columns.
+[2025-05-03 01:48:50]: [SERVER] Client connected.
+[2025-05-03 01:48:50]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where salariu<5000;
+
+[2025-05-03 01:48:50]: [SERVER] Sending: DELETE_FAIL: Operator '<' not supported for string columns.
+[2025-05-03 01:52:02]: [SERVER] Listening on port 12345
+[2025-05-03 01:52:15]: [SERVER] Client connected.
+[2025-05-03 01:52:15]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 01:52:15]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 01:52:22]: [SERVER] Client connected.
+[2025-05-03 01:52:22]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 01:52:22]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 01:52:24]: [SERVER] Client connected.
+[2025-05-03 01:52:24]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 01:52:24]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 01:52:58]: [SERVER] Client connected.
+[2025-05-03 01:52:58]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where salariu < 5000;
+
+[2025-05-03 01:52:58]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 01:53:05]: [SERVER] Client connected.
+[2025-05-03 01:53:05]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where salariu > 5000;
+
+[2025-05-03 01:53:05]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 02:00:27]: [SERVER] Listening on port 12345
+[2025-05-03 02:00:42]: [SERVER] Client connected.
+[2025-05-03 02:00:42]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 02:00:42]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 02:01:01]: [SERVER] Client connected.
+[2025-05-03 02:01:01]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:01:01]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:01:03]: [SERVER] Client connected.
+[2025-05-03 02:01:03]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 02:01:03]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:01:04]: [SERVER] Client connected.
+[2025-05-03 02:01:04]: [SERVER] Sending: INSERT_FAIL: syntax error
+[2025-05-03 02:01:20]: [SERVER] Client connected.
+[2025-05-03 02:01:20]: [SERVER] Sending: INSERT_SUCCESS
+[2025-05-03 02:02:54]: [SERVER] Client connected.
+[2025-05-03 02:02:54]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 02:02:54]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 02:03:36]: [SERVER] Client connected.
+[2025-05-03 02:03:36]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:03:36]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:03:38]: [SERVER] Client connected.
+[2025-05-03 02:03:38]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 02:03:38]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:03:39]: [SERVER] Client connected.
+[2025-05-03 02:03:39]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:DELETE FROM angajati WHERE ame='maria';
+
+[2025-05-03 02:03:39]: [SERVER] Sending: DELETE_FAIL: syntax error
+[2025-05-03 02:03:52]: [SERVER] Client connected.
+[2025-05-03 02:03:52]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where ame='maria';
+
+[2025-05-03 02:03:52]: [SERVER] Sending: DELETE_FAIL: Column not found: ame
+[2025-05-03 02:03:57]: [SERVER] Client connected.
+[2025-05-03 02:03:57]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where name='maria';
+
+[2025-05-03 02:03:57]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 02:05:48]: [SERVER] Client connected.
+[2025-05-03 02:05:48]: [SERVER] Sending: INSERT_FAIL: syntax error
+[2025-05-03 02:06:45]: [SERVER] Client connected.
+[2025-05-03 02:06:45]: [SERVER] Sending: INSERT_SUCCESS
+[2025-05-03 02:07:07]: [SERVER] Client connected.
+[2025-05-03 02:07:07]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where salariu<5000;
+
+[2025-05-03 02:07:07]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 02:10:01]: [SERVER] Listening on port 12345
+[2025-05-03 02:14:08]: [SERVER] Listening on port 12345
+[2025-05-03 02:14:51]: [SERVER] Client connected.
+[2025-05-03 02:14:51]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 02:14:51]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 02:14:53]: [SERVER] Client connected.
+[2025-05-03 02:14:53]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:14:53]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:14:55]: [SERVER] Client connected.
+[2025-05-03 02:14:55]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:db
+[2025-05-03 02:14:55]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:15:09]: [SERVER] Client connected.
+[2025-05-03 02:15:09]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:db:insert into angajati values (3,'Maria',2000);
+
+[2025-05-03 02:15:09]: [SERVER] Sending: INSERT_FAIL: table not found
+[2025-05-03 02:15:14]: [SERVER] Client connected.
+[2025-05-03 02:15:14]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:15:14]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:15:16]: [SERVER] Client connected.
+[2025-05-03 02:15:16]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 02:15:16]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:15:16]: [SERVER] Client connected.
+[2025-05-03 02:15:16]: [SERVER] Sending: INSERT_SUCCESS
+[2025-05-03 02:15:42]: [SERVER] Client connected.
+[2025-05-03 02:15:42]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from angajati where name='Maria';
+
+[2025-05-03 02:15:42]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 02:21:23]: [SERVER] Listening on port 12345
+[2025-05-03 02:21:37]: [SERVER] Client connected.
+[2025-05-03 02:21:37]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 02:21:37]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 02:21:39]: [SERVER] Client connected.
+[2025-05-03 02:21:39]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:21:39]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:21:41]: [SERVER] Client connected.
+[2025-05-03 02:21:41]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 02:21:41]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:21:52]: [SERVER] Client connected.
+[2025-05-03 02:21:52]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati;
+
+[2025-05-03 02:24:43]: [SERVER] Listening on port 12345
+[2025-05-03 02:24:56]: [SERVER] Client connected.
+[2025-05-03 02:24:56]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 02:24:56]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 02:25:00]: [SERVER] Client connected.
+[2025-05-03 02:25:00]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:25:00]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:25:02]: [SERVER] Client connected.
+[2025-05-03 02:25:02]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 02:25:02]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:25:07]: [SERVER] Client connected.
+[2025-05-03 02:25:07]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati
+
+[2025-05-03 02:25:07]: [SERVER] Sending: id	name	salariu
+1	'stefan'	5000
+2	'adi'	5000
+
+[2025-05-03 02:25:18]: [SERVER] Client connected.
+[2025-05-03 02:25:18]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select name from angajati
+
+[2025-05-03 02:25:18]: [SERVER] Sending: name
+'stefan'
+'adi'
+
+[2025-05-03 02:25:27]: [SERVER] Client connected.
+[2025-05-03 02:25:27]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select name, salariu from angajati
+
+[2025-05-03 02:25:27]: [SERVER] Sending: name	salariu
+'stefan'	5000
+'adi'	5000
+
+[2025-05-03 02:28:09]: [SERVER] Listening on port 12345
+[2025-05-03 02:28:25]: [SERVER] Client connected.
+[2025-05-03 02:28:25]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 02:28:25]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 02:28:30]: [SERVER] Client connected.
+[2025-05-03 02:28:30]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:28:30]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:28:32]: [SERVER] Client connected.
+[2025-05-03 02:28:32]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 02:28:32]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:28:48]: [SERVER] Client connected.
+[2025-05-03 02:28:48]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:insert into angajati values (3,'adina);
+
+[2025-05-03 02:28:48]: [SERVER] Sending: INSERT_FAIL: column count mismatch
+[2025-05-03 02:28:58]: [SERVER] Client connected.
+[2025-05-03 02:28:58]: [SERVER] Sending: INSERT_SUCCESS
+[2025-05-03 02:29:10]: [SERVER] Client connected.
+[2025-05-03 02:29:10]: [SERVER] Sending: INSERT_SUCCESS
+[2025-05-03 02:29:18]: [SERVER] Client connected.
+[2025-05-03 02:29:18]: [SERVER] Sending: INSERT_SUCCESS
+[2025-05-03 02:29:51]: [SERVER] Client connected.
+[2025-05-03 02:29:51]: [SERVER] Sending: INSERT_SUCCESS
+DELETE_SUCCESS: 4 rows deleted
+[2025-05-03 02:30:21]: [SERVER] Listening on port 12345
+[2025-05-03 02:30:35]: [SERVER] Client connected.
+[2025-05-03 02:30:35]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 02:30:35]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 02:31:57]: [SERVER] Client connected.
+[2025-05-03 02:31:57]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:31:57]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:31:59]: [SERVER] Client connected.
+[2025-05-03 02:31:59]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 02:31:59]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:31:59]: [SERVER] Client connected.
+[2025-05-03 02:32:31]: [SERVER] Client connected.
+[2025-05-03 02:32:31]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 02:32:31]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 02:32:34]: [SERVER] Client connected.
+[2025-05-03 02:32:34]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:32:34]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:32:35]: [SERVER] Client connected.
+[2025-05-03 02:32:35]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 02:32:35]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:32:49]: [SERVER] Client connected.
+[2025-05-03 02:32:49]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:delete from vanzari where pret=100;
+
+[2025-05-03 02:32:49]: [SERVER] Sending: DELETE_SUCCESS: 3 rows deleted
+[2025-05-03 02:35:24]: [SERVER] Listening on port 12345
+[2025-05-03 02:35:38]: [SERVER] Client connected.
+[2025-05-03 02:35:38]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 02:35:38]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 02:35:41]: [SERVER] Client connected.
+[2025-05-03 02:35:41]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:35:41]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:35:42]: [SERVER] Client connected.
+[2025-05-03 02:35:42]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 02:35:42]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:35:53]: [SERVER] Client connected.
+[2025-05-03 02:35:53]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati
+
+[2025-05-03 02:40:28]: [SERVER] Listening on port 12345
+[2025-05-03 02:40:45]: [SERVER] Client connected.
+[2025-05-03 02:40:45]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 02:40:45]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 02:40:47]: [SERVER] Client connected.
+[2025-05-03 02:40:47]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:40:47]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:40:49]: [SERVER] Client connected.
+[2025-05-03 02:40:49]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 02:40:49]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:40:57]: [SERVER] Client connected.
+[2025-05-03 02:40:57]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati
+
+[2025-05-03 02:41:01]: [SERVER] Client connected.
+[2025-05-03 02:41:01]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select id from angajati
+
+[2025-05-03 02:41:01]: [SERVER] Sending: id  
+--  
+1   
+2   
+
+[2025-05-03 02:41:06]: [SERVER] Client connected.
+[2025-05-03 02:41:06]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select name from angajati
+
+[2025-05-03 02:41:06]: [SERVER] Sending: name      
+--------  
+'stefan'  
+'adi'     
+
+[2025-05-03 02:41:10]: [SERVER] Client connected.
+[2025-05-03 02:41:10]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select id, name from angajati
+
+[2025-05-03 02:41:10]: [SERVER] Sending: id  name      
+--  --------  
+1   'stefan'  
+2   'adi'     
+
+[2025-05-03 02:41:16]: [SERVER] Client connected.
+[2025-05-03 02:41:16]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select name, id from angajati
+
+[2025-05-03 02:41:16]: [SERVER] Sending: name      id  
+--------  --  
+'stefan'  1   
+'adi'     2   
+
+[2025-05-03 02:48:21]: [SERVER] Listening on port 12345
+[2025-05-03 02:48:35]: [SERVER] Client connected.
+[2025-05-03 02:48:35]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 02:48:35]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 02:48:38]: [SERVER] Client connected.
+[2025-05-03 02:48:38]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:48:38]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:48:40]: [SERVER] Client connected.
+[2025-05-03 02:48:40]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 02:48:40]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:50:14]: [SERVER] Client connected.
+[2025-05-03 02:50:26]: [SERVER] Client connected.
+[2025-05-03 02:50:26]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:SELECT * FROM angajati;
+
+
+[2025-05-03 02:50:26]: [SERVER] Sending: SELECT_FAIL: missing FROM
+[2025-05-03 02:50:36]: [SERVER] Client connected.
+[2025-05-03 02:50:36]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati;
+
+
+[2025-05-03 02:51:08]: [SERVER] Client connected.
+[2025-05-03 02:51:21]: [SERVER] Client connected.
+[2025-05-03 02:51:29]: [SERVER] Client connected.
+[2025-05-03 02:51:29]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati;
+
+[2025-05-03 02:51:48]: [SERVER] Client connected.
+[2025-05-03 02:51:48]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati where salariu>5000;
+
+[2025-05-03 02:51:53]: [SERVER] Client connected.
+[2025-05-03 02:51:53]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati where salariu>=5000;
+
+[2025-05-03 02:52:15]: [SERVER] Client connected.
+[2025-05-03 02:52:18]: [SERVER] Client connected.
+[2025-05-03 02:52:48]: [SERVER] Client connected.
+[2025-05-03 02:58:32]: [SERVER] Listening on port 12345
+[2025-05-03 02:58:53]: [SERVER] Client connected.
+[2025-05-03 02:58:53]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 02:58:53]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 02:58:57]: [SERVER] Client connected.
+[2025-05-03 02:58:57]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 02:58:57]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 02:58:59]: [SERVER] Client connected.
+[2025-05-03 02:58:59]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 02:58:59]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 02:59:09]: [SERVER] Client connected.
+[2025-05-03 02:59:09]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati;
+
+[2025-05-03 03:00:07]: [SERVER] Client connected.
+[2025-05-03 03:00:07]: [SERVER] Sending: SELECT_FAIL: ORDER BY column salariu not found
+[2025-05-03 03:00:19]: [SERVER] Client connected.
+[2025-05-03 03:00:19]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select name from angajati order by id desc;
+
+[2025-05-03 03:00:19]: [SERVER] Sending: SELECT_FAIL: ORDER BY column id not found
+[2025-05-03 03:00:25]: [SERVER] Client connected.
+[2025-05-03 03:01:10]: [SERVER] Client connected.
+[2025-05-03 03:01:17]: [SERVER] Client connected.
+[2025-05-03 03:01:28]: [SERVER] Client connected.
+[2025-05-03 03:01:33]: [SERVER] Client connected.
+[2025-05-03 03:01:38]: [SERVER] Client connected.
+[2025-05-03 03:01:48]: [SERVER] Client connected.
+[2025-05-03 03:02:11]: [SERVER] Client connected.
+[2025-05-03 03:02:11]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati
+where salariu = 5000;
+
+[2025-05-03 03:02:15]: [SERVER] Client connected.
+[2025-05-03 03:02:15]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati
+where salariu = 5000;
+
+[2025-05-03 03:02:25]: [SERVER] Client connected.
+[2025-05-03 03:04:27]: [SERVER] Listening on port 12345
+[2025-05-03 03:04:58]: [SERVER] Client connected.
+[2025-05-03 03:04:58]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 03:04:58]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 03:05:36]: [SERVER] Client connected.
+[2025-05-03 03:05:36]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 03:05:36]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 03:05:38]: [SERVER] Client connected.
+[2025-05-03 03:05:38]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 03:05:38]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 03:05:40]: [SERVER] Client connected.
+[2025-05-03 03:08:04]: [SERVER] Listening on port 12345
+[2025-05-03 03:08:18]: [SERVER] Client connected.
+[2025-05-03 03:08:18]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 03:08:18]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 03:08:24]: [SERVER] Client connected.
+[2025-05-03 03:08:24]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 03:08:24]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 03:08:26]: [SERVER] Client connected.
+[2025-05-03 03:08:26]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 03:08:26]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 03:08:34]: [SERVER] Client connected.
+[2025-05-03 03:08:34]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati;
+
+[2025-05-03 03:12:45]: [SERVER] Client connected.
+[2025-05-03 03:12:45]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 03:12:45]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 03:12:50]: [SERVER] Client connected.
+[2025-05-03 03:12:50]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 03:12:50]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 03:12:54]: [SERVER] Client connected.
+[2025-05-03 03:12:54]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 03:12:54]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 03:13:05]: [SERVER] Client connected.
+[2025-05-03 03:13:05]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:dummy:select * from angajati;
+
+[2025-05-03 03:17:20]: [SERVER] Listening on port 12345
+[2025-05-03 03:17:38]: [SERVER] Client connected.
+[2025-05-03 03:17:38]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 03:17:38]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 03:18:21]: [SERVER] Client connected.
+[2025-05-03 03:18:21]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 03:18:21]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 03:18:23]: [SERVER] Client connected.
+[2025-05-03 03:18:23]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 03:18:23]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 03:18:24]: [SERVER] Client connected.
+[2025-05-03 03:23:02]: [SERVER] Listening on port 12345
+[2025-05-03 03:23:18]: [SERVER] Client connected.
+[2025-05-03 03:23:18]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 03:23:18]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 03:23:21]: [SERVER] Client connected.
+[2025-05-03 03:23:21]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 03:23:21]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 03:23:23]: [SERVER] Client connected.
+[2025-05-03 03:23:23]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 03:23:23]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 03:23:23]: [SERVER] Client connected.
+[2025-05-03 03:23:23]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-03 03:23:42]: [SERVER] Client connected.
+[2025-05-03 03:23:42]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:dummy
+[2025-05-03 03:23:42]: [SERVER] Sending: RELATIONS:NONE
+[2025-05-03 03:23:44]: [SERVER] Client connected.
+[2025-05-03 03:23:44]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:dummy
+[2025-05-03 03:23:44]: [SERVER] Sending: RELATIONS:NONE
+[2025-05-03 03:23:45]: [SERVER] Client connected.
+[2025-05-03 03:23:45]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-03 03:27:20]: [SERVER] Listening on port 12345
+[2025-05-03 03:27:37]: [SERVER] Client connected.
+[2025-05-03 03:27:37]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 03:27:37]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 03:27:40]: [SERVER] Client connected.
+[2025-05-03 03:27:40]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 03:27:40]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 03:27:42]: [SERVER] Client connected.
+[2025-05-03 03:27:42]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:dummy
+[2025-05-03 03:27:42]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 03:27:42]: [SERVER] Client connected.
+[2025-05-03 03:27:42]: [SERVER] Received: GET_TABLES:stefan.ungureanu:dummy
+[2025-05-03 03:27:51]: [SERVER] Client connected.
+[2025-05-03 03:27:51]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 03:27:51]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 03:27:53]: [SERVER] Client connected.
+[2025-05-03 03:27:53]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:db
+[2025-05-03 03:27:53]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 03:27:54]: [SERVER] Client connected.
+[2025-05-03 03:27:54]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:db
+[2025-05-03 03:27:54]: [SERVER] Sending: RELATIONS:vanzari -> produse (id_produs -> id)
+
+[2025-05-03 03:28:07]: [SERVER] Client connected.
+[2025-05-03 03:28:07]: [SERVER] Received: GET_TABLES:stefan.ungureanu:db
+[2025-05-03 03:28:08]: [SERVER] Client connected.
+[2025-05-03 03:28:08]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:db
+[2025-05-03 03:28:08]: [SERVER] Sending: RELATIONS:vanzari -> produse (id_produs -> id)
+
+[2025-05-03 03:28:09]: [SERVER] Client connected.
+[2025-05-03 03:28:09]: [SERVER] Received: GET_TABLES:stefan.ungureanu:db
+[2025-05-03 03:28:10]: [SERVER] Client connected.
+[2025-05-03 03:28:10]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 03:28:10]: [SERVER] Sending: DBLIST:backup;db;dummy
+[2025-05-03 03:28:24]: [SERVER] Client connected.
+[2025-05-03 03:28:24]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:db
+[2025-05-03 03:28:24]: [SERVER] Sending: RELATIONS:vanzari -> produse (id_produs -> id)
+
+[2025-05-03 03:28:26]: [SERVER] Client connected.
+[2025-05-03 03:28:26]: [SERVER] Received: GET_TABLES:stefan.ungureanu:db
+[2025-05-03 03:28:31]: [SERVER] Client connected.
+[2025-05-03 03:28:31]: [SERVER] Received: GET_TABLES:stefan.ungureanu:db
+[2025-05-03 03:28:32]: [SERVER] Client connected.
+[2025-05-03 03:28:32]: [SERVER] Received: GET_TABLES:stefan.ungureanu:db
+[2025-05-03 03:28:38]: [SERVER] Client connected.
+[2025-05-03 03:28:38]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:db
+[2025-05-03 03:28:38]: [SERVER] Sending: RELATIONS:vanzari -> produse (id_produs -> id)
+
+[2025-05-03 03:28:39]: [SERVER] Client connected.
+[2025-05-03 03:28:39]: [SERVER] Received: GET_TABLES:stefan.ungureanu:db
+[2025-05-03 03:28:45]: [SERVER] Client connected.
+[2025-05-03 03:28:45]: [SERVER] Received: GET_TABLES:stefan.ungureanu:db
+[2025-05-03 03:29:01]: [SERVER] Client connected.
+[2025-05-03 03:29:01]: [SERVER] Received: GET_TABLES:stefan.ungureanu:db
+[2025-05-03 03:33:31]: [SERVER] Listening on port 12345
+[2025-05-03 03:33:49]: [SERVER] Client connected.
+[2025-05-03 03:33:49]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 03:33:49]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 03:33:52]: [SERVER] Client connected.
+[2025-05-03 03:33:52]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 03:33:52]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 03:33:54]: [SERVER] Client connected.
+[2025-05-03 03:33:54]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 03:33:54]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 03:33:55]: [SERVER] Client connected.
+[2025-05-03 03:33:55]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-03 03:34:00]: [SERVER] Client connected.
+[2025-05-03 03:34:00]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 03:35:55]: [SERVER] Client connected.
+[2025-05-03 03:35:55]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 03:41:58]: [SERVER] Client connected.
+[2025-05-03 03:41:58]: [SERVER] Sending: UNKNOWN_COMMAND
+UNKNOWN_COMMAND
+[2025-05-03 03:42:09]: [SERVER] Client connected.
+[2025-05-03 03:42:09]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+UNKNOWN_COMMAND
+[2025-05-03 03:42:21]: [SERVER] Client connected.
+[2025-05-03 03:42:21]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 03:42:28]: [SERVER] Client connected.
+[2025-05-03 03:42:28]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:
+drop table clienti;
+
+[2025-05-03 03:42:28]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-03 03:42:33]: [SERVER] Client connected.
+[2025-05-03 03:42:33]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:drop table clienti;
+
+[2025-05-03 03:42:33]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-03 03:43:04]: [SERVER] Client connected.
+[2025-05-03 03:43:04]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:drop table clienti;
+
+[2025-05-03 03:43:04]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-03 03:43:09]: [SERVER] Client connected.
+[2025-05-03 03:43:09]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:drop table clienti;
+
+[2025-05-03 03:43:09]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-03 03:43:11]: [SERVER] Client connected.
+[2025-05-03 03:43:11]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:drop table clienti;
+
+[2025-05-03 03:43:11]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-03 03:45:12]: [SERVER] Listening on port 12345
+[2025-05-03 03:45:28]: [SERVER] Client connected.
+[2025-05-03 03:45:28]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 03:45:28]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 03:45:35]: [SERVER] Client connected.
+[2025-05-03 03:45:35]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 03:45:35]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 03:45:37]: [SERVER] Client connected.
+[2025-05-03 03:45:37]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 03:45:37]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 03:45:42]: [SERVER] Client connected.
+[2025-05-03 03:45:42]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:drop table clienti;
+
+[2025-05-03 03:45:42]: [SERVER] Sending: DROP_TABLE_SUCCESS
+[2025-05-03 03:46:50]: [SERVER] Client connected.
+[2025-05-03 03:46:50]: [SERVER] Sending: INSERT_SUCCESS
+[2025-05-03 03:47:01]: [SERVER] Client connected.
+[2025-05-03 03:47:01]: [SERVER] Sending: DELETE_SUCCESS: 1 rows deleted
+[2025-05-03 03:47:14]: [SERVER] Client connected.
+[2025-05-03 03:47:21]: [SERVER] Client connected.
+[2025-05-03 03:47:21]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:select * from angajati;
+
+[2025-05-03 03:47:45]: [SERVER] Client connected.
+[2025-05-03 03:47:45]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:select nume, salariu from angajati;
+
+[2025-05-03 03:47:52]: [SERVER] Client connected.
+[2025-05-03 03:47:59]: [SERVER] Client connected.
+[2025-05-03 03:48:10]: [SERVER] Client connected.
+[2025-05-03 03:48:29]: [SERVER] Client connected.
+[2025-05-03 03:49:13]: [SERVER] Client connected.
+[2025-05-03 03:49:27]: [SERVER] Client connected.
+[2025-05-03 03:49:27]: [SERVER] Sending: #  nume      salariu  
+-  --------  -------  
+1  'Andrei'  5200     
+
+[2025-05-03 03:49:40]: [SERVER] Client connected.
+[2025-05-03 03:49:40]: [SERVER] Sending: #  nume      salariu  
+-  --------  -------  
+1  'Andrei'  5200     
+
+[2025-05-03 03:59:37]: [SERVER] Listening on port 12345
+[2025-05-03 03:59:56]: [SERVER] Client connected.
+[2025-05-03 03:59:56]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 03:59:56]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 03:59:59]: [SERVER] Client connected.
+[2025-05-03 03:59:59]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 03:59:59]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 04:00:22]: [SERVER] Client connected.
+[2025-05-03 04:00:22]: [SERVER] Received: CREATE_DATABASE:stefan.ungureanu:Test
+[2025-05-03 04:00:22]: [SERVER] Sending: CREATE_DB_SUCCESS
+[2025-05-03 04:00:23]: [SERVER] Client connected.
+[2025-05-03 04:00:23]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 04:00:23]: [SERVER] Sending: DBLIST:CompanyDB;Test
+[2025-05-03 04:00:25]: [SERVER] Client connected.
+[2025-05-03 04:00:25]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:Test
+[2025-05-03 04:00:25]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 04:01:26]: [SERVER] Client connected.
+[2025-05-03 04:01:39]: [SERVER] Client connected.
+[2025-05-03 04:01:39]: [SERVER] Received: DELETE_DATABASE:stefan.ungureanu:Test
+[2025-05-03 04:01:39]: [SERVER] Sending: DELETE_DB_SUCCESS
+[2025-05-03 04:01:45]: [SERVER] Client connected.
+[2025-05-03 04:01:45]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 04:01:45]: [SERVER] Sending: DBLIST:CompanyDB

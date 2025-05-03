@@ -1,0 +1,58 @@
+TABEL departamente
+#COLUMNS
+id number PK
+nume string
+#ROWS
+1|'IT'
+2|'HR'
+3|'Finance'
+4|'Marketing'
+5|'Sales'
+6|'Support'
+7|'Logistics'
+
+TABEL angajati
+#COLUMNS
+id number PK
+nume string
+departament_id number FK departamente id
+salariu number
+#ROWS
+1|'Stefan'|1|5000
+2|'Maria'|2|4000
+3|'Andrei'|1|5200
+4|'Elena'|3|4500
+5|'Ana'|4|4300
+6|'Ioana'|5|4100
+7|'George'|6|3900
+
+TABEL proiecte
+#COLUMNS
+id number PK
+denumire string
+buget number
+#ROWS
+1|'Website Redesign'|20000
+2|'Recruitment Drive'|15000
+3|'Financial Audit'|10000
+4|'Ad Campaign'|18000
+5|'CRM Upgrade'|25000
+6|'Customer Support App'|22000
+7|'Warehouse Automation'|30000
+
+TABEL angajati_proiecte
+#COLUMNS
+id number PK
+angajat_id number FK angajati id
+proiect_id number FK proiecte id
+rol string
+#ROWS
+1|1|1|'Lead Developer'
+2|1|5|'Consultant'
+3|2|2|'Coordinator'
+4|4|4|'Marketing Lead'
+5|3|1|'Backend Dev'
+6|5|4|'Content Specialist'
+7|6|6|'Support Engineer'
+
+

@@ -20,19 +20,13 @@ std::string TableListManager::process() {
             return "TABLEDUMP:FAILED!";
         }
 
-        std::string output{};
+        std::string result = workingDatabase->getSchemaInfo();
 
-        output.clear();
-
-        for (const auto& tableName : workingDatabase->getTableNames()) {
-            output += tableName + "\n";
-        }
-
-        if (output.empty()) {
+        if (result.empty()) {
             return "TABLEDUMP:EMPTY";
         }
 
-        return "TABLEDUMP:" + output;
+        return "TABLEDUMP:" + result;
     }
     catch (...) {
         return "TABLEDUMP:FAILED";

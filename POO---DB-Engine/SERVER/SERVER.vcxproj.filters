@@ -113,6 +113,9 @@
     <Text Include="about_authentication_handler.txt">
       <Filter>Resource Files\readme</Filter>
     </Text>
+    <Text Include="about_Commands.txt">
+      <Filter>Resource Files\readme</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UserCredentialsDatabase.h">

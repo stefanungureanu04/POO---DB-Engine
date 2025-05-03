@@ -1,0 +1,36 @@
+Am implementat multe dintre comenzi.
+Stiu, codul arata urat, mai trebuie spart in bucati mai mici, in functii dedicate,
+dar momentan voiam sa vad ca merge. O sa fac si asta ca sa se inteleaga ceva totusi din
+ce scrie acolo.
+
+In folderul databases/stefan.ungureanu gasesti baza de date CompanyDB.
+
+Urmatoarele comenzi rulate din query functioneaza:
+
+	create clienti (id number PK, nume string, email string);
+	drop table clienti;
+	insert into angajati values (8, 'Paul', 1, 4800);
+	delete from angajati where salariu < 4000;
+	delete from angajati where nume = 'Stefan';
+	select * from angajati;
+	select nume, salariu from angajati;
+	select nume as Name, salariu as Income from angajati;
+	select nume, salariu from angajati where salariu >= 4500;
+	select nume from angajati where departament_id != 3;
+	select nume, salariu from angajati order by salariu;
+	select nume, salariu from angajati order by salariu desc;
+	select nume, salariu from angajati where departament_id = 1 order salariu desc;
+
+Poti scrie una sau mai multe comenzi simultan, dar la final trebuie obligatoriu pus ";".
+De asemenea, comenzile trebuie scrise cu litere mici obligatoriu (dar poti pune valori cu litera mare).
+Poti scrie o comanda pe mai multe linii
+
+	select *
+	from angajati;
+
+Am adaugat suport pentru comentarii (liniile care incep cu // nu se executa, de asemenea, sunt evidentiate);
+Am modificat ce se afiseaza in Tables (tabele + coloane + tipuri de date). Nu trebuie adaugat tot continutul
+pentru ca se poate face select bine.
+Am adaugat suport pentru keyword-ul "as".
+Am adaugat ordonare descrescatoare (order by desc) si ordonare normala (order by).
+Nu mai facem o fereastra pop-up pentru vizualizarea selecturilor, se vad foarte frumos in RESULTS_INFO (am facut si timpul de executie).

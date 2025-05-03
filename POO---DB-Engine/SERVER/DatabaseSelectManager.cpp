@@ -11,35 +11,35 @@ DatabaseSelectManager::DatabaseSelectManager(const std::string& request)
 const std::string DatabaseSelectManager::processDatabaseRequest()
 {
     if (request.rfind("GET_DATABASES:", 0) == 0) {
-
         std::string username = request.substr(14);
+        std::string userFolder = "databases/" + username;
 
-        std::string db_filename = "databases/" + username + ".txt";
-
-        std::ifstream file(db_filename);
-
-        if (!file.is_open()) {
+        if (!std::filesystem::exists(userFolder)) {
             AppLog log;
-            log.write("[SERVER] Could not open database list file: " + db_filename);
-            return "DBLIST:";
+            log.write("[SERVER] User folder does not exist: " + userFolder);
+            return "DBLIST:";  // empty list
         }
 
-        std::string dbName;
         std::string response = "DBLIST:";
         bool first = true;
 
-        while (std::getline(file, dbName)) {
-            if (!first) {
-                response += ";";
+        for (const auto& entry : std::filesystem::directory_iterator(userFolder)) {
+            if (entry.is_regular_file()) {
+                std::string filename = entry.path().filename().string();
+                // Optionally strip .txt extension
+                if (filename.size() >= 4 && filename.substr(filename.size() - 4) == ".txt") {
+                    filename = filename.substr(0, filename.size() - 4);
+                }
+
+                if (!first) response += ";";
+                response += filename;
+                first = false;
             }
-            response += dbName;
-            first = false;
         }
         return response;
     }
 
     else if (request.rfind("CREATE_DATABASE:", 0) == 0) {
-
         std::string data = request.substr(16);
         size_t sep = data.find(':');
         if (sep == std::string::npos) return "INVALID_FORMAT";
@@ -48,59 +48,38 @@ const std::string DatabaseSelectManager::processDatabaseRequest()
         std::string dbName = data.substr(sep + 1);
 
         std::filesystem::create_directories("databases");
-
         std::string userFolder = "databases/" + username;
         std::filesystem::create_directories(userFolder);
 
-        std::string dbFileName = "databases/" + username + ".txt";
-
-        std::ifstream infile(dbFileName);
-        bool isEmpty = infile.peek() == std::ifstream::traits_type::eof();
-        infile.close();
-
-        std::ofstream file(dbFileName, std::ios::app);
-        if (!file.is_open()) return "CREATE_DB_FAIL";
-
-        if (!isEmpty) {
-            file << "\n";
-        }
-        file << dbName;
-
         std::string dbFilePath = userFolder + "/" + dbName + ".txt";
+
+        if (std::filesystem::exists(dbFilePath)) {
+            return "CREATE_DB_FAIL: database already exists";
+        }
+
         std::ofstream dbFile(dbFilePath);
         if (!dbFile.is_open()) return "CREATE_DB_FAIL";
-        dbFile.close();
 
+        dbFile.close();
         return "CREATE_DB_SUCCESS";
     }
 
     else if (request.rfind("DELETE_DATABASE:", 0) == 0) {
-
-        std::string data = request.substr(16); 
+        std::string data = request.substr(16);
         size_t sep = data.find(':');
         if (sep == std::string::npos) return "INVALID_FORMAT";
 
         std::string username = data.substr(0, sep);
         std::string dbName = data.substr(sep + 1);
 
-        std::string dbFileName = "databases/" + username + "/" + dbName + ".txt";
-        if (std::remove(dbFileName.c_str()) != 0) {
-            return "DELETE_DB_FAIL";
+        std::string dbFilePath = "databases/" + username + "/" + dbName + ".txt";
+
+        if (!std::filesystem::exists(dbFilePath)) {
+            return "DELETE_DB_FAIL: database does not exist";
         }
 
-        std::string indexFile = "databases/" + username + ".txt";
-        std::ifstream infile(indexFile);
-        std::vector<std::string> lines;
-        std::string line;
-
-        while (std::getline(infile, line)) {
-            if (line != dbName) lines.push_back(line);
-        }
-        infile.close();
-
-        std::ofstream outfile(indexFile, std::ios::trunc);
-        for (const auto& l : lines) {
-            outfile << l << "\n";
+        if (std::remove(dbFilePath.c_str()) != 0) {
+            return "DELETE_DB_FAIL: unable to delete file";
         }
 
         return "DELETE_DB_SUCCESS";

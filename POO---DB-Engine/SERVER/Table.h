@@ -25,6 +25,9 @@ public:
     void deleteRowByPK(const std::string& pkValue);
     const std::string& getName() const { return name; }
     const std::vector<Column>& getColumns() const { return columns; }
+    std::vector<std::vector<std::string>>& getRows() {return rows;}; 
     const std::vector<std::vector<std::string>>& getRows() const { return rows; }
+
+    int deleteRowsWhere(const std::string& colName, const std::string& op, const std::string& value);
 };
 

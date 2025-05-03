@@ -1,6 +1,6 @@
 #pragma once
-#include "Database.h"
 #include <string>
+#include "Database.h"
 
 class RelationManager {
 private:

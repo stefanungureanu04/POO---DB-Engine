@@ -1,3 +1,0 @@
-magazin_flori
-studenti_ATM
-sistem_transport_feroviar

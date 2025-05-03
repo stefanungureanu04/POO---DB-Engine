@@ -172,6 +172,7 @@
     <Text Include="aboutExceptions.txt" />
     <Text Include="aboutLogs.txt" />
     <Text Include="about_authentication_handler.txt" />
+    <Text Include="about_Commands.txt" />
     <Text Include="log.txt" />
     <Text Include="user_credentials_db.txt" />
   </ItemGroup>

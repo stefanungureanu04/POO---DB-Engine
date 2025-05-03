@@ -196,6 +196,12 @@ QListWidget::item:selected {
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="font">
+        <font>
+         <family>Consolas</family>
+         <bold>true</bold>
+        </font>
+       </property>
       </widget>
      </widget>
     </item>
