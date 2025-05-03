@@ -661,19 +661,30 @@ std::string CommandManager::handleUnknown()
     return "UNKNOWN_COMMAND";
 }
 
-bool CommandManager::parseSelectQuery(const std::string& query, std::string& columnsPart, std::string& tableName, std::string& whereClause, std::string& orderByColumn)
+bool CommandManager::parseSelectQuery(const std::string& query,
+    std::string& columnsPart,
+    std::string& tableName,
+    std::string& whereClause,
+    std::string& orderByColumn)
 {
-    size_t fromPos = query.find("from");
-    if (fromPos == std::string::npos) return false;
+    std::string lowerQuery = query;
+    std::transform(lowerQuery.begin(), lowerQuery.end(), lowerQuery.begin(), ::tolower);
 
-    columnsPart = query.substr(7, fromPos - 7); // after SELECT
+    size_t selectPos = lowerQuery.find("select");
+    size_t fromPos = lowerQuery.find("from");
+    if (fromPos == std::string::npos || selectPos == std::string::npos) return false;
+
+    columnsPart = query.substr(selectPos + 6, fromPos - (selectPos + 6));
     std::string afterFrom = query.substr(fromPos + 4);
 
     trim(columnsPart);
     trim(afterFrom);
 
-    size_t wherePos = afterFrom.find("where");
-    size_t orderByPos = afterFrom.find("order by");
+    std::string lowerAfterFrom = afterFrom;
+    std::transform(lowerAfterFrom.begin(), lowerAfterFrom.end(), lowerAfterFrom.begin(), ::tolower);
+
+    size_t wherePos = lowerAfterFrom.find("where");
+    size_t orderByPos = lowerAfterFrom.find("order by");
 
     if (wherePos != std::string::npos && orderByPos != std::string::npos && orderByPos > wherePos) {
         tableName = afterFrom.substr(0, wherePos);

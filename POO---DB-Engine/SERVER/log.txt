@@ -4636,3 +4636,41 @@ FROM angajati_proiecte
 [2025-05-03 17:09:59]: [SERVER] Client connected.
 [2025-05-03 17:09:59]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
 [2025-05-03 17:10:09]: [SERVER] Client connected.
+[2025-05-03 17:41:29]: [SERVER] Client connected.
+[2025-05-03 17:42:44]: [SERVER] Client connected.
+[2025-05-03 17:42:56]: [SERVER] Client connected.
+[2025-05-03 17:43:09]: [SERVER] Client connected.
+[2025-05-03 17:43:09]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 17:43:24]: [SERVER] Client connected.
+[2025-05-03 17:43:38]: [SERVER] Client connected.
+[2025-05-03 17:43:56]: [SERVER] Client connected.
+[2025-05-03 17:43:56]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 17:45:18]: [SERVER] Client connected.
+[2025-05-03 17:45:18]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 17:47:49]: [SERVER] Client connected.
+[2025-05-03 17:47:49]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 17:48:00]: [SERVER] Client connected.
+[2025-05-03 17:48:00]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 17:48:13]: [SERVER] Client connected.
+[2025-05-03 17:48:13]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:SELECT nume, salariu
+FROM angajati
+
+
+[2025-05-03 17:48:13]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 17:52:09]: [SERVER] Listening on port 12345
+[2025-05-03 17:52:31]: [SERVER] Client connected.
+[2025-05-03 17:52:31]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 17:52:31]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 17:52:35]: [SERVER] Client connected.
+[2025-05-03 17:52:35]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 17:52:35]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 17:52:38]: [SERVER] Client connected.
+[2025-05-03 17:52:38]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 17:52:38]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 17:52:47]: [SERVER] Client connected.
+[2025-05-03 17:52:47]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:SELECT nume, salariu FROM angajati
+
+[2025-05-03 17:53:08]: [SERVER] Client connected.
+[2025-05-03 17:53:08]: [SERVER] Sending: SELECT_FAIL: error in ORDER BY
+[2025-05-03 17:53:30]: [SERVER] Client connected.
+[2025-05-03 17:53:30]: [SERVER] Sending: SELECT_FAIL: error in ORDER BY
