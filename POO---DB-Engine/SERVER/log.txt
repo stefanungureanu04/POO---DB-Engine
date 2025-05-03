@@ -4256,3 +4256,383 @@ order by id;
 [2025-05-03 12:42:49]: [SERVER] Client connected.
 [2025-05-03 12:43:04]: [SERVER] Client connected.
 [2025-05-03 12:43:38]: [SERVER] Client connected.
+[2025-05-03 13:00:28]: [SERVER] Listening on port 12345
+[2025-05-03 13:01:04]: [SERVER] Client connected.
+[2025-05-03 13:01:04]: [SERVER] Received: LOGIN:adi.tuta:adi12!
+[2025-05-03 13:01:04]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 13:01:20]: [SERVER] Client connected.
+[2025-05-03 13:01:20]: [SERVER] Received: GET_DATABASES:adi.tuta
+[2025-05-03 13:01:20]: [SERVER] Sending: DBLIST:magazin_flori;sistem_transport_feroviar;studenti_ATM
+[2025-05-03 13:01:24]: [SERVER] Client connected.
+[2025-05-03 13:01:24]: [SERVER] Received: LOAD_DATABASE:adi.tuta:magazin_flori
+[2025-05-03 13:01:24]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 13:01:39]: [SERVER] Client connected.
+[2025-05-03 13:01:39]: [SERVER] Received: SHOW_RELATIONS:adi.tuta:magazin_flori
+[2025-05-03 13:01:39]: [SERVER] Sending: RELATIONS:vanzari -> produse (id_produs -> id)
+
+[2025-05-03 13:01:40]: [SERVER] Client connected.
+[2025-05-03 13:01:40]: [SERVER] Received: GET_TABLES:adi.tuta:magazin_flori
+[2025-05-03 13:01:48]: [SERVER] Client connected.
+[2025-05-03 13:01:48]: [SERVER] Received: SHOW_RELATIONS:adi.tuta:magazin_flori
+[2025-05-03 13:01:48]: [SERVER] Sending: RELATIONS:vanzari -> produse (id_produs -> id)
+
+[2025-05-03 13:01:49]: [SERVER] Client connected.
+[2025-05-03 13:01:49]: [SERVER] Received: GET_TABLES:adi.tuta:magazin_flori
+[2025-05-03 13:01:58]: [SERVER] Client connected.
+[2025-05-03 13:01:58]: [SERVER] Received: SHOW_RELATIONS:adi.tuta:magazin_flori
+[2025-05-03 13:01:58]: [SERVER] Sending: RELATIONS:vanzari -> produse (id_produs -> id)
+
+[2025-05-03 13:02:17]: [SERVER] Client connected.
+[2025-05-03 13:02:17]: [SERVER] Received: EXECUTE_CODE:adi.tuta:magazin_flori:select nume, pret
+from produse
+
+[2025-05-03 13:02:43]: [SERVER] Client connected.
+[2025-05-03 13:02:43]: [SERVER] Received: EXECUTE_CODE:adi.tuta:magazin_flori:select nume, pret
+from produse
+order by pret
+
+[2025-05-03 13:34:34]: [SERVER] Client connected.
+[2025-05-03 13:34:34]: [SERVER] Received: EXECUTE_CODE:adi.tuta:magazin_flori:create table calatori
+
+[2025-05-03 13:34:34]: [SERVER] Sending: CREATE_TABLE_FAIL: syntax error
+[2025-05-03 13:53:29]: [SERVER] Listening on port 12345
+[2025-05-03 13:54:04]: [SERVER] Client connected.
+[2025-05-03 13:54:04]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 13:54:04]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 13:54:09]: [SERVER] Client connected.
+[2025-05-03 13:54:09]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 13:54:09]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 13:54:12]: [SERVER] Client connected.
+[2025-05-03 13:54:12]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 13:54:12]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 13:54:15]: [SERVER] Client connected.
+[2025-05-03 13:54:15]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 13:54:20]: [SERVER] Client connected.
+[2025-05-03 13:54:20]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-03 13:54:53]: [SERVER] Client connected.
+[2025-05-03 13:54:53]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 13:55:35]: [SERVER] Client connected.
+[2025-05-03 13:55:35]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 13:57:06]: [SERVER] Client connected.
+[2025-05-03 13:57:06]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 13:57:25]: [SERVER] Client connected.
+[2025-05-03 13:57:25]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 13:58:33]: [SERVER] Client connected.
+[2025-05-03 13:58:33]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 13:58:33]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 13:58:53]: [SERVER] Client connected.
+[2025-05-03 13:58:53]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 13:58:53]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 13:58:57]: [SERVER] Client connected.
+[2025-05-03 13:58:57]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 13:58:57]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 13:59:00]: [SERVER] Client connected.
+[2025-05-03 13:59:00]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 13:59:14]: [SERVER] Client connected.
+[2025-05-03 13:59:14]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 13:59:26]: [SERVER] Client connected.
+[2025-05-03 13:59:26]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 13:59:33]: [SERVER] Client connected.
+[2025-05-03 13:59:33]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 13:59:41]: [SERVER] Client connected.
+[2025-05-03 13:59:41]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:SELECT nume, salariu 
+FROM angajati 
+
+
+[2025-05-03 13:59:41]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 13:59:46]: [SERVER] Client connected.
+[2025-05-03 13:59:46]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 14:00:02]: [SERVER] Client connected.
+[2025-05-03 14:00:02]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:SELECT nume, salariu 
+FROM angajati 
+
+
+[2025-05-03 14:00:02]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 14:00:13]: [SERVER] Client connected.
+[2025-05-03 14:00:13]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:SELECT *
+FROM angajati 
+
+
+[2025-05-03 14:00:13]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 14:00:24]: [SERVER] Client connected.
+[2025-05-03 14:00:24]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 14:00:39]: [SERVER] Client connected.
+[2025-05-03 14:00:39]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 14:00:43]: [SERVER] Client connected.
+[2025-05-03 14:00:43]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:SELECT nume
+from departamente
+
+
+[2025-05-03 14:00:51]: [SERVER] Client connected.
+[2025-05-03 14:00:51]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 14:01:04]: [SERVER] Client connected.
+[2025-05-03 14:01:04]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:SELECT nume
+from angajati
+
+
+[2025-05-03 14:01:15]: [SERVER] Client connected.
+[2025-05-03 14:01:15]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 14:01:26]: [SERVER] Client connected.
+[2025-05-03 14:01:26]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:SELECT nume, salariu
+from angajati
+
+
+[2025-05-03 14:03:08]: [SERVER] Client connected.
+[2025-05-03 14:03:43]: [SERVER] Client connected.
+[2025-05-03 14:04:02]: [SERVER] Client connected.
+[2025-05-03 14:04:02]: [SERVER] Sending: SELECT_FAIL: error in ORDER BY
+[2025-05-03 14:04:59]: [SERVER] Client connected.
+[2025-05-03 14:05:32]: [SERVER] Client connected.
+[2025-05-03 14:05:32]: [SERVER] Sending: SELECT_FAIL: error in ORDER BY
+[2025-05-03 14:05:45]: [SERVER] Client connected.
+[2025-05-03 14:05:54]: [SERVER] Client connected.
+[2025-05-03 14:14:13]: [SERVER] Listening on port 12345
+[2025-05-03 14:14:39]: [SERVER] Client connected.
+[2025-05-03 14:14:39]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 14:14:39]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 14:14:54]: [SERVER] Client connected.
+[2025-05-03 14:14:54]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 14:14:54]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 14:14:56]: [SERVER] Client connected.
+[2025-05-03 14:14:56]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 14:14:56]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 14:14:58]: [SERVER] Client connected.
+[2025-05-03 14:18:43]: [SERVER] Client connected.
+[2025-05-03 14:18:43]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 14:21:29]: [SERVER] Client connected.
+[2025-05-03 14:25:35]: [SERVER] Listening on port 12345
+[2025-05-03 14:25:58]: [SERVER] Client connected.
+[2025-05-03 14:25:58]: [SERVER] Received: LOGIN:stafen.ungureanu:parola1234?
+[2025-05-03 14:25:58]: [SERVER] Sending: LOGIN_FAIL
+[2025-05-03 14:26:19]: [SERVER] Client connected.
+[2025-05-03 14:26:19]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 14:26:19]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 14:26:23]: [SERVER] Client connected.
+[2025-05-03 14:26:23]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 14:26:23]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 14:26:26]: [SERVER] Client connected.
+[2025-05-03 14:26:26]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 14:26:26]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 14:26:43]: [SERVER] Client connected.
+[2025-05-03 14:36:16]: [SERVER] Listening on port 12345
+[2025-05-03 14:36:42]: [SERVER] Client connected.
+[2025-05-03 14:36:42]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 14:36:42]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 14:36:59]: [SERVER] Client connected.
+[2025-05-03 14:36:59]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 14:36:59]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 14:37:04]: [SERVER] Client connected.
+[2025-05-03 14:37:04]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 14:37:04]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 14:37:06]: [SERVER] Client connected.
+[2025-05-03 14:43:54]: [SERVER] Listening on port 12345
+[2025-05-03 14:44:21]: [SERVER] Client connected.
+[2025-05-03 14:44:21]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 14:44:21]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 14:44:26]: [SERVER] Client connected.
+[2025-05-03 14:44:26]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 14:44:26]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 14:44:29]: [SERVER] Client connected.
+[2025-05-03 14:44:29]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 14:44:29]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 14:44:41]: [SERVER] Client connected.
+[2025-05-03 14:48:53]: [SERVER] Listening on port 12345
+[2025-05-03 14:49:19]: [SERVER] Client connected.
+[2025-05-03 14:49:19]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 14:49:19]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 14:49:25]: [SERVER] Client connected.
+[2025-05-03 14:49:25]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 14:49:25]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 14:49:30]: [SERVER] Client connected.
+[2025-05-03 14:49:30]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 14:49:30]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 14:49:48]: [SERVER] Client connected.
+[2025-05-03 14:49:48]: [SERVER] Sending: JOIN_FAIL: invalid join syntax
+[2025-05-03 14:51:27]: [SERVER] Client connected.
+[2025-05-03 14:51:27]: [SERVER] Sending: JOIN_FAIL: invalid join syntax
+[2025-05-03 14:51:42]: [SERVER] Client connected.
+[2025-05-03 14:51:42]: [SERVER] Sending: JOIN_FAIL: invalid join syntax
+[2025-05-03 14:51:52]: [SERVER] Client connected.
+[2025-05-03 14:51:52]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 14:51:55]: [SERVER] Client connected.
+[2025-05-03 14:51:55]: [SERVER] Sending: JOIN_FAIL: invalid join syntax
+[2025-05-03 14:52:06]: [SERVER] Client connected.
+[2025-05-03 14:52:06]: [SERVER] Sending: JOIN_FAIL: invalid join syntax
+[2025-05-03 14:52:15]: [SERVER] Client connected.
+[2025-05-03 14:52:15]: [SERVER] Sending: JOIN_FAIL: invalid join syntax
+[2025-05-03 14:52:21]: [SERVER] Client connected.
+[2025-05-03 14:52:21]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 14:52:35]: [SERVER] Client connected.
+[2025-05-03 14:52:35]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 14:52:42]: [SERVER] Client connected.
+[2025-05-03 14:52:42]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:SELECT nume
+FROM angajati_proiecte
+
+
+
+[2025-05-03 14:52:42]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 14:54:57]: [SERVER] Listening on port 12345
+[2025-05-03 14:55:21]: [SERVER] Client connected.
+[2025-05-03 14:55:21]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 14:55:21]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 14:55:25]: [SERVER] Client connected.
+[2025-05-03 14:55:25]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 14:55:25]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 14:55:28]: [SERVER] Client connected.
+[2025-05-03 14:55:28]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 14:55:28]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 14:55:43]: [SERVER] Client connected.
+[2025-05-03 14:55:43]: [SERVER] Sending: JOIN_FAIL: invalid join syntax
+[2025-05-03 14:58:32]: [SERVER] Listening on port 12345
+[2025-05-03 14:58:58]: [SERVER] Client connected.
+[2025-05-03 14:58:58]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 14:58:58]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 14:59:03]: [SERVER] Client connected.
+[2025-05-03 14:59:03]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 14:59:03]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 14:59:06]: [SERVER] Client connected.
+[2025-05-03 14:59:06]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 14:59:06]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 14:59:29]: [SERVER] Client connected.
+[2025-05-03 15:06:58]: [SERVER] Listening on port 12345
+[2025-05-03 15:07:22]: [SERVER] Client connected.
+[2025-05-03 15:07:22]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 15:07:22]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 15:07:38]: [SERVER] Client connected.
+[2025-05-03 15:07:38]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 15:07:38]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 15:07:41]: [SERVER] Client connected.
+[2025-05-03 15:07:41]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 15:07:41]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 15:07:43]: [SERVER] Client connected.
+[2025-05-03 15:08:09]: [SERVER] Client connected.
+[2025-05-03 15:11:23]: [SERVER] Listening on port 12345
+[2025-05-03 15:11:55]: [SERVER] Client connected.
+[2025-05-03 15:11:55]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 15:11:55]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 15:12:15]: [SERVER] Client connected.
+[2025-05-03 15:12:15]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 15:12:15]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 15:12:18]: [SERVER] Client connected.
+[2025-05-03 15:12:18]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 15:12:18]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 15:12:20]: [SERVER] Client connected.
+[2025-05-03 15:12:20]: [SERVER] Sending: JOIN_FAIL: expected ON
+[2025-05-03 15:13:14]: [SERVER] Client connected.
+[2025-05-03 15:14:14]: [SERVER] Listening on port 12345
+[2025-05-03 15:14:36]: [SERVER] Client connected.
+[2025-05-03 15:14:36]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 15:14:36]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 15:14:40]: [SERVER] Client connected.
+[2025-05-03 15:14:40]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 15:14:40]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 15:14:43]: [SERVER] Client connected.
+[2025-05-03 15:14:43]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 15:14:43]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 15:14:46]: [SERVER] Client connected.
+[2025-05-03 15:15:15]: [SERVER] Client connected.
+[2025-05-03 15:18:53]: [SERVER] Listening on port 12345
+[2025-05-03 15:19:17]: [SERVER] Client connected.
+[2025-05-03 15:19:17]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 15:19:17]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 15:19:21]: [SERVER] Client connected.
+[2025-05-03 15:19:21]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 15:19:21]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 15:19:27]: [SERVER] Client connected.
+[2025-05-03 15:19:27]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 15:19:27]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 15:19:45]: [SERVER] Client connected.
+[2025-05-03 15:32:45]: [SERVER] Listening on port 12345
+[2025-05-03 15:33:05]: [SERVER] Client connected.
+[2025-05-03 15:33:05]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 15:33:05]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 15:33:09]: [SERVER] Client connected.
+[2025-05-03 15:33:09]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 15:33:09]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 15:33:12]: [SERVER] Client connected.
+[2025-05-03 15:33:12]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 15:33:12]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 15:33:16]: [SERVER] Client connected.
+[2025-05-03 15:33:36]: [SERVER] Client connected.
+[2025-05-03 15:33:36]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 15:42:05]: [SERVER] Listening on port 12345
+[2025-05-03 15:42:25]: [SERVER] Client connected.
+[2025-05-03 15:42:25]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 15:42:25]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 15:42:30]: [SERVER] Client connected.
+[2025-05-03 15:42:30]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 15:42:30]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 15:42:32]: [SERVER] Client connected.
+[2025-05-03 15:42:32]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 15:42:32]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 15:42:48]: [SERVER] Client connected.
+[2025-05-03 15:42:48]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 15:43:32]: [SERVER] Client connected.
+[2025-05-03 15:43:32]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 15:43:45]: [SERVER] Client connected.
+[2025-05-03 15:43:45]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 15:43:59]: [SERVER] Client connected.
+[2025-05-03 15:47:36]: [SERVER] Listening on port 12345
+[2025-05-03 15:47:56]: [SERVER] Client connected.
+[2025-05-03 15:47:56]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 15:47:56]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 15:48:00]: [SERVER] Client connected.
+[2025-05-03 15:48:00]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 15:48:00]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 15:48:03]: [SERVER] Client connected.
+[2025-05-03 15:48:03]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 15:48:03]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 15:48:23]: [SERVER] Client connected.
+[2025-05-03 16:40:37]: [SERVER] Listening on port 12345
+[2025-05-03 16:40:59]: [SERVER] Client connected.
+[2025-05-03 16:40:59]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 16:40:59]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 16:41:02]: [SERVER] Client connected.
+[2025-05-03 16:41:02]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 16:41:02]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 16:41:06]: [SERVER] Client connected.
+[2025-05-03 16:41:06]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 16:41:06]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 16:41:30]: [SERVER] Client connected.
+[2025-05-03 16:58:36]: [SERVER] Listening on port 12345
+[2025-05-03 16:59:01]: [SERVER] Client connected.
+[2025-05-03 16:59:01]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 16:59:01]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 16:59:06]: [SERVER] Client connected.
+[2025-05-03 16:59:06]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 16:59:06]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 16:59:09]: [SERVER] Client connected.
+[2025-05-03 16:59:09]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 16:59:09]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 16:59:42]: [SERVER] Client connected.
+[2025-05-03 16:59:42]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 17:03:06]: [SERVER] Listening on port 12345
+[2025-05-03 17:03:37]: [SERVER] Client connected.
+[2025-05-03 17:03:37]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 17:03:37]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 17:05:27]: [SERVER] Client connected.
+[2025-05-03 17:05:27]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 17:05:27]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 17:05:30]: [SERVER] Client connected.
+[2025-05-03 17:05:30]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 17:05:30]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 17:05:31]: [SERVER] Client connected.
+[2025-05-03 17:05:31]: [SERVER] Sending: SELECT_FAIL: invalid syntax
+[2025-05-03 17:05:53]: [SERVER] Client connected.
+[2025-05-03 17:09:18]: [SERVER] Listening on port 12345
+[2025-05-03 17:09:47]: [SERVER] Client connected.
+[2025-05-03 17:09:47]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-03 17:09:47]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-03 17:09:53]: [SERVER] Client connected.
+[2025-05-03 17:09:53]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-03 17:09:53]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-03 17:09:55]: [SERVER] Client connected.
+[2025-05-03 17:09:55]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-03 17:09:55]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-03 17:09:57]: [SERVER] Client connected.
+[2025-05-03 17:09:57]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 17:09:58]: [SERVER] Client connected.
+[2025-05-03 17:09:58]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-03 17:09:59]: [SERVER] Client connected.
+[2025-05-03 17:09:59]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-03 17:10:09]: [SERVER] Client connected.

@@ -36,3 +36,6 @@ pentru ca se poate face select bine.
 Am adaugat suport pentru keyword-ul "as".
 Am adaugat ordonare descrescatoare (order by desc) si ordonare normala (order by).
 Nu mai facem o fereastra pop-up pentru vizualizarea selecturilor, se vad foarte frumos in RESULTS_INFO (am facut si timpul de executie).
+
+
+

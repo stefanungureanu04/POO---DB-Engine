@@ -71,9 +71,22 @@ std::string CommandManager::processCommand()
             userCode = command;
             response = handleDropTable();
         }
+        else if (lowerCommand.find("join") != std::string::npos) {
+            userCode = command;
+            response = handleJoin();
+        }
         else if (lowerCommand.find("select") == 0) {
             userCode = command;
-            response = handleSelect();
+            //voi redirectiona fluxul de procesare spre join in cazul in care apare group by
+            if (command.find("JOIN") != std::string::npos ||
+                command.find("join") != std::string::npos ||
+                command.find("GROUP BY") != std::string::npos ||
+                command.find("group by") != std::string::npos) {
+                response = handleJoin();
+            }
+            else {
+                response = handleSelect();
+            }
         }
         else {
             response = handleUnknown();
@@ -298,6 +311,350 @@ std::string CommandManager::handleDelete()
         return std::string("DELETE_FAIL: ") + e.what();
     }
  }
+
+
+
+
+
+
+
+//adaug codul de gestiune al comenzii join in baza de date 
+// Cod complet pentru CommandManager::handleJoin() cu suport pentru JOIN, WHERE, ORDER BY
+
+// Cod complet pentru CommandManager::handleJoin() cu suport pentru JOIN, LEFT JOIN, WHERE si ORDER BY
+
+// Cod complet actualizat pentru CommandManager::handleJoin() cu suport pentru JOIN, LEFT JOIN, WHERE, ORDER BY si aliasuri cu AS
+
+// Cod complet pentru CommandManager::handleJoin() cu suport pentru JOIN, LEFT JOIN, WHERE, ORDER BY, AS si GROUP BY + agregari (COUNT, SUM, AVG, MIN, MAX)
+
+std::string CommandManager::handleJoin() {
+    std::string query = userCode;
+    size_t selectPos = query.find("SELECT");
+    size_t fromPos = query.find("FROM");
+    size_t wherePos = query.find("WHERE", fromPos);
+    size_t groupByPos = query.find("GROUP BY", fromPos);
+    size_t havingPos = query.find("HAVING", fromPos);
+    size_t orderByPos = query.find("ORDER BY", fromPos);
+
+    if (selectPos == std::string::npos || fromPos == std::string::npos)
+        return "JOIN_FAIL: missing SELECT or FROM";
+
+    size_t clauseEnd = std::min({
+        wherePos != std::string::npos ? wherePos : query.size(),
+        orderByPos != std::string::npos ? orderByPos : query.size(),
+        groupByPos != std::string::npos ? groupByPos : query.size(),
+        havingPos != std::string::npos ? havingPos : query.size()
+        });
+
+    std::string selectPart = query.substr(selectPos + 6, fromPos - (selectPos + 6));
+    std::string joinSection = query.substr(fromPos + 4, clauseEnd - (fromPos + 4));
+    std::string whereClause = wherePos != std::string::npos ? query.substr(wherePos + 5, (groupByPos != std::string::npos ? groupByPos : query.size()) - (wherePos + 5)) : "";
+    std::string groupByCol = groupByPos != std::string::npos ? query.substr(groupByPos + 8, (havingPos != std::string::npos ? havingPos : query.size()) - (groupByPos + 8)) : "";
+    std::string havingClause = havingPos != std::string::npos ? query.substr(havingPos + 6, (orderByPos != std::string::npos ? orderByPos : query.size()) - (havingPos + 6)) : "";
+    std::string orderByCol = orderByPos != std::string::npos ? query.substr(orderByPos + 8) : "";
+    bool orderDesc = false;
+
+    trim(selectPart); trim(joinSection); trim(whereClause);
+    trim(groupByCol); trim(havingClause); trim(orderByCol);
+
+    if (orderByCol.size() >= 4 && orderByCol.substr(orderByCol.size() - 4) == "DESC") {
+        orderDesc = true;
+        orderByCol = orderByCol.substr(0, orderByCol.size() - 4);
+        trim(orderByCol);
+    }
+
+    std::vector<std::string> selectedCols;
+    struct Aggregate { std::string function, column, alias; };
+    std::vector<Aggregate> aggregates;
+
+    std::istringstream selStream(selectPart);
+    std::string token;
+    while (std::getline(selStream, token, ',')) {
+        trim(token);
+        std::string lower = token;
+        std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
+        if (lower.find("count(") == 0 || lower.find("sum(") == 0 || lower.find("avg(") == 0 || lower.find("min(") == 0 || lower.find("max(") == 0) {
+            size_t open = token.find('('), close = token.find(')');
+            std::string func = token.substr(0, open);
+            std::string col = token.substr(open + 1, close - open - 1);
+            trim(func); trim(col);
+            std::string alias = func + "(" + col + ")";
+            std::transform(func.begin(), func.end(), func.begin(), ::tolower);
+            aggregates.push_back({ func, col, alias });
+            selectedCols.push_back(alias);
+        }
+        else {
+            std::transform(token.begin(), token.end(), token.begin(), ::tolower);
+            selectedCols.push_back(token);
+        }
+    }
+
+    struct JoinPart {
+        std::string table;
+        std::string alias;
+        std::string joinLeft;
+        std::string joinRight;
+        bool isLeftJoin = false;
+    };
+
+    std::unordered_map<std::string, std::string> aliasMap;
+    std::vector<JoinPart> tables;
+    std::istringstream iss(joinSection);
+    std::string baseTable, maybeAs, alias;
+    iss >> baseTable >> maybeAs;
+
+    std::transform(baseTable.begin(), baseTable.end(), baseTable.begin(), ::tolower);
+
+    if (maybeAs == "AS" || maybeAs == "as") {
+        iss >> alias;
+    }
+    else if (maybeAs == "LEFT" || maybeAs == "JOIN" || maybeAs == "ON") {
+        alias = baseTable;
+        iss.clear();
+        iss.seekg(joinSection.find(baseTable) + baseTable.length());
+    }
+    else {
+        alias = maybeAs;
+    }
+    std::transform(alias.begin(), alias.end(), alias.begin(), ::tolower);
+
+    aliasMap[alias] = baseTable;
+    tables.push_back({ baseTable, alias, "", "" });
+
+    std::string word;
+    while (iss >> word) {
+        bool isLeft = false;
+        if (word == "LEFT") {
+            iss >> word;
+            if (word != "JOIN") return "JOIN_FAIL: expected JOIN after LEFT";
+            isLeft = true;
+        }
+        else if (word != "JOIN") continue;
+
+        std::string newTable, maybeAs2, newAlias, onWord;
+        iss >> newTable >> maybeAs2;
+
+        if (maybeAs2 == "AS" || maybeAs2 == "as") {
+            iss >> newAlias;
+            iss >> onWord;
+        }
+        else if (maybeAs2 == "ON" || maybeAs2 == "on") {
+            onWord = maybeAs2;
+            newAlias = newTable;
+        }
+        else {
+            newAlias = maybeAs2;
+            iss >> onWord;
+        }
+
+        if (onWord != "on" && onWord != "ON") return "JOIN_FAIL: expected ON";
+
+        std::string condition, temp;
+        while (iss >> temp) {
+            if (temp == "JOIN" || temp == "LEFT" || temp == "WHERE" || temp == "ORDER" || temp == "GROUP") {
+                for (int i = temp.length() - 1; i >= 0; --i)
+                    iss.putback(temp[i]);
+                break;
+            }
+            condition += temp + " ";
+        }
+        trim(condition);
+        size_t eq = condition.find('=');
+        if (eq == std::string::npos) return "JOIN_FAIL: invalid join condition";
+
+        std::string left = condition.substr(0, eq), right = condition.substr(eq + 1);
+        trim(left); trim(right);
+        std::transform(newTable.begin(), newTable.end(), newTable.begin(), ::tolower);
+        std::transform(newAlias.begin(), newAlias.end(), newAlias.begin(), ::tolower);
+        std::transform(left.begin(), left.end(), left.begin(), ::tolower);
+        std::transform(right.begin(), right.end(), right.begin(), ::tolower);
+
+        aliasMap[newAlias] = newTable;
+        tables.push_back({ newTable, newAlias, left, right, isLeft });
+    }
+
+    std::unordered_map<std::string, Table*> tableMap;
+    for (const auto& part : tables) {
+        if (!workingDatabase->hasTable(part.table))
+            return "JOIN_FAIL: table not found: " + part.table;
+        tableMap[part.alias] = workingDatabase->getTable(part.table);
+    }
+
+    using Row = std::unordered_map<std::string, std::string>;
+    std::vector<Row> result;
+    Table* firstTable = tableMap[tables[0].alias];
+    for (const auto& row : firstTable->getRows()) {
+        Row r;
+        const auto& cols = firstTable->getColumns();
+        for (size_t i = 0; i < cols.size(); ++i) {
+            std::string key = tables[0].alias + "." + cols[i].getName();
+            std::transform(key.begin(), key.end(), key.begin(), ::tolower);
+            r[key] = row[i];
+        }
+        result.push_back(r);
+    }
+
+    for (size_t i = 1; i < tables.size(); ++i) {
+        const auto& part = tables[i];
+        Table* rightTable = tableMap[part.alias];
+        const auto& rightCols = rightTable->getColumns();
+        const auto& rightRows = rightTable->getRows();
+
+        std::vector<Row> newResult;
+        for (const auto& existingRow : result) {
+            auto it = existingRow.find(part.joinLeft);
+            std::string joinValue = (it != existingRow.end()) ? it->second : "";
+            bool matched = false;
+
+            for (const auto& rightRow : rightRows) {
+                for (size_t j = 0; j < rightCols.size(); ++j) {
+                    std::string colName = part.alias + "." + rightCols[j].getName();
+                    std::transform(colName.begin(), colName.end(), colName.begin(), ::tolower);
+                    if (colName == part.joinRight && rightRow[j] == joinValue) {
+                        Row combined = existingRow;
+                        for (size_t k = 0; k < rightCols.size(); ++k) {
+                            std::string key = part.alias + "." + rightCols[k].getName();
+                            std::transform(key.begin(), key.end(), key.begin(), ::tolower);
+                            combined[key] = rightRow[k];
+                        }
+                        newResult.push_back(combined);
+                        matched = true;
+                        break;
+                    }
+                }
+            }
+            if (!matched && part.isLeftJoin) {
+                Row combined = existingRow;
+                for (const auto& col : rightCols) {
+                    std::string key = part.alias + "." + col.getName();
+                    std::transform(key.begin(), key.end(), key.begin(), ::tolower);
+                    combined[key] = "NULL";
+                }
+                newResult.push_back(combined);
+            }
+        }
+        result = std::move(newResult);
+    }
+
+    if (!whereClause.empty()) {
+        static const std::vector<std::string> ops = { ">=", "<=", "!=", "=", "<", ">" };
+        std::string opFound;
+        size_t opPos = std::string::npos;
+
+        for (const auto& op : ops) {
+            opPos = whereClause.find(op);
+            if (opPos != std::string::npos) {
+                opFound = op;
+                break;
+            }
+        }
+
+        if (opFound.empty()) return "JOIN_FAIL: invalid WHERE condition";
+
+        std::string left = whereClause.substr(0, opPos), right = whereClause.substr(opPos + opFound.length());
+        trim(left); trim(right);
+        std::transform(left.begin(), left.end(), left.begin(), ::tolower);
+        right.erase(remove(right.begin(), right.end(), '\''), right.end());
+
+        std::vector<Row> filtered;
+        for (const auto& row : result) {
+            if (!row.count(left)) continue;
+            std::string val = row.at(left);
+            bool include = false;
+            try {
+                double a = std::stod(val), b = std::stod(right);
+                if (opFound == "=") include = a == b;
+                else if (opFound == "!=") include = a != b;
+                else if (opFound == ">") include = a > b;
+                else if (opFound == "<") include = a < b;
+                else if (opFound == ">=") include = a >= b;
+                else if (opFound == "<=") include = a <= b;
+            }
+            catch (...) {
+                if (opFound == "=") include = val == right;
+                else if (opFound == "!=") include = val != right;
+            }
+            if (include) filtered.push_back(row);
+        }
+        result = std::move(filtered);
+    }
+
+    //sectiunea unde se aplica functiile agregate
+    std::vector<std::vector<std::string>> finalRows;
+    if (!groupByCol.empty()) {
+        std::unordered_map<std::string, std::vector<Row>> groups;
+        for (const auto& row : result) {
+            std::string key = row.count(groupByCol) ? row.at(groupByCol) : "NULL";
+            groups[key].push_back(row);
+        }
+
+        for (const auto& [groupKey, rows] : groups) {
+            std::vector<std::string> values;
+            for (const auto& col : selectedCols) {
+                if (col == groupByCol) {
+                    values.push_back(groupKey);
+                }
+                else {
+                    auto it = std::find_if(aggregates.begin(), aggregates.end(), [&](const Aggregate& a) { return a.alias == col; });
+                    if (it == aggregates.end()) { values.push_back("NULL"); continue; }
+                    const auto& a = *it;
+                    if (a.function == "count") {
+                        if (a.column == "*" || a.column == " *") {
+                            values.push_back(std::to_string(rows.size()));
+                        }
+                        else {
+                            int cnt = 0;
+                            for (const auto& r : rows) {
+                                if (!r.at(a.column).empty() && r.at(a.column) != "NULL")
+                                    cnt++;
+                            }
+                            values.push_back(std::to_string(cnt));
+                        }
+                    }
+                    else if (a.function == "sum" || a.function == "avg") {
+                        double total = 0;
+                        for (const auto& r : rows) total += std::stod(r.at(a.column));
+                        values.push_back(a.function == "sum" ? std::to_string(total) : std::to_string(total / rows.size()));
+                    }
+                    else if (a.function == "min") {
+                        double minVal = std::stod(rows[0].at(a.column));
+                        for (const auto& r : rows) minVal = std::min(minVal, std::stod(r.at(a.column)));
+                        values.push_back(std::to_string(minVal));
+                    }
+                    else if (a.function == "max") {
+                        double maxVal = std::stod(rows[0].at(a.column));
+                        for (const auto& r : rows) maxVal = std::max(maxVal, std::stod(r.at(a.column)));
+                        values.push_back(std::to_string(maxVal));
+                    }
+                }
+            }
+            finalRows.push_back(values);
+        }
+    }
+    else {
+        for (const auto& r : result) {
+            std::vector<std::string> row;
+            for (const auto& col : selectedCols) {
+                std::string key = col;
+                std::transform(key.begin(), key.end(), key.begin(), ::tolower);
+                row.push_back(r.count(key) ? r.at(key) : "NULL");
+            }
+            finalRows.push_back(row);
+        }
+    }
+
+    return formatSelectResult(selectedCols, finalRows);
+}
+
+
+
+
+
+
+
+
+
+
 
 std::string CommandManager::handleUnknown() 
 {
