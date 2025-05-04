@@ -470,15 +470,21 @@ void EnvironmentWindow::setupPanelSwitching()
             switchToOtherPanel();  // dacă vrei să goleşti editorul şi să îl setezi read-only
             displayRelations();    // functia este mai jos
         }
+        else if (selectedItem == "Procedures") {
+            switchToOtherPanel();
+            displayProcedures();
+        }
         else {
             switchToOtherPanel();
         }
      });
 
+
     setDefaultWidgetRow("Query");
 }
 
 void EnvironmentWindow::displayRelations() {
+   
     if (selectedDatabase.isEmpty()) {
         QMessageBox::warning(this, "No Database", "Please select a database first.");
         return;
@@ -512,7 +518,43 @@ void EnvironmentWindow::displayRelations() {
     }
 }
 
-void EnvironmentWindow::displayTables() {
+void EnvironmentWindow::displayProcedures()
+{
+    if (selectedDatabase.isEmpty()) {
+        QMessageBox::warning(this, "No Database", "Please select a database first.");
+        return;
+    }
+
+    try {
+        Socket socket(Socket::Protocol::TCP);
+        if (!socket.connectToServer("127.0.0.1", 12345)) {
+            QMessageBox::critical(this, "Connection Error", "Could not connect to server.");
+            return;
+        }
+
+        std::string request = "SHOW_PROCEDURES:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString();
+        socket.sendData(request);
+
+        std::string response = socket.receiveData(4096);
+
+        const std::string prefix = "PROCEDURES:";
+
+        if (response.rfind(prefix, 0) == 0) {
+            std::string payload = response.substr(prefix.length());
+            QString qPayload = QString::fromStdString(payload);
+            ui->EditorText->setPlainText(qPayload);
+        }
+        else {
+            QMessageBox::warning(this, "Error", "Unexpected server response.");
+        }
+    }
+    catch (const std::exception& e) {
+        QMessageBox::critical(this, "Socket Error", e.what());
+    }
+}
+
+void EnvironmentWindow::displayTables() 
+{
     
     if (selectedDatabase.isEmpty()) {
         QMessageBox::warning(this, "No Database", "Please select a database first.");
@@ -578,7 +620,9 @@ void EnvironmentWindow::setDefaultWidgetRow(const std::string& name)
 
 void EnvironmentWindow::switchToQuery()
 {
-    ui->EditorText->setPlainText(editorQueryContent);
+    if (ui->EditorText->isReadOnly() || ui->EditorText->toPlainText() != editorQueryContent) {
+        ui->EditorText->setPlainText(editorQueryContent);
+    }
     ui->EditorText->setReadOnly(false);
 
     if (syntaxHighlightingEnabled) {
@@ -588,8 +632,6 @@ void EnvironmentWindow::switchToQuery()
 
 void EnvironmentWindow::switchToCommandHistory()
 {
-    editorQueryContent = ui->EditorText->toPlainText();
-
     QString combinedHistory = commandHistoryBuffer.join("\n\n");
     ui->EditorText->setPlainText(combinedHistory);
     ui->EditorText->setReadOnly(true);

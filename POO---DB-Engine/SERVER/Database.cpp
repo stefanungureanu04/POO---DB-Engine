@@ -84,6 +84,51 @@ int Database::deleteRowsFromTable(const std::string& tableName, const std::strin
     return table->deleteRowsWhere(colName,opFound,value);
 }
 
+void Database::addProcedure(const StoredProcedure& proc)
+{
+    procedures[proc.getName()] = proc;
+}
+
+bool Database::hasProcedure(const std::string& name) const
+{
+    return procedures.find(name) != procedures.end();
+}
+void Database::dropProcedure(const std::string& name)
+{
+    procedures.erase(name);
+}
+
+StoredProcedure* Database::getProcedure(const std::string& name)
+{
+    auto it = procedures.find(name);
+    return (it != procedures.end()) ? &(it->second) : nullptr;
+}
+
+std::string Database::getProceduresInfo() const
+{
+    std::ostringstream oss;
+
+    if (procedures.empty()) {
+        oss << "No stored procedures.\n";
+        return oss.str();
+    }
+
+    for (const auto& pair : procedures) {
+        const std::string& procName = pair.first;
+        const StoredProcedure& proc = pair.second;
+
+        oss << procName << " {\n";
+
+        for (const auto& stmt : proc.getStatements()) {
+            oss << "   " << stmt << ";\n";
+        }
+
+        oss << "}\n\n";
+    }
+
+    return oss.str();
+}
+
 std::string Database::getSchemaInfo() const
 {
     std::ostringstream oss;
@@ -175,6 +220,41 @@ bool Database::loadFromFile(const std::string& filename)
             readingColumns = false;
             readingRows = true;
         }
+        else if (line == "#PROCEDURES") {
+            while (std::getline(file, line)) {
+                trim(line);
+
+                if (line.empty()) continue;
+                if (line.rfind("#PROCEDURE", 0) == 0) {
+                    std::string procName = line.substr(10);
+                    trim(procName);
+                    std::vector<std::string> procStatements;
+
+                    while (std::getline(file, line)) {
+                        trim(line);
+                        if (line.empty()) continue;
+                        if (line[0] == '#') {
+                            // reached next header → break to process next procedure or section
+                            file.seekg(-((int)line.length() + 1), std::ios_base::cur);
+                            break;
+                        }
+
+                        if (line.back() == ';')
+                            line.pop_back();
+
+                        procStatements.push_back(line);
+                    }
+
+                    StoredProcedure proc(procName, procStatements);
+                    addProcedure(proc);
+                }
+                else if (line[0] == '#') {
+                    // reached next section like #ROWS or #TABLES → rewind so outer loop handles it
+                    file.seekg(-((int)line.length() + 1), std::ios_base::cur);
+                    break;
+                }
+            }
+        }
         else if (readingColumns) {
             std::istringstream iss(line);
             std::string colName, colType, flag, fkTable, fkColumn;
@@ -258,5 +338,20 @@ void Database::saveToFile()
 
         file << "\n";
     }
+
+    file << "#PROCEDURES\n";
+    for (const auto& pair : procedures) {
+        const StoredProcedure& proc = pair.second;
+        file << "#PROCEDURE " << proc.getName() << "\n";
+        for (const auto& stmt : proc.getStatements()) {
+            file << stmt << ";" << "\n";  // ✅ append semicolon
+        }
+    }
+}
+
+void Database::trim(std::string& s)
+{
+    s.erase(0, s.find_first_not_of(" \t\n\r"));
+    s.erase(s.find_last_not_of(" \t\n\r") + 1);
 }
 

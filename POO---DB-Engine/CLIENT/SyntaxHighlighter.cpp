@@ -1,16 +1,16 @@
 #include "SyntaxHighlighter.h"
 
 QStringList SyntaxHighlighter::keywords = {
-            "add", "alter", "and", "as", "asc",
-            "backup", "between", "by", "case", "check",
+            "add", "alter", "and", "as", "asc","avg"
+            "backup", "between", "by", "call", "case", "check",
             "column", "constraint", "create", "database", "default",
             "delete", "desc", "distinct", "drop", "exec",
             "exists", "foreign", "from", "full",
             "group", "having", "in", "index", "inner",
-            "insert", "into", "is", "join", "key", "left",
-            "like", "limit", "not", "null","number", "on",
+            "insert", "instruction","into", "is", "join", "key", "left",
+            "like", "limit", "max","min","not", "null","number", "on",
             "or", "order", "outer", "primary", "procedure","references",
-            "right", "rownum", "select", "set","string", "table",
+            "right", "rownum", "select", "set","string" "sum", "table",
             "top", "trigger", "union", "unique", "update",
             "use", "values", "view", "where", "with"
 };

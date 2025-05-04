@@ -28,7 +28,11 @@ private:
     std::string handleSelect();
     std::string handleDelete();
     std::string handleUnknown();
-    std::string handleJoin();       
+    std::string handleJoin();  
+    std::string handleUpdate();
+    std::string handleCreateProcedure();
+    std::string handleCallProcedure();
+    std::string handleDropProcedure();
 
     bool parseSelectQuery(const string& query, string& columnsPart, string& tableName, string& whereClause, string& orderByColumn);
     bool getSelectedColumns(const vector<Column>& tableCols, const string& columnsPart, vector<int>& colIndexes,vector<string>& selectedColNames);

@@ -38,4 +38,42 @@ Am adaugat ordonare descrescatoare (order by desc) si ordonare normala (order by
 Nu mai facem o fereastra pop-up pentru vizualizarea selecturilor, se vad foarte frumos in RESULTS_INFO (am facut si timpul de executie).
 
 
+Atentie! Toate comenzile, absolut toate sunt LOWERCASE.
 
+UPDATES
+__________________________
+
+Au forma de apel:
+	update table nume_tabel set col1 = valoare1, col2 = valoare2 where col3 operator valoare3
+
+Exemple:
+	update table angajati set salariu = 6000 where departament_id = 1
+
+
+PROCEDURES
+_________________________
+
+Am facut partea de proceduri stocate:
+
+sintaxa pentru creare este:
+
+	create procedure "name"
+	instruction textinstructiune (fara ;)
+	instruction textinstructiune (fara ;)
+	instruction end;
+
+Pentru apelare:
+	call "name"
+
+Daca are parametrii, acestia sunt definiti cu @, adica:
+	
+	create procedure test
+	instruction select * from angajati where departament_id=@dep_id
+	instruction end;
+
+Apelarea este 
+	call test(1)
+
+Merge pentru orice numar de variabile, pentru apelurile care nu au parametrii se pune (),
+chiar daca procedura TEST nu are parametrii se apeleaza call TEST();
+Am lasat doua proceduri pentru test.

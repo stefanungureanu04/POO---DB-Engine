@@ -28,7 +28,6 @@ std::string RelationManager::process() {
         return "RELATIONS:" + relations;
     }
     catch (const std::exception& e) {
-        std::cerr << "[RelationManager] Exception: " << e.what() << "\n";
         return "RELATIONS:EXCEPTION";
     }
 }

@@ -161,9 +161,11 @@
     <ClCompile Include="ILog.cpp" />
     <ClCompile Include="LogProviderManager.cpp" />
     <ClCompile Include="main_server.cpp" />
+    <ClCompile Include="ProceduresManager.cpp" />
     <ClCompile Include="QueryManager.cpp" />
     <ClCompile Include="RelationManager.cpp" />
     <ClCompile Include="SessionLog.cpp" />
+    <ClCompile Include="StoredProcedure.cpp" />
     <ClCompile Include="Table.cpp" />
     <ClCompile Include="TableListManager.cpp" />
     <ClCompile Include="UserCredentialsDatabase.cpp" />
@@ -197,10 +199,12 @@
     <ClInclude Include="IException.h" />
     <ClInclude Include="ILog.h" />
     <ClInclude Include="LogProviderManager.h" />
+    <ClInclude Include="ProceduresManager.h" />
     <ClInclude Include="QueryManager.h" />
     <ClInclude Include="RelationManager.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SessionLog.h" />
+    <ClInclude Include="StoredProcedure.h" />
     <ClInclude Include="Table.h" />
     <ClInclude Include="TableListManager.h" />
     <ClInclude Include="UserCredentialsDatabase.h" />

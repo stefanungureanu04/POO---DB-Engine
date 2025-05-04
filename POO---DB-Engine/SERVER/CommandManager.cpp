@@ -88,6 +88,22 @@ std::string CommandManager::processCommand()
                 response = handleSelect();
             }
         }
+        else if (lowerCommand.find("update table") == 0) {
+            userCode = command;
+            response = handleUpdate();
+        }
+        else if (lowerCommand.find("create procedure") == 0) {
+            userCode = command;
+            response = handleCreateProcedure();
+        }
+        else if (lowerCommand.find("call") == 0) {
+            userCode = command;
+            response = handleCallProcedure();
+        }
+        else if (lowerCommand.find("drop procedure") == 0) {
+            userCode = command;
+            response = handleDropProcedure();
+        }
         else {
             response = handleUnknown();
         }
@@ -313,28 +329,16 @@ std::string CommandManager::handleDelete()
  }
 
 
-
-
-
-
-
-//adaug codul de gestiune al comenzii join in baza de date 
-// Cod complet pentru CommandManager::handleJoin() cu suport pentru JOIN, WHERE, ORDER BY
-
-// Cod complet pentru CommandManager::handleJoin() cu suport pentru JOIN, LEFT JOIN, WHERE si ORDER BY
-
-// Cod complet actualizat pentru CommandManager::handleJoin() cu suport pentru JOIN, LEFT JOIN, WHERE, ORDER BY si aliasuri cu AS
-
-// Cod complet pentru CommandManager::handleJoin() cu suport pentru JOIN, LEFT JOIN, WHERE, ORDER BY, AS si GROUP BY + agregari (COUNT, SUM, AVG, MIN, MAX)
-
 std::string CommandManager::handleJoin() {
+    
     std::string query = userCode;
-    size_t selectPos = query.find("SELECT");
-    size_t fromPos = query.find("FROM");
-    size_t wherePos = query.find("WHERE", fromPos);
-    size_t groupByPos = query.find("GROUP BY", fromPos);
-    size_t havingPos = query.find("HAVING", fromPos);
-    size_t orderByPos = query.find("ORDER BY", fromPos);
+
+    size_t selectPos = query.find("select");
+    size_t fromPos = query.find("from");
+    size_t wherePos = query.find("where", fromPos);
+    size_t groupByPos = query.find("group by", fromPos);
+    size_t havingPos = query.find("having", fromPos);
+    size_t orderByPos = query.find("order by", fromPos);
 
     if (selectPos == std::string::npos || fromPos == std::string::npos)
         return "JOIN_FAIL: missing SELECT or FROM";
@@ -357,7 +361,7 @@ std::string CommandManager::handleJoin() {
     trim(selectPart); trim(joinSection); trim(whereClause);
     trim(groupByCol); trim(havingClause); trim(orderByCol);
 
-    if (orderByCol.size() >= 4 && orderByCol.substr(orderByCol.size() - 4) == "DESC") {
+    if (orderByCol.size() >= 4 && orderByCol.substr(orderByCol.size() - 4) == "desc") {
         orderDesc = true;
         orderByCol = orderByCol.substr(0, orderByCol.size() - 4);
         trim(orderByCol);
@@ -408,7 +412,7 @@ std::string CommandManager::handleJoin() {
     if (maybeAs == "AS" || maybeAs == "as") {
         iss >> alias;
     }
-    else if (maybeAs == "LEFT" || maybeAs == "JOIN" || maybeAs == "ON") {
+    else if (maybeAs == "left" || maybeAs == "join" || maybeAs == "on") {
         alias = baseTable;
         iss.clear();
         iss.seekg(joinSection.find(baseTable) + baseTable.length());
@@ -424,12 +428,12 @@ std::string CommandManager::handleJoin() {
     std::string word;
     while (iss >> word) {
         bool isLeft = false;
-        if (word == "LEFT") {
+        if (word == "left") {
             iss >> word;
-            if (word != "JOIN") return "JOIN_FAIL: expected JOIN after LEFT";
+            if (word != "join") return "JOIN_FAIL: expected JOIN after LEFT";
             isLeft = true;
         }
-        else if (word != "JOIN") continue;
+        else if (word != "join") continue;
 
         std::string newTable, maybeAs2, newAlias, onWord;
         iss >> newTable >> maybeAs2;
@@ -451,7 +455,7 @@ std::string CommandManager::handleJoin() {
 
         std::string condition, temp;
         while (iss >> temp) {
-            if (temp == "JOIN" || temp == "LEFT" || temp == "WHERE" || temp == "ORDER" || temp == "GROUP") {
+            if (temp == "join" || temp == "left" || temp == "where" || temp == "order" || temp == "group") {
                 for (int i = temp.length() - 1; i >= 0; --i)
                     iss.putback(temp[i]);
                 break;
@@ -646,14 +650,320 @@ std::string CommandManager::handleJoin() {
     return formatSelectResult(selectedCols, finalRows);
 }
 
+std::string CommandManager::handleUpdate()
+{
+    size_t tablePos = userCode.find("table") + 5;
+    size_t setPos = userCode.find("set", tablePos);
+    size_t wherePos = userCode.find("where", setPos);
 
+    if (tablePos == std::string::npos || setPos == std::string::npos || wherePos == std::string::npos)
+        return "UPDATE_FAIL: syntax error";
 
+    std::string tableName = userCode.substr(tablePos, setPos - tablePos);
+    trim(tableName);
 
+    std::string setPart = userCode.substr(setPos + 3, wherePos - (setPos + 3));
+    trim(setPart);
 
+    std::string wherePart = userCode.substr(wherePos + 5);
+    trim(wherePart);
 
+    // Parse SET part
+    std::vector<std::pair<std::string, std::string>> updates;
+    std::istringstream setStream(setPart);
+    std::string assignment;
+    while (std::getline(setStream, assignment, ',')) {
+        size_t eqPos = assignment.find('=');
+        if (eqPos == std::string::npos) return "UPDATE_FAIL: invalid SET syntax";
 
+        std::string col = assignment.substr(0, eqPos);
+        std::string val = assignment.substr(eqPos + 1);
+        trim(col);
+        trim(val);
 
+        updates.emplace_back(col, val);
+    }
 
+    // Parse WHERE
+    std::string ops[] = { ">=", "<=", "!=", "=", "<", ">" };
+    std::string opFound;
+    size_t opPos = std::string::npos;
+    for (const std::string& op : ops) {
+        opPos = wherePart.find(op);
+        if (opPos != std::string::npos) {
+            opFound = op;
+            break;
+        }
+    }
+    if (opFound.empty()) return "UPDATE_FAIL: invalid WHERE clause";
+
+    std::string whereCol = wherePart.substr(0, opPos);
+    std::string whereVal = wherePart.substr(opPos + opFound.length());
+    trim(whereCol);
+    trim(whereVal);
+
+    Table* table = workingDatabase->getTable(tableName);
+    if (!table) return "UPDATE_FAIL: table not found";
+
+    int updatedCount = 0;
+    const auto& cols = table->getColumns();
+    auto& rows = table->getRows();
+
+    int whereIdx = -1;
+    for (size_t i = 0; i < cols.size(); ++i) {
+        if (cols[i].getName() == whereCol) {
+            whereIdx = static_cast<int>(i);
+            break;
+        }
+    }
+    if (whereIdx == -1) return "UPDATE_FAIL: WHERE column not found";
+
+    std::vector<int> updateIndexes;
+    for (const auto& up : updates) {
+        bool found = false;
+        for (size_t i = 0; i < cols.size(); ++i) {
+            if (cols[i].getName() == up.first) {
+                updateIndexes.push_back(static_cast<int>(i));
+                found = true;
+                break;
+            }
+        }
+        if (!found) return "UPDATE_FAIL: SET column not found: " + up.first;
+    }
+
+    for (auto& row : rows) {
+        bool match = false;
+        const std::string& cell = row[whereIdx];
+        const std::string& colType = cols[whereIdx].getType();
+
+        try {
+            if (colType == "number") {
+                double a = std::stod(cell), b = std::stod(whereVal);
+                if (opFound == "=") match = a == b;
+                else if (opFound == "!=") match = a != b;
+                else if (opFound == "<") match = a < b;
+                else if (opFound == "<=") match = a <= b;
+                else if (opFound == ">") match = a > b;
+                else if (opFound == ">=") match = a >= b;
+            }
+            else {
+                if (opFound == "=") match = cell == whereVal;
+                else if (opFound == "!=") match = cell != whereVal;
+                else return "UPDATE_FAIL: unsupported string operator: " + opFound;
+            }
+        }
+        catch (...) { return "UPDATE_FAIL: invalid WHERE value"; }
+
+        if (match) {
+            for (size_t i = 0; i < updates.size(); ++i) {
+                row[updateIndexes[i]] = updates[i].second;
+            }
+            updatedCount++;
+        }
+    }
+
+    try {
+        workingDatabase->saveToFile();
+    }
+    catch (const std::exception& ex) {
+        return "UPDATE_SUCCESS: but failed to save: " + std::string(ex.what());
+    }
+
+    return "UPDATE_SUCCESS: " + std::to_string(updatedCount) + " rows updated";
+}
+
+std::string CommandManager::handleCreateProcedure()
+{
+    std::istringstream iss(userCode);
+    std::string line;
+
+    // Read procedure name from the first line
+    std::getline(iss, line);
+    trim(line);
+
+    if (line.rfind("create procedure", 0) != 0) {
+        return "CREATE_PROCEDURE_FAIL: missing 'create procedure'";
+    }
+
+    std::string procName = line.substr(16); // after "create procedure"
+    trim(procName);
+
+    if (procName.empty()) {
+        return "CREATE_PROCEDURE_FAIL: missing procedure name";
+    }
+
+    std::vector<std::string> statements;
+
+    // Read following lines
+    while (std::getline(iss, line)) {
+        trim(line);
+
+        if (line == "end;" || line == "END;") {
+            break;  // ✅ End of procedure
+        }
+
+        if (line.find("end;") != std::string::npos && line != "end;") {
+            return "CREATE_PROCEDURE_FAIL: 'end;' must be on its own line";
+        }
+
+        if (line.rfind("instruction ", 0) != 0) {
+            return "CREATE_PROCEDURE_FAIL: expected 'instruction' at start of line";
+        }
+
+        std::string stmt = line.substr(11); // remove "instruction "
+        trim(stmt);
+
+        if (stmt.empty()) {
+            return "CREATE_PROCEDURE_FAIL: empty instruction";
+        }
+
+        statements.push_back(stmt);
+    }
+
+    if (statements.empty()) {
+        return "CREATE_PROCEDURE_FAIL: no instructions";
+    }
+
+    StoredProcedure proc(procName, statements);
+    proc.adjust();
+    workingDatabase->addProcedure(proc);
+
+    try {
+        workingDatabase->saveToFile();
+    }
+    catch (const std::exception& ex) {
+        return "CREATE_PROCEDURE_SUCCESS but failed to save: " + std::string(ex.what());
+    }
+
+    return "CREATE_PROCEDURE_SUCCESS";
+}
+
+std::string CommandManager::handleCallProcedure()
+{
+    std::string callLine = userCode;
+    trim(callLine);
+
+    if (callLine.rfind("call ", 0) != 0) {
+        return "CALL_FAIL: invalid call syntax";
+    }
+
+    callLine = callLine.substr(5);  // remove "call "
+    trim(callLine);
+
+    // optional semicolon
+    if (!callLine.empty() && callLine.back() == ';')
+        callLine.pop_back();
+    trim(callLine);
+
+    // split procName and argument list
+    size_t parenStart = callLine.find('(');
+    size_t parenEnd = callLine.find(')');
+
+    if (parenStart == std::string::npos || parenEnd == std::string::npos || parenEnd < parenStart) {
+        return "CALL_FAIL: invalid parentheses";
+    }
+
+    std::string procName = callLine.substr(0, parenStart);
+    trim(procName);
+
+    std::string argList = callLine.substr(parenStart + 1, parenEnd - parenStart - 1);
+    std::vector<std::string> arguments;
+    std::istringstream argStream(argList);
+    std::string arg;
+    while (std::getline(argStream, arg, ',')) {
+        trim(arg);
+        arguments.push_back(arg);
+    }
+
+    // 2️⃣ check if procedure exists
+    if (!workingDatabase->hasProcedure(procName)) {
+        return "CALL_FAIL: procedure not found";
+    }
+
+    StoredProcedure* proc = workingDatabase->getProcedure(procName);
+    if (!proc) {
+        return "CALL_FAIL: procedure retrieval error";
+    }
+
+    // 3️⃣ detect variables in stored statements (IN ORDER of appearance!)
+    std::vector<std::string> variables;
+    for (const auto& stmt : proc->getStatements()) {
+        size_t pos = 0;
+        while ((pos = stmt.find("@", pos)) != std::string::npos) {
+            size_t end = pos + 1;
+            while (end < stmt.size() && (isalnum(stmt[end]) || stmt[end] == '_'))
+                ++end;
+            std::string varName = stmt.substr(pos + 1, end - pos - 1);
+            if (!varName.empty() && std::find(variables.begin(), variables.end(), varName) == variables.end()) {
+                variables.push_back(varName);
+            }
+            pos = end;
+        }
+    }
+
+    // 4️⃣ map arguments to variables
+    if (arguments.size() != variables.size()) {
+        return "CALL_FAIL: expected " + std::to_string(variables.size()) + " arguments, got " + std::to_string(arguments.size());
+    }
+
+    std::unordered_map<std::string, std::string> paramMap;
+    for (size_t i = 0; i < variables.size(); ++i) {
+        paramMap["@" + variables[i]] = arguments[i];
+    }
+
+    // 5️⃣ perform replacements
+    std::vector<std::string> replacedStatements;
+    for (auto stmt : proc->getStatements()) {
+        for (const auto& [param, value] : paramMap) {
+            size_t pos;
+            while ((pos = stmt.find(param)) != std::string::npos) {
+                stmt.replace(pos, param.length(), value);
+            }
+        }
+        replacedStatements.push_back(stmt);
+    }
+
+    // 6️⃣ build combined userCode
+    userCode.clear();
+    for (const auto& stmt : replacedStatements) {
+        userCode += stmt + "; ";
+    }
+
+    // 7️⃣ recursively process
+    return this->processCommand();
+}
+
+std::string CommandManager::handleDropProcedure()
+{
+    std::string procLine = userCode;
+    trim(procLine);
+
+    if (procLine.rfind("drop procedure", 0) != 0) {
+        return "DROP_PROCEDURE_FAIL: invalid syntax";
+    }
+
+    std::string procName = procLine.substr(14); // after "drop procedure"
+    trim(procName);
+
+    if (!procName.empty() && procName.back() == ';')
+        procName.pop_back();
+    trim(procName);
+
+    if (!workingDatabase->hasProcedure(procName)) {
+        return "DROP_PROCEDURE_FAIL: procedure not found";
+    }
+
+    workingDatabase->dropProcedure(procName);
+
+    try {
+        workingDatabase->saveToFile();
+    }
+    catch (const std::exception& ex) {
+        return "DROP_PROCEDURE_SUCCESS but failed to save: " + std::string(ex.what());
+    }
+
+    return "DROP_PROCEDURE_SUCCESS";
+}
 
 
 std::string CommandManager::handleUnknown() 

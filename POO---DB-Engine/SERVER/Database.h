@@ -3,12 +3,15 @@
 #include <unordered_map>
 #include <vector>
 #include "Table.h"
+#include "StoredProcedure.h"
 
 class Database {
 private:
-    std::string name; // numele bazei de date (fără extensie .txt)
+    std::string name; 
     std::unordered_map<std::string, Table> tables;
     std::string filepath;
+
+    std::unordered_map<std::string, StoredProcedure> procedures;
 
 public:
     Database(const std::string& dbName);
@@ -23,10 +26,20 @@ public:
     void deleteRow(const std::string& tableName, const std::string& pkValue);
     int deleteRowsFromTable(const std::string& tableName, const std::string& colName, const std::string& opFound, const std::string& value);
 
+    // PROCEDURES HANDLER
+    void addProcedure(const StoredProcedure& proc);
+    bool hasProcedure(const std::string& name) const;
+    void dropProcedure(const std::string& name);
+    StoredProcedure* getProcedure(const std::string& name);
+    std::string getProceduresInfo() const;
+
     std::string getSchemaInfo() const;
     void showRelations();
     std::string getRelationsAsString() const;
 
     bool loadFromFile(const std::string& filename);
     void saveToFile();
+
+private:
+    void trim(std::string& s);
 };

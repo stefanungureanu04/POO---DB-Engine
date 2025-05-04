@@ -55,3 +55,8 @@ rol string
 6|5|4|'Content Specialist'
 7|6|6|'Support Engineer'
 
+#PROCEDURES
+#PROCEDURE list_employees_in_department
+select id, nume, salariu from angajati where departament_id = @dept_id;
+#PROCEDURE increase_salaries
+update table angajati set salariu = 10000 where salariu < 5000;
