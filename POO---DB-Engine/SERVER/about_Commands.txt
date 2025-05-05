@@ -40,6 +40,19 @@ Nu mai facem o fereastra pop-up pentru vizualizarea selecturilor, se vad foarte 
 
 Atentie! Toate comenzile, absolut toate sunt LOWERCASE.
 
+SELECT
+____________________________
+
+Am identificat problema cu order by: ca sa mearga, trebuie ca coloana dupa care se face sortarea sa fie inclusa in select
+
+Exemplu (NU MERGE):
+	select nume from angajati
+	order by salariu;
+
+Exemplu (MERGE):
+	select nume, salariu from angajati
+	order by salariu;
+
 UPDATES
 __________________________
 
