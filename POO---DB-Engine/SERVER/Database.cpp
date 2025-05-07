@@ -206,18 +206,41 @@ bool Database::loadFromFile(const std::string& filename) {
 
     while (std::getline(file, line)) {
         if (line == "#TRIGGERS") {
-            readingTriggers = true;
-            continue;
-        }
-        if (line == "#END_TRIGGERS") {
-            triggerManager.deserialize(triggerContent.str());
-            triggerContent.str("");
-            readingTriggers = false;
-            continue;
-        }
-        if (readingTriggers) {
-            triggerContent << line << "\n";
-            continue;
+            while (std::getline(file, line)) {
+                trim(line);
+                if (line == "#END_TRIGGERS") break;
+
+                if (line.rfind("#TRIGGER", 0) == 0) {
+                    std::string trigName = line.substr(8); // get trigger name after "#TRIGGER "
+                    trim(trigName);
+
+                    // Read table name and event int
+                    if (!std::getline(file, line)) break;
+                    trim(line);
+                    std::istringstream tableStream(line);
+                    std::string tableName;
+                    int eventInt;
+                    tableStream >> tableName >> eventInt;
+                    EventType eventType = static_cast<EventType>(eventInt);
+
+                    // Read params line
+                    std::string paramsLine;
+                    if (!std::getline(file, paramsLine)) break;
+                    trim(paramsLine);
+
+                    // Read instructions until #END_TRIGGER
+                    std::vector<std::string> instructions;
+                    while (std::getline(file, line)) {
+                        trim(line);
+                        if (line == "#END_TRIGGER") break;
+                        instructions.push_back(line);
+                    }
+
+                    // Create and add trigger
+                    Trigger trig(trigName, tableName, eventType, paramsLine, instructions);
+                    addTrigger(trig);
+                }
+            }
         }
 
         if (line.rfind("TABEL ", 0) == 0) {

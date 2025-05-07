@@ -1,14 +1,3 @@
-#TRIGGERS
-#TRIGGER log_insert
-angajati 0
-insert into logs values ('Angajat adaugat in angajati')
-#END_TRIGGER
-#TRIGGER dep_log
-departamente 0
-<none>
-insert into actiuni values (999, 'Departament nou adaugat')
-#END_TRIGGER
-#END_TRIGGERS
 TABEL departamente
 #COLUMNS
 id number PK
@@ -21,16 +10,6 @@ nume string
 5|'Sales'
 6|'Support'
 7|'Logistics'
-10|'Research'
-10|'Research'
-88|'Cybersecurity'
-88|'Cybersecurity'
-99|'AI Lab'
-99|'AI Lab'
-99|'AI Lab'
-99|'AI Lab'
-10|'Research'
-10|'Research'
 
 TABEL angajati
 #COLUMNS
@@ -46,13 +25,8 @@ salariu number
 5|'Ana'|4|4300
 6|'Ioana'|5|4100
 7|'George'|6|3900
-8|'Diana'|1|4700
-10|'Nicoleta'|6|5667
-10|'Nicoleta'|6|5667
-9|'Victor'|99|6200
-9|'Victor'|99|6200
-9|'Victor'|99|6200
-9|'Victor'|99|6200
+8|'Ion'|1|3000
+8|'Mihalache'|1|3000
 
 TABEL proiecte
 #COLUMNS
@@ -82,24 +56,3 @@ rol string
 5|3|1|'Backend Dev'
 6|5|4|'Content Specialist'
 7|6|6|'Support Engineer'
-
-TABEL actiuni
-#COLUMNS
-id number
-descriere string
-#ROWS
-999|'Departament nou adaugat'
-
-TABEL logs
-#COLUMNS
-mesaj string
-#ROWS
-'Test din mana'
-
-#PROCEDURES
-PROCEDURE list_employees_in_department
-select id, nume, salariu from angajati where departament_id = @dept_id;
-PROCEDURE giveRaise
-select * from angajati;
-PROCEDURE test
-select * from angajati;
