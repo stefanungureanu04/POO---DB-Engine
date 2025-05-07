@@ -44,6 +44,7 @@ private slots:
     void displayTables();
     void displayRelations();
     void displayProcedures();
+	void displayTriggers();
 
 private:
     void enableSyntaxHighlighting();

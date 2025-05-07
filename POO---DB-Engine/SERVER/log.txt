@@ -5406,3 +5406,422 @@ DROP_TABLE_SUCCESS
 [2025-05-04 22:48:57]: [SERVER] Client connected.
 [2025-05-04 22:48:57]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:select * from angajati;
 
+[2025-05-06 21:54:14]: [SERVER] Listening on port 12345
+[2025-05-06 21:56:17]: [SERVER] Listening on port 12345
+[2025-05-06 21:56:42]: [SERVER] Client connected.
+[2025-05-06 21:56:42]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-06 21:56:42]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-06 21:56:45]: [SERVER] Client connected.
+[2025-05-06 21:56:45]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-06 21:56:45]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-06 21:56:47]: [SERVER] Client connected.
+[2025-05-06 21:56:47]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-06 21:56:47]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-06 21:57:01]: [SERVER] Client connected.
+[2025-05-06 21:57:01]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+[2025-05-06 21:57:10]: [SERVER] Client connected.
+[2025-05-06 21:57:10]: [SERVER] Sending: CREATE_TRIGGER_SUCCESS
+[2025-05-06 21:57:19]: [SERVER] Client connected.
+[2025-05-06 21:58:56]: [SERVER] Listening on port 12345
+[2025-05-06 21:59:18]: [SERVER] Client connected.
+[2025-05-06 21:59:18]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-06 21:59:18]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-06 21:59:30]: [SERVER] Client connected.
+[2025-05-06 21:59:30]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-06 21:59:30]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-06 21:59:32]: [SERVER] Client connected.
+[2025-05-06 21:59:32]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-06 21:59:32]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-06 21:59:33]: [SERVER] Client connected.
+[2025-05-06 21:59:33]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+[2025-05-06 21:59:42]: [SERVER] Client connected.
+[2025-05-06 21:59:42]: [SERVER] Sending: CREATE_TRIGGER_SUCCESS
+[2025-05-06 22:00:05]: [SERVER] Client connected.
+[2025-05-06 22:17:29]: [SERVER] Listening on port 12345
+[2025-05-06 22:17:53]: [SERVER] Client connected.
+[2025-05-06 22:17:53]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-06 22:17:53]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-06 22:17:56]: [SERVER] Client connected.
+[2025-05-06 22:17:56]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-06 22:17:56]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-06 22:17:58]: [SERVER] Client connected.
+[2025-05-06 22:17:58]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-06 22:17:58]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-06 22:18:19]: [SERVER] Client connected.
+[2025-05-06 22:18:19]: [SERVER] Sending: CREATE_TRIGGER_SUCCESS
+[2025-05-06 22:18:32]: [SERVER] Client connected.
+[2025-05-06 22:18:32]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+[2025-05-06 22:18:45]: [SERVER] Client connected.
+[2025-05-06 22:18:45]: [SERVER] Sending: CREATE_TRIGGER_SUCCESS
+[2025-05-06 22:19:12]: [SERVER] Client connected.
+[2025-05-06 22:19:12]: [SERVER] Sending: INSERT_SUCCESS
+[2025-05-06 22:19:22]: [SERVER] Client connected.
+[2025-05-06 22:19:22]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:select * from actiuni;
+
+[2025-05-06 22:20:44]: [SERVER] Client connected.
+[2025-05-06 22:20:44]: [SERVER] Sending: CREATE_TABLE_FAIL: table already exists
+[2025-05-06 22:21:04]: [SERVER] Client connected.
+[2025-05-06 22:21:04]: [SERVER] Sending: CREATE_TRIGGER_SUCCESS
+[2025-05-06 22:21:40]: [SERVER] Client connected.
+[2025-05-06 22:21:40]: [SERVER] Sending: INSERT_SUCCESS
+[2025-05-06 22:21:52]: [SERVER] Client connected.
+[2025-05-06 22:21:52]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:select * from actiuni;
+
+[2025-05-06 23:03:17]: [SERVER] Client connected.
+[2025-05-06 23:03:17]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-06 23:03:18]: [SERVER] Client connected.
+[2025-05-06 23:03:18]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-06 23:28:15]: [SERVER] Listening on port 12345
+[2025-05-06 23:29:09]: [SERVER] Client connected.
+[2025-05-06 23:29:09]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-06 23:29:09]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-06 23:29:17]: [SERVER] Client connected.
+[2025-05-06 23:29:17]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-06 23:29:17]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-06 23:29:19]: [SERVER] Client connected.
+[2025-05-06 23:29:19]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-06 23:29:19]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-06 23:29:19]: [SERVER] Client connected.
+[2025-05-06 23:29:19]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-06 23:29:19]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-06 23:29:23]: [SERVER] Client connected.
+[2025-05-06 23:29:23]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-06 23:29:23]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-06 23:31:36]: [SERVER] Listening on port 12345
+[2025-05-06 23:31:54]: [SERVER] Client connected.
+[2025-05-06 23:31:54]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-06 23:31:54]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-06 23:31:58]: [SERVER] Client connected.
+[2025-05-06 23:31:58]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-06 23:31:58]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-06 23:31:59]: [SERVER] Client connected.
+[2025-05-06 23:31:59]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-06 23:31:59]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-06 23:32:08]: [SERVER] Client connected.
+[2025-05-06 23:32:08]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-06 23:32:09]: [SERVER] Client connected.
+[2025-05-06 23:32:09]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-06 23:32:09]: [SERVER] Client connected.
+[2025-05-06 23:32:09]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-06 23:32:09]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-06 23:32:12]: [SERVER] Client connected.
+[2025-05-06 23:32:12]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-06 23:32:13]: [SERVER] Client connected.
+[2025-05-06 23:32:13]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-06 23:32:13]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-06 23:32:15]: [SERVER] Client connected.
+[2025-05-06 23:32:15]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-06 23:32:15]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-06 23:40:49]: [SERVER] Listening on port 12345
+[2025-05-06 23:41:06]: [SERVER] Client connected.
+[2025-05-06 23:41:06]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-06 23:41:06]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-06 23:41:10]: [SERVER] Client connected.
+[2025-05-06 23:41:10]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-06 23:41:10]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-06 23:41:12]: [SERVER] Client connected.
+[2025-05-06 23:41:12]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-06 23:41:12]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-06 23:41:13]: [SERVER] Client connected.
+[2025-05-06 23:41:13]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-06 23:41:14]: [SERVER] Client connected.
+[2025-05-06 23:41:14]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-06 23:41:15]: [SERVER] Client connected.
+[2025-05-06 23:41:15]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-06 23:41:16]: [SERVER] Client connected.
+[2025-05-06 23:41:16]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-06 23:41:16]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-06 23:46:30]: [SERVER] Client connected.
+[2025-05-06 23:46:30]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-06 23:53:43]: [SERVER] Listening on port 12345
+[2025-05-06 23:54:00]: [SERVER] Client connected.
+[2025-05-06 23:54:00]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-06 23:54:00]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-06 23:54:03]: [SERVER] Client connected.
+[2025-05-06 23:54:03]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-06 23:54:03]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-06 23:54:05]: [SERVER] Client connected.
+[2025-05-06 23:54:05]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-06 23:54:05]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-06 23:54:06]: [SERVER] Client connected.
+[2025-05-06 23:54:06]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-06 23:54:07]: [SERVER] Client connected.
+[2025-05-06 23:54:07]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-06 23:54:07]: [SERVER] Client connected.
+[2025-05-06 23:54:07]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-06 23:54:08]: [SERVER] Client connected.
+[2025-05-06 23:54:08]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-06 23:54:08]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-07 00:02:05]: [SERVER] Listening on port 12345
+[2025-05-07 00:02:23]: [SERVER] Client connected.
+[2025-05-07 00:02:23]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-07 00:02:23]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-07 00:02:26]: [SERVER] Client connected.
+[2025-05-07 00:02:26]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-07 00:02:26]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-07 00:02:28]: [SERVER] Client connected.
+[2025-05-07 00:02:28]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-07 00:02:28]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-07 00:02:29]: [SERVER] Client connected.
+[2025-05-07 00:02:29]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:02:30]: [SERVER] Client connected.
+[2025-05-07 00:02:30]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:02:30]: [SERVER] Client connected.
+[2025-05-07 00:02:30]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:02:31]: [SERVER] Client connected.
+[2025-05-07 00:02:31]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:02:31]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-07 00:10:53]: [SERVER] Listening on port 12345
+[2025-05-07 00:11:12]: [SERVER] Client connected.
+[2025-05-07 00:11:12]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-07 00:11:12]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-07 00:11:14]: [SERVER] Client connected.
+[2025-05-07 00:11:14]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-07 00:11:14]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-07 00:11:16]: [SERVER] Client connected.
+[2025-05-07 00:11:16]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-07 00:11:16]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-07 00:11:18]: [SERVER] Client connected.
+[2025-05-07 00:11:18]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:11:19]: [SERVER] Client connected.
+[2025-05-07 00:11:19]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:11:19]: [SERVER] Client connected.
+[2025-05-07 00:11:19]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:11:19]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-07 00:15:59]: [SERVER] Listening on port 12345
+[2025-05-07 00:16:15]: [SERVER] Client connected.
+[2025-05-07 00:16:15]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-07 00:16:15]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-07 00:16:21]: [SERVER] Client connected.
+[2025-05-07 00:16:21]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-07 00:16:21]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-07 00:16:23]: [SERVER] Client connected.
+[2025-05-07 00:16:23]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-07 00:16:23]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-07 00:16:24]: [SERVER] Client connected.
+[2025-05-07 00:16:24]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:16:24]: [SERVER] Client connected.
+[2025-05-07 00:16:24]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:16:25]: [SERVER] Client connected.
+[2025-05-07 00:16:25]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:16:25]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-07 00:16:28]: [SERVER] Client connected.
+[2025-05-07 00:16:28]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:16:28]: [SERVER] Client connected.
+[2025-05-07 00:16:28]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:16:28]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-07 00:21:06]: [SERVER] Listening on port 12345
+[2025-05-07 00:22:26]: [SERVER] Client connected.
+[2025-05-07 00:22:26]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-07 00:22:26]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-07 00:22:29]: [SERVER] Client connected.
+[2025-05-07 00:22:29]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-07 00:22:29]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-07 00:22:31]: [SERVER] Client connected.
+[2025-05-07 00:22:31]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-07 00:22:31]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-07 00:22:31]: [SERVER] Client connected.
+[2025-05-07 00:22:31]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:22:32]: [SERVER] Client connected.
+[2025-05-07 00:22:32]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:22:32]: [SERVER] Client connected.
+[2025-05-07 00:22:32]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:22:33]: [SERVER] Client connected.
+[2025-05-07 00:22:33]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:22:33]: [SERVER] Sending: UNKNOWN_COMMAND
+[2025-05-07 00:31:39]: [SERVER] Listening on port 12345
+[2025-05-07 00:31:56]: [SERVER] Client connected.
+[2025-05-07 00:31:56]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-07 00:31:56]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-07 00:32:00]: [SERVER] Client connected.
+[2025-05-07 00:32:00]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-07 00:32:00]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-07 00:32:02]: [SERVER] Client connected.
+[2025-05-07 00:32:02]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-07 00:32:02]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-07 00:32:03]: [SERVER] Client connected.
+[2025-05-07 00:32:03]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:32:04]: [SERVER] Client connected.
+[2025-05-07 00:32:04]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:32:04]: [SERVER] Client connected.
+[2025-05-07 00:32:04]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:32:05]: [SERVER] Client connected.
+[2025-05-07 00:32:05]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:32:05]: [SERVER] Sending: TRIGGERS:merge test
+
+[2025-05-07 00:33:02]: [SERVER] Listening on port 12345
+[2025-05-07 00:33:23]: [SERVER] Client connected.
+[2025-05-07 00:33:23]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-07 00:33:23]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-07 00:33:28]: [SERVER] Client connected.
+[2025-05-07 00:33:28]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-07 00:33:28]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-07 00:33:32]: [SERVER] Client connected.
+[2025-05-07 00:33:32]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-07 00:33:32]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-07 00:33:33]: [SERVER] Client connected.
+[2025-05-07 00:33:33]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:33:34]: [SERVER] Client connected.
+[2025-05-07 00:33:34]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:33:34]: [SERVER] Client connected.
+[2025-05-07 00:33:34]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:33:35]: [SERVER] Client connected.
+[2025-05-07 00:33:35]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:33:35]: [SERVER] Sending: TRIGGERS_FAIL: invalid format
+[2025-05-07 00:46:54]: [SERVER] Listening on port 12345
+[2025-05-07 00:47:13]: [SERVER] Client connected.
+[2025-05-07 00:47:13]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-07 00:47:13]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-07 00:47:16]: [SERVER] Client connected.
+[2025-05-07 00:47:16]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-07 00:47:16]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-07 00:47:18]: [SERVER] Client connected.
+[2025-05-07 00:47:18]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-07 00:47:18]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-07 00:47:19]: [SERVER] Client connected.
+[2025-05-07 00:47:19]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:47:19]: [SERVER] Client connected.
+[2025-05-07 00:47:19]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:47:20]: [SERVER] Client connected.
+[2025-05-07 00:47:20]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:47:20]: [SERVER] Client connected.
+[2025-05-07 00:47:20]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:09]: [SERVER] Client connected.
+[2025-05-07 00:48:09]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:10]: [SERVER] Client connected.
+[2025-05-07 00:48:10]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:10]: [SERVER] Client connected.
+[2025-05-07 00:48:10]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:12]: [SERVER] Client connected.
+[2025-05-07 00:48:12]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:13]: [SERVER] Client connected.
+[2025-05-07 00:48:13]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:15]: [SERVER] Client connected.
+[2025-05-07 00:48:15]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:16]: [SERVER] Client connected.
+[2025-05-07 00:48:16]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:16]: [SERVER] Client connected.
+[2025-05-07 00:48:16]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:17]: [SERVER] Client connected.
+[2025-05-07 00:48:17]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:17]: [SERVER] Client connected.
+[2025-05-07 00:48:17]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:18]: [SERVER] Client connected.
+[2025-05-07 00:48:18]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:19]: [SERVER] Client connected.
+[2025-05-07 00:48:19]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:32]: [SERVER] Client connected.
+[2025-05-07 00:48:32]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:32]: [SERVER] Client connected.
+[2025-05-07 00:48:32]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:33]: [SERVER] Client connected.
+[2025-05-07 00:48:33]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-07 00:48:48]: [SERVER] Client connected.
+[2025-05-07 00:48:48]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:select * from angajati
+
+[2025-05-07 00:49:11]: [SERVER] Client connected.
+[2025-05-07 00:49:11]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:select * from angajati
+
+[2025-05-07 00:51:05]: [SERVER] Client connected.
+[2025-05-07 00:51:26]: [SERVER] Client connected.
+[2025-05-07 00:51:26]: [SERVER] Sending: INSERT_SUCCESS
+[2025-05-07 00:51:33]: [SERVER] Client connected.
+[2025-05-07 00:51:33]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:
+select * from actiuni;
+
+[2025-05-07 00:52:21]: [SERVER] Client connected.
+[2025-05-07 00:52:21]: [SERVER] Sending: INSERT_SUCCESS
+SELECT_FAIL: table not found
+[2025-05-07 00:52:33]: [SERVER] Client connected.
+[2025-05-07 00:52:33]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:52:53]: [SERVER] Client connected.
+[2025-05-07 00:52:53]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 00:53:53]: [SERVER] Client connected.
+[2025-05-07 00:57:05]: [SERVER] Client connected.
+[2025-05-07 00:57:05]: [SERVER] Sending: INSERT_SUCCESS
+SELECT_FAIL: table not found
+[2025-05-07 00:59:45]: [SERVER] Client connected.
+[2025-05-07 00:59:45]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:create table logs ( mesaj string);
+
+
+[2025-05-07 00:59:45]: [SERVER] Sending: CREATE_TABLE_SUCCESS
+[2025-05-07 01:00:02]: [SERVER] Client connected.
+[2025-05-07 01:00:02]: [SERVER] Sending: INSERT_SUCCESS
+#  mesaj  
+-  -----  
+
+[2025-05-07 01:02:08]: [SERVER] Client connected.
+[2025-05-07 01:02:56]: [SERVER] Client connected.
+[2025-05-07 01:02:56]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-07 01:02:56]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-07 01:03:01]: [SERVER] Client connected.
+[2025-05-07 01:03:01]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-07 01:03:01]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-07 01:03:03]: [SERVER] Client connected.
+[2025-05-07 01:03:03]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-07 01:03:03]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-07 01:03:08]: [SERVER] Client connected.
+[2025-05-07 01:03:08]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 01:03:08]: [SERVER] Client connected.
+[2025-05-07 01:03:08]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 01:03:09]: [SERVER] Client connected.
+[2025-05-07 01:03:09]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 01:03:21]: [SERVER] Client connected.
+[2025-05-07 01:10:30]: [SERVER] Listening on port 12345
+[2025-05-07 01:10:46]: [SERVER] Client connected.
+[2025-05-07 01:10:46]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-07 01:10:46]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-07 01:10:48]: [SERVER] Client connected.
+[2025-05-07 01:10:48]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-07 01:10:48]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-07 01:10:50]: [SERVER] Client connected.
+[2025-05-07 01:10:50]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-07 01:10:50]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-07 01:10:51]: [SERVER] Client connected.
+[2025-05-07 01:10:51]: [SERVER] Received: SHOW_RELATIONS:stefan.ungureanu:CompanyDB
+[2025-05-07 01:10:52]: [SERVER] Client connected.
+[2025-05-07 01:10:52]: [SERVER] Received: GET_TABLES:stefan.ungureanu:CompanyDB
+[2025-05-07 01:10:52]: [SERVER] Client connected.
+[2025-05-07 01:10:52]: [SERVER] Received: SHOW_PROCEDURES:stefan.ungureanu:CompanyDB
+[2025-05-07 01:10:52]: [SERVER] Client connected.
+[2025-05-07 01:10:52]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 01:11:03]: [SERVER] Client connected.
+[2025-05-07 01:14:36]: [SERVER] Client connected.
+[2025-05-07 01:14:36]: [SERVER] Sending: INSERT_SUCCESS
+#  mesaj            
+-  ---------------  
+1  'Test din mana'  
+
+[2025-05-07 01:16:46]: [SERVER] Listening on port 12345
+[2025-05-07 01:17:04]: [SERVER] Client connected.
+[2025-05-07 01:17:04]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-07 01:17:04]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-07 01:17:34]: [SERVER] Client connected.
+[2025-05-07 01:17:34]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-07 01:17:34]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-07 01:17:37]: [SERVER] Client connected.
+[2025-05-07 01:17:37]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-07 01:17:37]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-07 01:17:38]: [SERVER] Client connected.
+[2025-05-07 07:48:34]: [SERVER] Listening on port 12345
+[2025-05-07 07:48:49]: [SERVER] Client connected.
+[2025-05-07 07:48:49]: [SERVER] Received: LOGIN:stefan.ungureanu:parola1234?
+[2025-05-07 07:48:49]: [SERVER] Sending: LOGIN_SUCCESS
+[2025-05-07 07:48:52]: [SERVER] Client connected.
+[2025-05-07 07:48:52]: [SERVER] Received: GET_DATABASES:stefan.ungureanu
+[2025-05-07 07:48:52]: [SERVER] Sending: DBLIST:CompanyDB
+[2025-05-07 07:48:54]: [SERVER] Client connected.
+[2025-05-07 07:48:54]: [SERVER] Received: LOAD_DATABASE:stefan.ungureanu:CompanyDB
+[2025-05-07 07:48:54]: [SERVER] Sending: LOAD_DB_SUCCESS
+[2025-05-07 07:48:58]: [SERVER] Client connected.
+[2025-05-07 07:48:58]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB
+[2025-05-07 08:00:06]: [SERVER] Client connected.
+[2025-05-07 08:00:06]: [SERVER] Sending: INSERT_SUCCESS
+[2025-05-07 08:00:17]: [SERVER] Client connected.
+[2025-05-07 08:00:17]: [SERVER] Received: EXECUTE_CODE:stefan.ungureanu:CompanyDB:select * from actiuni;
+
+[2025-05-07 08:00:17]: [SERVER] Sending: #  id  descriere  
+-  --  ---------  
+
+[2025-05-07 08:03:08]: [SERVER] Client connected.
+[2025-05-07 08:03:08]: [SERVER] Received: SHOW_TRIGGERS:stefan.ungureanu:CompanyDB

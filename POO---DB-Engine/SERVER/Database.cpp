@@ -2,6 +2,8 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
+#include "CommandManager.h"
+
 
 Database::Database(const std::string& dbName) : name(dbName) {}
 
@@ -188,21 +190,35 @@ std::string Database::getRelationsAsString() const
     return output.str();
 }
 
-bool Database::loadFromFile(const std::string& filename) 
-{
+bool Database::loadFromFile(const std::string& filename) {
     filepath = filename;
-
     std::ifstream file(filename);
     if (!file.is_open()) {
-        return 0;
+        return false;
     }
 
     std::string line;
     Table currentTable;
     bool readingColumns = false;
     bool readingRows = false;
+    bool readingTriggers = false;
+    std::ostringstream triggerContent;
 
     while (std::getline(file, line)) {
+        if (line == "#TRIGGERS") {
+            readingTriggers = true;
+            continue;
+        }
+        if (line == "#END_TRIGGERS") {
+            triggerManager.deserialize(triggerContent.str());
+            triggerContent.str("");
+            readingTriggers = false;
+            continue;
+        }
+        if (readingTriggers) {
+            triggerContent << line << "\n";
+            continue;
+        }
 
         if (line.rfind("TABEL ", 0) == 0) {
             if (!currentTable.getName().empty()) {
@@ -222,36 +238,16 @@ bool Database::loadFromFile(const std::string& filename)
         }
         else if (line == "#PROCEDURES") {
             while (std::getline(file, line)) {
-                trim(line);
-
-                if (line.empty()) continue;
+                std::string procName;
                 if (line.rfind("#PROCEDURE", 0) == 0) {
-                    std::string procName = line.substr(10);
-                    trim(procName);
-                    std::vector<std::string> procStatements;
-
-                    while (std::getline(file, line)) {
-                        trim(line);
-                        if (line.empty()) continue;
-                        if (line[0] == '#') {
-                            // reached next header → break to process next procedure or section
-                            file.seekg(-((int)line.length() + 1), std::ios_base::cur);
-                            break;
-                        }
-
-                        if (line.back() == ';')
-                            line.pop_back();
-
-                        procStatements.push_back(line);
+                    procName = line.substr(11);
+                    std::vector<std::string> statements;
+                    while (std::getline(file, line) && line[0] != '#') {
+                        if (!line.empty() && line.back() == ';') line.pop_back();
+                        statements.push_back(line);
                     }
-
-                    StoredProcedure proc(procName, procStatements);
-                    addProcedure(proc);
-                }
-                else if (line[0] == '#') {
-                    // reached next section like #ROWS or #TABLES → rewind so outer loop handles it
-                    file.seekg(-((int)line.length() + 1), std::ios_base::cur);
-                    break;
+                    addProcedure(StoredProcedure(procName, statements));
+                    if (!file.eof()) file.seekg(-((int)line.length() + 1), std::ios_base::cur);
                 }
             }
         }
@@ -259,13 +255,9 @@ bool Database::loadFromFile(const std::string& filename)
             std::istringstream iss(line);
             std::string colName, colType, flag, fkTable, fkColumn;
             iss >> colName >> colType;
-
             Column column(colName, colType);
-
             if (iss >> flag) {
-                if (flag == "PK") {
-                    column.setPrimaryKey();
-                }
+                if (flag == "PK") column.setPrimaryKey();
                 else if (flag == "FK") {
                     iss >> fkTable >> fkColumn;
                     column.setForeignKey(fkTable, fkColumn);
@@ -274,28 +266,23 @@ bool Database::loadFromFile(const std::string& filename)
             currentTable.addColumn(column);
         }
         else if (readingRows) {
-
-            if (line.empty() || std::all_of(line.begin(), line.end(), isspace)) {
-                // skip blank lines
-                continue;
+            if (!line.empty() && !std::all_of(line.begin(), line.end(), isspace)) {
+                std::stringstream ss(line);
+                std::string token;
+                std::vector<std::string> values;
+                while (std::getline(ss, token, '|')) {
+                    values.push_back(token);
+                }
+                currentTable.addRow(values);
             }
-
-            std::vector<std::string> values;
-            std::stringstream ss(line);
-            std::string token;
-            while (std::getline(ss, token, '|')) {
-                values.push_back(token);
-            }
-            currentTable.addRow(values);
         }
     }
-
     if (!currentTable.getName().empty()) {
         addTable(currentTable);
     }
-
-    return 1;
+    return true;
 }
+
 
 void Database::saveToFile()  
 {
@@ -304,6 +291,11 @@ void Database::saveToFile()
     if (!file.is_open()) {
         throw std::runtime_error("Cannot open file for writing: " + filepath);
     }
+
+    // Salvare triggerelor
+    file << "#TRIGGERS\n";
+    file << triggerManager.serialize();
+    file << "#END_TRIGGERS\n";
 
     for (const auto& pair : tables) {  //const auto& (safe read)
         const Table& table = pair.second;
@@ -355,3 +347,65 @@ void Database::trim(std::string& s)
     s.erase(s.find_last_not_of(" \t\n\r") + 1);
 }
 
+
+
+void Database::addTrigger(const Trigger& trigger) {
+    triggerManager.addTrigger(trigger);
+}
+
+void Database::removeTrigger(const std::string& triggerName) {
+    triggerManager.removeTrigger(triggerName);
+}
+
+std::vector<Trigger> Database::getTriggersForEvent(const std::string& table, EventType event) {
+    return triggerManager.getTriggersForEvent(table, event);
+}
+
+void Database::executeTriggers(EventType event, const std::string& tableName, CommandManager& cmdMgr) {
+    if (cmdMgr.inTriggerExecution) return;
+    cmdMgr.inTriggerExecution = true;
+
+
+    auto triggers = triggerManager.getTriggersForEvent(tableName, event);
+    for (const auto& trig : triggers) {
+        for (const auto& instr : trig.instructions) {
+            cmdMgr.injectInstruction(instr);
+        }
+    }
+    cmdMgr.inTriggerExecution = false;
+}
+
+Database* Database::loadDatabaseForUser(const std::string& username, const std::string& dbName) {
+    std::string filepath = "databases/" + username + "/" + dbName + ".txt";
+    Database* db = new Database(dbName);
+    if (!db->loadFromFile(filepath)) {
+        delete db;
+        return nullptr;
+    }
+    return db;
+}
+
+std::string Database::getTriggersInfo() const
+{
+    std::ostringstream oss;
+    const auto& triggers = triggerManager.getAllTriggers();
+
+    if (triggers.empty()) {
+        oss << "No triggers.\n";
+        return oss.str();
+    }
+
+    for (const auto& trig : triggers) {
+        std::string eventStr = (trig.event == EventType::AFTER_INSERT) ? "after insert" :
+            (trig.event == EventType::AFTER_DELETE) ? "after delete" : "unknown";
+
+        oss << trig.name << " {\n";
+        oss << "    on " << trig.tableName << " " << eventStr << "\n";
+        for (const auto& instr : trig.instructions) {
+            oss << "    " << instr << ";\n";
+        }
+        oss << "}\n\n";
+    }
+
+    return oss.str();
+}

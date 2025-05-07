@@ -102,6 +102,12 @@
     <ClCompile Include="ProceduresManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TriggerManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TriggersManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="user_credentials_db.txt">
@@ -194,6 +200,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ProceduresManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Trigger.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggerManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggersManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,6 +2,8 @@
 #include <sstream>
 #include <algorithm>
 #include <iomanip>
+#include <set>
+
 
 CommandManager::CommandManager(const std::string& fullRequest, Database* database)
 {
@@ -104,6 +106,17 @@ std::string CommandManager::processCommand()
             userCode = command;
             response = handleDropProcedure();
         }
+        else if (lowerCommand.find("create trigger") == 0) {
+            userCode = command;
+            response = handleCreateTrigger();
+        }
+        else if (lowerCommand.find("show_triggers:") == 0) {
+            userCode = command;
+            return handleShowTriggers();
+        }
+
+
+
         else {
             response = handleUnknown();
         }
@@ -220,7 +233,38 @@ std::string CommandManager::handleInsert()
         return "INSERT_SUCCESS but failed to save: " + std::string(ex.what());
     }
 
+    //ACESTA A FOST COD PROBLEMAAAA
+    workingDatabase->executeTriggers(EventType::AFTER_INSERT, tableName, *this);
+
+    std::set<std::string> alreadyExecuted;
+    while (!injectedInstructions.empty()) {
+        std::string instr = injectedInstructions.back();
+        injectedInstructions.pop_back();  // vector: eliminare de la coadă
+
+        if (alreadyExecuted.count(instr)) continue;
+        alreadyExecuted.insert(instr);
+
+        userCode = instr;
+        processCommand();
+    }
+
+    //sau
+    //std::set<std::string> alreadyExecuted;
+    //while (!injectedInstructions.empty()) {
+    //    std::string instr = injectedInstructions.back();
+    //    injectedInstructions.pop_back();
+
+    //    if (alreadyExecuted.count(instr)) continue;
+    //    alreadyExecuted.insert(instr);
+
+    //    CommandManager inner(instr, workingDatabase);
+    //    inner.inTriggerExecution = true;  // ca să previi recursivitate infinită
+    //    inner.processCommand();           // execută efectiv triggerul
+    //}
+
     return "INSERT_SUCCESS";
+
+
 }
 
 std::string CommandManager::handleDropTable()
@@ -317,6 +361,14 @@ std::string CommandManager::handleDelete()
     try {
         int deleted = workingDatabase->deleteRowsFromTable(tableName, colName, opFound, value);
         workingDatabase->saveToFile();
+
+        workingDatabase->executeTriggers(EventType::AFTER_DELETE, tableName, *this);
+        for (const auto& instr : injectedInstructions) {
+            userCode = instr;
+            processCommand();
+        }
+        injectedInstructions.clear();
+
 
         if (deleted == 0) {
             return "DELETE_SUCCESS: no rows deleted";
@@ -965,6 +1017,70 @@ std::string CommandManager::handleDropProcedure()
     return "DROP_PROCEDURE_SUCCESS";
 }
 
+std::string CommandManager::handleCreateTrigger() {
+    std::istringstream iss(userCode);
+    std::string line;
+
+    std::getline(iss, line);
+    trim(line);
+
+    // parse prima linie: create trigger <name> after insert/delete on <table>
+    std::istringstream headStream(line);
+    std::string word, triggerName, eventStr, tableName;
+    headStream >> word; // create
+    headStream >> word; // trigger
+    headStream >> triggerName;
+    headStream >> word; // after
+    headStream >> eventStr;
+    headStream >> word; // on
+    headStream >> tableName;
+
+    if (triggerName.empty() || eventStr.empty() || tableName.empty()) {
+        return "CREATE_TRIGGER_FAIL: invalid syntax";
+    }
+
+    EventType event;
+    if (eventStr == "insert")
+        event = EventType::AFTER_INSERT;
+    else if (eventStr == "delete")
+        event = EventType::AFTER_DELETE;
+    else
+        return "CREATE_TRIGGER_FAIL: unknown event";
+
+    std::vector<std::string> instructions;
+
+    while (std::getline(iss, line)) {
+        trim(line);
+        if (line.empty()) continue;
+
+        if (line.rfind("instruction", 0) == 0) {
+            std::string stmt = line.substr(11);
+            trim(stmt);
+            if (stmt.empty()) return "CREATE_TRIGGER_FAIL: empty instruction";
+            if (stmt.back() == ';') stmt.pop_back();
+            instructions.push_back(stmt);
+        }
+    }
+
+    if (instructions.empty())
+        return "CREATE_TRIGGER_FAIL: missing instruction";
+
+    Trigger t;
+    t.name = triggerName;
+    t.tableName = tableName;
+    t.event = event;
+    t.instructions = instructions;
+
+    workingDatabase->addTrigger(t);
+    try {
+        workingDatabase->saveToFile();
+    } catch (const std::exception& ex) {
+        return "CREATE_TRIGGER_SUCCESS but failed to save: " + std::string(ex.what());
+    }
+
+    return "CREATE_TRIGGER_SUCCESS";
+}
+
 
 std::string CommandManager::handleUnknown() 
 {
@@ -1253,4 +1369,24 @@ std::string CommandManager::formatSelectResult(const std::vector<std::string>& h
     }
 
     return oss.str();
+}
+
+std::string CommandManager::handleShowTriggers() {
+    size_t colon1 = userCode.find(':');
+    size_t colon2 = userCode.find(':', colon1 + 1);
+
+    if (colon1 == std::string::npos || colon2 == std::string::npos)
+        return "TRIGGERS_FAIL: invalid format";
+
+    std::string username = userCode.substr(colon1 + 1, colon2 - colon1 - 1);
+    std::string dbName = userCode.substr(colon2 + 1);
+
+    Database* db = Database::loadDatabaseForUser(username, dbName);
+    if (!db)
+        return "TRIGGERS_FAIL: database not found";
+
+    std::string info = db->getTriggersInfo();
+    delete db;
+
+    return "TRIGGERS:" + info;  
 }

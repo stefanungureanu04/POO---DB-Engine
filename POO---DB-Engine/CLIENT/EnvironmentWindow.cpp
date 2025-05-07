@@ -474,6 +474,10 @@ void EnvironmentWindow::setupPanelSwitching()
             switchToOtherPanel();
             displayProcedures();
         }
+        else if (selectedItem == "Triggers") {
+            switchToOtherPanel();
+            displayTriggers();
+        }
         else {
             switchToOtherPanel();
         }
@@ -649,6 +653,42 @@ void EnvironmentWindow::switchToOtherPanel()
     if (highlighter) {
         delete highlighter;
         highlighter = nullptr;
+    }
+}
+
+
+//afisare triggere in mediul de lucru
+void EnvironmentWindow::displayTriggers()
+{
+    if (selectedDatabase.isEmpty()) {
+        QMessageBox::warning(this, "No Database", "Please select a database first.");
+        return;
+    }
+
+    try {
+        Socket socket(Socket::Protocol::TCP);
+        if (!socket.connectToServer("127.0.0.1", 12345)) {
+            QMessageBox::critical(this, "Connection Error", "Could not connect to server.");
+            return;
+        }
+
+        std::string request = "SHOW_TRIGGERS:" + currentUsername.toStdString() + ":" + selectedDatabase.toStdString();
+        socket.sendData(request);
+
+        std::string response = socket.receiveData(4096);
+        const std::string prefix = "TRIGGERS:";
+        size_t start = response.find(prefix);
+        if (start != std::string::npos) {
+            std::string payload = response.substr(start + prefix.length());
+            QString qPayload = QString::fromStdString(payload);
+            ui->EditorText->setPlainText(qPayload);
+        }
+        else {
+            QMessageBox::warning(this, "Error", QString::fromStdString("BAD RESPONSE: " + response));
+        }
+    }
+    catch (const std::exception& e) {
+        QMessageBox::critical(this, "Socket Error", e.what());
     }
 }
 

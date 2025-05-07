@@ -4,6 +4,9 @@
 #include <vector>
 #include "Table.h"
 #include "StoredProcedure.h"
+#include"TriggerManager.h"
+#include <fstream>
+#include <sstream>
 
 class Database {
 private:
@@ -12,6 +15,9 @@ private:
     std::string filepath;
 
     std::unordered_map<std::string, StoredProcedure> procedures;
+
+    //triggere
+    TriggerManager triggerManager;
 
 public:
     Database(const std::string& dbName);
@@ -36,6 +42,16 @@ public:
     std::string getSchemaInfo() const;
     void showRelations();
     std::string getRelationsAsString() const;
+
+    //triggere
+    void addTrigger(const Trigger& trigger);
+    void removeTrigger(const std::string& triggerName);
+    std::vector<Trigger> getTriggersForEvent(const std::string& table, EventType event);
+
+    void executeTriggers(EventType event, const std::string& tableName, class CommandManager& cmdMgr);
+    const TriggerManager& getTriggerManager() const { return triggerManager; }
+    static Database* loadDatabaseForUser(const std::string& username, const std::string& dbName);
+    std::string getTriggersInfo() const;
 
     bool loadFromFile(const std::string& filename);
     void saveToFile();

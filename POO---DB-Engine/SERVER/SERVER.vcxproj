@@ -168,6 +168,8 @@
     <ClCompile Include="StoredProcedure.cpp" />
     <ClCompile Include="Table.cpp" />
     <ClCompile Include="TableListManager.cpp" />
+    <ClCompile Include="TriggerManager.cpp" />
+    <ClCompile Include="TriggersManager.cpp" />
     <ClCompile Include="UserCredentialsDatabase.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +209,9 @@
     <ClInclude Include="StoredProcedure.h" />
     <ClInclude Include="Table.h" />
     <ClInclude Include="TableListManager.h" />
+    <ClInclude Include="Trigger.h" />
+    <ClInclude Include="TriggerManager.h" />
+    <ClInclude Include="TriggersManager.h" />
     <ClInclude Include="UserCredentialsDatabase.h" />
   </ItemGroup>
   <ItemGroup>

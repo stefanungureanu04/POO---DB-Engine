@@ -9,6 +9,8 @@
 #include "TableListManager.h"
 #include "RelationManager.h"
 #include "ProceduresManager.h"
+#include "TriggerManager.h"
+#include "TriggersManager.h"
 
 std::string AppHandler::handle(const std::string& request)
 {
@@ -55,6 +57,11 @@ std::string AppHandler::handle(const std::string& request)
         ProceduresManager manager(request, workingDatabase);
         return manager.process();
     }
+    else if (request.rfind("SHOW_TRIGGERS:", 0) == 0) {
+        TriggersManager manager(request, workingDatabase);
+        return manager.process();
+    }
+
 
     return "UNKNOWN_COMMAND";
 }

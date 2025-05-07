@@ -13,10 +13,19 @@ public:
     CommandManager(const std::string& fullRequest, Database* database);
     std::string processCommand();
 
+    void injectInstruction(const std::string& instruction) {
+        injectedInstructions.push_back(instruction);
+    }
+    
+    std::string handleShowTriggers();
+    bool inTriggerExecution = false;
+
 private:
     std::string username;
     std::string databaseName;
     std::string userCode;
+
+    std::vector<std::string> injectedInstructions;
 
     void parseRequest(const std::string& fullRequest);
     void splitCommands(const std::string& input, std::vector<std::string>& commands);
@@ -33,6 +42,8 @@ private:
     std::string handleCreateProcedure();
     std::string handleCallProcedure();
     std::string handleDropProcedure();
+	std::string handleCreateTrigger();
+	
 
     bool parseSelectQuery(const string& query, string& columnsPart, string& tableName, string& whereClause, string& orderByColumn);
     bool getSelectedColumns(const vector<Column>& tableCols, const string& columnsPart, vector<int>& colIndexes,vector<string>& selectedColNames);
