@@ -5,6 +5,7 @@ insert into logs values ('Angajat adaugat in angajati')
 #END_TRIGGER
 #TRIGGER dep_log
 departamente 0
+<none>
 insert into actiuni values (999, 'Departament nou adaugat')
 #END_TRIGGER
 #END_TRIGGERS
@@ -28,6 +29,7 @@ nume string
 99|'AI Lab'
 99|'AI Lab'
 99|'AI Lab'
+10|'Research'
 10|'Research'
 
 TABEL angajati
@@ -86,6 +88,7 @@ TABEL actiuni
 id number
 descriere string
 #ROWS
+999|'Departament nou adaugat'
 
 TABEL logs
 #COLUMNS
@@ -94,5 +97,9 @@ mesaj string
 'Test din mana'
 
 #PROCEDURES
-#PROCEDURE list_employees_in_department
+PROCEDURE list_employees_in_department
 select id, nume, salariu from angajati where departament_id = @dept_id;
+PROCEDURE giveRaise
+select * from angajati;
+PROCEDURE test
+select * from angajati;

@@ -336,7 +336,6 @@ std::string CommandManager::handleDelete()
     std::string condition = userCode.substr(wherePos + 5);
     trim(condition);
 
-    // ✅ Parse operator
     std::string operators[] = { ">=", "<=", "!=", "=", "<", ">" };
     std::string opFound;
     size_t opPos = std::string::npos;
@@ -720,7 +719,6 @@ std::string CommandManager::handleUpdate()
     std::string wherePart = userCode.substr(wherePos + 5);
     trim(wherePart);
 
-    // Parse SET part
     std::vector<std::pair<std::string, std::string>> updates;
     std::istringstream setStream(setPart);
     std::string assignment;
@@ -736,7 +734,6 @@ std::string CommandManager::handleUpdate()
         updates.emplace_back(col, val);
     }
 
-    // Parse WHERE
     std::string ops[] = { ">=", "<=", "!=", "=", "<", ">" };
     std::string opFound;
     size_t opPos = std::string::npos;
@@ -851,7 +848,7 @@ std::string CommandManager::handleCreateProcedure()
         trim(line);
 
         if (line == "end;" || line == "END;") {
-            break;  // ✅ End of procedure
+            break; 
         }
 
         if (line.find("end;") != std::string::npos && line != "end;") {
@@ -899,7 +896,7 @@ std::string CommandManager::handleCallProcedure()
         return "CALL_FAIL: invalid call syntax";
     }
 
-    callLine = callLine.substr(5);  // remove "call "
+    callLine = callLine.substr(5);  
     trim(callLine);
 
     // optional semicolon
@@ -927,7 +924,6 @@ std::string CommandManager::handleCallProcedure()
         arguments.push_back(arg);
     }
 
-    // 2️⃣ check if procedure exists
     if (!workingDatabase->hasProcedure(procName)) {
         return "CALL_FAIL: procedure not found";
     }
@@ -937,7 +933,6 @@ std::string CommandManager::handleCallProcedure()
         return "CALL_FAIL: procedure retrieval error";
     }
 
-    // 3️⃣ detect variables in stored statements (IN ORDER of appearance!)
     std::vector<std::string> variables;
     for (const auto& stmt : proc->getStatements()) {
         size_t pos = 0;
@@ -953,7 +948,6 @@ std::string CommandManager::handleCallProcedure()
         }
     }
 
-    // 4️⃣ map arguments to variables
     if (arguments.size() != variables.size()) {
         return "CALL_FAIL: expected " + std::to_string(variables.size()) + " arguments, got " + std::to_string(arguments.size());
     }
@@ -963,7 +957,6 @@ std::string CommandManager::handleCallProcedure()
         paramMap["@" + variables[i]] = arguments[i];
     }
 
-    // 5️⃣ perform replacements
     std::vector<std::string> replacedStatements;
     for (auto stmt : proc->getStatements()) {
         for (const auto& [param, value] : paramMap) {
@@ -975,13 +968,11 @@ std::string CommandManager::handleCallProcedure()
         replacedStatements.push_back(stmt);
     }
 
-    // 6️⃣ build combined userCode
     userCode.clear();
     for (const auto& stmt : replacedStatements) {
         userCode += stmt + "; ";
     }
 
-    // 7️⃣ recursively process
     return this->processCommand();
 }
 
@@ -994,7 +985,7 @@ std::string CommandManager::handleDropProcedure()
         return "DROP_PROCEDURE_FAIL: invalid syntax";
     }
 
-    std::string procName = procLine.substr(14); // after "drop procedure"
+    std::string procName = procLine.substr(14); 
     trim(procName);
 
     if (!procName.empty() && procName.back() == ';')
@@ -1301,7 +1292,7 @@ bool CommandManager::sortRows(std::vector<std::vector<std::string>>& selectedRow
                 });
         }
     }
-    else { // string
+    else { 
         if (descending) {
             std::sort(selectedRows.begin(), selectedRows.end(),
                 [orderIdx](const std::vector<std::string>& a, const std::vector<std::string>& b) {
@@ -1337,24 +1328,21 @@ std::string CommandManager::formatSelectResult(const std::vector<std::string>& h
         }
     }
 
-    // calculate CRT width
-    size_t crtWidth = std::max((size_t)1, std::to_string(rows.size()).length());  // at least width for "CRT"
+    // calculate # width
+    size_t crtWidth = std::max((size_t)1, std::to_string(rows.size()).length());  // at least width for "#"
 
-    // header row
     oss << std::setw(crtWidth) << std::left << "#" << "  ";
     for (size_t i = 0; i < headers.size(); ++i) {
         oss << std::setw(colWidths[i]) << std::left << headers[i] << "  ";
     }
     oss << "\n";
 
-    // underline
     oss << std::string(crtWidth, '-') << "  ";
     for (size_t i = 0; i < headers.size(); ++i) {
         oss << std::string(colWidths[i], '-') << "  ";
     }
     oss << "\n";
 
-    // data rows
     for (size_t rowIdx = 0; rowIdx < rows.size(); ++rowIdx) {
         oss << std::setw(crtWidth) << std::left << (rowIdx + 1) << "  ";
         for (size_t i = 0; i < headers.size(); ++i) {

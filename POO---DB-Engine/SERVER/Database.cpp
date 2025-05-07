@@ -238,19 +238,34 @@ bool Database::loadFromFile(const std::string& filename) {
         }
         else if (line == "#PROCEDURES") {
             while (std::getline(file, line)) {
-                std::string procName;
-                if (line.rfind("#PROCEDURE", 0) == 0) {
-                    procName = line.substr(11);
-                    std::vector<std::string> statements;
-                    while (std::getline(file, line) && line[0] != '#') {
-                        if (!line.empty() && line.back() == ';') line.pop_back();
-                        statements.push_back(line);
+                trim(line);
+                if (line.empty()) continue;
+
+                if (line.rfind("PROCEDURE ", 0) == 0) {
+                    std::string procName = line.substr(9);
+                    trim(procName);
+                    std::vector<std::string> procStatements;
+
+                    while (std::getline(file, line)) {
+                        trim(line);
+                        if (line.empty()) continue;
+                        if (line.rfind("PROCEDURE ", 0) == 0 || line[0] == '#') {
+                            file.seekg(-((int)line.length() + 2), std::ios_base::cur);
+                            break;
+                        }
+                        if (line.back() == ';') line.pop_back();
+                        procStatements.push_back(line);
                     }
-                    addProcedure(StoredProcedure(procName, statements));
-                    if (!file.eof()) file.seekg(-((int)line.length() + 1), std::ios_base::cur);
+
+                    addProcedure(StoredProcedure(procName, procStatements));
+                }
+                else if (line[0] == '#') {
+                    file.seekg(-((int)line.length() + 2), std::ios_base::cur);
+                    break;
                 }
             }
         }
+
         else if (readingColumns) {
             std::istringstream iss(line);
             std::string colName, colType, flag, fkTable, fkColumn;
@@ -334,9 +349,9 @@ void Database::saveToFile()
     file << "#PROCEDURES\n";
     for (const auto& pair : procedures) {
         const StoredProcedure& proc = pair.second;
-        file << "#PROCEDURE " << proc.getName() << "\n";
+        file << "PROCEDURE " << proc.getName() << "\n";
         for (const auto& stmt : proc.getStatements()) {
-            file << stmt << ";" << "\n";  // ✅ append semicolon
+            file << stmt << ";" << "\n";
         }
     }
 }
